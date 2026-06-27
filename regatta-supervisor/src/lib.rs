@@ -45,6 +45,22 @@ impl SessionHandle {
         self.child.id()
     }
 
+    /// Read the agent's stdout to EOF, parsing each line into a normalized event and skipping
+    /// unparseable lines.
+    pub async fn collect_events(&mut self) -> Vec<regatta_core::stream::NormalizedEvent> {
+        use tokio::io::{AsyncBufReadExt, BufReader};
+        let mut events = Vec::new();
+        if let Some(stdout) = self.child.stdout.take() {
+            let mut lines = BufReader::new(stdout).lines();
+            while let Ok(Some(line)) = lines.next_line().await {
+                if let Some(ev) = regatta_core::stream::parse_claude_line(&line) {
+                    events.push(ev);
+                }
+            }
+        }
+        events
+    }
+
     /// Tear the session down: SIGTERM the whole group for a graceful exit, give it a short grace
     /// period, then SIGKILL the group — killing the agent and every child it spawned. Finally reap
     /// the leader. Idempotent and safe to call on an already-exited session.
@@ -134,5 +150,30 @@ mod tests {
         tokio::time::sleep(Duration::from_millis(150)).await; // let it exit on its own
         h.shutdown().await; // must not panic or error
         h.shutdown().await; // idempotent
+    }
+
+    #[tokio::test]
+    async fn collects_parsed_events_from_stdout() {
+        let script = "echo '{\"type\":\"system\",\"subtype\":\"init\",\"model\":\"m\"}'; \
+                      echo 'garbage'; \
+                      echo '{\"type\":\"assistant\",\"message\":{\"content\":[{\"type\":\"text\",\"text\":\"hi\"}]}}'; \
+                      echo '{\"type\":\"result\",\"total_cost_usd\":0.5,\"usage\":{\"input_tokens\":3,\"output_tokens\":4}}'";
+        let mut h = SessionHandle::spawn(&sh(script)).expect("spawn");
+        let events = h.collect_events().await;
+        h.shutdown().await;
+        use regatta_core::stream::NormalizedEvent::*;
+        assert_eq!(events.len(), 3, "the garbage line must be skipped");
+        assert!(matches!(events[0], SessionStarted { .. }));
+        assert!(matches!(events[1], AssistantText { .. }));
+        assert!(matches!(events[2], Usage { .. }));
+    }
+
+    #[tokio::test]
+    async fn skips_unparseable_lines() {
+        let mut h =
+            SessionHandle::spawn(&sh("echo 'not json'; echo '{}'; echo ''")).expect("spawn");
+        let events = h.collect_events().await;
+        h.shutdown().await;
+        assert!(events.is_empty(), "garbage stdout yields no events");
     }
 }
