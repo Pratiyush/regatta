@@ -93,6 +93,31 @@ impl Drop for SessionHandle {
     }
 }
 
+/// Tail a transcript file from `from_offset` to EOF, parsing each complete line into events. A
+/// trailing partial (newline-less) line is held until it completes; the returned offset is where to
+/// resume next time, so reattach never re-reads the whole file. If the file is shorter than the
+/// offset (truncated/rotated), reading restarts from the beginning.
+pub fn tail_transcript(
+    path: &std::path::Path,
+    from_offset: u64,
+) -> std::io::Result<(Vec<regatta_core::stream::NormalizedEvent>, u64)> {
+    use std::io::{Read, Seek, SeekFrom};
+    let mut f = std::fs::File::open(path)?;
+    let len = f.metadata()?.len();
+    // If the file is shorter than our offset, it was truncated/rotated — restart from the top.
+    let start = if from_offset > len { 0 } else { from_offset };
+    f.seek(SeekFrom::Start(start))?;
+    let mut buf = String::new();
+    f.read_to_string(&mut buf)?;
+    // Only consume up to the last newline; a trailing partial line is left for next time.
+    let consumed = buf.rfind('\n').map(|i| i + 1).unwrap_or(0);
+    let events = buf[..consumed]
+        .lines()
+        .filter_map(regatta_core::stream::parse_claude_line)
+        .collect();
+    Ok((events, start + consumed as u64))
+}
+
 #[cfg(all(test, unix))]
 mod tests {
     use super::*;
@@ -175,5 +200,50 @@ mod tests {
         let events = h.collect_events().await;
         h.shutdown().await;
         assert!(events.is_empty(), "garbage stdout yields no events");
+    }
+
+    #[test]
+    fn tail_transcript_reads_incrementally_from_offset() {
+        use std::io::Write;
+        let path = std::env::temp_dir().join(format!("regatta_tx_{}.jsonl", std::process::id()));
+        let _ = std::fs::remove_file(&path);
+        let l1 = "{\"type\":\"system\",\"subtype\":\"init\",\"model\":\"m\"}\n";
+        let l2 = "{\"type\":\"assistant\",\"message\":{\"content\":[{\"type\":\"text\",\"text\":\"hi\"}]}}\n";
+        std::fs::write(&path, format!("{l1}{l2}")).unwrap();
+
+        let (events, off) = tail_transcript(&path, 0).unwrap();
+        assert_eq!(events.len(), 2);
+
+        let l3 = "{\"type\":\"result\",\"total_cost_usd\":0.5,\"usage\":{\"input_tokens\":1,\"output_tokens\":2}}\n";
+        let partial = "{\"type\":\"assistant\""; // no newline — must be held for next time
+        let mut f = std::fs::OpenOptions::new()
+            .append(true)
+            .open(&path)
+            .unwrap();
+        write!(f, "{l3}{partial}").unwrap();
+        drop(f);
+
+        let (events2, off2) = tail_transcript(&path, off).unwrap();
+        assert_eq!(
+            events2.len(),
+            1,
+            "only the completed line; the partial is held"
+        );
+        assert!(off2 > off);
+        let _ = std::fs::remove_file(&path);
+    }
+
+    #[test]
+    fn tail_transcript_restarts_after_truncation() {
+        let path =
+            std::env::temp_dir().join(format!("regatta_tx_trunc_{}.jsonl", std::process::id()));
+        std::fs::write(
+            &path,
+            "{\"type\":\"system\",\"subtype\":\"init\",\"model\":\"m\"}\n",
+        )
+        .unwrap();
+        let (events, _) = tail_transcript(&path, 9_999_999).unwrap(); // offset past EOF
+        assert_eq!(events.len(), 1);
+        let _ = std::fs::remove_file(&path);
     }
 }
