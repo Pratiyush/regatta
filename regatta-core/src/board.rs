@@ -4,7 +4,8 @@
 /// Future timestamps (clock skew) collapse to "Today" rather than a negative bucket.
 pub fn recency_group(last_activity: i64, now: i64) -> &'static str {
     const DAY: i64 = 86_400;
-    let diff = (now - last_activity).max(0);
+    // saturating_sub: a corrupt/extreme last_activity must not overflow into a panic.
+    let diff = now.saturating_sub(last_activity).max(0);
     if diff < DAY {
         "Today"
     } else if diff < 2 * DAY {

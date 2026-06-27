@@ -2,8 +2,10 @@
 //! (M1 close security review). These run hostile inputs through the real functions and assert
 //! they stay safe — no panic, no injection, no traversal.
 
+use regatta_core::board::recency_group;
 use regatta_core::slug::slugify;
 use regatta_core::stream::parse_claude_line;
+use regatta_core::transcript::parse_session_meta;
 use regatta_core::worktree::plan_worktree;
 
 /// Session names flow into git branch names and filesystem paths — they must be neutralized.
@@ -94,4 +96,48 @@ fn worktree_plan_resists_traversal_and_injection() {
         "worktree escaped its directory: {:?}",
         p.path
     );
+}
+
+/// Transcript lines are read from disk and may be corrupt or hostile — parsing them for the Resume
+/// index must never panic, and a traversal-laden cwd must not produce a traversal-laden project.
+#[test]
+fn transcript_meta_never_panics_on_hostile_input() {
+    let deep = format!("{}1{}", "[".repeat(5_000), "]".repeat(5_000)); // deep nesting
+    let traversal = format!(
+        "{{\"sessionId\":\"x\",\"cwd\":\"{}\"}}",
+        "../".repeat(5_000)
+    );
+    let payloads = vec![
+        String::new(),
+        "not json".to_string(),
+        "{}".to_string(),
+        "{\"sessionId\":123}".to_string(), // wrong type
+        "{\"sessionId\":[1,2]}".to_string(),
+        "{\"sessionId\":\"x\",\"cwd\":123}".to_string(),
+        "{\"sessionId\":\"\\u0000\\u0000\"}".to_string(), // null bytes
+        format!("{{\"sessionId\":\"{}\"}}", "x".repeat(2_000_000)), // 2 MB id
+        traversal,
+        deep,
+    ];
+    for p in &payloads {
+        if let Some(meta) = parse_session_meta(p) {
+            assert!(
+                !meta.project.contains(".."),
+                "project label allows traversal: {:?}",
+                meta.project
+            );
+        }
+    }
+}
+
+/// last_activity comes from a file mtime or a stored integer and could be extreme or corrupt;
+/// recency bucketing must not overflow on i64 extremes.
+#[test]
+fn recency_group_never_overflows() {
+    let extremes = [i64::MIN, i64::MAX, 0, -1, i64::MAX / 2, i64::MIN / 2];
+    for &la in &extremes {
+        for &now in &extremes {
+            let _ = recency_group(la, now); // must return a bucket, never panic
+        }
+    }
 }

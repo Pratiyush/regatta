@@ -180,4 +180,23 @@ mod tests {
         assert_eq!(all[0].title, "new title");
         assert_eq!(all[0].last_activity, 150);
     }
+
+    #[test]
+    fn board_query_resists_sql_injection() {
+        let s = Store::open_in_memory().unwrap();
+        s.upsert_transcript(&tx("s1", "payments", "real", 100))
+            .unwrap();
+        // a classic injection payload must be a literal search string, not executed SQL
+        let hits = s
+            .board_query("x'; DROP TABLE transcript_index; --")
+            .unwrap();
+        assert!(hits.is_empty(), "injection string should match nothing");
+        // the table must survive and still be queryable
+        let all = s.board_query("").unwrap();
+        assert_eq!(
+            all.len(),
+            1,
+            "transcript_index must survive the injection attempt"
+        );
+    }
 }
