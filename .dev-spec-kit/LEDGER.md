@@ -4,7 +4,7 @@
 
 ## Progress board
 
-**2/2 done (100%)**
+**3/3 done (100%)**
 
 - ✅ **R-SLUG-01** slugify a session name 🟢🟢
   📋 Evidence — R-SLUG-01
@@ -19,6 +19,13 @@
   |---|---|---|---|---|
   | `helm_core::slug::tests::empty_slug_falls_back` | unit | ✅ green | — | 2026-06-27T16:27:26.316Z |
 
+- ✅ **R-ATTN-01** rank sessions that need the human 🟢🟢
+  📋 Evidence — R-ATTN-01
+  | Check | Kind | State | Proof | Proven at |
+  |---|---|---|---|---|
+  | `regatta_core::attention::tests::ranks_blocked_sessions` | unit | ✅ green | 131bc3c2* | 2026-06-27T17:00:27.381Z |
+  | `regatta_core::attention::tests::working_sessions_score_zero` | unit | ✅ green | 131bc3c2* | 2026-06-27T17:00:27.886Z |
+
 
 ## Approvals & governance
 
@@ -26,13 +33,13 @@
 
 ## Recent activity
 
-- 2026-06-27 16:30:13  🧾 spec lint  [Pratiyush]
-- 2026-06-27 16:40:57  🧾 spec tasks  [Pratiyush]
-- 2026-06-27 16:40:57  🔗 task R-SLUG-01 bindings → [regatta_core::slug::tests::slugifies_a_name, regatta_core::slug::tests::empty_slug_falls_back]
-- 2026-06-27 16:40:58  🧾 check run R-SLUG-01 regatta_core::slug::tests::slugifies_a_name  [Pratiyush]
-- 2026-06-27 16:40:58  ✅ check regatta_core::slug::tests::slugifies_a_name → R-SLUG-01
-- 2026-06-27 16:40:59  🧾 check run R-SLUG-01 regatta_core::slug::tests::empty_slug_falls_back  [Pratiyush]
-- 2026-06-27 16:40:59  ✅ check regatta_core::slug::tests::empty_slug_falls_back → R-SLUG-01
-- 2026-06-27 16:40:59  🧾 task done R-SLUG-01  [Pratiyush]
-- 2026-06-27 16:40:59  🏁 task R-SLUG-01 → done
-- 2026-06-27 16:40:59  🧾 graph build  [Pratiyush]
+- 2026-06-27 17:00:03  ❌ check regatta_core::attention::tests::ranks_blocked_sessions @ 131bc3c2* → R-ATTN-01
+- 2026-06-27 17:00:04  🧾 check run R-ATTN-01 regatta_core::attention::tests::working_sessions_score_zero  [Pratiyush]
+- 2026-06-27 17:00:04  ❌ check regatta_core::attention::tests::working_sessions_score_zero @ 131bc3c2* → R-ATTN-01
+- 2026-06-27 17:00:26  🧾 check run R-ATTN-01 regatta_core::attention::tests::ranks_blocked_sessions  [Pratiyush]
+- 2026-06-27 17:00:27  ✅ check regatta_core::attention::tests::ranks_blocked_sessions @ 131bc3c2* → R-ATTN-01
+- 2026-06-27 17:00:27  🧾 check run R-ATTN-01 regatta_core::attention::tests::working_sessions_score_zero  [Pratiyush]
+- 2026-06-27 17:00:27  ✅ check regatta_core::attention::tests::working_sessions_score_zero @ 131bc3c2* → R-ATTN-01
+- 2026-06-27 17:00:28  🧾 task done R-ATTN-01  [Pratiyush]
+- 2026-06-27 17:00:28  🏁 task R-ATTN-01 → done
+- 2026-06-27 17:00:28  🧾 graph build  [Pratiyush]

@@ -67,12 +67,122 @@
       }
     },
     {
+      "id": "file:index.html",
+      "kind": "codeNode",
+      "label": "index.html",
+      "meta": {
+        "sourceFile": "index.html",
+        "community": 4
+      }
+    },
+    {
+      "id": "file:package.json",
+      "kind": "codeNode",
+      "label": "package.json",
+      "meta": {
+        "sourceFile": "package.json",
+        "community": 5
+      }
+    },
+    {
+      "id": "jsonkey:package.json#name",
+      "kind": "codeNode",
+      "label": "name",
+      "meta": {
+        "sourceFile": "package.json",
+        "community": 5
+      }
+    },
+    {
+      "id": "jsonkey:package.json#private",
+      "kind": "codeNode",
+      "label": "private",
+      "meta": {
+        "sourceFile": "package.json",
+        "community": 5
+      }
+    },
+    {
+      "id": "jsonkey:package.json#version",
+      "kind": "codeNode",
+      "label": "version",
+      "meta": {
+        "sourceFile": "package.json",
+        "community": 5
+      }
+    },
+    {
+      "id": "jsonkey:package.json#type",
+      "kind": "codeNode",
+      "label": "type",
+      "meta": {
+        "sourceFile": "package.json",
+        "community": 5
+      }
+    },
+    {
+      "id": "jsonkey:package.json#scripts",
+      "kind": "codeNode",
+      "label": "scripts",
+      "meta": {
+        "sourceFile": "package.json",
+        "community": 5
+      }
+    },
+    {
+      "id": "jsonkey:package.json#dependencies",
+      "kind": "codeNode",
+      "label": "dependencies",
+      "meta": {
+        "sourceFile": "package.json",
+        "community": 5
+      }
+    },
+    {
+      "id": "jsonkey:package.json#devDependencies",
+      "kind": "codeNode",
+      "label": "devDependencies",
+      "meta": {
+        "sourceFile": "package.json",
+        "community": 5
+      }
+    },
+    {
+      "id": "file:regatta-core/CHANGELOG.md",
+      "kind": "codeNode",
+      "label": "regatta-core/CHANGELOG.md",
+      "meta": {
+        "sourceFile": "regatta-core/CHANGELOG.md",
+        "community": 6
+      }
+    },
+    {
+      "id": "doc:regatta-core/CHANGELOG.md#Changelog",
+      "kind": "codeNode",
+      "label": "Changelog",
+      "meta": {
+        "sourceFile": "regatta-core/CHANGELOG.md",
+        "sourceLocation": "regatta-core/CHANGELOG.md:1",
+        "community": 6
+      }
+    },
+    {
+      "id": "doc:regatta-core/CHANGELOG.md#0.1.0 (2026-06-27)",
+      "kind": "codeNode",
+      "label": "0.1.0 (2026-06-27)",
+      "meta": {
+        "sourceFile": "regatta-core/CHANGELOG.md",
+        "sourceLocation": "regatta-core/CHANGELOG.md:3",
+        "community": 6
+      }
+    },
+    {
       "id": "file:regatta-core/Cargo.toml",
       "kind": "codeNode",
       "label": "regatta-core/Cargo.toml",
       "meta": {
         "sourceFile": "regatta-core/Cargo.toml",
-        "community": 4
+        "community": 7
       }
     },
     {
@@ -81,7 +191,7 @@
       "label": "regatta_core",
       "meta": {
         "sourceFile": "regatta-core/Cargo.toml",
-        "community": 4
+        "community": 7
       }
     },
     {
@@ -90,7 +200,7 @@
       "label": "serde",
       "meta": {
         "sourceFile": "regatta-core/Cargo.toml",
-        "community": 4
+        "community": 7
       }
     },
     {
@@ -99,7 +209,66 @@
       "label": "serde_json",
       "meta": {
         "sourceFile": "regatta-core/Cargo.toml",
-        "community": 4
+        "community": 7
+      }
+    },
+    {
+      "id": "file:regatta-core/src/attention.rs",
+      "kind": "codeNode",
+      "label": "regatta-core/src/attention.rs",
+      "meta": {
+        "sourceFile": "regatta-core/src/attention.rs",
+        "community": 8
+      }
+    },
+    {
+      "id": "sym:regatta-core/src/attention.rs#SessionState",
+      "kind": "codeNode",
+      "label": "SessionState",
+      "meta": {
+        "sourceFile": "regatta-core/src/attention.rs",
+        "sourceLocation": "regatta-core/src/attention.rs:6",
+        "community": 8
+      }
+    },
+    {
+      "id": "sym:regatta-core/src/attention.rs#attention_priority",
+      "kind": "codeNode",
+      "label": "attention_priority",
+      "meta": {
+        "sourceFile": "regatta-core/src/attention.rs",
+        "sourceLocation": "regatta-core/src/attention.rs:19",
+        "community": 8
+      }
+    },
+    {
+      "id": "sym:regatta-core/src/attention.rs#tests",
+      "kind": "codeNode",
+      "label": "tests",
+      "meta": {
+        "sourceFile": "regatta-core/src/attention.rs",
+        "sourceLocation": "regatta-core/src/attention.rs:32",
+        "community": 8
+      }
+    },
+    {
+      "id": "sym:regatta-core/src/attention.rs#tests.ranks_blocked_sessions",
+      "kind": "codeNode",
+      "label": "ranks_blocked_sessions",
+      "meta": {
+        "sourceFile": "regatta-core/src/attention.rs",
+        "sourceLocation": "regatta-core/src/attention.rs:37",
+        "community": 8
+      }
+    },
+    {
+      "id": "sym:regatta-core/src/attention.rs#tests.working_sessions_score_zero",
+      "kind": "codeNode",
+      "label": "working_sessions_score_zero",
+      "meta": {
+        "sourceFile": "regatta-core/src/attention.rs",
+        "sourceLocation": "regatta-core/src/attention.rs:45",
+        "community": 8
       }
     },
     {
@@ -108,7 +277,17 @@
       "label": "regatta-core/src/lib.rs",
       "meta": {
         "sourceFile": "regatta-core/src/lib.rs",
-        "community": 5
+        "community": 9
+      }
+    },
+    {
+      "id": "sym:regatta-core/src/lib.rs#attention",
+      "kind": "codeNode",
+      "label": "attention",
+      "meta": {
+        "sourceFile": "regatta-core/src/lib.rs",
+        "sourceLocation": "regatta-core/src/lib.rs:12",
+        "community": 9
       }
     },
     {
@@ -117,8 +296,8 @@
       "label": "slug",
       "meta": {
         "sourceFile": "regatta-core/src/lib.rs",
-        "sourceLocation": "regatta-core/src/lib.rs:12",
-        "community": 5
+        "sourceLocation": "regatta-core/src/lib.rs:13",
+        "community": 9
       }
     },
     {
@@ -127,7 +306,7 @@
       "label": "regatta-core/src/slug.rs",
       "meta": {
         "sourceFile": "regatta-core/src/slug.rs",
-        "community": 6
+        "community": 10
       }
     },
     {
@@ -137,7 +316,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/slug.rs",
         "sourceLocation": "regatta-core/src/slug.rs:6",
-        "community": 6
+        "community": 10
       }
     },
     {
@@ -147,7 +326,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/slug.rs",
         "sourceLocation": "regatta-core/src/slug.rs:27",
-        "community": 6
+        "community": 10
       }
     },
     {
@@ -157,7 +336,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/slug.rs",
         "sourceLocation": "regatta-core/src/slug.rs:31",
-        "community": 6
+        "community": 10
       }
     },
     {
@@ -167,7 +346,43 @@
       "meta": {
         "sourceFile": "regatta-core/src/slug.rs",
         "sourceLocation": "regatta-core/src/slug.rs:36",
-        "community": 6
+        "community": 10
+      }
+    },
+    {
+      "id": "file:release-please-config.json",
+      "kind": "codeNode",
+      "label": "release-please-config.json",
+      "meta": {
+        "sourceFile": "release-please-config.json",
+        "community": 11
+      }
+    },
+    {
+      "id": "jsonkey:release-please-config.json#$schema",
+      "kind": "codeNode",
+      "label": "$schema",
+      "meta": {
+        "sourceFile": "release-please-config.json",
+        "community": 11
+      }
+    },
+    {
+      "id": "jsonkey:release-please-config.json#include-component-in-tag",
+      "kind": "codeNode",
+      "label": "include-component-in-tag",
+      "meta": {
+        "sourceFile": "release-please-config.json",
+        "community": 11
+      }
+    },
+    {
+      "id": "jsonkey:release-please-config.json#packages",
+      "kind": "codeNode",
+      "label": "packages",
+      "meta": {
+        "sourceFile": "release-please-config.json",
+        "community": 11
       }
     },
     {
@@ -176,7 +391,348 @@
       "label": "rust-toolchain.toml",
       "meta": {
         "sourceFile": "rust-toolchain.toml",
-        "community": 7
+        "community": 12
+      }
+    },
+    {
+      "id": "file:src/App.tsx",
+      "kind": "codeNode",
+      "label": "src/App.tsx",
+      "meta": {
+        "sourceFile": "src/App.tsx",
+        "community": 13
+      }
+    },
+    {
+      "id": "file:src/index.tsx",
+      "kind": "codeNode",
+      "label": "src/index.tsx",
+      "meta": {
+        "sourceFile": "src/index.tsx",
+        "community": 13
+      }
+    },
+    {
+      "id": "file:src/styles.css",
+      "kind": "codeNode",
+      "label": "src/styles.css",
+      "meta": {
+        "sourceFile": "src/styles.css",
+        "community": 13
+      }
+    },
+    {
+      "id": "file:src-tauri/Cargo.toml",
+      "kind": "codeNode",
+      "label": "src-tauri/Cargo.toml",
+      "meta": {
+        "sourceFile": "src-tauri/Cargo.toml",
+        "community": 14
+      }
+    },
+    {
+      "id": "sym:src-tauri/Cargo.toml#regatta",
+      "kind": "codeNode",
+      "label": "regatta",
+      "meta": {
+        "sourceFile": "src-tauri/Cargo.toml",
+        "community": 14
+      }
+    },
+    {
+      "id": "dep:src-tauri/Cargo.toml#tauri",
+      "kind": "codeNode",
+      "label": "tauri",
+      "meta": {
+        "sourceFile": "src-tauri/Cargo.toml",
+        "community": 14
+      }
+    },
+    {
+      "id": "dep:src-tauri/Cargo.toml#serde",
+      "kind": "codeNode",
+      "label": "serde",
+      "meta": {
+        "sourceFile": "src-tauri/Cargo.toml",
+        "community": 14
+      }
+    },
+    {
+      "id": "dep:src-tauri/Cargo.toml#serde_json",
+      "kind": "codeNode",
+      "label": "serde_json",
+      "meta": {
+        "sourceFile": "src-tauri/Cargo.toml",
+        "community": 14
+      }
+    },
+    {
+      "id": "dep:src-tauri/Cargo.toml#regatta_core",
+      "kind": "codeNode",
+      "label": "regatta_core",
+      "meta": {
+        "sourceFile": "src-tauri/Cargo.toml",
+        "community": 14
+      }
+    },
+    {
+      "id": "file:src-tauri/build.rs",
+      "kind": "codeNode",
+      "label": "src-tauri/build.rs",
+      "meta": {
+        "sourceFile": "src-tauri/build.rs",
+        "community": 15
+      }
+    },
+    {
+      "id": "sym:src-tauri/build.rs#main",
+      "kind": "codeNode",
+      "label": "main",
+      "meta": {
+        "sourceFile": "src-tauri/build.rs",
+        "sourceLocation": "src-tauri/build.rs:1",
+        "community": 15
+      }
+    },
+    {
+      "id": "file:src-tauri/capabilities/default.json",
+      "kind": "codeNode",
+      "label": "src-tauri/capabilities/default.json",
+      "meta": {
+        "sourceFile": "src-tauri/capabilities/default.json",
+        "community": 16
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/capabilities/default.json#$schema",
+      "kind": "codeNode",
+      "label": "$schema",
+      "meta": {
+        "sourceFile": "src-tauri/capabilities/default.json",
+        "community": 16
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/capabilities/default.json#identifier",
+      "kind": "codeNode",
+      "label": "identifier",
+      "meta": {
+        "sourceFile": "src-tauri/capabilities/default.json",
+        "community": 16
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/capabilities/default.json#description",
+      "kind": "codeNode",
+      "label": "description",
+      "meta": {
+        "sourceFile": "src-tauri/capabilities/default.json",
+        "community": 16
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/capabilities/default.json#windows",
+      "kind": "codeNode",
+      "label": "windows",
+      "meta": {
+        "sourceFile": "src-tauri/capabilities/default.json",
+        "community": 16
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/capabilities/default.json#permissions",
+      "kind": "codeNode",
+      "label": "permissions",
+      "meta": {
+        "sourceFile": "src-tauri/capabilities/default.json",
+        "community": 16
+      }
+    },
+    {
+      "id": "file:src-tauri/src/lib.rs",
+      "kind": "codeNode",
+      "label": "src-tauri/src/lib.rs",
+      "meta": {
+        "sourceFile": "src-tauri/src/lib.rs",
+        "community": 10
+      }
+    },
+    {
+      "id": "sym:src-tauri/src/lib.rs#slugify",
+      "kind": "codeNode",
+      "label": "slugify",
+      "meta": {
+        "sourceFile": "src-tauri/src/lib.rs",
+        "sourceLocation": "src-tauri/src/lib.rs:5",
+        "community": 10
+      }
+    },
+    {
+      "id": "sym:src-tauri/src/lib.rs#run",
+      "kind": "codeNode",
+      "label": "run",
+      "meta": {
+        "sourceFile": "src-tauri/src/lib.rs",
+        "sourceLocation": "src-tauri/src/lib.rs:10",
+        "community": 10
+      }
+    },
+    {
+      "id": "file:src-tauri/src/main.rs",
+      "kind": "codeNode",
+      "label": "src-tauri/src/main.rs",
+      "meta": {
+        "sourceFile": "src-tauri/src/main.rs",
+        "community": 10
+      }
+    },
+    {
+      "id": "sym:src-tauri/src/main.rs#main",
+      "kind": "codeNode",
+      "label": "main",
+      "meta": {
+        "sourceFile": "src-tauri/src/main.rs",
+        "sourceLocation": "src-tauri/src/main.rs:4",
+        "community": 10
+      }
+    },
+    {
+      "id": "file:src-tauri/tauri.conf.json",
+      "kind": "codeNode",
+      "label": "src-tauri/tauri.conf.json",
+      "meta": {
+        "sourceFile": "src-tauri/tauri.conf.json",
+        "community": 17
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/tauri.conf.json#$schema",
+      "kind": "codeNode",
+      "label": "$schema",
+      "meta": {
+        "sourceFile": "src-tauri/tauri.conf.json",
+        "community": 17
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/tauri.conf.json#productName",
+      "kind": "codeNode",
+      "label": "productName",
+      "meta": {
+        "sourceFile": "src-tauri/tauri.conf.json",
+        "community": 17
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/tauri.conf.json#version",
+      "kind": "codeNode",
+      "label": "version",
+      "meta": {
+        "sourceFile": "src-tauri/tauri.conf.json",
+        "community": 17
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/tauri.conf.json#identifier",
+      "kind": "codeNode",
+      "label": "identifier",
+      "meta": {
+        "sourceFile": "src-tauri/tauri.conf.json",
+        "community": 17
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/tauri.conf.json#build",
+      "kind": "codeNode",
+      "label": "build",
+      "meta": {
+        "sourceFile": "src-tauri/tauri.conf.json",
+        "community": 17
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/tauri.conf.json#app",
+      "kind": "codeNode",
+      "label": "app",
+      "meta": {
+        "sourceFile": "src-tauri/tauri.conf.json",
+        "community": 17
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/tauri.conf.json#bundle",
+      "kind": "codeNode",
+      "label": "bundle",
+      "meta": {
+        "sourceFile": "src-tauri/tauri.conf.json",
+        "community": 17
+      }
+    },
+    {
+      "id": "file:tsconfig.json",
+      "kind": "codeNode",
+      "label": "tsconfig.json",
+      "meta": {
+        "sourceFile": "tsconfig.json",
+        "community": 18
+      }
+    },
+    {
+      "id": "jsonkey:tsconfig.json#compilerOptions",
+      "kind": "codeNode",
+      "label": "compilerOptions",
+      "meta": {
+        "sourceFile": "tsconfig.json",
+        "community": 18
+      }
+    },
+    {
+      "id": "jsonkey:tsconfig.json#include",
+      "kind": "codeNode",
+      "label": "include",
+      "meta": {
+        "sourceFile": "tsconfig.json",
+        "community": 18
+      }
+    },
+    {
+      "id": "file:vite.config.ts",
+      "kind": "codeNode",
+      "label": "vite.config.ts",
+      "meta": {
+        "sourceFile": "vite.config.ts",
+        "community": 19
+      }
+    },
+    {
+      "id": "R-ATTN-01",
+      "kind": "requirement",
+      "label": "rank sessions that need the human"
+    },
+    {
+      "id": "R-ATTN-01-AC1",
+      "kind": "acceptanceCriterion",
+      "label": "WHEN scoring a session that is blocked on the human THEN the system SHALL return a priority of 5 for WaitingApproval, 4 for NeedsInput, 3 for Error, and 2 for an unseen Done — so the Attention Dock sorts the most urgent first."
+    },
+    {
+      "id": "test:regatta_core::attention::tests::ranks_blocked_sessions",
+      "kind": "test",
+      "label": "regatta_core::attention::tests::ranks_blocked_sessions",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "R-ATTN-01-AC2",
+      "kind": "acceptanceCriterion",
+      "label": "IF a session is actively working or transitional (Starting, Running, Compacting, RateLimited, Paused) THEN the system SHALL return a priority of 0 so it never surfaces in the Attention Dock."
+    },
+    {
+      "id": "test:regatta_core::attention::tests::working_sessions_score_zero",
+      "kind": "test",
+      "label": "regatta_core::attention::tests::working_sessions_score_zero",
+      "meta": {
+        "kind": "unit"
       }
     },
     {
@@ -214,20 +770,101 @@
   "edges": [
     {
       "id": "e1",
-      "from": "R-SLUG-01-AC1",
-      "to": "R-SLUG-01",
+      "from": "R-ATTN-01-AC1",
+      "to": "R-ATTN-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e2",
-      "from": "test:regatta_core::slug::tests::slugifies_a_name",
+      "from": "test:regatta_core::attention::tests::ranks_blocked_sessions",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e3",
+      "from": "test:regatta_core::attention::tests::ranks_blocked_sessions",
+      "to": "dep:src-tauri/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e4",
+      "from": "test:regatta_core::attention::tests::ranks_blocked_sessions",
+      "to": "R-ATTN-01-AC1",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "regatta_core::attention::tests::ranks_blocked_sessions",
+        "passed": true,
+        "at": "2026-06-27T17:00:27.381Z",
+        "sha": "131bc3c22b7e222cd003bd4f89fd74ca1be74b4b",
+        "dirty": true,
+        "kind": "unit",
+        "stack": "rust"
+      }
+    },
+    {
+      "id": "e5",
+      "from": "R-ATTN-01-AC2",
+      "to": "R-ATTN-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e6",
+      "from": "test:regatta_core::attention::tests::working_sessions_score_zero",
+      "to": "sym:regatta-core/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e7",
+      "from": "test:regatta_core::attention::tests::working_sessions_score_zero",
+      "to": "dep:src-tauri/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e8",
+      "from": "test:regatta_core::attention::tests::working_sessions_score_zero",
+      "to": "R-ATTN-01-AC2",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "regatta_core::attention::tests::working_sessions_score_zero",
+        "passed": true,
+        "at": "2026-06-27T17:00:27.886Z",
+        "sha": "131bc3c22b7e222cd003bd4f89fd74ca1be74b4b",
+        "dirty": true,
+        "kind": "unit",
+        "stack": "rust"
+      }
+    },
+    {
+      "id": "e9",
+      "from": "R-SLUG-01-AC1",
+      "to": "R-SLUG-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e10",
+      "from": "test:regatta_core::slug::tests::slugifies_a_name",
+      "to": "sym:regatta-core/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e11",
+      "from": "test:regatta_core::slug::tests::slugifies_a_name",
+      "to": "dep:src-tauri/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e12",
       "from": "test:regatta_core::slug::tests::slugifies_a_name",
       "to": "R-SLUG-01-AC1",
       "kind": "validates",
@@ -242,21 +879,28 @@
       }
     },
     {
-      "id": "e4",
+      "id": "e13",
       "from": "R-SLUG-01-AC2",
       "to": "R-SLUG-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e5",
+      "id": "e14",
       "from": "test:regatta_core::slug::tests::empty_slug_falls_back",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e6",
+      "id": "e15",
+      "from": "test:regatta_core::slug::tests::empty_slug_falls_back",
+      "to": "dep:src-tauri/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e16",
       "from": "test:regatta_core::slug::tests::empty_slug_falls_back",
       "to": "R-SLUG-01-AC2",
       "kind": "validates",
