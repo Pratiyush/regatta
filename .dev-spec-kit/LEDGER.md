@@ -4,7 +4,7 @@
 
 ## Progress board
 
-**4/4 done (100%)**
+**5/5 done (100%)**
 
 - ✅ **R-SLUG-01** slugify a session name 🟢🟢
   📋 Evidence — R-SLUG-01
@@ -23,15 +23,22 @@
   📋 Evidence — R-ATTN-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::attention::tests::ranks_blocked_sessions` | unit | ✅ green | eed81c76* | 2026-06-27T17:12:29.955Z |
-  | `regatta_core::attention::tests::working_sessions_score_zero` | unit | ✅ green | eed81c76* | 2026-06-27T17:12:30.110Z |
+  | `regatta_core::attention::tests::ranks_blocked_sessions` | unit | ✅ green | d8cb1302* | 2026-06-27T17:35:56.859Z |
+  | `regatta_core::attention::tests::working_sessions_score_zero` | unit | ✅ green | d8cb1302* | 2026-06-27T17:35:56.997Z |
 
 - ✅ **R-ATTN-02** order the Attention Dock 🟢🟢
   📋 Evidence — R-ATTN-02
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::attention::tests::dock_orders_by_urgency` | unit | ✅ green | eed81c76* | 2026-06-27T17:12:05.927Z |
-  | `regatta_core::attention::tests::dock_excludes_working_and_seen` | unit | ✅ green | eed81c76* | 2026-06-27T17:12:06.454Z |
+  | `regatta_core::attention::tests::dock_orders_by_urgency` | unit | ✅ green | d8cb1302* | 2026-06-27T17:35:57.139Z |
+  | `regatta_core::attention::tests::dock_excludes_working_and_seen` | unit | ✅ green | d8cb1302* | 2026-06-27T17:35:57.279Z |
+
+- ✅ **R-PARSE-01** normalize Claude stream-json lines 🟢🟢
+  📋 Evidence — R-PARSE-01
+  | Check | Kind | State | Proof | Proven at |
+  |---|---|---|---|---|
+  | `regatta_core::stream::tests::parses_known_lines` | unit | ✅ green | d8cb1302* | 2026-06-27T17:35:55.169Z |
+  | `regatta_core::stream::tests::ignores_malformed_and_unknown` | unit | ✅ green | d8cb1302* | 2026-06-27T17:37:28.522Z |
 
 
 ## Approvals & governance
@@ -40,13 +47,13 @@
 
 ## Recent activity
 
-- 2026-06-27 17:12:07  🧾 graph build  [Pratiyush]
-- 2026-06-27 17:12:12  🧾 gate  [Pratiyush]
-- 2026-06-27 17:12:29  🧾 drift  [Pratiyush]
-- 2026-06-27 17:12:29  ✅ check regatta_core::attention::tests::ranks_blocked_sessions @ eed81c76* → R-ATTN-01
-- 2026-06-27 17:12:30  ✅ check regatta_core::attention::tests::working_sessions_score_zero @ eed81c76* → R-ATTN-01
-- 2026-06-27 17:12:30  🧾 graph build  [Pratiyush]
-- 2026-06-27 17:12:31  🧾 gate  [Pratiyush]
-- 2026-06-27 17:15:13  🧾 graph build  [Pratiyush]
-- 2026-06-27 17:15:14  🧾 gate  [Pratiyush]
-- 2026-06-27 17:15:33  🧾 graph build  [Pratiyush]
+- 2026-06-27 17:35:57  ✅ check regatta_core::attention::tests::dock_excludes_working_and_seen @ d8cb1302* → R-ATTN-02
+- 2026-06-27 17:35:57  🧾 graph build  [Pratiyush]
+- 2026-06-27 17:35:58  🧾 gate  [Pratiyush]
+- 2026-06-27 17:36:36  🧾 drift  [Pratiyush]
+- 2026-06-27 17:36:36  🧾 graph build  [Pratiyush]
+- 2026-06-27 17:36:36  🧾 gate  [Pratiyush]
+- 2026-06-27 17:37:27  🧾 spec tasks  [Pratiyush]
+- 2026-06-27 17:37:27  🧾 check run R-PARSE-01 regatta_core::stream::tests::ignores_malformed_and_unknown  [Pratiyush]
+- 2026-06-27 17:37:28  ✅ check regatta_core::stream::tests::ignores_malformed_and_unknown @ d8cb1302* → R-PARSE-01
+- 2026-06-27 17:37:28  🧾 graph build  [Pratiyush]
