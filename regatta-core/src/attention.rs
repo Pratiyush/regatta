@@ -28,6 +28,22 @@ pub fn attention_priority(state: SessionState) -> u8 {
     }
 }
 
+/// Order sessions for the Attention Dock. Input is each session's `(state, seen)`.
+/// Returns the indices of sessions that still need the human (unseen, priority > 0),
+/// most-urgent first. Ties preserve input order (stable), so older items surface first
+/// when the caller passes them oldest-first.
+pub fn dock_order(sessions: &[(SessionState, bool)]) -> Vec<usize> {
+    let mut idx: Vec<usize> = sessions
+        .iter()
+        .enumerate()
+        .filter(|(_, (state, seen))| !*seen && attention_priority(*state) > 0)
+        .map(|(i, _)| i)
+        .collect();
+    // Stable sort by priority descending → ties keep input order.
+    idx.sort_by(|&a, &b| attention_priority(sessions[b].0).cmp(&attention_priority(sessions[a].0)));
+    idx
+}
+
 #[cfg(test)]
 mod tests {
     use super::SessionState::*;
@@ -46,5 +62,24 @@ mod tests {
         for s in [Starting, Running, Compacting, RateLimited, Paused] {
             assert_eq!(attention_priority(s), 0);
         }
+    }
+
+    #[test]
+    fn dock_orders_by_urgency() {
+        // 0 Running(skip) · 1 WaitingApproval(5) · 2 NeedsInput(4) · 3 Done-seen(skip) · 4 Error(3)
+        let sessions = [
+            (Running, false),
+            (WaitingApproval, false),
+            (NeedsInput, false),
+            (Done, true),
+            (Error, false),
+        ];
+        assert_eq!(dock_order(&sessions), vec![1, 2, 4]);
+    }
+
+    #[test]
+    fn dock_excludes_working_and_seen() {
+        let sessions = [(Running, false), (Done, true), (Starting, false)];
+        assert_eq!(dock_order(&sessions), Vec::<usize>::new());
     }
 }
