@@ -14,3 +14,4 @@ pub mod backend;
 pub mod slug;
 pub mod stream;
 pub mod view;
+pub mod worktree;
