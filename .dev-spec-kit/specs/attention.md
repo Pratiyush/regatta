@@ -13,3 +13,14 @@ WHEN scoring a session that is blocked on the human THEN the system SHALL return
 IF a session is actively working or transitional (Starting, Running, Compacting, RateLimited, Paused) THEN the system SHALL return a priority of 0 so it never surfaces in the Attention Dock.
 
 @check kind=unit ref=regatta_core::attention::tests::working_sessions_score_zero
+
+## Requirement R-ATTN-02 — order the Attention Dock
+
+WHEN ordering sessions for the Attention Dock THEN the system SHALL return only the unseen sessions that need the human, most-urgent first (priority descending), preserving input order on ties.
+
+@check kind=unit ref=regatta_core::attention::tests::dock_orders_by_urgency
+
+IF every session is working/transitional or already seen THEN the system SHALL return an empty list so the dock shows nothing.
+
+@check kind=unit ref=regatta_core::attention::tests::dock_excludes_working_and_seen
+

@@ -13,8 +13,10 @@ dist/
 # OS
 .DS_Store
 
-# Helm runtime data (per-user; never committed)
+# Regatta runtime data + reference clones (per-user; never committed)
+# .ref is dot-prefixed so the revitify code-graph auto-skips it (dot-dirs are excluded).
 .worktrees/
+.ref/
 
 # dev-spec-kit / graphify / revitify (derived, regenerated)
 graphify-out/

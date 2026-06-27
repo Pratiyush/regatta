@@ -4,7 +4,7 @@
 
 ## Progress board
 
-**3/3 done (100%)**
+**4/4 done (100%)**
 
 - ✅ **R-SLUG-01** slugify a session name 🟢🟢
   📋 Evidence — R-SLUG-01
@@ -23,8 +23,15 @@
   📋 Evidence — R-ATTN-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::attention::tests::ranks_blocked_sessions` | unit | ✅ green | 131bc3c2* | 2026-06-27T17:00:27.381Z |
-  | `regatta_core::attention::tests::working_sessions_score_zero` | unit | ✅ green | 131bc3c2* | 2026-06-27T17:00:27.886Z |
+  | `regatta_core::attention::tests::ranks_blocked_sessions` | unit | ✅ green | eed81c76* | 2026-06-27T17:12:29.955Z |
+  | `regatta_core::attention::tests::working_sessions_score_zero` | unit | ✅ green | eed81c76* | 2026-06-27T17:12:30.110Z |
+
+- ✅ **R-ATTN-02** order the Attention Dock 🟢🟢
+  📋 Evidence — R-ATTN-02
+  | Check | Kind | State | Proof | Proven at |
+  |---|---|---|---|---|
+  | `regatta_core::attention::tests::dock_orders_by_urgency` | unit | ✅ green | eed81c76* | 2026-06-27T17:12:05.927Z |
+  | `regatta_core::attention::tests::dock_excludes_working_and_seen` | unit | ✅ green | eed81c76* | 2026-06-27T17:12:06.454Z |
 
 
 ## Approvals & governance
@@ -33,13 +40,13 @@
 
 ## Recent activity
 
-- 2026-06-27 17:00:03  ❌ check regatta_core::attention::tests::ranks_blocked_sessions @ 131bc3c2* → R-ATTN-01
-- 2026-06-27 17:00:04  🧾 check run R-ATTN-01 regatta_core::attention::tests::working_sessions_score_zero  [Pratiyush]
-- 2026-06-27 17:00:04  ❌ check regatta_core::attention::tests::working_sessions_score_zero @ 131bc3c2* → R-ATTN-01
-- 2026-06-27 17:00:26  🧾 check run R-ATTN-01 regatta_core::attention::tests::ranks_blocked_sessions  [Pratiyush]
-- 2026-06-27 17:00:27  ✅ check regatta_core::attention::tests::ranks_blocked_sessions @ 131bc3c2* → R-ATTN-01
-- 2026-06-27 17:00:27  🧾 check run R-ATTN-01 regatta_core::attention::tests::working_sessions_score_zero  [Pratiyush]
-- 2026-06-27 17:00:27  ✅ check regatta_core::attention::tests::working_sessions_score_zero @ 131bc3c2* → R-ATTN-01
-- 2026-06-27 17:00:28  🧾 task done R-ATTN-01  [Pratiyush]
-- 2026-06-27 17:00:28  🏁 task R-ATTN-01 → done
-- 2026-06-27 17:00:28  🧾 graph build  [Pratiyush]
+- 2026-06-27 17:12:07  🧾 graph build  [Pratiyush]
+- 2026-06-27 17:12:12  🧾 gate  [Pratiyush]
+- 2026-06-27 17:12:29  🧾 drift  [Pratiyush]
+- 2026-06-27 17:12:29  ✅ check regatta_core::attention::tests::ranks_blocked_sessions @ eed81c76* → R-ATTN-01
+- 2026-06-27 17:12:30  ✅ check regatta_core::attention::tests::working_sessions_score_zero @ eed81c76* → R-ATTN-01
+- 2026-06-27 17:12:30  🧾 graph build  [Pratiyush]
+- 2026-06-27 17:12:31  🧾 gate  [Pratiyush]
+- 2026-06-27 17:15:13  🧾 graph build  [Pratiyush]
+- 2026-06-27 17:15:14  🧾 gate  [Pratiyush]
+- 2026-06-27 17:15:33  🧾 graph build  [Pratiyush]
