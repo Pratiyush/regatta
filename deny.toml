@@ -12,6 +12,8 @@ confidence-threshold = 0.9
 [bans]
 multiple-versions = "warn"
 wildcards = "deny"
+# Intra-workspace path deps (regatta_supervisor -> regatta_core) have no version; allow those.
+allow-wildcard-paths = true
 
 [sources]
 unknown-registry = "deny"
