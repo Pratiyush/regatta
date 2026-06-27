@@ -8,4 +8,5 @@
 | R-SLUG-01 | slugify a session name | 2 | 🟢🟢 | done | — |
 | R-PARSE-01 | normalize Claude stream-json lines | 3 | 🟢🟢🟢 | done | — |
 | R-SUPERVISOR-01 | terminate the whole process group | 3 | 🟢🟢🟢 | done | — |
+| R-VIEW-01 | render an event as a display line | 2 | 🟢🟢 | done | — |
 | R-WIRE-01 | collect normalized events from a session's stdout | 2 | 🟢🟢 | done | — |

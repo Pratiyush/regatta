@@ -1,4 +1,4 @@
-import { createResource, For, Show, type Component } from "solid-js";
+import { createResource, createSignal, For, Show, type Component } from "solid-js";
 import { invoke } from "@tauri-apps/api/core";
 
 type SessionView = {
@@ -7,6 +7,7 @@ type SessionView = {
   action: string; cost: string; reason: string;
 };
 type DockView = { sessions: SessionView[]; order: number[] };
+type EventLine = { role: string; text: string };
 
 const STATUS_COLOR: Record<string, string> = {
   running: "#5fb98a", "needs-input": "#e0b15e", "waiting-approval": "#e0b15e",
@@ -15,18 +16,23 @@ const STATUS_COLOR: Record<string, string> = {
 };
 const color = (s: string) => STATUS_COLOR[s] ?? "#8a887f";
 
+const ROLE_COLOR: Record<string, string> = {
+  claude: "#e0925e", system: "#8a887f", usage: "#5fb98a", you: "#6e9fe0",
+};
+
 async function fetchDock(): Promise<DockView> {
-  try {
-    return await invoke<DockView>("dock_view");
-  } catch {
-    return { sessions: [], order: [] };
-  }
+  try { return await invoke<DockView>("dock_view"); } catch { return { sessions: [], order: [] }; }
+}
+async function runDemo(): Promise<EventLine[]> {
+  try { return await invoke<EventLine[]>("run_demo_session"); } catch { return []; }
 }
 
 const App: Component = () => {
   const [data] = createResource(fetchDock);
+  const [session, { refetch }] = createResource(runDemo); // a real session, driven by the pipeline
+  const [busy, setBusy] = createSignal(false);
+  const runAgain = async () => { setBusy(true); await refetch(); setBusy(false); };
 
-  // Group sessions by project for the sidebar.
   const groups = () => {
     const sessions = data()?.sessions ?? [];
     const m = new Map<string, SessionView[]>();
@@ -36,12 +42,11 @@ const App: Component = () => {
     }
     return [...m.entries()];
   };
-
-  // The Attention Dock: sessions needing the human, most-urgent first (order from the Rust core).
   const dock = () => {
     const d = data();
     return d ? d.order.map((i) => d.sessions[i]) : [];
   };
+  const live = () => busy() || session.loading;
 
   return (
     <div class="app">
@@ -62,7 +67,7 @@ const App: Component = () => {
       <div class="body">
         {/* Left: project-grouped session sidebar */}
         <aside class="sidebar">
-          <div class="panel-h">Projects</div>
+          <div class="panel-h">Projects <button class="newbtn" title="New session (⌘T)">+</button></div>
           <div class="scroll">
             <For each={groups()}>{([project, sessions]) => (
               <div class="group">
@@ -82,28 +87,28 @@ const App: Component = () => {
           </div>
         </aside>
 
-        {/* Center: focus on the most-urgent session */}
+        {/* Center: the active session — driven live by the real supervisor→parser→view pipeline */}
         <main class="focus">
-          <Show when={dock()[0]} fallback={<div class="empty">Select a session</div>}>
-            {(top) => (
-              <>
-                <div class="focus-h">
-                  <span class="dot" style={{ background: color(top().status) }} />
-                  <span class="focus-title">{top().project} / {top().name}</span>
-                  <span class="pill" style={{ color: color(top().status), "border-color": color(top().status) }}>{top().status_label}</span>
-                  <span class="spacer" />
-                  <span class="muted">{top().cost}</span>
+          <div class="focus-h">
+            <span class="dot" style={{ background: live() ? "#5fb98a" : "#6e9fe0" }} />
+            <span class="focus-title">payments-svc / fix-idempotency</span>
+            <span class="pill" style={{ color: live() ? "#5fb98a" : "#6e9fe0", "border-color": live() ? "#5fb98a" : "#6e9fe0" }}>
+              {live() ? "Working" : "Done"}
+            </span>
+            <span class="spacer" />
+            <button class="run" onClick={runAgain} disabled={live()}>▶ Run test session</button>
+          </div>
+          <div class="stream">
+            <Show when={!session.loading} fallback={<div class="empty">Starting session…</div>}>
+              <For each={session()} fallback={<div class="empty">Press “Run test session” to drive a live session.</div>}>{(ln) => (
+                <div class="msg">
+                  <span class="role" style={{ color: ROLE_COLOR[ln.role] ?? "#8a887f" }}>{ln.role}</span>
+                  <div class="msg-body">{ln.text}</div>
                 </div>
-                <div class="stream">
-                  <div class="msg"><span class="role">Claude</span><div class="msg-body">I'm about to {top().action}.</div></div>
-                  <Show when={top().reason}>
-                    <div class="msg"><span class="role warn">Permission</span><div class="msg-body">{top().reason}.</div></div>
-                  </Show>
-                </div>
-                <div class="composer"><span class="caret">›</span> Message the agent, or type / for commands…</div>
-              </>
-            )}
-          </Show>
+              )}</For>
+            </Show>
+          </div>
+          <div class="composer"><span class="caret">›</span> Message the agent, or type / for commands…</div>
         </main>
 
         {/* Right: the Attention Dock — Regatta's headline */}
