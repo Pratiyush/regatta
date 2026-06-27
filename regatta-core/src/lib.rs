@@ -10,5 +10,6 @@
 #![forbid(unsafe_code)]
 
 pub mod attention;
+pub mod backend;
 pub mod slug;
 pub mod stream;
