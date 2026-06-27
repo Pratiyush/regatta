@@ -1,0 +1,36 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  core:
+    name: regatta_core gates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt, llvm-tools-preview
+      - uses: Swatinem/rust-cache@v2
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-nextest, cargo-llvm-cov, cargo-deny
+      - name: format
+        run: cargo fmt --all -- --check
+      - name: clippy (deny warnings)
+        run: cargo clippy -p regatta_core --all-features -- -D warnings
+      - name: tests
+        run: cargo nextest run -p regatta_core
+      - name: coverage — 100% on the pure core
+        run: cargo llvm-cov -p regatta_core --fail-under-lines 100
+      - name: supply-chain (advisories + licenses + bans)
+        run: cargo deny check

@@ -1,0 +1,274 @@
+{
+  "nodes": [
+    {
+      "id": "file:Cargo.lock",
+      "kind": "codeNode",
+      "label": "Cargo.lock",
+      "meta": {
+        "sourceFile": "Cargo.lock",
+        "community": 0
+      }
+    },
+    {
+      "id": "file:Cargo.toml",
+      "kind": "codeNode",
+      "label": "Cargo.toml",
+      "meta": {
+        "sourceFile": "Cargo.toml",
+        "community": 1
+      }
+    },
+    {
+      "id": "file:README.md",
+      "kind": "codeNode",
+      "label": "README.md",
+      "meta": {
+        "sourceFile": "README.md",
+        "community": 2
+      }
+    },
+    {
+      "id": "doc:README.md#Regatta",
+      "kind": "codeNode",
+      "label": "Regatta",
+      "meta": {
+        "sourceFile": "README.md",
+        "sourceLocation": "README.md:1",
+        "community": 2
+      }
+    },
+    {
+      "id": "doc:README.md#Layout",
+      "kind": "codeNode",
+      "label": "Layout",
+      "meta": {
+        "sourceFile": "README.md",
+        "sourceLocation": "README.md:12",
+        "community": 2
+      }
+    },
+    {
+      "id": "doc:README.md#Develop",
+      "kind": "codeNode",
+      "label": "Develop",
+      "meta": {
+        "sourceFile": "README.md",
+        "sourceLocation": "README.md:18",
+        "community": 2
+      }
+    },
+    {
+      "id": "file:deny.toml",
+      "kind": "codeNode",
+      "label": "deny.toml",
+      "meta": {
+        "sourceFile": "deny.toml",
+        "community": 3
+      }
+    },
+    {
+      "id": "file:regatta-core/Cargo.toml",
+      "kind": "codeNode",
+      "label": "regatta-core/Cargo.toml",
+      "meta": {
+        "sourceFile": "regatta-core/Cargo.toml",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:regatta-core/Cargo.toml#regatta_core",
+      "kind": "codeNode",
+      "label": "regatta_core",
+      "meta": {
+        "sourceFile": "regatta-core/Cargo.toml",
+        "community": 4
+      }
+    },
+    {
+      "id": "dep:regatta-core/Cargo.toml#serde",
+      "kind": "codeNode",
+      "label": "serde",
+      "meta": {
+        "sourceFile": "regatta-core/Cargo.toml",
+        "community": 4
+      }
+    },
+    {
+      "id": "dep:regatta-core/Cargo.toml#serde_json",
+      "kind": "codeNode",
+      "label": "serde_json",
+      "meta": {
+        "sourceFile": "regatta-core/Cargo.toml",
+        "community": 4
+      }
+    },
+    {
+      "id": "file:regatta-core/src/lib.rs",
+      "kind": "codeNode",
+      "label": "regatta-core/src/lib.rs",
+      "meta": {
+        "sourceFile": "regatta-core/src/lib.rs",
+        "community": 5
+      }
+    },
+    {
+      "id": "sym:regatta-core/src/lib.rs#slug",
+      "kind": "codeNode",
+      "label": "slug",
+      "meta": {
+        "sourceFile": "regatta-core/src/lib.rs",
+        "sourceLocation": "regatta-core/src/lib.rs:12",
+        "community": 5
+      }
+    },
+    {
+      "id": "file:regatta-core/src/slug.rs",
+      "kind": "codeNode",
+      "label": "regatta-core/src/slug.rs",
+      "meta": {
+        "sourceFile": "regatta-core/src/slug.rs",
+        "community": 6
+      }
+    },
+    {
+      "id": "sym:regatta-core/src/slug.rs#slugify",
+      "kind": "codeNode",
+      "label": "slugify",
+      "meta": {
+        "sourceFile": "regatta-core/src/slug.rs",
+        "sourceLocation": "regatta-core/src/slug.rs:6",
+        "community": 6
+      }
+    },
+    {
+      "id": "sym:regatta-core/src/slug.rs#tests",
+      "kind": "codeNode",
+      "label": "tests",
+      "meta": {
+        "sourceFile": "regatta-core/src/slug.rs",
+        "sourceLocation": "regatta-core/src/slug.rs:27",
+        "community": 6
+      }
+    },
+    {
+      "id": "sym:regatta-core/src/slug.rs#tests.slugifies_a_name",
+      "kind": "codeNode",
+      "label": "slugifies_a_name",
+      "meta": {
+        "sourceFile": "regatta-core/src/slug.rs",
+        "sourceLocation": "regatta-core/src/slug.rs:31",
+        "community": 6
+      }
+    },
+    {
+      "id": "sym:regatta-core/src/slug.rs#tests.empty_slug_falls_back",
+      "kind": "codeNode",
+      "label": "empty_slug_falls_back",
+      "meta": {
+        "sourceFile": "regatta-core/src/slug.rs",
+        "sourceLocation": "regatta-core/src/slug.rs:36",
+        "community": 6
+      }
+    },
+    {
+      "id": "file:rust-toolchain.toml",
+      "kind": "codeNode",
+      "label": "rust-toolchain.toml",
+      "meta": {
+        "sourceFile": "rust-toolchain.toml",
+        "community": 7
+      }
+    },
+    {
+      "id": "R-SLUG-01",
+      "kind": "requirement",
+      "label": "slugify a session name"
+    },
+    {
+      "id": "R-SLUG-01-AC1",
+      "kind": "acceptanceCriterion",
+      "label": "WHEN given a session name THEN the system SHALL return a lowercase slug containing only `[a-z0-9-]`, with each run of other characters collapsed to a single hyphen and leading and trailing hyphens removed."
+    },
+    {
+      "id": "test:regatta_core::slug::tests::slugifies_a_name",
+      "kind": "test",
+      "label": "regatta_core::slug::tests::slugifies_a_name",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "R-SLUG-01-AC2",
+      "kind": "acceptanceCriterion",
+      "label": "IF the name contains no alphanumeric characters THEN the system SHALL return the literal `session`, never an empty branch name."
+    },
+    {
+      "id": "test:regatta_core::slug::tests::empty_slug_falls_back",
+      "kind": "test",
+      "label": "regatta_core::slug::tests::empty_slug_falls_back",
+      "meta": {
+        "kind": "unit"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "R-SLUG-01-AC1",
+      "to": "R-SLUG-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e2",
+      "from": "test:regatta_core::slug::tests::slugifies_a_name",
+      "to": "sym:regatta-core/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e3",
+      "from": "test:regatta_core::slug::tests::slugifies_a_name",
+      "to": "R-SLUG-01-AC1",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "regatta_core::slug::tests::slugifies_a_name",
+        "passed": true,
+        "at": "2026-06-27T16:40:58.735Z",
+        "dirty": true,
+        "kind": "unit",
+        "stack": "rust"
+      }
+    },
+    {
+      "id": "e4",
+      "from": "R-SLUG-01-AC2",
+      "to": "R-SLUG-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e5",
+      "from": "test:regatta_core::slug::tests::empty_slug_falls_back",
+      "to": "sym:regatta-core/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e6",
+      "from": "test:regatta_core::slug::tests::empty_slug_falls_back",
+      "to": "R-SLUG-01-AC2",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "regatta_core::slug::tests::empty_slug_falls_back",
+        "passed": true,
+        "at": "2026-06-27T16:40:59.157Z",
+        "dirty": true,
+        "kind": "unit",
+        "stack": "rust"
+      }
+    }
+  ]
+}

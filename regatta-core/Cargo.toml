@@ -1,0 +1,13 @@
+[package]
+name = "regatta_core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Pure, deterministic core logic for Regatta (no I/O; unit-tested to 100% coverage)."
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+[lints.rust]
+unsafe_code = "forbid"

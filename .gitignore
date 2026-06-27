@@ -1,0 +1,25 @@
+# Rust
+/target
+**/target
+*.profraw
+lcov.info
+coverage/
+
+# Node / frontend
+node_modules/
+dist/
+.vite/
+
+# OS
+.DS_Store
+
+# Helm runtime data (per-user; never committed)
+.worktrees/
+
+# dev-spec-kit / graphify / revitify (derived, regenerated)
+graphify-out/
+.graphify/
+.revitify/
+.dev-spec-kit/cache/
+.dev-spec-kit/tmp/
+.dev-spec-kit/cockpit/

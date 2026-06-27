@@ -1,0 +1,12 @@
+//! `regatta_core` — the pure, deterministic core of Regatta.
+//!
+//! Rules for everything in this crate (enforced by the quality-gates law pack):
+//! - **No I/O, no Tauri, no OS access.** Pure functions and data only.
+//! - **No ambient time or randomness** — inject a `Clock` / `Rng` instead, so tests
+//!   are reproducible and proofs are replayable.
+//! - **100% line + branch coverage.** Split modules small enough to make that real.
+//!
+//! The glue layer (`src-tauri/`) wires this core to PTYs, IPC, the filesystem, and the webview.
+#![forbid(unsafe_code)]
+
+pub mod slug;

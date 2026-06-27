@@ -1,0 +1,47 @@
+{"at":"2026-06-27T16:25:37.016Z","type":"cli.run","data":{"command":"spec tasks","args":[]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:25:37.019Z","type":"task.created","data":{"id":"R-SLUG-01","title":"slugify a session name","boundChecks":["helm_core::slug::tests::slugifies_a_name"]}}
+{"at":"2026-06-27T16:25:37.019Z","type":"task.created","data":{"id":"R-SLUG-02","title":"fallback for empty slugs","boundChecks":["helm_core::slug::tests::empty_slug_falls_back"]}}
+{"at":"2026-06-27T16:25:37.226Z","type":"cli.run","data":{"command":"status","args":[]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:26:16.804Z","type":"cli.run","data":{"command":"spec tasks","args":[]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:26:53.799Z","type":"cli.run","data":{"command":"task start","args":["R-SLUG-01"]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:26:53.799Z","type":"task.status","data":{"id":"R-SLUG-01","status":"in_progress"}}
+{"at":"2026-06-27T16:26:54.064Z","type":"cli.run","data":{"command":"task start","args":["R-SLUG-02"]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:26:54.065Z","type":"task.status","data":{"id":"R-SLUG-02","status":"in_progress"}}
+{"at":"2026-06-27T16:26:54.328Z","type":"cli.run","data":{"command":"check run","args":["R-SLUG-01","helm_core::slug::tests::slugifies_a_name"]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:26:54.828Z","type":"check.run","data":{"taskId":"R-SLUG-01","result":{"ref":"helm_core::slug::tests::slugifies_a_name","passed":false,"at":"2026-06-27T16:26:54.808Z","dirty":true,"kind":"unit","tail":"Compiling helm_core v0.1.0 (/Users/pratiyush/Desktop/AI/terminal-x/helm-core)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s\n────────────\n Nextest run ID 2a55a712-3190-43ee-8301-3a1ffdda0ae8 with nextest profile: default\n    Starting 1 test across 1 binary (1 test skipped)\n        FAIL [   0.006s] (1/1) helm_core slug::tests::slugifies_a_name\n  stdout ───\n\n    running 1 test\n    test slug::tests::slugifies_a_name ... FAILED\n\n    failures:\n\n    failures:\n        slug::tests::slugifies_a_name\n\n    test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 1 filtered out; finished in 0.00s\n\n  stderr ───\n\n    thread 'slug::tests::slugifies_a_name' (33234965) panicked at helm-core/src/slug.rs:16:9:\n    assertion `left == right` failed\n      left: \"\"\n     right: \"fix-oauth-bug\"\n    note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n\n  Cancelling due to test failure: \n────────────\n     Summary [   0.007s] 1 test run: 0 passed, 1 failed, 1 skipped\n        FAIL [   0.006s] (1/1) helm_core slug::tests::slugifies_a_name\nerror: test run failed","stack":"rust"}}}
+{"at":"2026-06-27T16:26:55.088Z","type":"cli.run","data":{"command":"check run","args":["R-SLUG-02","helm_core::slug::tests::empty_slug_falls_back"]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:26:55.211Z","type":"check.run","data":{"taskId":"R-SLUG-02","result":{"ref":"helm_core::slug::tests::empty_slug_falls_back","passed":false,"at":"2026-06-27T16:26:55.193Z","dirty":true,"kind":"unit","tail":"Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n────────────\n Nextest run ID 736b1ea1-d40a-4f78-8f2a-07153ca2436c with nextest profile: default\n    Starting 1 test across 1 binary (1 test skipped)\n        FAIL [   0.005s] (1/1) helm_core slug::tests::empty_slug_falls_back\n  stdout ───\n\n    running 1 test\n    test slug::tests::empty_slug_falls_back ... FAILED\n\n    failures:\n\n    failures:\n        slug::tests::empty_slug_falls_back\n\n    test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 1 filtered out; finished in 0.00s\n\n  stderr ───\n\n    thread 'slug::tests::empty_slug_falls_back' (33235179) panicked at helm-core/src/slug.rs:21:9:\n    assertion `left == right` failed\n      left: \"\"\n     right: \"session\"\n    note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n\n  Cancelling due to test failure: \n────────────\n     Summary [   0.006s] 1 test run: 0 passed, 1 failed, 1 skipped\n        FAIL [   0.005s] (1/1) helm_core slug::tests::empty_slug_falls_back\nerror: test run failed","stack":"rust"}}}
+{"at":"2026-06-27T16:27:25.437Z","type":"cli.run","data":{"command":"check run","args":["R-SLUG-01","helm_core::slug::tests::slugifies_a_name"]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:27:25.950Z","type":"check.run","data":{"taskId":"R-SLUG-01","result":{"ref":"helm_core::slug::tests::slugifies_a_name","passed":true,"at":"2026-06-27T16:27:25.926Z","dirty":true,"kind":"unit","stack":"rust"}}}
+{"at":"2026-06-27T16:27:26.212Z","type":"cli.run","data":{"command":"check run","args":["R-SLUG-02","helm_core::slug::tests::empty_slug_falls_back"]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:27:26.334Z","type":"check.run","data":{"taskId":"R-SLUG-02","result":{"ref":"helm_core::slug::tests::empty_slug_falls_back","passed":true,"at":"2026-06-27T16:27:26.316Z","dirty":true,"kind":"unit","stack":"rust"}}}
+{"at":"2026-06-27T16:27:26.592Z","type":"cli.run","data":{"command":"task done","args":["R-SLUG-01"]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:27:26.603Z","type":"task.status","data":{"id":"R-SLUG-01","status":"done"}}
+{"at":"2026-06-27T16:27:26.872Z","type":"cli.run","data":{"command":"task done","args":["R-SLUG-02"]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:27:26.884Z","type":"task.status","data":{"id":"R-SLUG-02","status":"done"}}
+{"at":"2026-06-27T16:27:27.159Z","type":"cli.run","data":{"command":"drift","args":[]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:27:27.602Z","type":"cli.run","data":{"command":"graph build","args":[]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:27:28.060Z","type":"cli.run","data":{"command":"gate","args":[]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:29:06.298Z","type":"cli.run","data":{"command":"spec tasks","args":[]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:29:06.301Z","type":"task.bindings","data":{"id":"R-SLUG-01","boundChecks":["helm_core::slug::tests::slugifies_a_name","helm_core::slug::tests::empty_slug_falls_back"]}}
+{"at":"2026-06-27T16:29:06.504Z","type":"cli.run","data":{"command":"check run","args":["R-SLUG-01","helm_core::slug::tests::slugifies_a_name"]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:29:06.627Z","type":"check.run","data":{"taskId":"R-SLUG-01","result":{"ref":"helm_core::slug::tests::slugifies_a_name","passed":true,"at":"2026-06-27T16:29:06.609Z","dirty":true,"kind":"unit","stack":"rust"}}}
+{"at":"2026-06-27T16:29:06.882Z","type":"cli.run","data":{"command":"check run","args":["R-SLUG-01","helm_core::slug::tests::empty_slug_falls_back"]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:29:07.004Z","type":"check.run","data":{"taskId":"R-SLUG-01","result":{"ref":"helm_core::slug::tests::empty_slug_falls_back","passed":true,"at":"2026-06-27T16:29:06.985Z","dirty":true,"kind":"unit","stack":"rust"}}}
+{"at":"2026-06-27T16:29:07.268Z","type":"cli.run","data":{"command":"task done","args":["R-SLUG-01"]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:29:07.280Z","type":"task.status","data":{"id":"R-SLUG-01","status":"done"}}
+{"at":"2026-06-27T16:29:07.551Z","type":"cli.run","data":{"command":"graph build","args":[]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:29:08.003Z","type":"cli.run","data":{"command":"gate","args":[]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:29:08.210Z","type":"cli.run","data":{"command":"status","args":[]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:30:13.081Z","type":"cli.run","data":{"command":"spec lint","args":[]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:40:57.937Z","type":"cli.run","data":{"command":"spec tasks","args":[]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:40:57.940Z","type":"task.bindings","data":{"id":"R-SLUG-01","boundChecks":["regatta_core::slug::tests::slugifies_a_name","regatta_core::slug::tests::empty_slug_falls_back"]}}
+{"at":"2026-06-27T16:40:58.157Z","type":"cli.run","data":{"command":"check run","args":["R-SLUG-01","regatta_core::slug::tests::slugifies_a_name"]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:40:58.755Z","type":"check.run","data":{"taskId":"R-SLUG-01","result":{"ref":"regatta_core::slug::tests::slugifies_a_name","passed":true,"at":"2026-06-27T16:40:58.735Z","dirty":true,"kind":"unit","stack":"rust"}}}
+{"at":"2026-06-27T16:40:59.042Z","type":"cli.run","data":{"command":"check run","args":["R-SLUG-01","regatta_core::slug::tests::empty_slug_falls_back"]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:40:59.178Z","type":"check.run","data":{"taskId":"R-SLUG-01","result":{"ref":"regatta_core::slug::tests::empty_slug_falls_back","passed":true,"at":"2026-06-27T16:40:59.157Z","dirty":true,"kind":"unit","stack":"rust"}}}
+{"at":"2026-06-27T16:40:59.525Z","type":"cli.run","data":{"command":"task done","args":["R-SLUG-01"]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:40:59.538Z","type":"task.status","data":{"id":"R-SLUG-01","status":"done"}}
+{"at":"2026-06-27T16:40:59.842Z","type":"cli.run","data":{"command":"graph build","args":[]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:41:00.418Z","type":"cli.run","data":{"command":"gate","args":[]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-27T16:44:22.087Z","type":"cli.run","data":{"command":"gate","args":[]},"meta":{"actor":"Pratiyush"}}

@@ -1,0 +1,24 @@
+[workspace]
+resolver = "2"
+members = ["regatta-core"]
+# src-tauri is excluded until M1 wires its first real UI slice (keeps M0 CI fast on the pure core).
+exclude = ["src-tauri"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/Pratiyush/regatta"
+authors = ["Pratiyush Kumar Singh"]
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Lean, fast release profile — small binaries, no bloat (anti-cmux).
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"
