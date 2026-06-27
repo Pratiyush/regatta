@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["regatta-core"]
+members = ["regatta-core", "regatta-supervisor"]
 # src-tauri is excluded until M1 wires its first real UI slice (keeps M0 CI fast on the pure core).
 exclude = ["src-tauri"]
 
