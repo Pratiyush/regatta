@@ -272,7 +272,7 @@
       "label": "regatta-core/src/attention.rs",
       "meta": {
         "sourceFile": "regatta-core/src/attention.rs",
-        "community": 9
+        "community": 8
       }
     },
     {
@@ -282,7 +282,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/attention.rs",
         "sourceLocation": "regatta-core/src/attention.rs:6",
-        "community": 9
+        "community": 8
       }
     },
     {
@@ -292,7 +292,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/attention.rs",
         "sourceLocation": "regatta-core/src/attention.rs:19",
-        "community": 9
+        "community": 8
       }
     },
     {
@@ -302,7 +302,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/attention.rs",
         "sourceLocation": "regatta-core/src/attention.rs:35",
-        "community": 9
+        "community": 8
       }
     },
     {
@@ -385,6 +385,16 @@
       }
     },
     {
+      "id": "sym:regatta-core/src/lib.rs#stream",
+      "kind": "codeNode",
+      "label": "stream",
+      "meta": {
+        "sourceFile": "regatta-core/src/lib.rs",
+        "sourceLocation": "regatta-core/src/lib.rs:14",
+        "community": 10
+      }
+    },
+    {
       "id": "file:regatta-core/src/slug.rs",
       "kind": "codeNode",
       "label": "regatta-core/src/slug.rs",
@@ -434,12 +444,91 @@
       }
     },
     {
+      "id": "file:regatta-core/src/stream.rs",
+      "kind": "codeNode",
+      "label": "regatta-core/src/stream.rs",
+      "meta": {
+        "sourceFile": "regatta-core/src/stream.rs",
+        "community": 12
+      }
+    },
+    {
+      "id": "sym:regatta-core/src/stream.rs#NormalizedEvent",
+      "kind": "codeNode",
+      "label": "NormalizedEvent",
+      "meta": {
+        "sourceFile": "regatta-core/src/stream.rs",
+        "sourceLocation": "regatta-core/src/stream.rs:7",
+        "community": 12
+      }
+    },
+    {
+      "id": "sym:regatta-core/src/stream.rs#parse_claude_line",
+      "kind": "codeNode",
+      "label": "parse_claude_line",
+      "meta": {
+        "sourceFile": "regatta-core/src/stream.rs",
+        "sourceLocation": "regatta-core/src/stream.rs:20",
+        "community": 12
+      }
+    },
+    {
+      "id": "sym:regatta-core/src/stream.rs#usage_field",
+      "kind": "codeNode",
+      "label": "usage_field",
+      "meta": {
+        "sourceFile": "regatta-core/src/stream.rs",
+        "sourceLocation": "regatta-core/src/stream.rs:43",
+        "community": 12
+      }
+    },
+    {
+      "id": "sym:regatta-core/src/stream.rs#assistant_text",
+      "kind": "codeNode",
+      "label": "assistant_text",
+      "meta": {
+        "sourceFile": "regatta-core/src/stream.rs",
+        "sourceLocation": "regatta-core/src/stream.rs:48",
+        "community": 12
+      }
+    },
+    {
+      "id": "sym:regatta-core/src/stream.rs#tests",
+      "kind": "codeNode",
+      "label": "tests",
+      "meta": {
+        "sourceFile": "regatta-core/src/stream.rs",
+        "sourceLocation": "regatta-core/src/stream.rs:64",
+        "community": 12
+      }
+    },
+    {
+      "id": "sym:regatta-core/src/stream.rs#tests.parses_known_lines",
+      "kind": "codeNode",
+      "label": "parses_known_lines",
+      "meta": {
+        "sourceFile": "regatta-core/src/stream.rs",
+        "sourceLocation": "regatta-core/src/stream.rs:68",
+        "community": 12
+      }
+    },
+    {
+      "id": "sym:regatta-core/src/stream.rs#tests.ignores_malformed_and_unknown",
+      "kind": "codeNode",
+      "label": "ignores_malformed_and_unknown",
+      "meta": {
+        "sourceFile": "regatta-core/src/stream.rs",
+        "sourceLocation": "regatta-core/src/stream.rs:100",
+        "community": 12
+      }
+    },
+    {
       "id": "file:release-please-config.json",
       "kind": "codeNode",
       "label": "release-please-config.json",
       "meta": {
         "sourceFile": "release-please-config.json",
-        "community": 12
+        "community": 13
       }
     },
     {
@@ -448,7 +537,7 @@
       "label": "$schema",
       "meta": {
         "sourceFile": "release-please-config.json",
-        "community": 12
+        "community": 13
       }
     },
     {
@@ -457,7 +546,7 @@
       "label": "include-component-in-tag",
       "meta": {
         "sourceFile": "release-please-config.json",
-        "community": 12
+        "community": 13
       }
     },
     {
@@ -466,7 +555,7 @@
       "label": "packages",
       "meta": {
         "sourceFile": "release-please-config.json",
-        "community": 12
+        "community": 13
       }
     },
     {
@@ -475,7 +564,7 @@
       "label": "rust-toolchain.toml",
       "meta": {
         "sourceFile": "rust-toolchain.toml",
-        "community": 13
+        "community": 14
       }
     },
     {
@@ -484,7 +573,37 @@
       "label": "src/App.tsx",
       "meta": {
         "sourceFile": "src/App.tsx",
-        "community": 14
+        "community": 15
+      }
+    },
+    {
+      "id": "sym:src/App.tsx#SessionView",
+      "kind": "codeNode",
+      "label": "SessionView",
+      "meta": {
+        "sourceFile": "src/App.tsx",
+        "sourceLocation": "src/App.tsx:4",
+        "community": 15
+      }
+    },
+    {
+      "id": "sym:src/App.tsx#DockView",
+      "kind": "codeNode",
+      "label": "DockView",
+      "meta": {
+        "sourceFile": "src/App.tsx",
+        "sourceLocation": "src/App.tsx:9",
+        "community": 15
+      }
+    },
+    {
+      "id": "sym:src/App.tsx#fetchDock",
+      "kind": "codeNode",
+      "label": "fetchDock",
+      "meta": {
+        "sourceFile": "src/App.tsx",
+        "sourceLocation": "src/App.tsx:18",
+        "community": 15
       }
     },
     {
@@ -493,7 +612,7 @@
       "label": "src/index.tsx",
       "meta": {
         "sourceFile": "src/index.tsx",
-        "community": 14
+        "community": 15
       }
     },
     {
@@ -502,7 +621,16 @@
       "label": "src/styles.css",
       "meta": {
         "sourceFile": "src/styles.css",
-        "community": 14
+        "community": 15
+      }
+    },
+    {
+      "id": "file:src-tauri/Cargo.lock",
+      "kind": "codeNode",
+      "label": "src-tauri/Cargo.lock",
+      "meta": {
+        "sourceFile": "src-tauri/Cargo.lock",
+        "community": 16
       }
     },
     {
@@ -511,7 +639,7 @@
       "label": "src-tauri/Cargo.toml",
       "meta": {
         "sourceFile": "src-tauri/Cargo.toml",
-        "community": 15
+        "community": 17
       }
     },
     {
@@ -520,7 +648,7 @@
       "label": "regatta",
       "meta": {
         "sourceFile": "src-tauri/Cargo.toml",
-        "community": 15
+        "community": 17
       }
     },
     {
@@ -529,7 +657,7 @@
       "label": "tauri",
       "meta": {
         "sourceFile": "src-tauri/Cargo.toml",
-        "community": 15
+        "community": 17
       }
     },
     {
@@ -538,7 +666,7 @@
       "label": "serde",
       "meta": {
         "sourceFile": "src-tauri/Cargo.toml",
-        "community": 15
+        "community": 17
       }
     },
     {
@@ -547,7 +675,7 @@
       "label": "serde_json",
       "meta": {
         "sourceFile": "src-tauri/Cargo.toml",
-        "community": 15
+        "community": 17
       }
     },
     {
@@ -556,7 +684,7 @@
       "label": "regatta_core",
       "meta": {
         "sourceFile": "src-tauri/Cargo.toml",
-        "community": 15
+        "community": 17
       }
     },
     {
@@ -565,7 +693,7 @@
       "label": "src-tauri/build.rs",
       "meta": {
         "sourceFile": "src-tauri/build.rs",
-        "community": 16
+        "community": 18
       }
     },
     {
@@ -575,7 +703,7 @@
       "meta": {
         "sourceFile": "src-tauri/build.rs",
         "sourceLocation": "src-tauri/build.rs:1",
-        "community": 16
+        "community": 18
       }
     },
     {
@@ -584,7 +712,7 @@
       "label": "src-tauri/capabilities/default.json",
       "meta": {
         "sourceFile": "src-tauri/capabilities/default.json",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -593,7 +721,7 @@
       "label": "$schema",
       "meta": {
         "sourceFile": "src-tauri/capabilities/default.json",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -602,7 +730,7 @@
       "label": "identifier",
       "meta": {
         "sourceFile": "src-tauri/capabilities/default.json",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -611,7 +739,7 @@
       "label": "description",
       "meta": {
         "sourceFile": "src-tauri/capabilities/default.json",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -620,7 +748,7 @@
       "label": "windows",
       "meta": {
         "sourceFile": "src-tauri/capabilities/default.json",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -629,7 +757,241 @@
       "label": "permissions",
       "meta": {
         "sourceFile": "src-tauri/capabilities/default.json",
-        "community": 17
+        "community": 19
+      }
+    },
+    {
+      "id": "file:src-tauri/gen/schemas/acl-manifests.json",
+      "kind": "codeNode",
+      "label": "src-tauri/gen/schemas/acl-manifests.json",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/acl-manifests.json",
+        "community": 20
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/gen/schemas/acl-manifests.json#core",
+      "kind": "codeNode",
+      "label": "core",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/acl-manifests.json",
+        "community": 20
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/gen/schemas/acl-manifests.json#core:app",
+      "kind": "codeNode",
+      "label": "core:app",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/acl-manifests.json",
+        "community": 20
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/gen/schemas/acl-manifests.json#core:event",
+      "kind": "codeNode",
+      "label": "core:event",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/acl-manifests.json",
+        "community": 20
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/gen/schemas/acl-manifests.json#core:image",
+      "kind": "codeNode",
+      "label": "core:image",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/acl-manifests.json",
+        "community": 20
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/gen/schemas/acl-manifests.json#core:menu",
+      "kind": "codeNode",
+      "label": "core:menu",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/acl-manifests.json",
+        "community": 20
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/gen/schemas/acl-manifests.json#core:path",
+      "kind": "codeNode",
+      "label": "core:path",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/acl-manifests.json",
+        "community": 20
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/gen/schemas/acl-manifests.json#core:resources",
+      "kind": "codeNode",
+      "label": "core:resources",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/acl-manifests.json",
+        "community": 20
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/gen/schemas/acl-manifests.json#core:tray",
+      "kind": "codeNode",
+      "label": "core:tray",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/acl-manifests.json",
+        "community": 20
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/gen/schemas/acl-manifests.json#core:webview",
+      "kind": "codeNode",
+      "label": "core:webview",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/acl-manifests.json",
+        "community": 20
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/gen/schemas/acl-manifests.json#core:window",
+      "kind": "codeNode",
+      "label": "core:window",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/acl-manifests.json",
+        "community": 20
+      }
+    },
+    {
+      "id": "file:src-tauri/gen/schemas/capabilities.json",
+      "kind": "codeNode",
+      "label": "src-tauri/gen/schemas/capabilities.json",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/capabilities.json",
+        "community": 21
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/gen/schemas/capabilities.json#default",
+      "kind": "codeNode",
+      "label": "default",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/capabilities.json",
+        "community": 21
+      }
+    },
+    {
+      "id": "file:src-tauri/gen/schemas/desktop-schema.json",
+      "kind": "codeNode",
+      "label": "src-tauri/gen/schemas/desktop-schema.json",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/desktop-schema.json",
+        "community": 22
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/gen/schemas/desktop-schema.json#$schema",
+      "kind": "codeNode",
+      "label": "$schema",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/desktop-schema.json",
+        "community": 22
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/gen/schemas/desktop-schema.json#title",
+      "kind": "codeNode",
+      "label": "title",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/desktop-schema.json",
+        "community": 22
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/gen/schemas/desktop-schema.json#description",
+      "kind": "codeNode",
+      "label": "description",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/desktop-schema.json",
+        "community": 22
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/gen/schemas/desktop-schema.json#anyOf",
+      "kind": "codeNode",
+      "label": "anyOf",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/desktop-schema.json",
+        "community": 22
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/gen/schemas/desktop-schema.json#definitions",
+      "kind": "codeNode",
+      "label": "definitions",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/desktop-schema.json",
+        "community": 22
+      }
+    },
+    {
+      "id": "file:src-tauri/gen/schemas/macOS-schema.json",
+      "kind": "codeNode",
+      "label": "src-tauri/gen/schemas/macOS-schema.json",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/macOS-schema.json",
+        "community": 23
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/gen/schemas/macOS-schema.json#$schema",
+      "kind": "codeNode",
+      "label": "$schema",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/macOS-schema.json",
+        "community": 23
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/gen/schemas/macOS-schema.json#title",
+      "kind": "codeNode",
+      "label": "title",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/macOS-schema.json",
+        "community": 23
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/gen/schemas/macOS-schema.json#description",
+      "kind": "codeNode",
+      "label": "description",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/macOS-schema.json",
+        "community": 23
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/gen/schemas/macOS-schema.json#anyOf",
+      "kind": "codeNode",
+      "label": "anyOf",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/macOS-schema.json",
+        "community": 23
+      }
+    },
+    {
+      "id": "jsonkey:src-tauri/gen/schemas/macOS-schema.json#definitions",
+      "kind": "codeNode",
+      "label": "definitions",
+      "meta": {
+        "sourceFile": "src-tauri/gen/schemas/macOS-schema.json",
+        "community": 23
+      }
+    },
+    {
+      "id": "file:src-tauri/icons/icon.png",
+      "kind": "codeNode",
+      "label": "src-tauri/icons/icon.png",
+      "meta": {
+        "sourceFile": "src-tauri/icons/icon.png",
+        "community": 24
       }
     },
     {
@@ -638,7 +1000,7 @@
       "label": "src-tauri/src/lib.rs",
       "meta": {
         "sourceFile": "src-tauri/src/lib.rs",
-        "community": 11
+        "community": 8
       }
     },
     {
@@ -647,8 +1009,48 @@
       "label": "slugify",
       "meta": {
         "sourceFile": "src-tauri/src/lib.rs",
-        "sourceLocation": "src-tauri/src/lib.rs:5",
+        "sourceLocation": "src-tauri/src/lib.rs:8",
         "community": 11
+      }
+    },
+    {
+      "id": "sym:src-tauri/src/lib.rs#SessionView",
+      "kind": "codeNode",
+      "label": "SessionView",
+      "meta": {
+        "sourceFile": "src-tauri/src/lib.rs",
+        "sourceLocation": "src-tauri/src/lib.rs:13",
+        "community": 8
+      }
+    },
+    {
+      "id": "sym:src-tauri/src/lib.rs#DockView",
+      "kind": "codeNode",
+      "label": "DockView",
+      "meta": {
+        "sourceFile": "src-tauri/src/lib.rs",
+        "sourceLocation": "src-tauri/src/lib.rs:27",
+        "community": 8
+      }
+    },
+    {
+      "id": "sym:src-tauri/src/lib.rs#status_str",
+      "kind": "codeNode",
+      "label": "status_str",
+      "meta": {
+        "sourceFile": "src-tauri/src/lib.rs",
+        "sourceLocation": "src-tauri/src/lib.rs:33",
+        "community": 8
+      }
+    },
+    {
+      "id": "sym:src-tauri/src/lib.rs#dock_view",
+      "kind": "codeNode",
+      "label": "dock_view",
+      "meta": {
+        "sourceFile": "src-tauri/src/lib.rs",
+        "sourceLocation": "src-tauri/src/lib.rs:51",
+        "community": 8
       }
     },
     {
@@ -657,8 +1059,8 @@
       "label": "run",
       "meta": {
         "sourceFile": "src-tauri/src/lib.rs",
-        "sourceLocation": "src-tauri/src/lib.rs:10",
-        "community": 11
+        "sourceLocation": "src-tauri/src/lib.rs:87",
+        "community": 8
       }
     },
     {
@@ -667,7 +1069,7 @@
       "label": "src-tauri/src/main.rs",
       "meta": {
         "sourceFile": "src-tauri/src/main.rs",
-        "community": 11
+        "community": 8
       }
     },
     {
@@ -677,7 +1079,7 @@
       "meta": {
         "sourceFile": "src-tauri/src/main.rs",
         "sourceLocation": "src-tauri/src/main.rs:4",
-        "community": 11
+        "community": 8
       }
     },
     {
@@ -686,7 +1088,7 @@
       "label": "src-tauri/tauri.conf.json",
       "meta": {
         "sourceFile": "src-tauri/tauri.conf.json",
-        "community": 18
+        "community": 25
       }
     },
     {
@@ -695,7 +1097,7 @@
       "label": "$schema",
       "meta": {
         "sourceFile": "src-tauri/tauri.conf.json",
-        "community": 18
+        "community": 25
       }
     },
     {
@@ -704,7 +1106,7 @@
       "label": "productName",
       "meta": {
         "sourceFile": "src-tauri/tauri.conf.json",
-        "community": 18
+        "community": 25
       }
     },
     {
@@ -713,7 +1115,7 @@
       "label": "version",
       "meta": {
         "sourceFile": "src-tauri/tauri.conf.json",
-        "community": 18
+        "community": 25
       }
     },
     {
@@ -722,7 +1124,7 @@
       "label": "identifier",
       "meta": {
         "sourceFile": "src-tauri/tauri.conf.json",
-        "community": 18
+        "community": 25
       }
     },
     {
@@ -731,7 +1133,7 @@
       "label": "build",
       "meta": {
         "sourceFile": "src-tauri/tauri.conf.json",
-        "community": 18
+        "community": 25
       }
     },
     {
@@ -740,7 +1142,7 @@
       "label": "app",
       "meta": {
         "sourceFile": "src-tauri/tauri.conf.json",
-        "community": 18
+        "community": 25
       }
     },
     {
@@ -749,7 +1151,7 @@
       "label": "bundle",
       "meta": {
         "sourceFile": "src-tauri/tauri.conf.json",
-        "community": 18
+        "community": 25
       }
     },
     {
@@ -758,7 +1160,7 @@
       "label": "tsconfig.json",
       "meta": {
         "sourceFile": "tsconfig.json",
-        "community": 19
+        "community": 26
       }
     },
     {
@@ -767,7 +1169,7 @@
       "label": "compilerOptions",
       "meta": {
         "sourceFile": "tsconfig.json",
-        "community": 19
+        "community": 26
       }
     },
     {
@@ -776,7 +1178,7 @@
       "label": "include",
       "meta": {
         "sourceFile": "tsconfig.json",
-        "community": 19
+        "community": 26
       }
     },
     {
@@ -785,7 +1187,7 @@
       "label": "vite.config.ts",
       "meta": {
         "sourceFile": "vite.config.ts",
-        "community": 20
+        "community": 27
       }
     },
     {
@@ -880,6 +1282,42 @@
       "meta": {
         "kind": "unit"
       }
+    },
+    {
+      "id": "R-PARSE-01",
+      "kind": "requirement",
+      "label": "normalize Claude stream-json lines"
+    },
+    {
+      "id": "R-PARSE-01-AC1",
+      "kind": "acceptanceCriterion",
+      "label": "WHEN a Claude stream-json line of a known type arrives THEN the system SHALL emit the matching normalized event: a `system`/`init` line becomes SessionStarted (with the model), an `assistant` line becomes AssistantText (its text blocks concatenated), and a `result` line becomes Usage (cost and token counts)."
+    },
+    {
+      "id": "test:regatta_core::stream::tests::parses_known_lines",
+      "kind": "test",
+      "label": "regatta_core::stream::tests::parses_known_lines",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "R-PARSE-01-AC2",
+      "kind": "acceptanceCriterion",
+      "label": "IF a line is not valid JSON, has no recognized type, or is an unhandled type THEN the system SHALL return None and never panic."
+    },
+    {
+      "id": "test:regatta_core::stream::tests::ignores_malformed_and_unknown",
+      "kind": "test",
+      "label": "regatta_core::stream::tests::ignores_malformed_and_unknown",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "R-PARSE-01-AC3",
+      "kind": "acceptanceCriterion",
+      "label": "The parser consumes untrusted process output, so it SHALL never panic and SHALL drop malformed or unrecognized lines (returning `None`) rather than emit a bogus event."
     }
   ],
   "edges": [
@@ -913,8 +1351,8 @@
       "lastCheck": {
         "ref": "regatta_core::attention::tests::ranks_blocked_sessions",
         "passed": true,
-        "at": "2026-06-27T17:12:29.955Z",
-        "sha": "eed81c76cf0e0918f57a4df5d2842255555145fe",
+        "at": "2026-06-27T17:35:56.859Z",
+        "sha": "d8cb1302ac28a0ee42052270abc44b40ad96c070",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -950,8 +1388,8 @@
       "lastCheck": {
         "ref": "regatta_core::attention::tests::working_sessions_score_zero",
         "passed": true,
-        "at": "2026-06-27T17:12:30.110Z",
-        "sha": "eed81c76cf0e0918f57a4df5d2842255555145fe",
+        "at": "2026-06-27T17:35:56.997Z",
+        "sha": "d8cb1302ac28a0ee42052270abc44b40ad96c070",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -987,8 +1425,8 @@
       "lastCheck": {
         "ref": "regatta_core::attention::tests::dock_orders_by_urgency",
         "passed": true,
-        "at": "2026-06-27T17:12:05.927Z",
-        "sha": "eed81c76cf0e0918f57a4df5d2842255555145fe",
+        "at": "2026-06-27T17:35:57.139Z",
+        "sha": "d8cb1302ac28a0ee42052270abc44b40ad96c070",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -1024,8 +1462,8 @@
       "lastCheck": {
         "ref": "regatta_core::attention::tests::dock_excludes_working_and_seen",
         "passed": true,
-        "at": "2026-06-27T17:12:06.454Z",
-        "sha": "eed81c76cf0e0918f57a4df5d2842255555145fe",
+        "at": "2026-06-27T17:35:57.279Z",
+        "sha": "d8cb1302ac28a0ee42052270abc44b40ad96c070",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -1098,6 +1536,103 @@
         "ref": "regatta_core::slug::tests::empty_slug_falls_back",
         "passed": true,
         "at": "2026-06-27T16:40:59.157Z",
+        "dirty": true,
+        "kind": "unit",
+        "stack": "rust"
+      }
+    },
+    {
+      "id": "e25",
+      "from": "R-PARSE-01-AC1",
+      "to": "R-PARSE-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e26",
+      "from": "test:regatta_core::stream::tests::parses_known_lines",
+      "to": "sym:regatta-core/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e27",
+      "from": "test:regatta_core::stream::tests::parses_known_lines",
+      "to": "dep:src-tauri/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e28",
+      "from": "test:regatta_core::stream::tests::parses_known_lines",
+      "to": "R-PARSE-01-AC1",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "regatta_core::stream::tests::parses_known_lines",
+        "passed": true,
+        "at": "2026-06-27T17:35:55.169Z",
+        "sha": "d8cb1302ac28a0ee42052270abc44b40ad96c070",
+        "dirty": true,
+        "kind": "unit",
+        "stack": "rust"
+      }
+    },
+    {
+      "id": "e29",
+      "from": "R-PARSE-01-AC2",
+      "to": "R-PARSE-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e30",
+      "from": "test:regatta_core::stream::tests::ignores_malformed_and_unknown",
+      "to": "sym:regatta-core/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e31",
+      "from": "test:regatta_core::stream::tests::ignores_malformed_and_unknown",
+      "to": "dep:src-tauri/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e32",
+      "from": "test:regatta_core::stream::tests::ignores_malformed_and_unknown",
+      "to": "R-PARSE-01-AC2",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "regatta_core::stream::tests::ignores_malformed_and_unknown",
+        "passed": true,
+        "at": "2026-06-27T17:37:28.522Z",
+        "sha": "d8cb1302ac28a0ee42052270abc44b40ad96c070",
+        "dirty": true,
+        "kind": "unit",
+        "stack": "rust"
+      }
+    },
+    {
+      "id": "e33",
+      "from": "R-PARSE-01-AC3",
+      "to": "R-PARSE-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e34",
+      "from": "test:regatta_core::stream::tests::ignores_malformed_and_unknown",
+      "to": "R-PARSE-01-AC3",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "regatta_core::stream::tests::ignores_malformed_and_unknown",
+        "passed": true,
+        "at": "2026-06-27T17:37:28.522Z",
+        "sha": "d8cb1302ac28a0ee42052270abc44b40ad96c070",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
