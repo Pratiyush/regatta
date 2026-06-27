@@ -83,10 +83,35 @@ fn dock_view() -> DockView {
     DockView { sessions, order }
 }
 
+/// Run a deterministic demo session through the REAL pipeline (supervisor → parser → view) using a
+/// fake stream-json backend — no Claude auth, no tokens. Real `claude` is the same launch plan.
+#[tauri::command]
+async fn run_demo_session() -> Vec<regatta_core::view::EventLine> {
+    let script = "echo '{\"type\":\"system\",\"subtype\":\"init\",\"model\":\"claude-opus-4-8\"}'; \
+                  echo '{\"type\":\"assistant\",\"message\":{\"content\":[{\"type\":\"text\",\"text\":\"Reading the failing test in payments/idempotency_test.rs\"}]}}'; \
+                  echo '{\"type\":\"assistant\",\"message\":{\"content\":[{\"type\":\"text\",\"text\":\"The webhook handler is not deduping on event id. Adding an idempotency guard.\"}]}}'; \
+                  echo '{\"type\":\"assistant\",\"message\":{\"content\":[{\"type\":\"text\",\"text\":\"Done. Ran the suite: 14 passed.\"}]}}'; \
+                  echo '{\"type\":\"result\",\"total_cost_usd\":0.42,\"usage\":{\"input_tokens\":18400,\"output_tokens\":2100}}'";
+    let plan = regatta_core::backend::LaunchPlan {
+        program: "/bin/sh".into(),
+        args: vec!["-c".into(), script.into()],
+        env: Vec::new(),
+        cwd: std::path::PathBuf::from("/"),
+    };
+    match regatta_supervisor::SessionHandle::spawn(&plan) {
+        Ok(mut h) => {
+            let events = h.collect_events().await;
+            h.shutdown().await;
+            events.iter().map(regatta_core::view::event_line).collect()
+        }
+        Err(_) => Vec::new(),
+    }
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![slugify, dock_view])
+        .invoke_handler(tauri::generate_handler![slugify, dock_view, run_demo_session])
         .run(tauri::generate_context!())
         .expect("error while running Regatta");
 }
