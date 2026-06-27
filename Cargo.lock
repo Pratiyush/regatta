@@ -178,6 +178,7 @@ version = "0.1.0"
 dependencies = [
  "regatta_core",
  "regatta_store",
+ "regatta_supervisor",
 ]
 
 [[package]]

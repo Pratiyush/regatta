@@ -9,3 +9,4 @@ publish = false
 [dependencies]
 regatta_core = { path = "../regatta-core" }
 regatta_store = { path = "../regatta-store" }
+regatta_supervisor = { path = "../regatta-supervisor" }
