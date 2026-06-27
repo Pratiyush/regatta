@@ -1,0 +1,11 @@
+[package]
+name = "regatta_indexer"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+description = "Index ~/.claude/projects transcripts into the flow store for the Resume board."
+publish = false
+
+[dependencies]
+regatta_core = { path = "../regatta-core" }
+regatta_store = { path = "../regatta-store" }

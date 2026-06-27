@@ -173,6 +173,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "regatta_indexer"
+version = "0.1.0"
+dependencies = [
+ "regatta_core",
+ "regatta_store",
+]
+
+[[package]]
 name = "regatta_store"
 version = "0.1.0"
 dependencies = [
