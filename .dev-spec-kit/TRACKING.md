@@ -7,6 +7,7 @@
 | R-LAUNCH-01 | plan a Claude Code session | 3 | 🟢🟢🟢 | done | — |
 | R-RESUME-01 | resume an existing session | 2 | 🟢🟢 | done | — |
 | R-SLUG-01 | slugify a session name | 2 | 🟢🟢 | done | — |
+| R-STORE-02 | persist and search transcripts | 2 | 🟢🟢 | done | — |
 | R-STORE-01 | persist and list sessions | 2 | 🟢🟢 | done | — |
 | R-PARSE-01 | normalize Claude stream-json lines | 3 | 🟢🟢🟢 | done | — |
 | R-SUPERVISOR-01 | terminate the whole process group | 3 | 🟢🟢🟢 | done | — |
