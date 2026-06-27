@@ -108,10 +108,80 @@ async fn run_demo_session() -> Vec<regatta_core::view::EventLine> {
     }
 }
 
+#[derive(Serialize, Clone)]
+struct BoardRow {
+    session_id: String,
+    project: String,
+    title: String,
+    group: String,
+    resume_cmd: String,
+}
+
+/// Index `~/.claude/projects` into `store` — used once at startup and again on Re-index.
+fn index_claude_home(store: &regatta_store::Store) {
+    let home = std::env::var("HOME").unwrap_or_default();
+    let dir = std::path::Path::new(&home).join(".claude/projects");
+    let _ = regatta_indexer::index_dir(store, &dir);
+}
+
+fn now_secs() -> i64 {
+    std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .map(|d| d.as_secs() as i64)
+        .unwrap_or(0)
+}
+
+/// The Resume board: indexed sessions matching `query`, grouped by recency (pure core), each with a
+/// copy-paste `claude --resume <id>` command. Queries the in-memory index built at startup.
+#[tauri::command]
+fn board_list(
+    query: String,
+    store: tauri::State<'_, std::sync::Mutex<regatta_store::Store>>,
+) -> Vec<BoardRow> {
+    let now = now_secs();
+    let Ok(store) = store.lock() else {
+        return Vec::new();
+    };
+    store
+        .board_query(&query)
+        .unwrap_or_default()
+        .into_iter()
+        .take(80)
+        .map(|r| BoardRow {
+            group: regatta_core::board::recency_group(r.last_activity, now).to_string(),
+            resume_cmd: regatta_core::backend::resume_command(&r.session_id),
+            session_id: r.session_id,
+            project: r.project,
+            title: r.title,
+        })
+        .collect()
+}
+
+/// Re-scan `~/.claude/projects` into the in-memory index (the board's Re-index button).
+#[tauri::command]
+fn board_reindex(store: tauri::State<'_, std::sync::Mutex<regatta_store::Store>>) {
+    if let Ok(store) = store.lock() {
+        index_claude_home(&store);
+    }
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![slugify, dock_view, run_demo_session])
+        .setup(|app| {
+            use tauri::Manager;
+            let store = regatta_store::Store::open_in_memory().expect("flow store");
+            index_claude_home(&store); // index the session history once at launch
+            app.manage(std::sync::Mutex::new(store));
+            Ok(())
+        })
+        .invoke_handler(tauri::generate_handler![
+            slugify,
+            dock_view,
+            run_demo_session,
+            board_list,
+            board_reindex
+        ])
         .run(tauri::generate_context!())
         .expect("error while running Regatta");
 }

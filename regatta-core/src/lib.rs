@@ -11,6 +11,7 @@
 
 pub mod attention;
 pub mod backend;
+pub mod board;
 pub mod slug;
 pub mod stream;
 pub mod transcript;
