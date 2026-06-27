@@ -22,6 +22,10 @@ fn index_recursive(store: &Store, dir: &Path, count: &mut usize) -> std::io::Res
         Err(_) => return Ok(()), // missing/unreadable dir → index nothing
     };
     for entry in entries.flatten() {
+        // Don't follow symlinks — a symlink cycle would recurse forever (DoS).
+        if entry.file_type().map(|t| t.is_symlink()).unwrap_or(true) {
+            continue;
+        }
         let path = entry.path();
         if path.is_dir() {
             index_recursive(store, &path, count)?;
@@ -202,5 +206,26 @@ mod tests {
             .unwrap();
         let sessions = reattach(&store).unwrap();
         assert!(sessions.is_empty()); // skipped, no error
+    }
+
+    #[test]
+    fn does_not_follow_symlink_cycles() {
+        let dir = std::env::temp_dir().join(format!("regatta_sym_{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        let sub = dir.join("sub");
+        std::fs::create_dir_all(&sub).unwrap();
+        std::fs::write(
+            sub.join("s.jsonl"),
+            "{\"sessionId\":\"s\",\"cwd\":\"/p/proj\",\"type\":\"user\"}\n",
+        )
+        .unwrap();
+        // a symlink back to the parent would recurse forever if followed
+        #[cfg(unix)]
+        std::os::unix::fs::symlink(&dir, sub.join("loop")).unwrap();
+
+        let store = Store::open_in_memory().unwrap();
+        let n = index_dir(&store, &dir).unwrap(); // must terminate, not loop
+        assert_eq!(n, 1);
+        let _ = std::fs::remove_dir_all(&dir);
     }
 }
