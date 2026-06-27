@@ -9,6 +9,7 @@
 | R-STORE-01 | persist and list sessions | 2 | 🟢🟢 | done | — |
 | R-PARSE-01 | normalize Claude stream-json lines | 3 | 🟢🟢🟢 | done | — |
 | R-SUPERVISOR-01 | terminate the whole process group | 3 | 🟢🟢🟢 | done | — |
+| R-TXMETA-01 | parse Claude transcript session metadata | 2 | 🟢🟢 | done | — |
 | R-VIEW-01 | render an event as a display line | 2 | 🟢🟢 | done | — |
 | R-WIRE-01 | collect normalized events from a session's stdout | 2 | 🟢🟢 | done | — |
 | R-WORKTREE-01 | plan an isolated worktree | 2 | 🟢🟢 | done | — |
