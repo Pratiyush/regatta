@@ -27,9 +27,9 @@ jobs:
       - name: format
         run: cargo fmt --all -- --check
       - name: clippy (deny warnings)
-        run: cargo clippy -p regatta_core --all-features -- -D warnings
-      - name: tests
-        run: cargo nextest run -p regatta_core
+        run: cargo clippy --workspace --all-features -- -D warnings
+      - name: tests (workspace — incl. supervisor integration)
+        run: cargo nextest run
       - name: coverage — 100% on the pure core
         run: cargo llvm-cov -p regatta_core --fail-under-lines 100
       - name: supply-chain (advisories + licenses + bans)

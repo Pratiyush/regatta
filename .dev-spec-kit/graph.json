@@ -272,7 +272,7 @@
       "label": "regatta-core/src/attention.rs",
       "meta": {
         "sourceFile": "regatta-core/src/attention.rs",
-        "community": 8
+        "community": 9
       }
     },
     {
@@ -282,7 +282,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/attention.rs",
         "sourceLocation": "regatta-core/src/attention.rs:6",
-        "community": 8
+        "community": 9
       }
     },
     {
@@ -292,7 +292,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/attention.rs",
         "sourceLocation": "regatta-core/src/attention.rs:19",
-        "community": 8
+        "community": 9
       }
     },
     {
@@ -302,7 +302,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/attention.rs",
         "sourceLocation": "regatta-core/src/attention.rs:35",
-        "community": 8
+        "community": 9
       }
     },
     {
@@ -312,7 +312,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/attention.rs",
         "sourceLocation": "regatta-core/src/attention.rs:48",
-        "community": 9
+        "community": 10
       }
     },
     {
@@ -322,7 +322,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/attention.rs",
         "sourceLocation": "regatta-core/src/attention.rs:53",
-        "community": 9
+        "community": 10
       }
     },
     {
@@ -332,7 +332,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/attention.rs",
         "sourceLocation": "regatta-core/src/attention.rs:61",
-        "community": 9
+        "community": 10
       }
     },
     {
@@ -342,7 +342,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/attention.rs",
         "sourceLocation": "regatta-core/src/attention.rs:68",
-        "community": 9
+        "community": 10
       }
     },
     {
@@ -352,7 +352,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/attention.rs",
         "sourceLocation": "regatta-core/src/attention.rs:81",
-        "community": 9
+        "community": 10
       }
     },
     {
@@ -361,7 +361,7 @@
       "label": "regatta-core/src/backend.rs",
       "meta": {
         "sourceFile": "regatta-core/src/backend.rs",
-        "community": 10
+        "community": 11
       }
     },
     {
@@ -371,7 +371,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/backend.rs",
         "sourceLocation": "regatta-core/src/backend.rs:7",
-        "community": 10
+        "community": 11
       }
     },
     {
@@ -381,7 +381,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/backend.rs",
         "sourceLocation": "regatta-core/src/backend.rs:16",
-        "community": 10
+        "community": 11
       }
     },
     {
@@ -391,7 +391,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/backend.rs",
         "sourceLocation": "regatta-core/src/backend.rs:45",
-        "community": 10
+        "community": 11
       }
     },
     {
@@ -401,7 +401,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/backend.rs",
         "sourceLocation": "regatta-core/src/backend.rs:48",
-        "community": 10
+        "community": 11
       }
     },
     {
@@ -411,7 +411,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/backend.rs",
         "sourceLocation": "regatta-core/src/backend.rs:53",
-        "community": 10
+        "community": 11
       }
     },
     {
@@ -421,7 +421,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/backend.rs",
         "sourceLocation": "regatta-core/src/backend.rs:75",
-        "community": 10
+        "community": 11
       }
     },
     {
@@ -431,7 +431,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/backend.rs",
         "sourceLocation": "regatta-core/src/backend.rs:82",
-        "community": 10
+        "community": 11
       }
     },
     {
@@ -440,7 +440,7 @@
       "label": "regatta-core/src/lib.rs",
       "meta": {
         "sourceFile": "regatta-core/src/lib.rs",
-        "community": 11
+        "community": 8
       }
     },
     {
@@ -450,7 +450,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/lib.rs",
         "sourceLocation": "regatta-core/src/lib.rs:12",
-        "community": 11
+        "community": 8
       }
     },
     {
@@ -460,7 +460,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/lib.rs",
         "sourceLocation": "regatta-core/src/lib.rs:13",
-        "community": 11
+        "community": 8
       }
     },
     {
@@ -470,7 +470,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/lib.rs",
         "sourceLocation": "regatta-core/src/lib.rs:14",
-        "community": 11
+        "community": 8
       }
     },
     {
@@ -480,7 +480,7 @@
       "meta": {
         "sourceFile": "regatta-core/src/lib.rs",
         "sourceLocation": "regatta-core/src/lib.rs:15",
-        "community": 11
+        "community": 8
       }
     },
     {
@@ -612,12 +612,157 @@
       }
     },
     {
+      "id": "file:regatta-supervisor/Cargo.toml",
+      "kind": "codeNode",
+      "label": "regatta-supervisor/Cargo.toml",
+      "meta": {
+        "sourceFile": "regatta-supervisor/Cargo.toml",
+        "community": 14
+      }
+    },
+    {
+      "id": "sym:regatta-supervisor/Cargo.toml#regatta_supervisor",
+      "kind": "codeNode",
+      "label": "regatta_supervisor",
+      "meta": {
+        "sourceFile": "regatta-supervisor/Cargo.toml",
+        "community": 14
+      }
+    },
+    {
+      "id": "dep:regatta-supervisor/Cargo.toml#regatta_core",
+      "kind": "codeNode",
+      "label": "regatta_core",
+      "meta": {
+        "sourceFile": "regatta-supervisor/Cargo.toml",
+        "community": 14
+      }
+    },
+    {
+      "id": "dep:regatta-supervisor/Cargo.toml#tokio",
+      "kind": "codeNode",
+      "label": "tokio",
+      "meta": {
+        "sourceFile": "regatta-supervisor/Cargo.toml",
+        "community": 14
+      }
+    },
+    {
+      "id": "file:regatta-supervisor/src/lib.rs",
+      "kind": "codeNode",
+      "label": "regatta-supervisor/src/lib.rs",
+      "meta": {
+        "sourceFile": "regatta-supervisor/src/lib.rs",
+        "community": 8
+      }
+    },
+    {
+      "id": "sym:regatta-supervisor/src/lib.rs#SessionHandle",
+      "kind": "codeNode",
+      "label": "SessionHandle",
+      "meta": {
+        "sourceFile": "regatta-supervisor/src/lib.rs",
+        "sourceLocation": "regatta-supervisor/src/lib.rs:11",
+        "community": 15
+      }
+    },
+    {
+      "id": "sym:regatta-supervisor/src/lib.rs#SessionHandle.spawn",
+      "kind": "codeNode",
+      "label": "spawn",
+      "meta": {
+        "sourceFile": "regatta-supervisor/src/lib.rs",
+        "sourceLocation": "regatta-supervisor/src/lib.rs:19",
+        "community": 15
+      }
+    },
+    {
+      "id": "sym:regatta-supervisor/src/lib.rs#SessionHandle.pid",
+      "kind": "codeNode",
+      "label": "pid",
+      "meta": {
+        "sourceFile": "regatta-supervisor/src/lib.rs",
+        "sourceLocation": "regatta-supervisor/src/lib.rs:44",
+        "community": 15
+      }
+    },
+    {
+      "id": "sym:regatta-supervisor/src/lib.rs#SessionHandle.shutdown",
+      "kind": "codeNode",
+      "label": "shutdown",
+      "meta": {
+        "sourceFile": "regatta-supervisor/src/lib.rs",
+        "sourceLocation": "regatta-supervisor/src/lib.rs:51",
+        "community": 15
+      }
+    },
+    {
+      "id": "sym:regatta-supervisor/src/lib.rs#SessionHandle.drop",
+      "kind": "codeNode",
+      "label": "drop",
+      "meta": {
+        "sourceFile": "regatta-supervisor/src/lib.rs",
+        "sourceLocation": "regatta-supervisor/src/lib.rs:69",
+        "community": 15
+      }
+    },
+    {
+      "id": "sym:regatta-supervisor/src/lib.rs#tests",
+      "kind": "codeNode",
+      "label": "tests",
+      "meta": {
+        "sourceFile": "regatta-supervisor/src/lib.rs",
+        "sourceLocation": "regatta-supervisor/src/lib.rs:81",
+        "community": 15
+      }
+    },
+    {
+      "id": "sym:regatta-supervisor/src/lib.rs#tests.sh",
+      "kind": "codeNode",
+      "label": "sh",
+      "meta": {
+        "sourceFile": "regatta-supervisor/src/lib.rs",
+        "sourceLocation": "regatta-supervisor/src/lib.rs:86",
+        "community": 15
+      }
+    },
+    {
+      "id": "sym:regatta-supervisor/src/lib.rs#tests.alive",
+      "kind": "codeNode",
+      "label": "alive",
+      "meta": {
+        "sourceFile": "regatta-supervisor/src/lib.rs",
+        "sourceLocation": "regatta-supervisor/src/lib.rs:95",
+        "community": 15
+      }
+    },
+    {
+      "id": "sym:regatta-supervisor/src/lib.rs#tests.shutdown_kills_the_whole_group",
+      "kind": "codeNode",
+      "label": "shutdown_kills_the_whole_group",
+      "meta": {
+        "sourceFile": "regatta-supervisor/src/lib.rs",
+        "sourceLocation": "regatta-supervisor/src/lib.rs:100",
+        "community": 15
+      }
+    },
+    {
+      "id": "sym:regatta-supervisor/src/lib.rs#tests.shutdown_is_safe_when_already_exited",
+      "kind": "codeNode",
+      "label": "shutdown_is_safe_when_already_exited",
+      "meta": {
+        "sourceFile": "regatta-supervisor/src/lib.rs",
+        "sourceLocation": "regatta-supervisor/src/lib.rs:132",
+        "community": 15
+      }
+    },
+    {
       "id": "file:release-please-config.json",
       "kind": "codeNode",
       "label": "release-please-config.json",
       "meta": {
         "sourceFile": "release-please-config.json",
-        "community": 14
+        "community": 16
       }
     },
     {
@@ -626,7 +771,7 @@
       "label": "$schema",
       "meta": {
         "sourceFile": "release-please-config.json",
-        "community": 14
+        "community": 16
       }
     },
     {
@@ -635,7 +780,7 @@
       "label": "include-component-in-tag",
       "meta": {
         "sourceFile": "release-please-config.json",
-        "community": 14
+        "community": 16
       }
     },
     {
@@ -644,7 +789,7 @@
       "label": "packages",
       "meta": {
         "sourceFile": "release-please-config.json",
-        "community": 14
+        "community": 16
       }
     },
     {
@@ -653,7 +798,7 @@
       "label": "rust-toolchain.toml",
       "meta": {
         "sourceFile": "rust-toolchain.toml",
-        "community": 15
+        "community": 17
       }
     },
     {
@@ -662,7 +807,7 @@
       "label": "src/App.tsx",
       "meta": {
         "sourceFile": "src/App.tsx",
-        "community": 16
+        "community": 18
       }
     },
     {
@@ -672,7 +817,7 @@
       "meta": {
         "sourceFile": "src/App.tsx",
         "sourceLocation": "src/App.tsx:4",
-        "community": 16
+        "community": 18
       }
     },
     {
@@ -682,7 +827,7 @@
       "meta": {
         "sourceFile": "src/App.tsx",
         "sourceLocation": "src/App.tsx:9",
-        "community": 16
+        "community": 18
       }
     },
     {
@@ -692,7 +837,7 @@
       "meta": {
         "sourceFile": "src/App.tsx",
         "sourceLocation": "src/App.tsx:18",
-        "community": 16
+        "community": 18
       }
     },
     {
@@ -701,7 +846,7 @@
       "label": "src/index.tsx",
       "meta": {
         "sourceFile": "src/index.tsx",
-        "community": 16
+        "community": 18
       }
     },
     {
@@ -710,7 +855,7 @@
       "label": "src/styles.css",
       "meta": {
         "sourceFile": "src/styles.css",
-        "community": 16
+        "community": 18
       }
     },
     {
@@ -719,7 +864,7 @@
       "label": "src-tauri/Cargo.lock",
       "meta": {
         "sourceFile": "src-tauri/Cargo.lock",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -728,7 +873,7 @@
       "label": "src-tauri/Cargo.toml",
       "meta": {
         "sourceFile": "src-tauri/Cargo.toml",
-        "community": 18
+        "community": 20
       }
     },
     {
@@ -737,7 +882,7 @@
       "label": "regatta",
       "meta": {
         "sourceFile": "src-tauri/Cargo.toml",
-        "community": 18
+        "community": 20
       }
     },
     {
@@ -746,7 +891,7 @@
       "label": "tauri",
       "meta": {
         "sourceFile": "src-tauri/Cargo.toml",
-        "community": 18
+        "community": 20
       }
     },
     {
@@ -755,7 +900,7 @@
       "label": "serde",
       "meta": {
         "sourceFile": "src-tauri/Cargo.toml",
-        "community": 18
+        "community": 20
       }
     },
     {
@@ -764,7 +909,7 @@
       "label": "serde_json",
       "meta": {
         "sourceFile": "src-tauri/Cargo.toml",
-        "community": 18
+        "community": 20
       }
     },
     {
@@ -773,7 +918,7 @@
       "label": "regatta_core",
       "meta": {
         "sourceFile": "src-tauri/Cargo.toml",
-        "community": 18
+        "community": 20
       }
     },
     {
@@ -782,7 +927,7 @@
       "label": "src-tauri/build.rs",
       "meta": {
         "sourceFile": "src-tauri/build.rs",
-        "community": 19
+        "community": 21
       }
     },
     {
@@ -792,7 +937,7 @@
       "meta": {
         "sourceFile": "src-tauri/build.rs",
         "sourceLocation": "src-tauri/build.rs:1",
-        "community": 19
+        "community": 21
       }
     },
     {
@@ -801,7 +946,7 @@
       "label": "src-tauri/capabilities/default.json",
       "meta": {
         "sourceFile": "src-tauri/capabilities/default.json",
-        "community": 20
+        "community": 22
       }
     },
     {
@@ -810,7 +955,7 @@
       "label": "$schema",
       "meta": {
         "sourceFile": "src-tauri/capabilities/default.json",
-        "community": 20
+        "community": 22
       }
     },
     {
@@ -819,7 +964,7 @@
       "label": "identifier",
       "meta": {
         "sourceFile": "src-tauri/capabilities/default.json",
-        "community": 20
+        "community": 22
       }
     },
     {
@@ -828,7 +973,7 @@
       "label": "description",
       "meta": {
         "sourceFile": "src-tauri/capabilities/default.json",
-        "community": 20
+        "community": 22
       }
     },
     {
@@ -837,7 +982,7 @@
       "label": "windows",
       "meta": {
         "sourceFile": "src-tauri/capabilities/default.json",
-        "community": 20
+        "community": 22
       }
     },
     {
@@ -846,7 +991,7 @@
       "label": "permissions",
       "meta": {
         "sourceFile": "src-tauri/capabilities/default.json",
-        "community": 20
+        "community": 22
       }
     },
     {
@@ -855,7 +1000,7 @@
       "label": "src-tauri/gen/schemas/acl-manifests.json",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/acl-manifests.json",
-        "community": 21
+        "community": 23
       }
     },
     {
@@ -864,7 +1009,7 @@
       "label": "core",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/acl-manifests.json",
-        "community": 21
+        "community": 23
       }
     },
     {
@@ -873,7 +1018,7 @@
       "label": "core:app",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/acl-manifests.json",
-        "community": 21
+        "community": 23
       }
     },
     {
@@ -882,7 +1027,7 @@
       "label": "core:event",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/acl-manifests.json",
-        "community": 21
+        "community": 23
       }
     },
     {
@@ -891,7 +1036,7 @@
       "label": "core:image",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/acl-manifests.json",
-        "community": 21
+        "community": 23
       }
     },
     {
@@ -900,7 +1045,7 @@
       "label": "core:menu",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/acl-manifests.json",
-        "community": 21
+        "community": 23
       }
     },
     {
@@ -909,7 +1054,7 @@
       "label": "core:path",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/acl-manifests.json",
-        "community": 21
+        "community": 23
       }
     },
     {
@@ -918,7 +1063,7 @@
       "label": "core:resources",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/acl-manifests.json",
-        "community": 21
+        "community": 23
       }
     },
     {
@@ -927,7 +1072,7 @@
       "label": "core:tray",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/acl-manifests.json",
-        "community": 21
+        "community": 23
       }
     },
     {
@@ -936,7 +1081,7 @@
       "label": "core:webview",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/acl-manifests.json",
-        "community": 21
+        "community": 23
       }
     },
     {
@@ -945,7 +1090,7 @@
       "label": "core:window",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/acl-manifests.json",
-        "community": 21
+        "community": 23
       }
     },
     {
@@ -954,7 +1099,7 @@
       "label": "src-tauri/gen/schemas/capabilities.json",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/capabilities.json",
-        "community": 22
+        "community": 24
       }
     },
     {
@@ -963,7 +1108,7 @@
       "label": "default",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/capabilities.json",
-        "community": 22
+        "community": 24
       }
     },
     {
@@ -972,7 +1117,7 @@
       "label": "src-tauri/gen/schemas/desktop-schema.json",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/desktop-schema.json",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -981,7 +1126,7 @@
       "label": "$schema",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/desktop-schema.json",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -990,7 +1135,7 @@
       "label": "title",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/desktop-schema.json",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -999,7 +1144,7 @@
       "label": "description",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/desktop-schema.json",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -1008,7 +1153,7 @@
       "label": "anyOf",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/desktop-schema.json",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -1017,7 +1162,7 @@
       "label": "definitions",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/desktop-schema.json",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -1026,7 +1171,7 @@
       "label": "src-tauri/gen/schemas/macOS-schema.json",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/macOS-schema.json",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -1035,7 +1180,7 @@
       "label": "$schema",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/macOS-schema.json",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -1044,7 +1189,7 @@
       "label": "title",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/macOS-schema.json",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -1053,7 +1198,7 @@
       "label": "description",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/macOS-schema.json",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -1062,7 +1207,7 @@
       "label": "anyOf",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/macOS-schema.json",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -1071,7 +1216,7 @@
       "label": "definitions",
       "meta": {
         "sourceFile": "src-tauri/gen/schemas/macOS-schema.json",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -1080,7 +1225,7 @@
       "label": "src-tauri/icons/icon.png",
       "meta": {
         "sourceFile": "src-tauri/icons/icon.png",
-        "community": 25
+        "community": 27
       }
     },
     {
@@ -1089,7 +1234,7 @@
       "label": "src-tauri/src/lib.rs",
       "meta": {
         "sourceFile": "src-tauri/src/lib.rs",
-        "community": 8
+        "community": 9
       }
     },
     {
@@ -1109,7 +1254,7 @@
       "meta": {
         "sourceFile": "src-tauri/src/lib.rs",
         "sourceLocation": "src-tauri/src/lib.rs:13",
-        "community": 8
+        "community": 9
       }
     },
     {
@@ -1119,7 +1264,7 @@
       "meta": {
         "sourceFile": "src-tauri/src/lib.rs",
         "sourceLocation": "src-tauri/src/lib.rs:27",
-        "community": 8
+        "community": 9
       }
     },
     {
@@ -1129,7 +1274,7 @@
       "meta": {
         "sourceFile": "src-tauri/src/lib.rs",
         "sourceLocation": "src-tauri/src/lib.rs:33",
-        "community": 8
+        "community": 9
       }
     },
     {
@@ -1139,7 +1284,7 @@
       "meta": {
         "sourceFile": "src-tauri/src/lib.rs",
         "sourceLocation": "src-tauri/src/lib.rs:51",
-        "community": 8
+        "community": 9
       }
     },
     {
@@ -1149,7 +1294,7 @@
       "meta": {
         "sourceFile": "src-tauri/src/lib.rs",
         "sourceLocation": "src-tauri/src/lib.rs:87",
-        "community": 8
+        "community": 9
       }
     },
     {
@@ -1158,7 +1303,7 @@
       "label": "src-tauri/src/main.rs",
       "meta": {
         "sourceFile": "src-tauri/src/main.rs",
-        "community": 8
+        "community": 9
       }
     },
     {
@@ -1168,7 +1313,7 @@
       "meta": {
         "sourceFile": "src-tauri/src/main.rs",
         "sourceLocation": "src-tauri/src/main.rs:4",
-        "community": 8
+        "community": 9
       }
     },
     {
@@ -1177,7 +1322,7 @@
       "label": "src-tauri/tauri.conf.json",
       "meta": {
         "sourceFile": "src-tauri/tauri.conf.json",
-        "community": 26
+        "community": 28
       }
     },
     {
@@ -1186,7 +1331,7 @@
       "label": "$schema",
       "meta": {
         "sourceFile": "src-tauri/tauri.conf.json",
-        "community": 26
+        "community": 28
       }
     },
     {
@@ -1195,7 +1340,7 @@
       "label": "productName",
       "meta": {
         "sourceFile": "src-tauri/tauri.conf.json",
-        "community": 26
+        "community": 28
       }
     },
     {
@@ -1204,7 +1349,7 @@
       "label": "version",
       "meta": {
         "sourceFile": "src-tauri/tauri.conf.json",
-        "community": 26
+        "community": 28
       }
     },
     {
@@ -1213,7 +1358,7 @@
       "label": "identifier",
       "meta": {
         "sourceFile": "src-tauri/tauri.conf.json",
-        "community": 26
+        "community": 28
       }
     },
     {
@@ -1222,7 +1367,7 @@
       "label": "build",
       "meta": {
         "sourceFile": "src-tauri/tauri.conf.json",
-        "community": 26
+        "community": 28
       }
     },
     {
@@ -1231,7 +1376,7 @@
       "label": "app",
       "meta": {
         "sourceFile": "src-tauri/tauri.conf.json",
-        "community": 26
+        "community": 28
       }
     },
     {
@@ -1240,7 +1385,7 @@
       "label": "bundle",
       "meta": {
         "sourceFile": "src-tauri/tauri.conf.json",
-        "community": 26
+        "community": 28
       }
     },
     {
@@ -1249,7 +1394,7 @@
       "label": "tsconfig.json",
       "meta": {
         "sourceFile": "tsconfig.json",
-        "community": 27
+        "community": 29
       }
     },
     {
@@ -1258,7 +1403,7 @@
       "label": "compilerOptions",
       "meta": {
         "sourceFile": "tsconfig.json",
-        "community": 27
+        "community": 29
       }
     },
     {
@@ -1267,7 +1412,7 @@
       "label": "include",
       "meta": {
         "sourceFile": "tsconfig.json",
-        "community": 27
+        "community": 29
       }
     },
     {
@@ -1276,7 +1421,7 @@
       "label": "vite.config.ts",
       "meta": {
         "sourceFile": "vite.config.ts",
-        "community": 28
+        "community": 30
       }
     },
     {
@@ -1451,6 +1596,42 @@
       "id": "R-PARSE-01-AC3",
       "kind": "acceptanceCriterion",
       "label": "The parser consumes untrusted process output, so it SHALL never panic and SHALL drop malformed or unrecognized lines (returning `None`) rather than emit a bogus event."
+    },
+    {
+      "id": "R-SUPERVISOR-01",
+      "kind": "requirement",
+      "label": "terminate the whole process group"
+    },
+    {
+      "id": "R-SUPERVISOR-01-AC1",
+      "kind": "acceptanceCriterion",
+      "label": "WHEN a session is shut down THEN the supervisor SHALL terminate the entire process group — the agent and any child processes it spawned — leaving no surviving process."
+    },
+    {
+      "id": "test:regatta_supervisor::tests::shutdown_kills_the_whole_group",
+      "kind": "test",
+      "label": "regatta_supervisor::tests::shutdown_kills_the_whole_group",
+      "meta": {
+        "kind": "integration"
+      }
+    },
+    {
+      "id": "R-SUPERVISOR-01-AC2",
+      "kind": "acceptanceCriterion",
+      "label": "IF shutdown is called on a session whose process has already exited THEN it SHALL complete safely and idempotently, never panicking."
+    },
+    {
+      "id": "test:regatta_supervisor::tests::shutdown_is_safe_when_already_exited",
+      "kind": "test",
+      "label": "regatta_supervisor::tests::shutdown_is_safe_when_already_exited",
+      "meta": {
+        "kind": "integration"
+      }
+    },
+    {
+      "id": "R-SUPERVISOR-01-AC3",
+      "kind": "acceptanceCriterion",
+      "label": "A leaked or runaway agent process is a resource and trust hazard, so teardown SHALL leave no surviving process in the group — no agent ever outlives its session."
     }
   ],
   "edges": [
@@ -1471,12 +1652,19 @@
     {
       "id": "e3",
       "from": "test:regatta_core::attention::tests::ranks_blocked_sessions",
-      "to": "dep:src-tauri/Cargo.toml#regatta_core",
+      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e4",
+      "from": "test:regatta_core::attention::tests::ranks_blocked_sessions",
+      "to": "dep:src-tauri/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e5",
       "from": "test:regatta_core::attention::tests::ranks_blocked_sessions",
       "to": "R-ATTN-01-AC1",
       "kind": "validates",
@@ -1484,36 +1672,43 @@
       "lastCheck": {
         "ref": "regatta_core::attention::tests::ranks_blocked_sessions",
         "passed": true,
-        "at": "2026-06-27T17:41:03.933Z",
-        "sha": "5d83261d9e4196e16bffac8674376e0f85bcea31",
+        "at": "2026-06-27T17:51:30.985Z",
+        "sha": "c78266e9b17ac4edfc8d962a3b3252ed0b6db303",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
       }
     },
     {
-      "id": "e5",
+      "id": "e6",
       "from": "R-ATTN-01-AC2",
       "to": "R-ATTN-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e6",
+      "id": "e7",
       "from": "test:regatta_core::attention::tests::working_sessions_score_zero",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e7",
+      "id": "e8",
+      "from": "test:regatta_core::attention::tests::working_sessions_score_zero",
+      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e9",
       "from": "test:regatta_core::attention::tests::working_sessions_score_zero",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e8",
+      "id": "e10",
       "from": "test:regatta_core::attention::tests::working_sessions_score_zero",
       "to": "R-ATTN-01-AC2",
       "kind": "validates",
@@ -1521,36 +1716,43 @@
       "lastCheck": {
         "ref": "regatta_core::attention::tests::working_sessions_score_zero",
         "passed": true,
-        "at": "2026-06-27T17:41:04.088Z",
-        "sha": "5d83261d9e4196e16bffac8674376e0f85bcea31",
+        "at": "2026-06-27T17:51:31.144Z",
+        "sha": "c78266e9b17ac4edfc8d962a3b3252ed0b6db303",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
       }
     },
     {
-      "id": "e9",
+      "id": "e11",
       "from": "R-ATTN-02-AC1",
       "to": "R-ATTN-02",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e10",
+      "id": "e12",
       "from": "test:regatta_core::attention::tests::dock_orders_by_urgency",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e11",
+      "id": "e13",
+      "from": "test:regatta_core::attention::tests::dock_orders_by_urgency",
+      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e14",
       "from": "test:regatta_core::attention::tests::dock_orders_by_urgency",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e12",
+      "id": "e15",
       "from": "test:regatta_core::attention::tests::dock_orders_by_urgency",
       "to": "R-ATTN-02-AC1",
       "kind": "validates",
@@ -1558,36 +1760,43 @@
       "lastCheck": {
         "ref": "regatta_core::attention::tests::dock_orders_by_urgency",
         "passed": true,
-        "at": "2026-06-27T17:41:04.238Z",
-        "sha": "5d83261d9e4196e16bffac8674376e0f85bcea31",
+        "at": "2026-06-27T17:51:31.299Z",
+        "sha": "c78266e9b17ac4edfc8d962a3b3252ed0b6db303",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
       }
     },
     {
-      "id": "e13",
+      "id": "e16",
       "from": "R-ATTN-02-AC2",
       "to": "R-ATTN-02",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e14",
+      "id": "e17",
       "from": "test:regatta_core::attention::tests::dock_excludes_working_and_seen",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e15",
+      "id": "e18",
+      "from": "test:regatta_core::attention::tests::dock_excludes_working_and_seen",
+      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e19",
       "from": "test:regatta_core::attention::tests::dock_excludes_working_and_seen",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e16",
+      "id": "e20",
       "from": "test:regatta_core::attention::tests::dock_excludes_working_and_seen",
       "to": "R-ATTN-02-AC2",
       "kind": "validates",
@@ -1595,45 +1804,8 @@
       "lastCheck": {
         "ref": "regatta_core::attention::tests::dock_excludes_working_and_seen",
         "passed": true,
-        "at": "2026-06-27T17:41:04.384Z",
-        "sha": "5d83261d9e4196e16bffac8674376e0f85bcea31",
-        "dirty": true,
-        "kind": "unit",
-        "stack": "rust"
-      }
-    },
-    {
-      "id": "e17",
-      "from": "R-LAUNCH-01-AC1",
-      "to": "R-LAUNCH-01",
-      "kind": "derivedFrom",
-      "proof": "unproven"
-    },
-    {
-      "id": "e18",
-      "from": "test:regatta_core::backend::tests::plans_a_fresh_session",
-      "to": "sym:regatta-core/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e19",
-      "from": "test:regatta_core::backend::tests::plans_a_fresh_session",
-      "to": "dep:src-tauri/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e20",
-      "from": "test:regatta_core::backend::tests::plans_a_fresh_session",
-      "to": "R-LAUNCH-01-AC1",
-      "kind": "validates",
-      "proof": "green",
-      "lastCheck": {
-        "ref": "regatta_core::backend::tests::plans_a_fresh_session",
-        "passed": true,
-        "at": "2026-06-27T17:41:01.549Z",
-        "sha": "5d83261d9e4196e16bffac8674376e0f85bcea31",
+        "at": "2026-06-27T17:51:31.447Z",
+        "sha": "c78266e9b17ac4edfc8d962a3b3252ed0b6db303",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -1641,27 +1813,78 @@
     },
     {
       "id": "e21",
-      "from": "R-LAUNCH-01-AC2",
+      "from": "R-LAUNCH-01-AC1",
       "to": "R-LAUNCH-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e22",
-      "from": "test:regatta_core::backend::tests::plans_a_resume",
+      "from": "test:regatta_core::backend::tests::plans_a_fresh_session",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e23",
+      "from": "test:regatta_core::backend::tests::plans_a_fresh_session",
+      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e24",
+      "from": "test:regatta_core::backend::tests::plans_a_fresh_session",
+      "to": "dep:src-tauri/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e25",
+      "from": "test:regatta_core::backend::tests::plans_a_fresh_session",
+      "to": "R-LAUNCH-01-AC1",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "regatta_core::backend::tests::plans_a_fresh_session",
+        "passed": true,
+        "at": "2026-06-27T17:51:31.598Z",
+        "sha": "c78266e9b17ac4edfc8d962a3b3252ed0b6db303",
+        "dirty": true,
+        "kind": "unit",
+        "stack": "rust"
+      }
+    },
+    {
+      "id": "e26",
+      "from": "R-LAUNCH-01-AC2",
+      "to": "R-LAUNCH-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e27",
+      "from": "test:regatta_core::backend::tests::plans_a_resume",
+      "to": "sym:regatta-core/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e28",
+      "from": "test:regatta_core::backend::tests::plans_a_resume",
+      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e29",
       "from": "test:regatta_core::backend::tests::plans_a_resume",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e24",
+      "id": "e30",
       "from": "test:regatta_core::backend::tests::plans_a_resume",
       "to": "R-LAUNCH-01-AC2",
       "kind": "validates",
@@ -1669,36 +1892,43 @@
       "lastCheck": {
         "ref": "regatta_core::backend::tests::plans_a_resume",
         "passed": true,
-        "at": "2026-06-27T17:41:02.102Z",
-        "sha": "5d83261d9e4196e16bffac8674376e0f85bcea31",
+        "at": "2026-06-27T17:51:31.747Z",
+        "sha": "c78266e9b17ac4edfc8d962a3b3252ed0b6db303",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
       }
     },
     {
-      "id": "e25",
+      "id": "e31",
       "from": "R-LAUNCH-01-AC3",
       "to": "R-LAUNCH-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e26",
+      "id": "e32",
       "from": "test:regatta_core::backend::tests::tags_env_for_reaping",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e27",
+      "id": "e33",
+      "from": "test:regatta_core::backend::tests::tags_env_for_reaping",
+      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e34",
       "from": "test:regatta_core::backend::tests::tags_env_for_reaping",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e28",
+      "id": "e35",
       "from": "test:regatta_core::backend::tests::tags_env_for_reaping",
       "to": "R-LAUNCH-01-AC3",
       "kind": "validates",
@@ -1706,36 +1936,43 @@
       "lastCheck": {
         "ref": "regatta_core::backend::tests::tags_env_for_reaping",
         "passed": true,
-        "at": "2026-06-27T17:41:02.631Z",
-        "sha": "5d83261d9e4196e16bffac8674376e0f85bcea31",
+        "at": "2026-06-27T17:51:31.889Z",
+        "sha": "c78266e9b17ac4edfc8d962a3b3252ed0b6db303",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
       }
     },
     {
-      "id": "e29",
+      "id": "e36",
       "from": "R-SLUG-01-AC1",
       "to": "R-SLUG-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e30",
+      "id": "e37",
       "from": "test:regatta_core::slug::tests::slugifies_a_name",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e31",
+      "id": "e38",
+      "from": "test:regatta_core::slug::tests::slugifies_a_name",
+      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e39",
       "from": "test:regatta_core::slug::tests::slugifies_a_name",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e32",
+      "id": "e40",
       "from": "test:regatta_core::slug::tests::slugifies_a_name",
       "to": "R-SLUG-01-AC1",
       "kind": "validates",
@@ -1750,28 +1987,35 @@
       }
     },
     {
-      "id": "e33",
+      "id": "e41",
       "from": "R-SLUG-01-AC2",
       "to": "R-SLUG-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e34",
+      "id": "e42",
       "from": "test:regatta_core::slug::tests::empty_slug_falls_back",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e35",
+      "id": "e43",
+      "from": "test:regatta_core::slug::tests::empty_slug_falls_back",
+      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e44",
       "from": "test:regatta_core::slug::tests::empty_slug_falls_back",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e36",
+      "id": "e45",
       "from": "test:regatta_core::slug::tests::empty_slug_falls_back",
       "to": "R-SLUG-01-AC2",
       "kind": "validates",
@@ -1786,28 +2030,35 @@
       }
     },
     {
-      "id": "e37",
+      "id": "e46",
       "from": "R-PARSE-01-AC1",
       "to": "R-PARSE-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e38",
+      "id": "e47",
       "from": "test:regatta_core::stream::tests::parses_known_lines",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e39",
+      "id": "e48",
+      "from": "test:regatta_core::stream::tests::parses_known_lines",
+      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e49",
       "from": "test:regatta_core::stream::tests::parses_known_lines",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e40",
+      "id": "e50",
       "from": "test:regatta_core::stream::tests::parses_known_lines",
       "to": "R-PARSE-01-AC1",
       "kind": "validates",
@@ -1815,36 +2066,43 @@
       "lastCheck": {
         "ref": "regatta_core::stream::tests::parses_known_lines",
         "passed": true,
-        "at": "2026-06-27T17:41:04.529Z",
-        "sha": "5d83261d9e4196e16bffac8674376e0f85bcea31",
+        "at": "2026-06-27T17:51:32.033Z",
+        "sha": "c78266e9b17ac4edfc8d962a3b3252ed0b6db303",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
       }
     },
     {
-      "id": "e41",
+      "id": "e51",
       "from": "R-PARSE-01-AC2",
       "to": "R-PARSE-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e42",
+      "id": "e52",
       "from": "test:regatta_core::stream::tests::ignores_malformed_and_unknown",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e43",
+      "id": "e53",
+      "from": "test:regatta_core::stream::tests::ignores_malformed_and_unknown",
+      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e54",
       "from": "test:regatta_core::stream::tests::ignores_malformed_and_unknown",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e44",
+      "id": "e55",
       "from": "test:regatta_core::stream::tests::ignores_malformed_and_unknown",
       "to": "R-PARSE-01-AC2",
       "kind": "validates",
@@ -1852,22 +2110,22 @@
       "lastCheck": {
         "ref": "regatta_core::stream::tests::ignores_malformed_and_unknown",
         "passed": true,
-        "at": "2026-06-27T17:41:04.676Z",
-        "sha": "5d83261d9e4196e16bffac8674376e0f85bcea31",
+        "at": "2026-06-27T17:51:32.179Z",
+        "sha": "c78266e9b17ac4edfc8d962a3b3252ed0b6db303",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
       }
     },
     {
-      "id": "e45",
+      "id": "e56",
       "from": "R-PARSE-01-AC3",
       "to": "R-PARSE-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e46",
+      "id": "e57",
       "from": "test:regatta_core::stream::tests::ignores_malformed_and_unknown",
       "to": "R-PARSE-01-AC3",
       "kind": "validates",
@@ -1875,10 +2133,93 @@
       "lastCheck": {
         "ref": "regatta_core::stream::tests::ignores_malformed_and_unknown",
         "passed": true,
-        "at": "2026-06-27T17:41:04.676Z",
-        "sha": "5d83261d9e4196e16bffac8674376e0f85bcea31",
+        "at": "2026-06-27T17:51:32.179Z",
+        "sha": "c78266e9b17ac4edfc8d962a3b3252ed0b6db303",
         "dirty": true,
         "kind": "unit",
+        "stack": "rust"
+      }
+    },
+    {
+      "id": "e58",
+      "from": "R-SUPERVISOR-01-AC1",
+      "to": "R-SUPERVISOR-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e59",
+      "from": "test:regatta_supervisor::tests::shutdown_kills_the_whole_group",
+      "to": "sym:regatta-supervisor/Cargo.toml#regatta_supervisor",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e60",
+      "from": "test:regatta_supervisor::tests::shutdown_kills_the_whole_group",
+      "to": "R-SUPERVISOR-01-AC1",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "regatta_supervisor::tests::shutdown_kills_the_whole_group",
+        "passed": true,
+        "at": "2026-06-27T17:51:28.709Z",
+        "sha": "c78266e9b17ac4edfc8d962a3b3252ed0b6db303",
+        "dirty": true,
+        "kind": "integration",
+        "stack": "rust"
+      }
+    },
+    {
+      "id": "e61",
+      "from": "R-SUPERVISOR-01-AC2",
+      "to": "R-SUPERVISOR-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e62",
+      "from": "test:regatta_supervisor::tests::shutdown_is_safe_when_already_exited",
+      "to": "sym:regatta-supervisor/Cargo.toml#regatta_supervisor",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e63",
+      "from": "test:regatta_supervisor::tests::shutdown_is_safe_when_already_exited",
+      "to": "R-SUPERVISOR-01-AC2",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "regatta_supervisor::tests::shutdown_is_safe_when_already_exited",
+        "passed": true,
+        "at": "2026-06-27T17:51:29.380Z",
+        "sha": "c78266e9b17ac4edfc8d962a3b3252ed0b6db303",
+        "dirty": true,
+        "kind": "integration",
+        "stack": "rust"
+      }
+    },
+    {
+      "id": "e64",
+      "from": "R-SUPERVISOR-01-AC3",
+      "to": "R-SUPERVISOR-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e65",
+      "from": "test:regatta_supervisor::tests::shutdown_kills_the_whole_group",
+      "to": "R-SUPERVISOR-01-AC3",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "regatta_supervisor::tests::shutdown_kills_the_whole_group",
+        "passed": true,
+        "at": "2026-06-27T17:51:28.709Z",
+        "sha": "c78266e9b17ac4edfc8d962a3b3252ed0b6db303",
+        "dirty": true,
+        "kind": "integration",
         "stack": "rust"
       }
     }
