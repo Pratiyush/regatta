@@ -6,6 +6,7 @@
 | R-ATTN-02 | order the Attention Dock | 2 | 🟢🟢 | done | — |
 | R-LAUNCH-01 | plan a Claude Code session | 3 | 🟢🟢🟢 | done | — |
 | R-INDEX-01 | index a transcript directory | 2 | 🟢🟢 | done | — |
+| R-REATTACH-01 | reattach persisted sessions | 2 | 🟢🟢 | done | — |
 | R-RESUME-01 | resume an existing session | 2 | 🟢🟢 | done | — |
 | R-SLUG-01 | slugify a session name | 2 | 🟢🟢 | done | — |
 | R-STORE-02 | persist and search transcripts | 2 | 🟢🟢 | done | — |

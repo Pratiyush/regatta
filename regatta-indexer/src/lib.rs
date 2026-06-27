@@ -1,8 +1,10 @@
 //! Index Claude transcript files (`~/.claude/projects/**/*.jsonl`) into the flow store so the
 //! Resume board can list every past session — reading only each file's head, never the whole 44 MB.
 
+use regatta_core::stream::NormalizedEvent;
 use regatta_core::transcript::{parse_session_meta, SessionMeta};
 use regatta_store::{Store, TranscriptRow};
+use regatta_supervisor::tail_transcript;
 use std::io::Read;
 use std::path::Path;
 
@@ -78,6 +80,36 @@ fn title_for(meta: &SessionMeta) -> String {
     }
 }
 
+/// A session restored on startup: its id/project + the events replayed from its transcript.
+#[derive(Debug, Clone, PartialEq)]
+pub struct ReattachedSession {
+    pub session_id: String,
+    pub project: String,
+    pub events: Vec<NormalizedEvent>,
+}
+
+/// Reattach all indexed sessions: tail each transcript from its saved offset and advance the offset,
+/// so a later reattach with no new data returns nothing. Missing transcript files are skipped.
+pub fn reattach(store: &Store) -> std::io::Result<Vec<ReattachedSession>> {
+    let rows = store.board_query("").map_err(std::io::Error::other)?;
+    let mut out = Vec::new();
+    for row in rows {
+        if let Ok((events, new_offset)) =
+            tail_transcript(Path::new(&row.file_path), row.last_offset as u64)
+        {
+            let mut updated = row.clone();
+            updated.last_offset = new_offset as i64;
+            let _ = store.upsert_transcript(&updated);
+            out.push(ReattachedSession {
+                session_id: row.session_id,
+                project: row.project,
+                events,
+            });
+        }
+    }
+    Ok(out)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -115,5 +147,60 @@ mod tests {
         let store = Store::open_in_memory().unwrap();
         let n = index_dir(&store, Path::new("/no/such/regatta/dir/xyz")).unwrap();
         assert_eq!(n, 0);
+    }
+
+    #[test]
+    fn reattaches_and_advances_offset() {
+        let dir = std::env::temp_dir().join(format!("regatta_re_{}", std::process::id()));
+        std::fs::create_dir_all(&dir).unwrap();
+        let file = dir.join("s.jsonl");
+        std::fs::write(
+            &file,
+            "{\"type\":\"system\",\"subtype\":\"init\",\"sessionId\":\"s\",\"cwd\":\"/p/proj\",\"model\":\"m\"}\n\
+             {\"type\":\"assistant\",\"message\":{\"content\":[{\"type\":\"text\",\"text\":\"hi\"}]}}\n",
+        )
+        .unwrap();
+        let store = Store::open_in_memory().unwrap();
+        index_dir(&store, &dir).unwrap();
+
+        let first = reattach(&store).unwrap();
+        assert_eq!(first.len(), 1);
+        assert_eq!(first[0].session_id, "s");
+        assert_eq!(first[0].events.len(), 2); // SessionStarted + AssistantText
+
+        let again = reattach(&store).unwrap();
+        assert_eq!(again[0].events.len(), 0); // offset at EOF — nothing new
+
+        use std::io::Write;
+        let mut f = std::fs::OpenOptions::new()
+            .append(true)
+            .open(&file)
+            .unwrap();
+        writeln!(
+            f,
+            "{{\"type\":\"result\",\"total_cost_usd\":0.1,\"usage\":{{}}}}"
+        )
+        .unwrap();
+        drop(f);
+        let third = reattach(&store).unwrap();
+        assert_eq!(third[0].events.len(), 1); // only the appended line
+        let _ = std::fs::remove_dir_all(&dir);
+    }
+
+    #[test]
+    fn skips_a_missing_transcript() {
+        let store = Store::open_in_memory().unwrap();
+        store
+            .upsert_transcript(&TranscriptRow {
+                session_id: "gone".into(),
+                file_path: "/no/such/regatta/file.jsonl".into(),
+                last_offset: 0,
+                project: "p".into(),
+                title: "t".into(),
+                last_activity: 1,
+            })
+            .unwrap();
+        let sessions = reattach(&store).unwrap();
+        assert!(sessions.is_empty()); // skipped, no error
     }
 }
