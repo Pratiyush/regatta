@@ -5,6 +5,7 @@
 | R-ATTN-01 | rank sessions that need the human | 2 | 🟢🟢 | done | — |
 | R-ATTN-02 | order the Attention Dock | 2 | 🟢🟢 | done | — |
 | R-LAUNCH-01 | plan a Claude Code session | 3 | 🟢🟢🟢 | done | — |
+| R-RESUME-01 | resume an existing session | 2 | 🟢🟢 | done | — |
 | R-SLUG-01 | slugify a session name | 2 | 🟢🟢 | done | — |
 | R-STORE-01 | persist and list sessions | 2 | 🟢🟢 | done | — |
 | R-PARSE-01 | normalize Claude stream-json lines | 3 | 🟢🟢🟢 | done | — |

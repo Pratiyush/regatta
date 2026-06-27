@@ -41,6 +41,16 @@ pub fn plan_claude_launch(model: &str, session_id: &str, cwd: &str, resume: bool
     }
 }
 
+/// Plan a launch that resumes an existing session (attaches via `--resume`).
+pub fn plan_resume(model: &str, session_id: &str, cwd: &str) -> LaunchPlan {
+    plan_claude_launch(model, session_id, cwd, true)
+}
+
+/// The shell command to resume a session in a terminal — the Resume board's Copy button.
+pub fn resume_command(session_id: &str) -> String {
+    format!("claude --resume {session_id}")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -85,5 +95,17 @@ mod tests {
             .env
             .iter()
             .any(|(k, v)| k == "REGATTA_SESSION_ID" && v == "sid-1"));
+    }
+
+    #[test]
+    fn plans_a_resume_and_command() {
+        let p = plan_resume("claude-opus-4-8", "sid-7", "/repo");
+        assert!(p.args.windows(2).any(|w| w == ["--resume", "sid-7"]));
+        assert_eq!(resume_command("sid-7"), "claude --resume sid-7");
+    }
+
+    #[test]
+    fn resume_command_handles_empty_id() {
+        assert_eq!(resume_command(""), "claude --resume ");
     }
 }
