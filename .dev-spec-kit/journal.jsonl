@@ -923,3 +923,4 @@
 {"at":"2026-06-28T05:53:17.267Z","type":"check.run","data":{"taskId":"R-WORKTREE-01","result":{"ref":"regatta_core::worktree::tests::plans_a_unique_worktree","passed":true,"at":"2026-06-28T05:53:17.248Z","sha":"32f3a69c49a1f2c72fb77d079f50819f334f9543","dirty":true,"kind":"unit","stack":"rust"}}}
 {"at":"2026-06-28T05:53:17.428Z","type":"check.run","data":{"taskId":"R-WORKTREE-01","result":{"ref":"regatta_core::worktree::tests::handles_a_short_uuid","passed":true,"at":"2026-06-28T05:53:17.406Z","sha":"32f3a69c49a1f2c72fb77d079f50819f334f9543","dirty":true,"kind":"unit","stack":"rust"}}}
 {"at":"2026-06-28T05:53:17.804Z","type":"cli.run","data":{"command":"gate","args":[]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-28T05:57:01.726Z","type":"cli.run","data":{"command":"gate","args":[]},"meta":{"actor":"Pratiyush"}}
