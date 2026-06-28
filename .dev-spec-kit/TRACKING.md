@@ -22,6 +22,7 @@
 | R-DIFF-01 | parse git diff --numstat | 2 | 🟢🟢 | done | — |
 | R-GITREAD-01 | read a repo's status and diffstat | 2 | 🟢🟢 | done | — |
 | R-GITSTATUS-01 | parse git status --porcelain | 2 | 🟢🟢 | done | — |
+| R-GOLIVE-01 | a Claude session runs live through the pipeline | 1 | 🟢 | done | — |
 | R-INDEX-01 | index a transcript directory | 2 | 🟢🟢 | done | — |
 | R-LAYOUT-01 | grid layout and pane assignment | 2 | 🟢🟢 | done | — |
 | R-LIVE-LAUNCH-01 | pump a live session into the registry | 1 | 🟢 | done | — |

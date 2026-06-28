@@ -353,4 +353,26 @@ mod tests {
         assert_eq!(rt.last_text, "hi");
         assert_eq!(rt.turns, 1);
     }
+
+    #[tokio::test]
+    async fn claude_session_runs_live_through_the_pipeline() {
+        use regatta_core::runtime::Registry;
+        // a fake `claude -p` emitting real Claude stream-json: init → assistant → result
+        let claude = "echo '{\"type\":\"system\",\"subtype\":\"init\",\"model\":\"claude-opus-4-8\"}'; \
+                      echo '{\"type\":\"assistant\",\"message\":{\"content\":[{\"type\":\"text\",\"text\":\"editing oauth.ts\"}]}}'; \
+                      echo '{\"type\":\"result\",\"total_cost_usd\":0.37,\"usage\":{\"input_tokens\":1200,\"output_tokens\":340}}'";
+        let mut h = SessionHandle::spawn(&sh(claude)).expect("spawn");
+        let pid = h.pid().unwrap() as i32;
+        let mut reg = Registry::default();
+        h.pump_events_with(Backend::Claude, |ev| reg.apply("live-claude", &ev))
+            .await;
+        h.shutdown().await;
+        let rt = reg.get("live-claude").expect("session in the registry");
+        assert_eq!(rt.model, "claude-opus-4-8");
+        assert_eq!(rt.last_text, "editing oauth.ts");
+        assert!((rt.cost_usd - 0.37).abs() < 1e-9); // authoritative total_cost_usd
+        assert_eq!(rt.turns, 1);
+        tokio::time::sleep(Duration::from_millis(150)).await;
+        assert!(!alive(pid), "the lived session is reaped on teardown");
+    }
 }
