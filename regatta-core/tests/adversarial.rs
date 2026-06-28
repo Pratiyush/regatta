@@ -5,6 +5,7 @@
 use regatta_core::board::recency_group;
 use regatta_core::budget::{budget_status, should_pause, Budget, BudgetAction};
 use regatta_core::cost::{budget_pct, burn_rate, effective_cost, price_tokens, time_to_ceiling};
+use regatta_core::git::{parse_numstat, parse_status, summarize_diff, DiffStat};
 use regatta_core::slug::slugify;
 use regatta_core::stream::parse_claude_line;
 use regatta_core::transcript::parse_session_meta;
@@ -188,4 +189,40 @@ fn cost_and_budget_math_never_panics_on_extremes() {
             cache_create: big,
         },
     );
+}
+
+/// git output is parsed from disk; a hostile or huge repo could feed malformed or enormous data —
+/// the parsers must never panic, and summarizing a giant diff must not overflow u64.
+#[test]
+fn git_parsers_and_summary_never_panic() {
+    let huge = "x".repeat(1_000_000);
+    let payloads = [
+        String::new(),
+        " M ../../etc/passwd\n".to_string(), // traversal path (data only — never an FS op)
+        "?? a\0b\n".to_string(),             // null byte in path
+        "R  a -> b -> c\n".to_string(),      // odd rename
+        format!(" M {huge}\n"),              // 1 MB path
+        "garbage with no structure".to_string(),
+        format!("999999999\t1\t{huge}\n"), // numstat with a huge path
+        "-\t-\tbin\n".to_string(),
+        "\u{1}\u{2}\t\u{3}\tx\n".to_string(), // control chars
+    ];
+    for p in &payloads {
+        let _ = parse_status(p);
+        let _ = parse_numstat(p);
+    }
+    // summarizing enormous per-file counts must saturate, not overflow into a panic
+    let maxed = vec![
+        DiffStat {
+            path: "a".into(),
+            added: Some(u64::MAX),
+            removed: Some(u64::MAX),
+        },
+        DiffStat {
+            path: "b".into(),
+            added: Some(u64::MAX),
+            removed: Some(u64::MAX),
+        },
+    ];
+    assert_eq!(summarize_diff(&maxed), (u64::MAX, u64::MAX));
 }
