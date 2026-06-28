@@ -9,6 +9,7 @@
 | R-BOARD-01 | group sessions by recency | 2 | 🟢🟢 | done | — |
 | R-BUDGET-01 | classify spend and decide auto-pause | 2 | 🟢🟢 | done | — |
 | R-BURN-01 | burn rate and time-to-ceiling | 2 | 🟢🟢 | done | — |
+| R-CONFIGSTORE-01 | persist config layers by scope | 2 | 🟢🟢 | done | — |
 | R-CONFIG-01 | resolve layered config | 2 | 🟢🟢 | done | — |
 | R-COSTSTORE-01 | record and roll up cost | 2 | 🟢🟢 | done | — |
 | R-COST-01 | price token usage and pick the effective cost | 2 | 🟢🟢 | done | — |
