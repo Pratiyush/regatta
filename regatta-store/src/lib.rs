@@ -23,12 +23,26 @@ pub struct TranscriptRow {
     pub last_activity: i64,
 }
 
+/// One recorded cost event — a session's usage turn priced in USD.
+#[derive(Debug, Clone, PartialEq)]
+pub struct CostEvent {
+    pub session_id: String,
+    pub project: String,
+    pub model: String,
+    pub ts: i64,
+    pub cost_usd: f64,
+}
+
 const SCHEMA: &str = "CREATE TABLE IF NOT EXISTS sessions (\
     id TEXT PRIMARY KEY, project TEXT NOT NULL, name TEXT NOT NULL, status TEXT NOT NULL);\
     CREATE TABLE IF NOT EXISTS transcript_index (\
     session_id TEXT PRIMARY KEY, file_path TEXT NOT NULL, last_offset INTEGER NOT NULL, \
     project TEXT NOT NULL, title TEXT NOT NULL, last_activity INTEGER NOT NULL);\
-    CREATE INDEX IF NOT EXISTS idx_transcript_activity ON transcript_index(project, last_activity DESC);";
+    CREATE INDEX IF NOT EXISTS idx_transcript_activity ON transcript_index(project, last_activity DESC);\
+    CREATE TABLE IF NOT EXISTS cost_events (\
+    id INTEGER PRIMARY KEY AUTOINCREMENT, session_id TEXT NOT NULL, project TEXT NOT NULL, \
+    model TEXT NOT NULL, ts INTEGER NOT NULL, cost_usd REAL NOT NULL);\
+    CREATE INDEX IF NOT EXISTS idx_cost_ts ON cost_events(ts);";
 
 /// A handle to the flow store.
 pub struct Store {
@@ -105,6 +119,42 @@ impl Store {
                 last_activity: r.get(5)?,
             })
         })?;
+        rows.collect()
+    }
+
+    /// Record a priced usage event.
+    pub fn record_cost(&self, e: &CostEvent) -> rusqlite::Result<()> {
+        self.conn.execute(
+            "INSERT INTO cost_events (session_id, project, model, ts, cost_usd) VALUES (?1, ?2, ?3, ?4, ?5)",
+            params![e.session_id, e.project, e.model, e.ts, e.cost_usd],
+        )?;
+        Ok(())
+    }
+
+    /// Total spend across all recorded cost events.
+    pub fn total_spend(&self) -> rusqlite::Result<f64> {
+        self.conn.query_row(
+            "SELECT COALESCE(SUM(cost_usd), 0.0) FROM cost_events",
+            [],
+            |r| r.get(0),
+        )
+    }
+
+    /// Spend since a unix-second timestamp (inclusive).
+    pub fn spend_since(&self, ts: i64) -> rusqlite::Result<f64> {
+        self.conn.query_row(
+            "SELECT COALESCE(SUM(cost_usd), 0.0) FROM cost_events WHERE ts >= ?1",
+            params![ts],
+            |r| r.get(0),
+        )
+    }
+
+    /// Spend grouped by project, most-spent first.
+    pub fn spend_by_project(&self) -> rusqlite::Result<Vec<(String, f64)>> {
+        let mut stmt = self.conn.prepare(
+            "SELECT project, SUM(cost_usd) FROM cost_events GROUP BY project ORDER BY SUM(cost_usd) DESC",
+        )?;
+        let rows = stmt.query_map([], |r| Ok((r.get(0)?, r.get(1)?)))?;
         rows.collect()
     }
 }
@@ -198,5 +248,36 @@ mod tests {
             1,
             "transcript_index must survive the injection attempt"
         );
+    }
+
+    fn ce(session: &str, project: &str, cost: f64, ts: i64) -> CostEvent {
+        CostEvent {
+            session_id: session.into(),
+            project: project.into(),
+            model: "opus".into(),
+            ts,
+            cost_usd: cost,
+        }
+    }
+
+    #[test]
+    fn records_and_rolls_up_cost() {
+        let s = Store::open_in_memory().unwrap();
+        s.record_cost(&ce("a", "payments", 1.50, 100)).unwrap();
+        s.record_cost(&ce("b", "payments", 0.50, 200)).unwrap();
+        s.record_cost(&ce("c", "book", 3.00, 300)).unwrap();
+        assert!((s.total_spend().unwrap() - 5.0).abs() < 1e-9);
+        let by = s.spend_by_project().unwrap();
+        assert_eq!(by[0], ("book".to_string(), 3.0)); // most-spent first
+        assert_eq!(by[1], ("payments".to_string(), 2.0));
+        assert!((s.spend_since(250).unwrap() - 3.0).abs() < 1e-9); // only the ts=300 event
+    }
+
+    #[test]
+    fn empty_cost_rollups_are_zero() {
+        let s = Store::open_in_memory().unwrap();
+        assert_eq!(s.total_spend().unwrap(), 0.0);
+        assert!(s.spend_by_project().unwrap().is_empty());
+        assert_eq!(s.spend_since(0).unwrap(), 0.0);
     }
 }
