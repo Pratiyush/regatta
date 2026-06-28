@@ -14,6 +14,7 @@ pub mod backend;
 pub mod board;
 pub mod budget;
 pub mod cost;
+pub mod git;
 pub mod slug;
 pub mod stream;
 pub mod transcript;

@@ -11,6 +11,7 @@
 | R-BURN-01 | burn rate and time-to-ceiling | 2 | 🟢🟢 | done | — |
 | R-COSTSTORE-01 | record and roll up cost | 2 | 🟢🟢 | done | — |
 | R-COST-01 | price token usage and pick the effective cost | 2 | 🟢🟢 | done | — |
+| R-GITSTATUS-01 | parse git status --porcelain | 2 | 🟢🟢 | done | — |
 | R-INDEX-01 | index a transcript directory | 2 | 🟢🟢 | done | — |
 | R-REATTACH-01 | reattach persisted sessions | 2 | 🟢🟢 | done | — |
 | R-RESUME-01 | resume an existing session | 2 | 🟢🟢 | done | — |
