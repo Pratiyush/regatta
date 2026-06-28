@@ -2398,7 +2398,7 @@ dependencies = [
 
 [[package]]
 name = "regatta"
-version = "0.3.0"
+version = "0.5.0"
 dependencies = [
  "regatta_core",
  "regatta_indexer",
@@ -2412,7 +2412,7 @@ dependencies = [
 
 [[package]]
 name = "regatta_core"
-version = "0.4.0"
+version = "0.5.0"
 dependencies = [
  "serde",
  "serde_json",
