@@ -37,6 +37,42 @@ fn parse_status_line(line: &str) -> Option<FileChange> {
     Some(FileChange { path, status })
 }
 
+/// One file's line counts from `git diff --numstat`. `None` means a binary file.
+#[derive(Debug, Clone, PartialEq)]
+pub struct DiffStat {
+    pub path: String,
+    pub added: Option<u64>,
+    pub removed: Option<u64>,
+}
+
+/// Parse `git diff --numstat` into per-file added/removed counts (binary files → None counts).
+pub fn parse_numstat(out: &str) -> Vec<DiffStat> {
+    out.lines().filter_map(parse_numstat_line).collect()
+}
+
+fn parse_numstat_line(line: &str) -> Option<DiffStat> {
+    let parts: Vec<&str> = line.splitn(3, '\t').collect();
+    if parts.len() < 3 {
+        return None;
+    }
+    let path = parts[2].trim();
+    if path.is_empty() {
+        return None;
+    }
+    let parse = |s: &str| {
+        if s == "-" {
+            None
+        } else {
+            s.parse::<u64>().ok()
+        }
+    };
+    Some(DiffStat {
+        path: path.to_string(),
+        added: parse(parts[0]),
+        removed: parse(parts[1]),
+    })
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -75,5 +111,37 @@ mod tests {
     fn skips_blank_and_pathless_lines() {
         assert!(parse_status("").is_empty());
         assert!(parse_status("MM   \n").is_empty()); // status code but empty path
+    }
+
+    #[test]
+    fn parses_git_numstat() {
+        let out = "10\t5\tsrc/a.rs\n-\t-\timg.png\n0\t3\tgone.rs\ngarbage\n1\t2\t  \n";
+        assert_eq!(
+            parse_numstat(out),
+            vec![
+                DiffStat {
+                    path: "src/a.rs".into(),
+                    added: Some(10),
+                    removed: Some(5)
+                },
+                DiffStat {
+                    path: "img.png".into(),
+                    added: None,
+                    removed: None
+                },
+                DiffStat {
+                    path: "gone.rs".into(),
+                    added: Some(0),
+                    removed: Some(3)
+                },
+            ]
+        );
+    }
+
+    #[test]
+    fn numstat_skips_malformed_lines() {
+        assert!(parse_numstat("").is_empty());
+        assert!(parse_numstat("nope\n").is_empty()); // no tabs
+        assert!(parse_numstat("1\t2\t\n").is_empty()); // empty path
     }
 }
