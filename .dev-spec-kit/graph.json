@@ -755,12 +755,22 @@
       }
     },
     {
+      "id": "sym:regatta-core/src/backend.rs#Backend.from_label",
+      "kind": "codeNode",
+      "label": "from_label",
+      "meta": {
+        "sourceFile": "regatta-core/src/backend.rs",
+        "sourceLocation": "regatta-core/src/backend.rs:104",
+        "community": 19
+      }
+    },
+    {
       "id": "sym:regatta-core/src/backend.rs#Backend.plan_launch",
       "kind": "codeNode",
       "label": "plan_launch",
       "meta": {
         "sourceFile": "regatta-core/src/backend.rs",
-        "sourceLocation": "regatta-core/src/backend.rs:104",
+        "sourceLocation": "regatta-core/src/backend.rs:113",
         "community": 17
       }
     },
@@ -770,7 +780,7 @@
       "label": "parse_line",
       "meta": {
         "sourceFile": "regatta-core/src/backend.rs",
-        "sourceLocation": "regatta-core/src/backend.rs:112",
+        "sourceLocation": "regatta-core/src/backend.rs:121",
         "community": 19
       }
     },
@@ -780,7 +790,7 @@
       "label": "tests",
       "meta": {
         "sourceFile": "regatta-core/src/backend.rs",
-        "sourceLocation": "regatta-core/src/backend.rs:121",
+        "sourceLocation": "regatta-core/src/backend.rs:130",
         "community": 17
       }
     },
@@ -790,7 +800,7 @@
       "label": "fresh",
       "meta": {
         "sourceFile": "regatta-core/src/backend.rs",
-        "sourceLocation": "regatta-core/src/backend.rs:124",
+        "sourceLocation": "regatta-core/src/backend.rs:133",
         "community": 17
       }
     },
@@ -800,7 +810,7 @@
       "label": "plans_a_fresh_session",
       "meta": {
         "sourceFile": "regatta-core/src/backend.rs",
-        "sourceLocation": "regatta-core/src/backend.rs:129",
+        "sourceLocation": "regatta-core/src/backend.rs:138",
         "community": 17
       }
     },
@@ -810,7 +820,7 @@
       "label": "plans_a_resume",
       "meta": {
         "sourceFile": "regatta-core/src/backend.rs",
-        "sourceLocation": "regatta-core/src/backend.rs:151",
+        "sourceLocation": "regatta-core/src/backend.rs:160",
         "community": 17
       }
     },
@@ -820,7 +830,7 @@
       "label": "tags_env_for_reaping",
       "meta": {
         "sourceFile": "regatta-core/src/backend.rs",
-        "sourceLocation": "regatta-core/src/backend.rs:158",
+        "sourceLocation": "regatta-core/src/backend.rs:167",
         "community": 17
       }
     },
@@ -830,7 +840,7 @@
       "label": "plans_a_resume_and_command",
       "meta": {
         "sourceFile": "regatta-core/src/backend.rs",
-        "sourceLocation": "regatta-core/src/backend.rs:167",
+        "sourceLocation": "regatta-core/src/backend.rs:176",
         "community": 17
       }
     },
@@ -840,7 +850,7 @@
       "label": "resume_command_handles_empty_id",
       "meta": {
         "sourceFile": "regatta-core/src/backend.rs",
-        "sourceLocation": "regatta-core/src/backend.rs:174",
+        "sourceLocation": "regatta-core/src/backend.rs:183",
         "community": 17
       }
     },
@@ -850,7 +860,7 @@
       "label": "with_env_merges_overriding_existing",
       "meta": {
         "sourceFile": "regatta-core/src/backend.rs",
-        "sourceLocation": "regatta-core/src/backend.rs:179",
+        "sourceLocation": "regatta-core/src/backend.rs:188",
         "community": 17
       }
     },
@@ -860,7 +870,7 @@
       "label": "with_env_empty_is_unchanged",
       "meta": {
         "sourceFile": "regatta-core/src/backend.rs",
-        "sourceLocation": "regatta-core/src/backend.rs:210",
+        "sourceLocation": "regatta-core/src/backend.rs:219",
         "community": 17
       }
     },
@@ -870,7 +880,7 @@
       "label": "plans_a_codex_session",
       "meta": {
         "sourceFile": "regatta-core/src/backend.rs",
-        "sourceLocation": "regatta-core/src/backend.rs:217",
+        "sourceLocation": "regatta-core/src/backend.rs:226",
         "community": 17
       }
     },
@@ -880,7 +890,7 @@
       "label": "plans_a_codex_resume",
       "meta": {
         "sourceFile": "regatta-core/src/backend.rs",
-        "sourceLocation": "regatta-core/src/backend.rs:232",
+        "sourceLocation": "regatta-core/src/backend.rs:241",
         "community": 17
       }
     },
@@ -890,7 +900,7 @@
       "label": "backend_dispatches_label_and_launch",
       "meta": {
         "sourceFile": "regatta-core/src/backend.rs",
-        "sourceLocation": "regatta-core/src/backend.rs:238",
+        "sourceLocation": "regatta-core/src/backend.rs:247",
         "community": 17
       }
     },
@@ -900,7 +910,17 @@
       "label": "backend_parses_its_own_format",
       "meta": {
         "sourceFile": "regatta-core/src/backend.rs",
-        "sourceLocation": "regatta-core/src/backend.rs:253",
+        "sourceLocation": "regatta-core/src/backend.rs:262",
+        "community": 17
+      }
+    },
+    {
+      "id": "sym:regatta-core/src/backend.rs#tests.backend_from_label_roundtrips",
+      "kind": "codeNode",
+      "label": "backend_from_label_roundtrips",
+      "meta": {
+        "sourceFile": "regatta-core/src/backend.rs",
+        "sourceLocation": "regatta-core/src/backend.rs:280",
         "community": 17
       }
     },
@@ -4356,6 +4376,24 @@
       }
     },
     {
+      "id": "R-BADGE-01",
+      "kind": "requirement",
+      "label": "parse a backend label"
+    },
+    {
+      "id": "R-BADGE-01-AC1",
+      "kind": "acceptanceCriterion",
+      "label": "WHEN parsing a backend label THEN the system SHALL map \"Claude\" / \"Codex\" to a `Backend` (round-tripping with `label()`); an unknown label returns None."
+    },
+    {
+      "id": "test:regatta_core::backend::tests::backend_from_label_roundtrips",
+      "kind": "test",
+      "label": "regatta_core::backend::tests::backend_from_label_roundtrips",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
       "id": "R-BOARD-01",
       "kind": "requirement",
       "label": "group sessions by recency"
@@ -5415,8 +5453,8 @@
       "lastCheck": {
         "ref": "regatta_core::backend::tests::with_env_merges_overriding_existing",
         "passed": true,
-        "at": "2026-06-28T08:31:34.377Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:02.789Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -5473,8 +5511,8 @@
       "lastCheck": {
         "ref": "regatta_core::backend::tests::with_env_empty_is_unchanged",
         "passed": true,
-        "at": "2026-06-28T08:31:34.610Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:02.962Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -5531,8 +5569,8 @@
       "lastCheck": {
         "ref": "regatta_core::attention::tests::ranks_blocked_sessions",
         "passed": true,
-        "at": "2026-06-28T08:31:34.806Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:03.140Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -5589,8 +5627,8 @@
       "lastCheck": {
         "ref": "regatta_core::attention::tests::working_sessions_score_zero",
         "passed": true,
-        "at": "2026-06-28T08:31:34.976Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:03.315Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -5647,8 +5685,8 @@
       "lastCheck": {
         "ref": "regatta_core::attention::tests::dock_orders_by_urgency",
         "passed": true,
-        "at": "2026-06-28T08:31:35.167Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:03.482Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -5705,8 +5743,8 @@
       "lastCheck": {
         "ref": "regatta_core::attention::tests::dock_excludes_working_and_seen",
         "passed": true,
-        "at": "2026-06-28T08:31:35.345Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:03.652Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -5749,8 +5787,8 @@
       "lastCheck": {
         "ref": "regatta_supervisor::tests::autopauses_when_budget_exceeded_and_block",
         "passed": true,
-        "at": "2026-06-28T08:31:35.781Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:04.738Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "integration",
         "stack": "rust"
@@ -5793,8 +5831,8 @@
       "lastCheck": {
         "ref": "regatta_supervisor::tests::does_not_autopause_when_action_is_not_block",
         "passed": true,
-        "at": "2026-06-28T08:31:35.952Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:04.921Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "integration",
         "stack": "rust"
@@ -5851,8 +5889,8 @@
       "lastCheck": {
         "ref": "regatta_core::backend::tests::backend_dispatches_label_and_launch",
         "passed": true,
-        "at": "2026-06-28T08:31:36.121Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:05.091Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -5909,8 +5947,8 @@
       "lastCheck": {
         "ref": "regatta_core::backend::tests::backend_parses_its_own_format",
         "passed": true,
-        "at": "2026-06-28T08:31:36.286Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:05.260Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -5967,8 +6005,8 @@
       "lastCheck": {
         "ref": "regatta_core::backend::tests::plans_a_fresh_session",
         "passed": true,
-        "at": "2026-06-28T08:31:36.448Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:05.427Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -6025,8 +6063,8 @@
       "lastCheck": {
         "ref": "regatta_core::backend::tests::plans_a_resume",
         "passed": true,
-        "at": "2026-06-28T08:31:36.618Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:05.594Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -6083,8 +6121,8 @@
       "lastCheck": {
         "ref": "regatta_core::backend::tests::tags_env_for_reaping",
         "passed": true,
-        "at": "2026-06-28T08:31:36.784Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:05.758Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -6092,57 +6130,57 @@
     },
     {
       "id": "e88",
-      "from": "R-BOARD-01-AC1",
-      "to": "R-BOARD-01",
+      "from": "R-BADGE-01-AC1",
+      "to": "R-BADGE-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e89",
-      "from": "test:regatta_core::board::tests::buckets_by_recency",
+      "from": "test:regatta_core::backend::tests::backend_from_label_roundtrips",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e90",
-      "from": "test:regatta_core::board::tests::buckets_by_recency",
+      "from": "test:regatta_core::backend::tests::backend_from_label_roundtrips",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e91",
-      "from": "test:regatta_core::board::tests::buckets_by_recency",
+      "from": "test:regatta_core::backend::tests::backend_from_label_roundtrips",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e92",
-      "from": "test:regatta_core::board::tests::buckets_by_recency",
+      "from": "test:regatta_core::backend::tests::backend_from_label_roundtrips",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e93",
-      "from": "test:regatta_core::board::tests::buckets_by_recency",
+      "from": "test:regatta_core::backend::tests::backend_from_label_roundtrips",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e94",
-      "from": "test:regatta_core::board::tests::buckets_by_recency",
-      "to": "R-BOARD-01-AC1",
+      "from": "test:regatta_core::backend::tests::backend_from_label_roundtrips",
+      "to": "R-BADGE-01-AC1",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
-        "ref": "regatta_core::board::tests::buckets_by_recency",
+        "ref": "regatta_core::backend::tests::backend_from_label_roundtrips",
         "passed": true,
-        "at": "2026-06-28T08:31:36.950Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:01.382Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -6150,57 +6188,57 @@
     },
     {
       "id": "e95",
-      "from": "R-BOARD-01-AC2",
+      "from": "R-BOARD-01-AC1",
       "to": "R-BOARD-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e96",
-      "from": "test:regatta_core::board::tests::future_or_zero_diff_is_today",
+      "from": "test:regatta_core::board::tests::buckets_by_recency",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e97",
-      "from": "test:regatta_core::board::tests::future_or_zero_diff_is_today",
+      "from": "test:regatta_core::board::tests::buckets_by_recency",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e98",
-      "from": "test:regatta_core::board::tests::future_or_zero_diff_is_today",
+      "from": "test:regatta_core::board::tests::buckets_by_recency",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e99",
-      "from": "test:regatta_core::board::tests::future_or_zero_diff_is_today",
+      "from": "test:regatta_core::board::tests::buckets_by_recency",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e100",
-      "from": "test:regatta_core::board::tests::future_or_zero_diff_is_today",
+      "from": "test:regatta_core::board::tests::buckets_by_recency",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e101",
-      "from": "test:regatta_core::board::tests::future_or_zero_diff_is_today",
-      "to": "R-BOARD-01-AC2",
+      "from": "test:regatta_core::board::tests::buckets_by_recency",
+      "to": "R-BOARD-01-AC1",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
-        "ref": "regatta_core::board::tests::future_or_zero_diff_is_today",
+        "ref": "regatta_core::board::tests::buckets_by_recency",
         "passed": true,
-        "at": "2026-06-28T08:31:37.119Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:05.922Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -6208,57 +6246,57 @@
     },
     {
       "id": "e102",
-      "from": "R-BUDGET-01-AC1",
-      "to": "R-BUDGET-01",
+      "from": "R-BOARD-01-AC2",
+      "to": "R-BOARD-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e103",
-      "from": "test:regatta_core::budget::tests::classifies_spend_against_budget",
+      "from": "test:regatta_core::board::tests::future_or_zero_diff_is_today",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e104",
-      "from": "test:regatta_core::budget::tests::classifies_spend_against_budget",
+      "from": "test:regatta_core::board::tests::future_or_zero_diff_is_today",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e105",
-      "from": "test:regatta_core::budget::tests::classifies_spend_against_budget",
+      "from": "test:regatta_core::board::tests::future_or_zero_diff_is_today",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e106",
-      "from": "test:regatta_core::budget::tests::classifies_spend_against_budget",
+      "from": "test:regatta_core::board::tests::future_or_zero_diff_is_today",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e107",
-      "from": "test:regatta_core::budget::tests::classifies_spend_against_budget",
+      "from": "test:regatta_core::board::tests::future_or_zero_diff_is_today",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e108",
-      "from": "test:regatta_core::budget::tests::classifies_spend_against_budget",
-      "to": "R-BUDGET-01-AC1",
+      "from": "test:regatta_core::board::tests::future_or_zero_diff_is_today",
+      "to": "R-BOARD-01-AC2",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
-        "ref": "regatta_core::budget::tests::classifies_spend_against_budget",
+        "ref": "regatta_core::board::tests::future_or_zero_diff_is_today",
         "passed": true,
-        "at": "2026-06-28T08:31:37.282Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:06.089Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -6266,57 +6304,57 @@
     },
     {
       "id": "e109",
-      "from": "R-BUDGET-01-AC2",
+      "from": "R-BUDGET-01-AC1",
       "to": "R-BUDGET-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e110",
-      "from": "test:regatta_core::budget::tests::pauses_only_when_exceeded_and_block",
+      "from": "test:regatta_core::budget::tests::classifies_spend_against_budget",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e111",
-      "from": "test:regatta_core::budget::tests::pauses_only_when_exceeded_and_block",
+      "from": "test:regatta_core::budget::tests::classifies_spend_against_budget",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e112",
-      "from": "test:regatta_core::budget::tests::pauses_only_when_exceeded_and_block",
+      "from": "test:regatta_core::budget::tests::classifies_spend_against_budget",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e113",
-      "from": "test:regatta_core::budget::tests::pauses_only_when_exceeded_and_block",
+      "from": "test:regatta_core::budget::tests::classifies_spend_against_budget",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e114",
-      "from": "test:regatta_core::budget::tests::pauses_only_when_exceeded_and_block",
+      "from": "test:regatta_core::budget::tests::classifies_spend_against_budget",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e115",
-      "from": "test:regatta_core::budget::tests::pauses_only_when_exceeded_and_block",
-      "to": "R-BUDGET-01-AC2",
+      "from": "test:regatta_core::budget::tests::classifies_spend_against_budget",
+      "to": "R-BUDGET-01-AC1",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
-        "ref": "regatta_core::budget::tests::pauses_only_when_exceeded_and_block",
+        "ref": "regatta_core::budget::tests::classifies_spend_against_budget",
         "passed": true,
-        "at": "2026-06-28T08:31:37.448Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:06.257Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -6324,57 +6362,57 @@
     },
     {
       "id": "e116",
-      "from": "R-BURN-01-AC1",
-      "to": "R-BURN-01",
+      "from": "R-BUDGET-01-AC2",
+      "to": "R-BUDGET-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e117",
-      "from": "test:regatta_core::cost::tests::computes_burn_rate",
+      "from": "test:regatta_core::budget::tests::pauses_only_when_exceeded_and_block",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e118",
-      "from": "test:regatta_core::cost::tests::computes_burn_rate",
+      "from": "test:regatta_core::budget::tests::pauses_only_when_exceeded_and_block",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e119",
-      "from": "test:regatta_core::cost::tests::computes_burn_rate",
+      "from": "test:regatta_core::budget::tests::pauses_only_when_exceeded_and_block",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e120",
-      "from": "test:regatta_core::cost::tests::computes_burn_rate",
+      "from": "test:regatta_core::budget::tests::pauses_only_when_exceeded_and_block",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e121",
-      "from": "test:regatta_core::cost::tests::computes_burn_rate",
+      "from": "test:regatta_core::budget::tests::pauses_only_when_exceeded_and_block",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e122",
-      "from": "test:regatta_core::cost::tests::computes_burn_rate",
-      "to": "R-BURN-01-AC1",
+      "from": "test:regatta_core::budget::tests::pauses_only_when_exceeded_and_block",
+      "to": "R-BUDGET-01-AC2",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
-        "ref": "regatta_core::cost::tests::computes_burn_rate",
+        "ref": "regatta_core::budget::tests::pauses_only_when_exceeded_and_block",
         "passed": true,
-        "at": "2026-06-28T08:31:37.613Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:06.418Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -6382,57 +6420,57 @@
     },
     {
       "id": "e123",
-      "from": "R-BURN-01-AC2",
+      "from": "R-BURN-01-AC1",
       "to": "R-BURN-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e124",
-      "from": "test:regatta_core::cost::tests::predicts_time_to_ceiling",
+      "from": "test:regatta_core::cost::tests::computes_burn_rate",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e125",
-      "from": "test:regatta_core::cost::tests::predicts_time_to_ceiling",
+      "from": "test:regatta_core::cost::tests::computes_burn_rate",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e126",
-      "from": "test:regatta_core::cost::tests::predicts_time_to_ceiling",
+      "from": "test:regatta_core::cost::tests::computes_burn_rate",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e127",
-      "from": "test:regatta_core::cost::tests::predicts_time_to_ceiling",
+      "from": "test:regatta_core::cost::tests::computes_burn_rate",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e128",
-      "from": "test:regatta_core::cost::tests::predicts_time_to_ceiling",
+      "from": "test:regatta_core::cost::tests::computes_burn_rate",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e129",
-      "from": "test:regatta_core::cost::tests::predicts_time_to_ceiling",
-      "to": "R-BURN-01-AC2",
+      "from": "test:regatta_core::cost::tests::computes_burn_rate",
+      "to": "R-BURN-01-AC1",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
-        "ref": "regatta_core::cost::tests::predicts_time_to_ceiling",
+        "ref": "regatta_core::cost::tests::computes_burn_rate",
         "passed": true,
-        "at": "2026-06-28T08:31:37.777Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:06.582Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -6440,57 +6478,57 @@
     },
     {
       "id": "e130",
-      "from": "R-CODEXLAUNCH-01-AC1",
-      "to": "R-CODEXLAUNCH-01",
+      "from": "R-BURN-01-AC2",
+      "to": "R-BURN-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e131",
-      "from": "test:regatta_core::backend::tests::plans_a_codex_session",
+      "from": "test:regatta_core::cost::tests::predicts_time_to_ceiling",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e132",
-      "from": "test:regatta_core::backend::tests::plans_a_codex_session",
+      "from": "test:regatta_core::cost::tests::predicts_time_to_ceiling",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e133",
-      "from": "test:regatta_core::backend::tests::plans_a_codex_session",
+      "from": "test:regatta_core::cost::tests::predicts_time_to_ceiling",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e134",
-      "from": "test:regatta_core::backend::tests::plans_a_codex_session",
+      "from": "test:regatta_core::cost::tests::predicts_time_to_ceiling",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e135",
-      "from": "test:regatta_core::backend::tests::plans_a_codex_session",
+      "from": "test:regatta_core::cost::tests::predicts_time_to_ceiling",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e136",
-      "from": "test:regatta_core::backend::tests::plans_a_codex_session",
-      "to": "R-CODEXLAUNCH-01-AC1",
+      "from": "test:regatta_core::cost::tests::predicts_time_to_ceiling",
+      "to": "R-BURN-01-AC2",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
-        "ref": "regatta_core::backend::tests::plans_a_codex_session",
+        "ref": "regatta_core::cost::tests::predicts_time_to_ceiling",
         "passed": true,
-        "at": "2026-06-28T08:31:37.943Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:06.746Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -6498,57 +6536,57 @@
     },
     {
       "id": "e137",
-      "from": "R-CODEXLAUNCH-01-AC2",
+      "from": "R-CODEXLAUNCH-01-AC1",
       "to": "R-CODEXLAUNCH-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e138",
-      "from": "test:regatta_core::backend::tests::plans_a_codex_resume",
+      "from": "test:regatta_core::backend::tests::plans_a_codex_session",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e139",
-      "from": "test:regatta_core::backend::tests::plans_a_codex_resume",
+      "from": "test:regatta_core::backend::tests::plans_a_codex_session",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e140",
-      "from": "test:regatta_core::backend::tests::plans_a_codex_resume",
+      "from": "test:regatta_core::backend::tests::plans_a_codex_session",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e141",
-      "from": "test:regatta_core::backend::tests::plans_a_codex_resume",
+      "from": "test:regatta_core::backend::tests::plans_a_codex_session",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e142",
-      "from": "test:regatta_core::backend::tests::plans_a_codex_resume",
+      "from": "test:regatta_core::backend::tests::plans_a_codex_session",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e143",
-      "from": "test:regatta_core::backend::tests::plans_a_codex_resume",
-      "to": "R-CODEXLAUNCH-01-AC2",
+      "from": "test:regatta_core::backend::tests::plans_a_codex_session",
+      "to": "R-CODEXLAUNCH-01-AC1",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
-        "ref": "regatta_core::backend::tests::plans_a_codex_resume",
+        "ref": "regatta_core::backend::tests::plans_a_codex_session",
         "passed": true,
-        "at": "2026-06-28T08:31:38.111Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:06.912Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -6556,57 +6594,57 @@
     },
     {
       "id": "e144",
-      "from": "R-CODEXMETA-01-AC1",
-      "to": "R-CODEXMETA-01",
+      "from": "R-CODEXLAUNCH-01-AC2",
+      "to": "R-CODEXLAUNCH-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e145",
-      "from": "test:regatta_core::transcript::tests::parses_codex_session_meta",
+      "from": "test:regatta_core::backend::tests::plans_a_codex_resume",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e146",
-      "from": "test:regatta_core::transcript::tests::parses_codex_session_meta",
+      "from": "test:regatta_core::backend::tests::plans_a_codex_resume",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e147",
-      "from": "test:regatta_core::transcript::tests::parses_codex_session_meta",
+      "from": "test:regatta_core::backend::tests::plans_a_codex_resume",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e148",
-      "from": "test:regatta_core::transcript::tests::parses_codex_session_meta",
+      "from": "test:regatta_core::backend::tests::plans_a_codex_resume",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e149",
-      "from": "test:regatta_core::transcript::tests::parses_codex_session_meta",
+      "from": "test:regatta_core::backend::tests::plans_a_codex_resume",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e150",
-      "from": "test:regatta_core::transcript::tests::parses_codex_session_meta",
-      "to": "R-CODEXMETA-01-AC1",
+      "from": "test:regatta_core::backend::tests::plans_a_codex_resume",
+      "to": "R-CODEXLAUNCH-01-AC2",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
-        "ref": "regatta_core::transcript::tests::parses_codex_session_meta",
+        "ref": "regatta_core::backend::tests::plans_a_codex_resume",
         "passed": true,
-        "at": "2026-06-28T08:31:38.274Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:07.077Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -6614,57 +6652,57 @@
     },
     {
       "id": "e151",
-      "from": "R-CODEXMETA-01-AC2",
+      "from": "R-CODEXMETA-01-AC1",
       "to": "R-CODEXMETA-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e152",
-      "from": "test:regatta_core::transcript::tests::rejects_non_codex_meta",
+      "from": "test:regatta_core::transcript::tests::parses_codex_session_meta",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e153",
-      "from": "test:regatta_core::transcript::tests::rejects_non_codex_meta",
+      "from": "test:regatta_core::transcript::tests::parses_codex_session_meta",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e154",
-      "from": "test:regatta_core::transcript::tests::rejects_non_codex_meta",
+      "from": "test:regatta_core::transcript::tests::parses_codex_session_meta",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e155",
-      "from": "test:regatta_core::transcript::tests::rejects_non_codex_meta",
+      "from": "test:regatta_core::transcript::tests::parses_codex_session_meta",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e156",
-      "from": "test:regatta_core::transcript::tests::rejects_non_codex_meta",
+      "from": "test:regatta_core::transcript::tests::parses_codex_session_meta",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e157",
-      "from": "test:regatta_core::transcript::tests::rejects_non_codex_meta",
-      "to": "R-CODEXMETA-01-AC2",
+      "from": "test:regatta_core::transcript::tests::parses_codex_session_meta",
+      "to": "R-CODEXMETA-01-AC1",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
-        "ref": "regatta_core::transcript::tests::rejects_non_codex_meta",
+        "ref": "regatta_core::transcript::tests::parses_codex_session_meta",
         "passed": true,
-        "at": "2026-06-28T08:31:38.439Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:07.245Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -6672,57 +6710,57 @@
     },
     {
       "id": "e158",
-      "from": "R-CODEX-01-AC1",
-      "to": "R-CODEX-01",
+      "from": "R-CODEXMETA-01-AC2",
+      "to": "R-CODEXMETA-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e159",
-      "from": "test:regatta_core::stream::tests::parses_codex_events_into_normalized",
+      "from": "test:regatta_core::transcript::tests::rejects_non_codex_meta",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e160",
-      "from": "test:regatta_core::stream::tests::parses_codex_events_into_normalized",
+      "from": "test:regatta_core::transcript::tests::rejects_non_codex_meta",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e161",
-      "from": "test:regatta_core::stream::tests::parses_codex_events_into_normalized",
+      "from": "test:regatta_core::transcript::tests::rejects_non_codex_meta",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e162",
-      "from": "test:regatta_core::stream::tests::parses_codex_events_into_normalized",
+      "from": "test:regatta_core::transcript::tests::rejects_non_codex_meta",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e163",
-      "from": "test:regatta_core::stream::tests::parses_codex_events_into_normalized",
+      "from": "test:regatta_core::transcript::tests::rejects_non_codex_meta",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e164",
-      "from": "test:regatta_core::stream::tests::parses_codex_events_into_normalized",
-      "to": "R-CODEX-01-AC1",
+      "from": "test:regatta_core::transcript::tests::rejects_non_codex_meta",
+      "to": "R-CODEXMETA-01-AC2",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
-        "ref": "regatta_core::stream::tests::parses_codex_events_into_normalized",
+        "ref": "regatta_core::transcript::tests::rejects_non_codex_meta",
         "passed": true,
-        "at": "2026-06-28T08:31:38.606Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:07.406Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -6730,57 +6768,57 @@
     },
     {
       "id": "e165",
-      "from": "R-CODEX-01-AC2",
+      "from": "R-CODEX-01-AC1",
       "to": "R-CODEX-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e166",
-      "from": "test:regatta_core::stream::tests::codex_skips_meta_and_unknown",
+      "from": "test:regatta_core::stream::tests::parses_codex_events_into_normalized",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e167",
-      "from": "test:regatta_core::stream::tests::codex_skips_meta_and_unknown",
+      "from": "test:regatta_core::stream::tests::parses_codex_events_into_normalized",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e168",
-      "from": "test:regatta_core::stream::tests::codex_skips_meta_and_unknown",
+      "from": "test:regatta_core::stream::tests::parses_codex_events_into_normalized",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e169",
-      "from": "test:regatta_core::stream::tests::codex_skips_meta_and_unknown",
+      "from": "test:regatta_core::stream::tests::parses_codex_events_into_normalized",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e170",
-      "from": "test:regatta_core::stream::tests::codex_skips_meta_and_unknown",
+      "from": "test:regatta_core::stream::tests::parses_codex_events_into_normalized",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e171",
-      "from": "test:regatta_core::stream::tests::codex_skips_meta_and_unknown",
-      "to": "R-CODEX-01-AC2",
+      "from": "test:regatta_core::stream::tests::parses_codex_events_into_normalized",
+      "to": "R-CODEX-01-AC1",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
-        "ref": "regatta_core::stream::tests::codex_skips_meta_and_unknown",
+        "ref": "regatta_core::stream::tests::parses_codex_events_into_normalized",
         "passed": true,
-        "at": "2026-06-28T08:31:38.771Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:07.569Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -6788,34 +6826,92 @@
     },
     {
       "id": "e172",
+      "from": "R-CODEX-01-AC2",
+      "to": "R-CODEX-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e173",
+      "from": "test:regatta_core::stream::tests::codex_skips_meta_and_unknown",
+      "to": "sym:regatta-core/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e174",
+      "from": "test:regatta_core::stream::tests::codex_skips_meta_and_unknown",
+      "to": "dep:regatta-git/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e175",
+      "from": "test:regatta_core::stream::tests::codex_skips_meta_and_unknown",
+      "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e176",
+      "from": "test:regatta_core::stream::tests::codex_skips_meta_and_unknown",
+      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e177",
+      "from": "test:regatta_core::stream::tests::codex_skips_meta_and_unknown",
+      "to": "dep:src-tauri/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e178",
+      "from": "test:regatta_core::stream::tests::codex_skips_meta_and_unknown",
+      "to": "R-CODEX-01-AC2",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "regatta_core::stream::tests::codex_skips_meta_and_unknown",
+        "passed": true,
+        "at": "2026-06-28T08:35:07.733Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
+        "dirty": true,
+        "kind": "unit",
+        "stack": "rust"
+      }
+    },
+    {
+      "id": "e179",
       "from": "R-CONFIGSTORE-01-AC1",
       "to": "R-CONFIGSTORE-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e173",
+      "id": "e180",
       "from": "test:regatta_store::tests::persists_config_layers_by_scope",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e174",
+      "id": "e181",
       "from": "test:regatta_store::tests::persists_config_layers_by_scope",
       "to": "sym:regatta-store/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e175",
+      "id": "e182",
       "from": "test:regatta_store::tests::persists_config_layers_by_scope",
       "to": "dep:src-tauri/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e176",
+      "id": "e183",
       "from": "test:regatta_store::tests::persists_config_layers_by_scope",
       "to": "R-CONFIGSTORE-01-AC1",
       "kind": "validates",
@@ -6823,43 +6919,43 @@
       "lastCheck": {
         "ref": "regatta_store::tests::persists_config_layers_by_scope",
         "passed": true,
-        "at": "2026-06-28T08:31:38.940Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:07.903Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "integration",
         "stack": "rust"
       }
     },
     {
-      "id": "e177",
+      "id": "e184",
       "from": "R-CONFIGSTORE-01-AC2",
       "to": "R-CONFIGSTORE-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e178",
+      "id": "e185",
       "from": "test:regatta_store::tests::set_config_updates_in_place",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e179",
+      "id": "e186",
       "from": "test:regatta_store::tests::set_config_updates_in_place",
       "to": "sym:regatta-store/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e180",
+      "id": "e187",
       "from": "test:regatta_store::tests::set_config_updates_in_place",
       "to": "dep:src-tauri/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e181",
+      "id": "e188",
       "from": "test:regatta_store::tests::set_config_updates_in_place",
       "to": "R-CONFIGSTORE-01-AC2",
       "kind": "validates",
@@ -6867,57 +6963,57 @@
       "lastCheck": {
         "ref": "regatta_store::tests::set_config_updates_in_place",
         "passed": true,
-        "at": "2026-06-28T08:31:39.107Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:08.070Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "integration",
         "stack": "rust"
       }
     },
     {
-      "id": "e182",
+      "id": "e189",
       "from": "R-CONFIG-01-AC1",
       "to": "R-CONFIG-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e183",
+      "id": "e190",
       "from": "test:regatta_core::config::tests::later_layers_override_earlier",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e184",
+      "id": "e191",
       "from": "test:regatta_core::config::tests::later_layers_override_earlier",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e185",
+      "id": "e192",
       "from": "test:regatta_core::config::tests::later_layers_override_earlier",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e186",
+      "id": "e193",
       "from": "test:regatta_core::config::tests::later_layers_override_earlier",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e187",
+      "id": "e194",
       "from": "test:regatta_core::config::tests::later_layers_override_earlier",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e188",
+      "id": "e195",
       "from": "test:regatta_core::config::tests::later_layers_override_earlier",
       "to": "R-CONFIG-01-AC1",
       "kind": "validates",
@@ -6925,66 +7021,8 @@
       "lastCheck": {
         "ref": "regatta_core::config::tests::later_layers_override_earlier",
         "passed": true,
-        "at": "2026-06-28T08:31:39.271Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
-        "dirty": true,
-        "kind": "unit",
-        "stack": "rust"
-      }
-    },
-    {
-      "id": "e189",
-      "from": "R-CONFIG-01-AC2",
-      "to": "R-CONFIG-01",
-      "kind": "derivedFrom",
-      "proof": "unproven"
-    },
-    {
-      "id": "e190",
-      "from": "test:regatta_core::config::tests::empty_layers_resolve_empty",
-      "to": "sym:regatta-core/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e191",
-      "from": "test:regatta_core::config::tests::empty_layers_resolve_empty",
-      "to": "dep:regatta-git/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e192",
-      "from": "test:regatta_core::config::tests::empty_layers_resolve_empty",
-      "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e193",
-      "from": "test:regatta_core::config::tests::empty_layers_resolve_empty",
-      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e194",
-      "from": "test:regatta_core::config::tests::empty_layers_resolve_empty",
-      "to": "dep:src-tauri/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e195",
-      "from": "test:regatta_core::config::tests::empty_layers_resolve_empty",
-      "to": "R-CONFIG-01-AC2",
-      "kind": "validates",
-      "proof": "green",
-      "lastCheck": {
-        "ref": "regatta_core::config::tests::empty_layers_resolve_empty",
-        "passed": true,
-        "at": "2026-06-28T08:31:39.435Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:08.246Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -6992,34 +7030,92 @@
     },
     {
       "id": "e196",
+      "from": "R-CONFIG-01-AC2",
+      "to": "R-CONFIG-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e197",
+      "from": "test:regatta_core::config::tests::empty_layers_resolve_empty",
+      "to": "sym:regatta-core/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e198",
+      "from": "test:regatta_core::config::tests::empty_layers_resolve_empty",
+      "to": "dep:regatta-git/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e199",
+      "from": "test:regatta_core::config::tests::empty_layers_resolve_empty",
+      "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e200",
+      "from": "test:regatta_core::config::tests::empty_layers_resolve_empty",
+      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e201",
+      "from": "test:regatta_core::config::tests::empty_layers_resolve_empty",
+      "to": "dep:src-tauri/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e202",
+      "from": "test:regatta_core::config::tests::empty_layers_resolve_empty",
+      "to": "R-CONFIG-01-AC2",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "regatta_core::config::tests::empty_layers_resolve_empty",
+        "passed": true,
+        "at": "2026-06-28T08:35:08.413Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
+        "dirty": true,
+        "kind": "unit",
+        "stack": "rust"
+      }
+    },
+    {
+      "id": "e203",
       "from": "R-COSTSTORE-01-AC1",
       "to": "R-COSTSTORE-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e197",
+      "id": "e204",
       "from": "test:regatta_store::tests::records_and_rolls_up_cost",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e198",
+      "id": "e205",
       "from": "test:regatta_store::tests::records_and_rolls_up_cost",
       "to": "sym:regatta-store/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e199",
+      "id": "e206",
       "from": "test:regatta_store::tests::records_and_rolls_up_cost",
       "to": "dep:src-tauri/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e200",
+      "id": "e207",
       "from": "test:regatta_store::tests::records_and_rolls_up_cost",
       "to": "R-COSTSTORE-01-AC1",
       "kind": "validates",
@@ -7027,43 +7123,43 @@
       "lastCheck": {
         "ref": "regatta_store::tests::records_and_rolls_up_cost",
         "passed": true,
-        "at": "2026-06-28T08:31:39.598Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:08.586Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "integration",
         "stack": "rust"
       }
     },
     {
-      "id": "e201",
+      "id": "e208",
       "from": "R-COSTSTORE-01-AC2",
       "to": "R-COSTSTORE-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e202",
+      "id": "e209",
       "from": "test:regatta_store::tests::empty_cost_rollups_are_zero",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e203",
+      "id": "e210",
       "from": "test:regatta_store::tests::empty_cost_rollups_are_zero",
       "to": "sym:regatta-store/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e204",
+      "id": "e211",
       "from": "test:regatta_store::tests::empty_cost_rollups_are_zero",
       "to": "dep:src-tauri/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e205",
+      "id": "e212",
       "from": "test:regatta_store::tests::empty_cost_rollups_are_zero",
       "to": "R-COSTSTORE-01-AC2",
       "kind": "validates",
@@ -7071,57 +7167,57 @@
       "lastCheck": {
         "ref": "regatta_store::tests::empty_cost_rollups_are_zero",
         "passed": true,
-        "at": "2026-06-28T08:31:39.767Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:08.768Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "integration",
         "stack": "rust"
       }
     },
     {
-      "id": "e206",
+      "id": "e213",
       "from": "R-COST-01-AC1",
       "to": "R-COST-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e207",
+      "id": "e214",
       "from": "test:regatta_core::cost::tests::prices_tokens_by_model",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e208",
+      "id": "e215",
       "from": "test:regatta_core::cost::tests::prices_tokens_by_model",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e209",
+      "id": "e216",
       "from": "test:regatta_core::cost::tests::prices_tokens_by_model",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e210",
+      "id": "e217",
       "from": "test:regatta_core::cost::tests::prices_tokens_by_model",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e211",
+      "id": "e218",
       "from": "test:regatta_core::cost::tests::prices_tokens_by_model",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e212",
+      "id": "e219",
       "from": "test:regatta_core::cost::tests::prices_tokens_by_model",
       "to": "R-COST-01-AC1",
       "kind": "validates",
@@ -7129,66 +7225,8 @@
       "lastCheck": {
         "ref": "regatta_core::cost::tests::prices_tokens_by_model",
         "passed": true,
-        "at": "2026-06-28T08:31:39.934Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
-        "dirty": true,
-        "kind": "unit",
-        "stack": "rust"
-      }
-    },
-    {
-      "id": "e213",
-      "from": "R-COST-01-AC2",
-      "to": "R-COST-01",
-      "kind": "derivedFrom",
-      "proof": "unproven"
-    },
-    {
-      "id": "e214",
-      "from": "test:regatta_core::cost::tests::effective_cost_prefers_authoritative_usd",
-      "to": "sym:regatta-core/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e215",
-      "from": "test:regatta_core::cost::tests::effective_cost_prefers_authoritative_usd",
-      "to": "dep:regatta-git/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e216",
-      "from": "test:regatta_core::cost::tests::effective_cost_prefers_authoritative_usd",
-      "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e217",
-      "from": "test:regatta_core::cost::tests::effective_cost_prefers_authoritative_usd",
-      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e218",
-      "from": "test:regatta_core::cost::tests::effective_cost_prefers_authoritative_usd",
-      "to": "dep:src-tauri/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e219",
-      "from": "test:regatta_core::cost::tests::effective_cost_prefers_authoritative_usd",
-      "to": "R-COST-01-AC2",
-      "kind": "validates",
-      "proof": "green",
-      "lastCheck": {
-        "ref": "regatta_core::cost::tests::effective_cost_prefers_authoritative_usd",
-        "passed": true,
-        "at": "2026-06-28T08:31:40.097Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:08.945Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -7196,57 +7234,57 @@
     },
     {
       "id": "e220",
-      "from": "R-DIFF-01-AC1",
-      "to": "R-DIFF-01",
+      "from": "R-COST-01-AC2",
+      "to": "R-COST-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e221",
-      "from": "test:regatta_core::git::tests::parses_git_numstat",
+      "from": "test:regatta_core::cost::tests::effective_cost_prefers_authoritative_usd",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e222",
-      "from": "test:regatta_core::git::tests::parses_git_numstat",
+      "from": "test:regatta_core::cost::tests::effective_cost_prefers_authoritative_usd",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e223",
-      "from": "test:regatta_core::git::tests::parses_git_numstat",
+      "from": "test:regatta_core::cost::tests::effective_cost_prefers_authoritative_usd",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e224",
-      "from": "test:regatta_core::git::tests::parses_git_numstat",
+      "from": "test:regatta_core::cost::tests::effective_cost_prefers_authoritative_usd",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e225",
-      "from": "test:regatta_core::git::tests::parses_git_numstat",
+      "from": "test:regatta_core::cost::tests::effective_cost_prefers_authoritative_usd",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e226",
-      "from": "test:regatta_core::git::tests::parses_git_numstat",
-      "to": "R-DIFF-01-AC1",
+      "from": "test:regatta_core::cost::tests::effective_cost_prefers_authoritative_usd",
+      "to": "R-COST-01-AC2",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
-        "ref": "regatta_core::git::tests::parses_git_numstat",
+        "ref": "regatta_core::cost::tests::effective_cost_prefers_authoritative_usd",
         "passed": true,
-        "at": "2026-06-28T08:31:40.264Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:09.120Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -7254,57 +7292,57 @@
     },
     {
       "id": "e227",
-      "from": "R-DIFF-01-AC2",
+      "from": "R-DIFF-01-AC1",
       "to": "R-DIFF-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e228",
-      "from": "test:regatta_core::git::tests::numstat_skips_malformed_lines",
+      "from": "test:regatta_core::git::tests::parses_git_numstat",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e229",
-      "from": "test:regatta_core::git::tests::numstat_skips_malformed_lines",
+      "from": "test:regatta_core::git::tests::parses_git_numstat",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e230",
-      "from": "test:regatta_core::git::tests::numstat_skips_malformed_lines",
+      "from": "test:regatta_core::git::tests::parses_git_numstat",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e231",
-      "from": "test:regatta_core::git::tests::numstat_skips_malformed_lines",
+      "from": "test:regatta_core::git::tests::parses_git_numstat",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e232",
-      "from": "test:regatta_core::git::tests::numstat_skips_malformed_lines",
+      "from": "test:regatta_core::git::tests::parses_git_numstat",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e233",
-      "from": "test:regatta_core::git::tests::numstat_skips_malformed_lines",
-      "to": "R-DIFF-01-AC2",
+      "from": "test:regatta_core::git::tests::parses_git_numstat",
+      "to": "R-DIFF-01-AC1",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
-        "ref": "regatta_core::git::tests::numstat_skips_malformed_lines",
+        "ref": "regatta_core::git::tests::parses_git_numstat",
         "passed": true,
-        "at": "2026-06-28T08:31:40.429Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:09.293Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -7312,20 +7350,78 @@
     },
     {
       "id": "e234",
+      "from": "R-DIFF-01-AC2",
+      "to": "R-DIFF-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e235",
+      "from": "test:regatta_core::git::tests::numstat_skips_malformed_lines",
+      "to": "sym:regatta-core/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e236",
+      "from": "test:regatta_core::git::tests::numstat_skips_malformed_lines",
+      "to": "dep:regatta-git/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e237",
+      "from": "test:regatta_core::git::tests::numstat_skips_malformed_lines",
+      "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e238",
+      "from": "test:regatta_core::git::tests::numstat_skips_malformed_lines",
+      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e239",
+      "from": "test:regatta_core::git::tests::numstat_skips_malformed_lines",
+      "to": "dep:src-tauri/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e240",
+      "from": "test:regatta_core::git::tests::numstat_skips_malformed_lines",
+      "to": "R-DIFF-01-AC2",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "regatta_core::git::tests::numstat_skips_malformed_lines",
+        "passed": true,
+        "at": "2026-06-28T08:35:09.479Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
+        "dirty": true,
+        "kind": "unit",
+        "stack": "rust"
+      }
+    },
+    {
+      "id": "e241",
       "from": "R-GITREAD-01-AC1",
       "to": "R-GITREAD-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e235",
+      "id": "e242",
       "from": "test:regatta_git::tests::reads_status_and_diffstat_from_a_repo",
       "to": "sym:regatta-git/Cargo.toml#regatta_git",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e236",
+      "id": "e243",
       "from": "test:regatta_git::tests::reads_status_and_diffstat_from_a_repo",
       "to": "R-GITREAD-01-AC1",
       "kind": "validates",
@@ -7333,29 +7429,29 @@
       "lastCheck": {
         "ref": "regatta_git::tests::reads_status_and_diffstat_from_a_repo",
         "passed": true,
-        "at": "2026-06-28T08:31:41.075Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:10.157Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "integration",
         "stack": "rust"
       }
     },
     {
-      "id": "e237",
+      "id": "e244",
       "from": "R-GITREAD-01-AC2",
       "to": "R-GITREAD-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e238",
+      "id": "e245",
       "from": "test:regatta_git::tests::non_repo_yields_empty_status",
       "to": "sym:regatta-git/Cargo.toml#regatta_git",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e239",
+      "id": "e246",
       "from": "test:regatta_git::tests::non_repo_yields_empty_status",
       "to": "R-GITREAD-01-AC2",
       "kind": "validates",
@@ -7363,57 +7459,57 @@
       "lastCheck": {
         "ref": "regatta_git::tests::non_repo_yields_empty_status",
         "passed": true,
-        "at": "2026-06-28T08:31:41.246Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:10.352Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "integration",
         "stack": "rust"
       }
     },
     {
-      "id": "e240",
+      "id": "e247",
       "from": "R-GITSTATUS-01-AC1",
       "to": "R-GITSTATUS-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e241",
+      "id": "e248",
       "from": "test:regatta_core::git::tests::parses_git_status_porcelain",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e242",
+      "id": "e249",
       "from": "test:regatta_core::git::tests::parses_git_status_porcelain",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e243",
+      "id": "e250",
       "from": "test:regatta_core::git::tests::parses_git_status_porcelain",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e244",
+      "id": "e251",
       "from": "test:regatta_core::git::tests::parses_git_status_porcelain",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e245",
+      "id": "e252",
       "from": "test:regatta_core::git::tests::parses_git_status_porcelain",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e246",
+      "id": "e253",
       "from": "test:regatta_core::git::tests::parses_git_status_porcelain",
       "to": "R-GITSTATUS-01-AC1",
       "kind": "validates",
@@ -7421,66 +7517,8 @@
       "lastCheck": {
         "ref": "regatta_core::git::tests::parses_git_status_porcelain",
         "passed": true,
-        "at": "2026-06-28T08:31:41.417Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
-        "dirty": true,
-        "kind": "unit",
-        "stack": "rust"
-      }
-    },
-    {
-      "id": "e247",
-      "from": "R-GITSTATUS-01-AC2",
-      "to": "R-GITSTATUS-01",
-      "kind": "derivedFrom",
-      "proof": "unproven"
-    },
-    {
-      "id": "e248",
-      "from": "test:regatta_core::git::tests::skips_blank_and_pathless_lines",
-      "to": "sym:regatta-core/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e249",
-      "from": "test:regatta_core::git::tests::skips_blank_and_pathless_lines",
-      "to": "dep:regatta-git/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e250",
-      "from": "test:regatta_core::git::tests::skips_blank_and_pathless_lines",
-      "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e251",
-      "from": "test:regatta_core::git::tests::skips_blank_and_pathless_lines",
-      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e252",
-      "from": "test:regatta_core::git::tests::skips_blank_and_pathless_lines",
-      "to": "dep:src-tauri/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e253",
-      "from": "test:regatta_core::git::tests::skips_blank_and_pathless_lines",
-      "to": "R-GITSTATUS-01-AC2",
-      "kind": "validates",
-      "proof": "green",
-      "lastCheck": {
-        "ref": "regatta_core::git::tests::skips_blank_and_pathless_lines",
-        "passed": true,
-        "at": "2026-06-28T08:31:41.580Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:10.539Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -7488,27 +7526,85 @@
     },
     {
       "id": "e254",
+      "from": "R-GITSTATUS-01-AC2",
+      "to": "R-GITSTATUS-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e255",
+      "from": "test:regatta_core::git::tests::skips_blank_and_pathless_lines",
+      "to": "sym:regatta-core/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e256",
+      "from": "test:regatta_core::git::tests::skips_blank_and_pathless_lines",
+      "to": "dep:regatta-git/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e257",
+      "from": "test:regatta_core::git::tests::skips_blank_and_pathless_lines",
+      "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e258",
+      "from": "test:regatta_core::git::tests::skips_blank_and_pathless_lines",
+      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e259",
+      "from": "test:regatta_core::git::tests::skips_blank_and_pathless_lines",
+      "to": "dep:src-tauri/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e260",
+      "from": "test:regatta_core::git::tests::skips_blank_and_pathless_lines",
+      "to": "R-GITSTATUS-01-AC2",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "regatta_core::git::tests::skips_blank_and_pathless_lines",
+        "passed": true,
+        "at": "2026-06-28T08:35:10.718Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
+        "dirty": true,
+        "kind": "unit",
+        "stack": "rust"
+      }
+    },
+    {
+      "id": "e261",
       "from": "R-INDEX-01-AC1",
       "to": "R-INDEX-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e255",
+      "id": "e262",
       "from": "test:regatta_indexer::tests::indexes_a_transcript_dir",
       "to": "sym:regatta-indexer/Cargo.toml#regatta_indexer",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e256",
+      "id": "e263",
       "from": "test:regatta_indexer::tests::indexes_a_transcript_dir",
       "to": "dep:src-tauri/Cargo.toml#regatta_indexer",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e257",
+      "id": "e264",
       "from": "test:regatta_indexer::tests::indexes_a_transcript_dir",
       "to": "R-INDEX-01-AC1",
       "kind": "validates",
@@ -7516,36 +7612,36 @@
       "lastCheck": {
         "ref": "regatta_indexer::tests::indexes_a_transcript_dir",
         "passed": true,
-        "at": "2026-06-28T08:31:42.292Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:11.430Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "integration",
         "stack": "rust"
       }
     },
     {
-      "id": "e258",
+      "id": "e265",
       "from": "R-INDEX-01-AC2",
       "to": "R-INDEX-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e259",
+      "id": "e266",
       "from": "test:regatta_indexer::tests::missing_dir_yields_nothing",
       "to": "sym:regatta-indexer/Cargo.toml#regatta_indexer",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e260",
+      "id": "e267",
       "from": "test:regatta_indexer::tests::missing_dir_yields_nothing",
       "to": "dep:src-tauri/Cargo.toml#regatta_indexer",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e261",
+      "id": "e268",
       "from": "test:regatta_indexer::tests::missing_dir_yields_nothing",
       "to": "R-INDEX-01-AC2",
       "kind": "validates",
@@ -7553,57 +7649,57 @@
       "lastCheck": {
         "ref": "regatta_indexer::tests::missing_dir_yields_nothing",
         "passed": true,
-        "at": "2026-06-28T08:31:42.466Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:11.624Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "integration",
         "stack": "rust"
       }
     },
     {
-      "id": "e262",
+      "id": "e269",
       "from": "R-LAYOUT-01-AC1",
       "to": "R-LAYOUT-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e263",
+      "id": "e270",
       "from": "test:regatta_core::layout::tests::layout_from_count",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e264",
+      "id": "e271",
       "from": "test:regatta_core::layout::tests::layout_from_count",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e265",
+      "id": "e272",
       "from": "test:regatta_core::layout::tests::layout_from_count",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e266",
+      "id": "e273",
       "from": "test:regatta_core::layout::tests::layout_from_count",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e267",
+      "id": "e274",
       "from": "test:regatta_core::layout::tests::layout_from_count",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e268",
+      "id": "e275",
       "from": "test:regatta_core::layout::tests::layout_from_count",
       "to": "R-LAYOUT-01-AC1",
       "kind": "validates",
@@ -7611,66 +7707,8 @@
       "lastCheck": {
         "ref": "regatta_core::layout::tests::layout_from_count",
         "passed": true,
-        "at": "2026-06-28T08:31:42.628Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
-        "dirty": true,
-        "kind": "unit",
-        "stack": "rust"
-      }
-    },
-    {
-      "id": "e269",
-      "from": "R-LAYOUT-01-AC2",
-      "to": "R-LAYOUT-01",
-      "kind": "derivedFrom",
-      "proof": "unproven"
-    },
-    {
-      "id": "e270",
-      "from": "test:regatta_core::layout::tests::fills_panes_with_sessions",
-      "to": "sym:regatta-core/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e271",
-      "from": "test:regatta_core::layout::tests::fills_panes_with_sessions",
-      "to": "dep:regatta-git/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e272",
-      "from": "test:regatta_core::layout::tests::fills_panes_with_sessions",
-      "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e273",
-      "from": "test:regatta_core::layout::tests::fills_panes_with_sessions",
-      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e274",
-      "from": "test:regatta_core::layout::tests::fills_panes_with_sessions",
-      "to": "dep:src-tauri/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e275",
-      "from": "test:regatta_core::layout::tests::fills_panes_with_sessions",
-      "to": "R-LAYOUT-01-AC2",
-      "kind": "validates",
-      "proof": "green",
-      "lastCheck": {
-        "ref": "regatta_core::layout::tests::fills_panes_with_sessions",
-        "passed": true,
-        "at": "2026-06-28T08:31:42.797Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:11.803Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -7678,57 +7716,57 @@
     },
     {
       "id": "e276",
-      "from": "R-MASK-01-AC1",
-      "to": "R-MASK-01",
+      "from": "R-LAYOUT-01-AC2",
+      "to": "R-LAYOUT-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e277",
-      "from": "test:regatta_core::config::tests::flags_secret_keys",
+      "from": "test:regatta_core::layout::tests::fills_panes_with_sessions",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e278",
-      "from": "test:regatta_core::config::tests::flags_secret_keys",
+      "from": "test:regatta_core::layout::tests::fills_panes_with_sessions",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e279",
-      "from": "test:regatta_core::config::tests::flags_secret_keys",
+      "from": "test:regatta_core::layout::tests::fills_panes_with_sessions",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e280",
-      "from": "test:regatta_core::config::tests::flags_secret_keys",
+      "from": "test:regatta_core::layout::tests::fills_panes_with_sessions",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e281",
-      "from": "test:regatta_core::config::tests::flags_secret_keys",
+      "from": "test:regatta_core::layout::tests::fills_panes_with_sessions",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e282",
-      "from": "test:regatta_core::config::tests::flags_secret_keys",
-      "to": "R-MASK-01-AC1",
+      "from": "test:regatta_core::layout::tests::fills_panes_with_sessions",
+      "to": "R-LAYOUT-01-AC2",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
-        "ref": "regatta_core::config::tests::flags_secret_keys",
+        "ref": "regatta_core::layout::tests::fills_panes_with_sessions",
         "passed": true,
-        "at": "2026-06-28T08:31:42.958Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:11.991Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -7736,57 +7774,57 @@
     },
     {
       "id": "e283",
-      "from": "R-MASK-01-AC2",
+      "from": "R-MASK-01-AC1",
       "to": "R-MASK-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e284",
-      "from": "test:regatta_core::config::tests::masks_secret_values",
+      "from": "test:regatta_core::config::tests::flags_secret_keys",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e285",
-      "from": "test:regatta_core::config::tests::masks_secret_values",
+      "from": "test:regatta_core::config::tests::flags_secret_keys",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e286",
-      "from": "test:regatta_core::config::tests::masks_secret_values",
+      "from": "test:regatta_core::config::tests::flags_secret_keys",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e287",
-      "from": "test:regatta_core::config::tests::masks_secret_values",
+      "from": "test:regatta_core::config::tests::flags_secret_keys",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e288",
-      "from": "test:regatta_core::config::tests::masks_secret_values",
+      "from": "test:regatta_core::config::tests::flags_secret_keys",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e289",
-      "from": "test:regatta_core::config::tests::masks_secret_values",
-      "to": "R-MASK-01-AC2",
+      "from": "test:regatta_core::config::tests::flags_secret_keys",
+      "to": "R-MASK-01-AC1",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
-        "ref": "regatta_core::config::tests::masks_secret_values",
+        "ref": "regatta_core::config::tests::flags_secret_keys",
         "passed": true,
-        "at": "2026-06-28T08:31:43.120Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:12.179Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -7794,57 +7832,57 @@
     },
     {
       "id": "e290",
-      "from": "R-MATERIALIZE-01-AC1",
-      "to": "R-MATERIALIZE-01",
+      "from": "R-MASK-01-AC2",
+      "to": "R-MASK-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e291",
-      "from": "test:regatta_core::config::tests::materializes_env_with_local_model_path",
+      "from": "test:regatta_core::config::tests::masks_secret_values",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e292",
-      "from": "test:regatta_core::config::tests::materializes_env_with_local_model_path",
+      "from": "test:regatta_core::config::tests::masks_secret_values",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e293",
-      "from": "test:regatta_core::config::tests::materializes_env_with_local_model_path",
+      "from": "test:regatta_core::config::tests::masks_secret_values",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e294",
-      "from": "test:regatta_core::config::tests::materializes_env_with_local_model_path",
+      "from": "test:regatta_core::config::tests::masks_secret_values",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e295",
-      "from": "test:regatta_core::config::tests::materializes_env_with_local_model_path",
+      "from": "test:regatta_core::config::tests::masks_secret_values",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e296",
-      "from": "test:regatta_core::config::tests::materializes_env_with_local_model_path",
-      "to": "R-MATERIALIZE-01-AC1",
+      "from": "test:regatta_core::config::tests::masks_secret_values",
+      "to": "R-MASK-01-AC2",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
-        "ref": "regatta_core::config::tests::materializes_env_with_local_model_path",
+        "ref": "regatta_core::config::tests::masks_secret_values",
         "passed": true,
-        "at": "2026-06-28T08:31:43.283Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:12.357Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -7852,57 +7890,57 @@
     },
     {
       "id": "e297",
-      "from": "R-MATERIALIZE-01-AC2",
+      "from": "R-MATERIALIZE-01-AC1",
       "to": "R-MATERIALIZE-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e298",
-      "from": "test:regatta_core::config::tests::no_local_model_means_no_base_url",
+      "from": "test:regatta_core::config::tests::materializes_env_with_local_model_path",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e299",
-      "from": "test:regatta_core::config::tests::no_local_model_means_no_base_url",
+      "from": "test:regatta_core::config::tests::materializes_env_with_local_model_path",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e300",
-      "from": "test:regatta_core::config::tests::no_local_model_means_no_base_url",
+      "from": "test:regatta_core::config::tests::materializes_env_with_local_model_path",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e301",
-      "from": "test:regatta_core::config::tests::no_local_model_means_no_base_url",
+      "from": "test:regatta_core::config::tests::materializes_env_with_local_model_path",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e302",
-      "from": "test:regatta_core::config::tests::no_local_model_means_no_base_url",
+      "from": "test:regatta_core::config::tests::materializes_env_with_local_model_path",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e303",
-      "from": "test:regatta_core::config::tests::no_local_model_means_no_base_url",
-      "to": "R-MATERIALIZE-01-AC2",
+      "from": "test:regatta_core::config::tests::materializes_env_with_local_model_path",
+      "to": "R-MATERIALIZE-01-AC1",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
-        "ref": "regatta_core::config::tests::no_local_model_means_no_base_url",
+        "ref": "regatta_core::config::tests::materializes_env_with_local_model_path",
         "passed": true,
-        "at": "2026-06-28T08:31:43.445Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:12.542Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -7910,34 +7948,92 @@
     },
     {
       "id": "e304",
+      "from": "R-MATERIALIZE-01-AC2",
+      "to": "R-MATERIALIZE-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e305",
+      "from": "test:regatta_core::config::tests::no_local_model_means_no_base_url",
+      "to": "sym:regatta-core/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e306",
+      "from": "test:regatta_core::config::tests::no_local_model_means_no_base_url",
+      "to": "dep:regatta-git/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e307",
+      "from": "test:regatta_core::config::tests::no_local_model_means_no_base_url",
+      "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e308",
+      "from": "test:regatta_core::config::tests::no_local_model_means_no_base_url",
+      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e309",
+      "from": "test:regatta_core::config::tests::no_local_model_means_no_base_url",
+      "to": "dep:src-tauri/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e310",
+      "from": "test:regatta_core::config::tests::no_local_model_means_no_base_url",
+      "to": "R-MATERIALIZE-01-AC2",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "regatta_core::config::tests::no_local_model_means_no_base_url",
+        "passed": true,
+        "at": "2026-06-28T08:35:12.726Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
+        "dirty": true,
+        "kind": "unit",
+        "stack": "rust"
+      }
+    },
+    {
+      "id": "e311",
       "from": "R-PROOF-01-AC1",
       "to": "R-PROOF-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e305",
+      "id": "e312",
       "from": "test:regatta_supervisor::tests::codex_runs_through_the_same_pipeline_as_claude",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_supervisor",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e306",
+      "id": "e313",
       "from": "test:regatta_supervisor::tests::codex_runs_through_the_same_pipeline_as_claude",
       "to": "sym:regatta-supervisor/Cargo.toml#regatta_supervisor",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e307",
+      "id": "e314",
       "from": "test:regatta_supervisor::tests::codex_runs_through_the_same_pipeline_as_claude",
       "to": "dep:src-tauri/Cargo.toml#regatta_supervisor",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e308",
+      "id": "e315",
       "from": "test:regatta_supervisor::tests::codex_runs_through_the_same_pipeline_as_claude",
       "to": "R-PROOF-01-AC1",
       "kind": "validates",
@@ -7945,36 +8041,36 @@
       "lastCheck": {
         "ref": "regatta_supervisor::tests::codex_runs_through_the_same_pipeline_as_claude",
         "passed": true,
-        "at": "2026-06-28T08:31:30.638Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:13.074Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "integration",
         "stack": "rust"
       }
     },
     {
-      "id": "e309",
+      "id": "e316",
       "from": "R-REATTACH-01-AC1",
       "to": "R-REATTACH-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e310",
+      "id": "e317",
       "from": "test:regatta_indexer::tests::reattaches_and_advances_offset",
       "to": "sym:regatta-indexer/Cargo.toml#regatta_indexer",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e311",
+      "id": "e318",
       "from": "test:regatta_indexer::tests::reattaches_and_advances_offset",
       "to": "dep:src-tauri/Cargo.toml#regatta_indexer",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e312",
+      "id": "e319",
       "from": "test:regatta_indexer::tests::reattaches_and_advances_offset",
       "to": "R-REATTACH-01-AC1",
       "kind": "validates",
@@ -7982,36 +8078,36 @@
       "lastCheck": {
         "ref": "regatta_indexer::tests::reattaches_and_advances_offset",
         "passed": true,
-        "at": "2026-06-28T08:31:43.618Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:13.263Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "integration",
         "stack": "rust"
       }
     },
     {
-      "id": "e313",
+      "id": "e320",
       "from": "R-REATTACH-01-AC2",
       "to": "R-REATTACH-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e314",
+      "id": "e321",
       "from": "test:regatta_indexer::tests::skips_a_missing_transcript",
       "to": "sym:regatta-indexer/Cargo.toml#regatta_indexer",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e315",
+      "id": "e322",
       "from": "test:regatta_indexer::tests::skips_a_missing_transcript",
       "to": "dep:src-tauri/Cargo.toml#regatta_indexer",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e316",
+      "id": "e323",
       "from": "test:regatta_indexer::tests::skips_a_missing_transcript",
       "to": "R-REATTACH-01-AC2",
       "kind": "validates",
@@ -8019,57 +8115,57 @@
       "lastCheck": {
         "ref": "regatta_indexer::tests::skips_a_missing_transcript",
         "passed": true,
-        "at": "2026-06-28T08:31:43.799Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:13.437Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "integration",
         "stack": "rust"
       }
     },
     {
-      "id": "e317",
+      "id": "e324",
       "from": "R-RESUME-01-AC1",
       "to": "R-RESUME-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e318",
+      "id": "e325",
       "from": "test:regatta_core::backend::tests::plans_a_resume_and_command",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e319",
+      "id": "e326",
       "from": "test:regatta_core::backend::tests::plans_a_resume_and_command",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e320",
+      "id": "e327",
       "from": "test:regatta_core::backend::tests::plans_a_resume_and_command",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e321",
+      "id": "e328",
       "from": "test:regatta_core::backend::tests::plans_a_resume_and_command",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e322",
+      "id": "e329",
       "from": "test:regatta_core::backend::tests::plans_a_resume_and_command",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e323",
+      "id": "e330",
       "from": "test:regatta_core::backend::tests::plans_a_resume_and_command",
       "to": "R-RESUME-01-AC1",
       "kind": "validates",
@@ -8077,66 +8173,8 @@
       "lastCheck": {
         "ref": "regatta_core::backend::tests::plans_a_resume_and_command",
         "passed": true,
-        "at": "2026-06-28T08:31:43.982Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
-        "dirty": true,
-        "kind": "unit",
-        "stack": "rust"
-      }
-    },
-    {
-      "id": "e324",
-      "from": "R-RESUME-01-AC2",
-      "to": "R-RESUME-01",
-      "kind": "derivedFrom",
-      "proof": "unproven"
-    },
-    {
-      "id": "e325",
-      "from": "test:regatta_core::backend::tests::resume_command_handles_empty_id",
-      "to": "sym:regatta-core/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e326",
-      "from": "test:regatta_core::backend::tests::resume_command_handles_empty_id",
-      "to": "dep:regatta-git/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e327",
-      "from": "test:regatta_core::backend::tests::resume_command_handles_empty_id",
-      "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e328",
-      "from": "test:regatta_core::backend::tests::resume_command_handles_empty_id",
-      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e329",
-      "from": "test:regatta_core::backend::tests::resume_command_handles_empty_id",
-      "to": "dep:src-tauri/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e330",
-      "from": "test:regatta_core::backend::tests::resume_command_handles_empty_id",
-      "to": "R-RESUME-01-AC2",
-      "kind": "validates",
-      "proof": "green",
-      "lastCheck": {
-        "ref": "regatta_core::backend::tests::resume_command_handles_empty_id",
-        "passed": true,
-        "at": "2026-06-28T08:31:44.159Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:13.601Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -8144,57 +8182,57 @@
     },
     {
       "id": "e331",
-      "from": "R-REVIEW-01-AC1",
-      "to": "R-REVIEW-01",
+      "from": "R-RESUME-01-AC2",
+      "to": "R-RESUME-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e332",
-      "from": "test:regatta_core::git::tests::sums_diff_stats",
+      "from": "test:regatta_core::backend::tests::resume_command_handles_empty_id",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e333",
-      "from": "test:regatta_core::git::tests::sums_diff_stats",
+      "from": "test:regatta_core::backend::tests::resume_command_handles_empty_id",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e334",
-      "from": "test:regatta_core::git::tests::sums_diff_stats",
+      "from": "test:regatta_core::backend::tests::resume_command_handles_empty_id",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e335",
-      "from": "test:regatta_core::git::tests::sums_diff_stats",
+      "from": "test:regatta_core::backend::tests::resume_command_handles_empty_id",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e336",
-      "from": "test:regatta_core::git::tests::sums_diff_stats",
+      "from": "test:regatta_core::backend::tests::resume_command_handles_empty_id",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e337",
-      "from": "test:regatta_core::git::tests::sums_diff_stats",
-      "to": "R-REVIEW-01-AC1",
+      "from": "test:regatta_core::backend::tests::resume_command_handles_empty_id",
+      "to": "R-RESUME-01-AC2",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
-        "ref": "regatta_core::git::tests::sums_diff_stats",
+        "ref": "regatta_core::backend::tests::resume_command_handles_empty_id",
         "passed": true,
-        "at": "2026-06-28T08:31:44.323Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:13.779Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -8202,57 +8240,57 @@
     },
     {
       "id": "e338",
-      "from": "R-REVIEW-01-AC2",
+      "from": "R-REVIEW-01-AC1",
       "to": "R-REVIEW-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e339",
-      "from": "test:regatta_core::git::tests::empty_diff_is_zero",
+      "from": "test:regatta_core::git::tests::sums_diff_stats",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e340",
-      "from": "test:regatta_core::git::tests::empty_diff_is_zero",
+      "from": "test:regatta_core::git::tests::sums_diff_stats",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e341",
-      "from": "test:regatta_core::git::tests::empty_diff_is_zero",
+      "from": "test:regatta_core::git::tests::sums_diff_stats",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e342",
-      "from": "test:regatta_core::git::tests::empty_diff_is_zero",
+      "from": "test:regatta_core::git::tests::sums_diff_stats",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e343",
-      "from": "test:regatta_core::git::tests::empty_diff_is_zero",
+      "from": "test:regatta_core::git::tests::sums_diff_stats",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e344",
-      "from": "test:regatta_core::git::tests::empty_diff_is_zero",
-      "to": "R-REVIEW-01-AC2",
+      "from": "test:regatta_core::git::tests::sums_diff_stats",
+      "to": "R-REVIEW-01-AC1",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
-        "ref": "regatta_core::git::tests::empty_diff_is_zero",
+        "ref": "regatta_core::git::tests::sums_diff_stats",
         "passed": true,
-        "at": "2026-06-28T08:31:44.489Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:13.958Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -8260,57 +8298,57 @@
     },
     {
       "id": "e345",
-      "from": "R-SETTINGS-01-AC1",
-      "to": "R-SETTINGS-01",
+      "from": "R-REVIEW-01-AC2",
+      "to": "R-REVIEW-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e346",
-      "from": "test:regatta_core::config::tests::effective_masked_resolves_and_masks",
+      "from": "test:regatta_core::git::tests::empty_diff_is_zero",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e347",
-      "from": "test:regatta_core::config::tests::effective_masked_resolves_and_masks",
+      "from": "test:regatta_core::git::tests::empty_diff_is_zero",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e348",
-      "from": "test:regatta_core::config::tests::effective_masked_resolves_and_masks",
+      "from": "test:regatta_core::git::tests::empty_diff_is_zero",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e349",
-      "from": "test:regatta_core::config::tests::effective_masked_resolves_and_masks",
+      "from": "test:regatta_core::git::tests::empty_diff_is_zero",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e350",
-      "from": "test:regatta_core::config::tests::effective_masked_resolves_and_masks",
+      "from": "test:regatta_core::git::tests::empty_diff_is_zero",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e351",
-      "from": "test:regatta_core::config::tests::effective_masked_resolves_and_masks",
-      "to": "R-SETTINGS-01-AC1",
+      "from": "test:regatta_core::git::tests::empty_diff_is_zero",
+      "to": "R-REVIEW-01-AC2",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
-        "ref": "regatta_core::config::tests::effective_masked_resolves_and_masks",
+        "ref": "regatta_core::git::tests::empty_diff_is_zero",
         "passed": true,
-        "at": "2026-06-28T08:31:44.654Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:14.126Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -8318,48 +8356,106 @@
     },
     {
       "id": "e352",
-      "from": "R-SLUG-01-AC1",
-      "to": "R-SLUG-01",
+      "from": "R-SETTINGS-01-AC1",
+      "to": "R-SETTINGS-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e353",
-      "from": "test:regatta_core::slug::tests::slugifies_a_name",
+      "from": "test:regatta_core::config::tests::effective_masked_resolves_and_masks",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e354",
-      "from": "test:regatta_core::slug::tests::slugifies_a_name",
+      "from": "test:regatta_core::config::tests::effective_masked_resolves_and_masks",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e355",
-      "from": "test:regatta_core::slug::tests::slugifies_a_name",
+      "from": "test:regatta_core::config::tests::effective_masked_resolves_and_masks",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e356",
-      "from": "test:regatta_core::slug::tests::slugifies_a_name",
+      "from": "test:regatta_core::config::tests::effective_masked_resolves_and_masks",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e357",
-      "from": "test:regatta_core::slug::tests::slugifies_a_name",
+      "from": "test:regatta_core::config::tests::effective_masked_resolves_and_masks",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e358",
+      "from": "test:regatta_core::config::tests::effective_masked_resolves_and_masks",
+      "to": "R-SETTINGS-01-AC1",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "regatta_core::config::tests::effective_masked_resolves_and_masks",
+        "passed": true,
+        "at": "2026-06-28T08:35:14.285Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
+        "dirty": true,
+        "kind": "unit",
+        "stack": "rust"
+      }
+    },
+    {
+      "id": "e359",
+      "from": "R-SLUG-01-AC1",
+      "to": "R-SLUG-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e360",
+      "from": "test:regatta_core::slug::tests::slugifies_a_name",
+      "to": "sym:regatta-core/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e361",
+      "from": "test:regatta_core::slug::tests::slugifies_a_name",
+      "to": "dep:regatta-git/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e362",
+      "from": "test:regatta_core::slug::tests::slugifies_a_name",
+      "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e363",
+      "from": "test:regatta_core::slug::tests::slugifies_a_name",
+      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e364",
+      "from": "test:regatta_core::slug::tests::slugifies_a_name",
+      "to": "dep:src-tauri/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e365",
       "from": "test:regatta_core::slug::tests::slugifies_a_name",
       "to": "R-SLUG-01-AC1",
       "kind": "validates",
@@ -8374,49 +8470,49 @@
       }
     },
     {
-      "id": "e359",
+      "id": "e366",
       "from": "R-SLUG-01-AC2",
       "to": "R-SLUG-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e360",
+      "id": "e367",
       "from": "test:regatta_core::slug::tests::empty_slug_falls_back",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e361",
+      "id": "e368",
       "from": "test:regatta_core::slug::tests::empty_slug_falls_back",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e362",
+      "id": "e369",
       "from": "test:regatta_core::slug::tests::empty_slug_falls_back",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e363",
+      "id": "e370",
       "from": "test:regatta_core::slug::tests::empty_slug_falls_back",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e364",
+      "id": "e371",
       "from": "test:regatta_core::slug::tests::empty_slug_falls_back",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e365",
+      "id": "e372",
       "from": "test:regatta_core::slug::tests::empty_slug_falls_back",
       "to": "R-SLUG-01-AC2",
       "kind": "validates",
@@ -8431,35 +8527,35 @@
       }
     },
     {
-      "id": "e366",
+      "id": "e373",
       "from": "R-STORE-02-AC1",
       "to": "R-STORE-02",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e367",
+      "id": "e374",
       "from": "test:regatta_store::tests::transcript_index_persists_and_searches",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e368",
+      "id": "e375",
       "from": "test:regatta_store::tests::transcript_index_persists_and_searches",
       "to": "sym:regatta-store/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e369",
+      "id": "e376",
       "from": "test:regatta_store::tests::transcript_index_persists_and_searches",
       "to": "dep:src-tauri/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e370",
+      "id": "e377",
       "from": "test:regatta_store::tests::transcript_index_persists_and_searches",
       "to": "R-STORE-02-AC1",
       "kind": "validates",
@@ -8467,43 +8563,43 @@
       "lastCheck": {
         "ref": "regatta_store::tests::transcript_index_persists_and_searches",
         "passed": true,
-        "at": "2026-06-28T08:31:44.823Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:14.445Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "integration",
         "stack": "rust"
       }
     },
     {
-      "id": "e371",
+      "id": "e378",
       "from": "R-STORE-02-AC2",
       "to": "R-STORE-02",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e372",
+      "id": "e379",
       "from": "test:regatta_store::tests::upsert_transcript_updates_in_place",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e373",
+      "id": "e380",
       "from": "test:regatta_store::tests::upsert_transcript_updates_in_place",
       "to": "sym:regatta-store/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e374",
+      "id": "e381",
       "from": "test:regatta_store::tests::upsert_transcript_updates_in_place",
       "to": "dep:src-tauri/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e375",
+      "id": "e382",
       "from": "test:regatta_store::tests::upsert_transcript_updates_in_place",
       "to": "R-STORE-02-AC2",
       "kind": "validates",
@@ -8511,43 +8607,43 @@
       "lastCheck": {
         "ref": "regatta_store::tests::upsert_transcript_updates_in_place",
         "passed": true,
-        "at": "2026-06-28T08:31:44.991Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:14.611Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "integration",
         "stack": "rust"
       }
     },
     {
-      "id": "e376",
+      "id": "e383",
       "from": "R-STORE-01-AC1",
       "to": "R-STORE-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e377",
+      "id": "e384",
       "from": "test:regatta_store::tests::persists_and_lists_sessions",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e378",
+      "id": "e385",
       "from": "test:regatta_store::tests::persists_and_lists_sessions",
       "to": "sym:regatta-store/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e379",
+      "id": "e386",
       "from": "test:regatta_store::tests::persists_and_lists_sessions",
       "to": "dep:src-tauri/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e380",
+      "id": "e387",
       "from": "test:regatta_store::tests::persists_and_lists_sessions",
       "to": "R-STORE-01-AC1",
       "kind": "validates",
@@ -8555,43 +8651,43 @@
       "lastCheck": {
         "ref": "regatta_store::tests::persists_and_lists_sessions",
         "passed": true,
-        "at": "2026-06-28T08:31:45.160Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:14.774Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "integration",
         "stack": "rust"
       }
     },
     {
-      "id": "e381",
+      "id": "e388",
       "from": "R-STORE-01-AC2",
       "to": "R-STORE-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e382",
+      "id": "e389",
       "from": "test:regatta_store::tests::upsert_updates_existing_session",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e383",
+      "id": "e390",
       "from": "test:regatta_store::tests::upsert_updates_existing_session",
       "to": "sym:regatta-store/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e384",
+      "id": "e391",
       "from": "test:regatta_store::tests::upsert_updates_existing_session",
       "to": "dep:src-tauri/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e385",
+      "id": "e392",
       "from": "test:regatta_store::tests::upsert_updates_existing_session",
       "to": "R-STORE-01-AC2",
       "kind": "validates",
@@ -8599,57 +8695,57 @@
       "lastCheck": {
         "ref": "regatta_store::tests::upsert_updates_existing_session",
         "passed": true,
-        "at": "2026-06-28T08:31:45.325Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:14.937Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "integration",
         "stack": "rust"
       }
     },
     {
-      "id": "e386",
+      "id": "e393",
       "from": "R-PARSE-01-AC1",
       "to": "R-PARSE-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e387",
+      "id": "e394",
       "from": "test:regatta_core::stream::tests::parses_known_lines",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e388",
+      "id": "e395",
       "from": "test:regatta_core::stream::tests::parses_known_lines",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e389",
+      "id": "e396",
       "from": "test:regatta_core::stream::tests::parses_known_lines",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e390",
+      "id": "e397",
       "from": "test:regatta_core::stream::tests::parses_known_lines",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e391",
+      "id": "e398",
       "from": "test:regatta_core::stream::tests::parses_known_lines",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e392",
+      "id": "e399",
       "from": "test:regatta_core::stream::tests::parses_known_lines",
       "to": "R-PARSE-01-AC1",
       "kind": "validates",
@@ -8657,66 +8753,8 @@
       "lastCheck": {
         "ref": "regatta_core::stream::tests::parses_known_lines",
         "passed": true,
-        "at": "2026-06-28T08:31:45.489Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
-        "dirty": true,
-        "kind": "unit",
-        "stack": "rust"
-      }
-    },
-    {
-      "id": "e393",
-      "from": "R-PARSE-01-AC2",
-      "to": "R-PARSE-01",
-      "kind": "derivedFrom",
-      "proof": "unproven"
-    },
-    {
-      "id": "e394",
-      "from": "test:regatta_core::stream::tests::ignores_malformed_and_unknown",
-      "to": "sym:regatta-core/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e395",
-      "from": "test:regatta_core::stream::tests::ignores_malformed_and_unknown",
-      "to": "dep:regatta-git/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e396",
-      "from": "test:regatta_core::stream::tests::ignores_malformed_and_unknown",
-      "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e397",
-      "from": "test:regatta_core::stream::tests::ignores_malformed_and_unknown",
-      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e398",
-      "from": "test:regatta_core::stream::tests::ignores_malformed_and_unknown",
-      "to": "dep:src-tauri/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e399",
-      "from": "test:regatta_core::stream::tests::ignores_malformed_and_unknown",
-      "to": "R-PARSE-01-AC2",
-      "kind": "validates",
-      "proof": "green",
-      "lastCheck": {
-        "ref": "regatta_core::stream::tests::ignores_malformed_and_unknown",
-        "passed": true,
-        "at": "2026-06-28T08:31:45.666Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:15.097Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -8724,7 +8762,7 @@
     },
     {
       "id": "e400",
-      "from": "R-PARSE-01-AC3",
+      "from": "R-PARSE-01-AC2",
       "to": "R-PARSE-01",
       "kind": "derivedFrom",
       "proof": "unproven"
@@ -8732,49 +8770,107 @@
     {
       "id": "e401",
       "from": "test:regatta_core::stream::tests::ignores_malformed_and_unknown",
-      "to": "R-PARSE-01-AC3",
+      "to": "sym:regatta-core/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e402",
+      "from": "test:regatta_core::stream::tests::ignores_malformed_and_unknown",
+      "to": "dep:regatta-git/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e403",
+      "from": "test:regatta_core::stream::tests::ignores_malformed_and_unknown",
+      "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e404",
+      "from": "test:regatta_core::stream::tests::ignores_malformed_and_unknown",
+      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e405",
+      "from": "test:regatta_core::stream::tests::ignores_malformed_and_unknown",
+      "to": "dep:src-tauri/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e406",
+      "from": "test:regatta_core::stream::tests::ignores_malformed_and_unknown",
+      "to": "R-PARSE-01-AC2",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
         "ref": "regatta_core::stream::tests::ignores_malformed_and_unknown",
         "passed": true,
-        "at": "2026-06-28T08:31:45.666Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:15.259Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
       }
     },
     {
-      "id": "e402",
+      "id": "e407",
+      "from": "R-PARSE-01-AC3",
+      "to": "R-PARSE-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e408",
+      "from": "test:regatta_core::stream::tests::ignores_malformed_and_unknown",
+      "to": "R-PARSE-01-AC3",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "regatta_core::stream::tests::ignores_malformed_and_unknown",
+        "passed": true,
+        "at": "2026-06-28T08:35:15.259Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
+        "dirty": true,
+        "kind": "unit",
+        "stack": "rust"
+      }
+    },
+    {
+      "id": "e409",
       "from": "R-SUPERVISOR-01-AC1",
       "to": "R-SUPERVISOR-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e403",
+      "id": "e410",
       "from": "test:regatta_supervisor::tests::shutdown_kills_the_whole_group",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_supervisor",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e404",
+      "id": "e411",
       "from": "test:regatta_supervisor::tests::shutdown_kills_the_whole_group",
       "to": "sym:regatta-supervisor/Cargo.toml#regatta_supervisor",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e405",
+      "id": "e412",
       "from": "test:regatta_supervisor::tests::shutdown_kills_the_whole_group",
       "to": "dep:src-tauri/Cargo.toml#regatta_supervisor",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e406",
+      "id": "e413",
       "from": "test:regatta_supervisor::tests::shutdown_kills_the_whole_group",
       "to": "R-SUPERVISOR-01-AC1",
       "kind": "validates",
@@ -8782,75 +8878,8 @@
       "lastCheck": {
         "ref": "regatta_supervisor::tests::shutdown_kills_the_whole_group",
         "passed": true,
-        "at": "2026-06-28T08:31:46.168Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
-        "dirty": true,
-        "kind": "integration",
-        "stack": "rust"
-      }
-    },
-    {
-      "id": "e407",
-      "from": "R-SUPERVISOR-01-AC2",
-      "to": "R-SUPERVISOR-01",
-      "kind": "derivedFrom",
-      "proof": "unproven"
-    },
-    {
-      "id": "e408",
-      "from": "test:regatta_supervisor::tests::shutdown_is_safe_when_already_exited",
-      "to": "dep:regatta-indexer/Cargo.toml#regatta_supervisor",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e409",
-      "from": "test:regatta_supervisor::tests::shutdown_is_safe_when_already_exited",
-      "to": "sym:regatta-supervisor/Cargo.toml#regatta_supervisor",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e410",
-      "from": "test:regatta_supervisor::tests::shutdown_is_safe_when_already_exited",
-      "to": "dep:src-tauri/Cargo.toml#regatta_supervisor",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e411",
-      "from": "test:regatta_supervisor::tests::shutdown_is_safe_when_already_exited",
-      "to": "R-SUPERVISOR-01-AC2",
-      "kind": "validates",
-      "proof": "green",
-      "lastCheck": {
-        "ref": "regatta_supervisor::tests::shutdown_is_safe_when_already_exited",
-        "passed": true,
-        "at": "2026-06-28T08:31:46.500Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
-        "dirty": true,
-        "kind": "integration",
-        "stack": "rust"
-      }
-    },
-    {
-      "id": "e412",
-      "from": "R-SUPERVISOR-01-AC3",
-      "to": "R-SUPERVISOR-01",
-      "kind": "derivedFrom",
-      "proof": "unproven"
-    },
-    {
-      "id": "e413",
-      "from": "test:regatta_supervisor::tests::shutdown_kills_the_whole_group",
-      "to": "R-SUPERVISOR-01-AC3",
-      "kind": "validates",
-      "proof": "green",
-      "lastCheck": {
-        "ref": "regatta_supervisor::tests::shutdown_kills_the_whole_group",
-        "passed": true,
-        "at": "2026-06-28T08:31:46.168Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:15.763Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "integration",
         "stack": "rust"
@@ -8858,43 +8887,43 @@
     },
     {
       "id": "e414",
-      "from": "R-TAIL-01-AC1",
-      "to": "R-TAIL-01",
+      "from": "R-SUPERVISOR-01-AC2",
+      "to": "R-SUPERVISOR-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e415",
-      "from": "test:regatta_supervisor::tests::tail_transcript_reads_incrementally_from_offset",
+      "from": "test:regatta_supervisor::tests::shutdown_is_safe_when_already_exited",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_supervisor",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e416",
-      "from": "test:regatta_supervisor::tests::tail_transcript_reads_incrementally_from_offset",
+      "from": "test:regatta_supervisor::tests::shutdown_is_safe_when_already_exited",
       "to": "sym:regatta-supervisor/Cargo.toml#regatta_supervisor",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e417",
-      "from": "test:regatta_supervisor::tests::tail_transcript_reads_incrementally_from_offset",
+      "from": "test:regatta_supervisor::tests::shutdown_is_safe_when_already_exited",
       "to": "dep:src-tauri/Cargo.toml#regatta_supervisor",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e418",
-      "from": "test:regatta_supervisor::tests::tail_transcript_reads_incrementally_from_offset",
-      "to": "R-TAIL-01-AC1",
+      "from": "test:regatta_supervisor::tests::shutdown_is_safe_when_already_exited",
+      "to": "R-SUPERVISOR-01-AC2",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
-        "ref": "regatta_supervisor::tests::tail_transcript_reads_incrementally_from_offset",
+        "ref": "regatta_supervisor::tests::shutdown_is_safe_when_already_exited",
         "passed": true,
-        "at": "2026-06-28T08:31:46.674Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:16.086Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "integration",
         "stack": "rust"
@@ -8902,34 +8931,101 @@
     },
     {
       "id": "e419",
+      "from": "R-SUPERVISOR-01-AC3",
+      "to": "R-SUPERVISOR-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e420",
+      "from": "test:regatta_supervisor::tests::shutdown_kills_the_whole_group",
+      "to": "R-SUPERVISOR-01-AC3",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "regatta_supervisor::tests::shutdown_kills_the_whole_group",
+        "passed": true,
+        "at": "2026-06-28T08:35:15.763Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
+        "dirty": true,
+        "kind": "integration",
+        "stack": "rust"
+      }
+    },
+    {
+      "id": "e421",
+      "from": "R-TAIL-01-AC1",
+      "to": "R-TAIL-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e422",
+      "from": "test:regatta_supervisor::tests::tail_transcript_reads_incrementally_from_offset",
+      "to": "dep:regatta-indexer/Cargo.toml#regatta_supervisor",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e423",
+      "from": "test:regatta_supervisor::tests::tail_transcript_reads_incrementally_from_offset",
+      "to": "sym:regatta-supervisor/Cargo.toml#regatta_supervisor",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e424",
+      "from": "test:regatta_supervisor::tests::tail_transcript_reads_incrementally_from_offset",
+      "to": "dep:src-tauri/Cargo.toml#regatta_supervisor",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e425",
+      "from": "test:regatta_supervisor::tests::tail_transcript_reads_incrementally_from_offset",
+      "to": "R-TAIL-01-AC1",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "regatta_supervisor::tests::tail_transcript_reads_incrementally_from_offset",
+        "passed": true,
+        "at": "2026-06-28T08:35:16.255Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
+        "dirty": true,
+        "kind": "integration",
+        "stack": "rust"
+      }
+    },
+    {
+      "id": "e426",
       "from": "R-TAIL-01-AC2",
       "to": "R-TAIL-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e420",
+      "id": "e427",
       "from": "test:regatta_supervisor::tests::tail_transcript_restarts_after_truncation",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_supervisor",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e421",
+      "id": "e428",
       "from": "test:regatta_supervisor::tests::tail_transcript_restarts_after_truncation",
       "to": "sym:regatta-supervisor/Cargo.toml#regatta_supervisor",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e422",
+      "id": "e429",
       "from": "test:regatta_supervisor::tests::tail_transcript_restarts_after_truncation",
       "to": "dep:src-tauri/Cargo.toml#regatta_supervisor",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e423",
+      "id": "e430",
       "from": "test:regatta_supervisor::tests::tail_transcript_restarts_after_truncation",
       "to": "R-TAIL-01-AC2",
       "kind": "validates",
@@ -8937,57 +9033,57 @@
       "lastCheck": {
         "ref": "regatta_supervisor::tests::tail_transcript_restarts_after_truncation",
         "passed": true,
-        "at": "2026-06-28T08:31:46.843Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:16.416Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "integration",
         "stack": "rust"
       }
     },
     {
-      "id": "e424",
+      "id": "e431",
       "from": "R-TXMETA-01-AC1",
       "to": "R-TXMETA-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e425",
+      "id": "e432",
       "from": "test:regatta_core::transcript::tests::parses_session_meta",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e426",
+      "id": "e433",
       "from": "test:regatta_core::transcript::tests::parses_session_meta",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e427",
+      "id": "e434",
       "from": "test:regatta_core::transcript::tests::parses_session_meta",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e428",
+      "id": "e435",
       "from": "test:regatta_core::transcript::tests::parses_session_meta",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e429",
+      "id": "e436",
       "from": "test:regatta_core::transcript::tests::parses_session_meta",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e430",
+      "id": "e437",
       "from": "test:regatta_core::transcript::tests::parses_session_meta",
       "to": "R-TXMETA-01-AC1",
       "kind": "validates",
@@ -8995,66 +9091,8 @@
       "lastCheck": {
         "ref": "regatta_core::transcript::tests::parses_session_meta",
         "passed": true,
-        "at": "2026-06-28T08:31:47.000Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
-        "dirty": true,
-        "kind": "unit",
-        "stack": "rust"
-      }
-    },
-    {
-      "id": "e431",
-      "from": "R-TXMETA-01-AC2",
-      "to": "R-TXMETA-01",
-      "kind": "derivedFrom",
-      "proof": "unproven"
-    },
-    {
-      "id": "e432",
-      "from": "test:regatta_core::transcript::tests::rejects_malformed_or_idless",
-      "to": "sym:regatta-core/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e433",
-      "from": "test:regatta_core::transcript::tests::rejects_malformed_or_idless",
-      "to": "dep:regatta-git/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e434",
-      "from": "test:regatta_core::transcript::tests::rejects_malformed_or_idless",
-      "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e435",
-      "from": "test:regatta_core::transcript::tests::rejects_malformed_or_idless",
-      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e436",
-      "from": "test:regatta_core::transcript::tests::rejects_malformed_or_idless",
-      "to": "dep:src-tauri/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e437",
-      "from": "test:regatta_core::transcript::tests::rejects_malformed_or_idless",
-      "to": "R-TXMETA-01-AC2",
-      "kind": "validates",
-      "proof": "green",
-      "lastCheck": {
-        "ref": "regatta_core::transcript::tests::rejects_malformed_or_idless",
-        "passed": true,
-        "at": "2026-06-28T08:31:47.164Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:16.580Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -9062,57 +9100,57 @@
     },
     {
       "id": "e438",
-      "from": "R-USAGE-01-AC1",
-      "to": "R-USAGE-01",
+      "from": "R-TXMETA-01-AC2",
+      "to": "R-TXMETA-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e439",
-      "from": "test:regatta_core::cost::tests::budget_pct_clamps_0_to_100",
+      "from": "test:regatta_core::transcript::tests::rejects_malformed_or_idless",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e440",
-      "from": "test:regatta_core::cost::tests::budget_pct_clamps_0_to_100",
+      "from": "test:regatta_core::transcript::tests::rejects_malformed_or_idless",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e441",
-      "from": "test:regatta_core::cost::tests::budget_pct_clamps_0_to_100",
+      "from": "test:regatta_core::transcript::tests::rejects_malformed_or_idless",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e442",
-      "from": "test:regatta_core::cost::tests::budget_pct_clamps_0_to_100",
+      "from": "test:regatta_core::transcript::tests::rejects_malformed_or_idless",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e443",
-      "from": "test:regatta_core::cost::tests::budget_pct_clamps_0_to_100",
+      "from": "test:regatta_core::transcript::tests::rejects_malformed_or_idless",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
       "id": "e444",
-      "from": "test:regatta_core::cost::tests::budget_pct_clamps_0_to_100",
-      "to": "R-USAGE-01-AC1",
+      "from": "test:regatta_core::transcript::tests::rejects_malformed_or_idless",
+      "to": "R-TXMETA-01-AC2",
       "kind": "validates",
       "proof": "green",
       "lastCheck": {
-        "ref": "regatta_core::cost::tests::budget_pct_clamps_0_to_100",
+        "ref": "regatta_core::transcript::tests::rejects_malformed_or_idless",
         "passed": true,
-        "at": "2026-06-28T08:31:47.328Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:16.738Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -9120,34 +9158,92 @@
     },
     {
       "id": "e445",
-      "from": "R-USAGE-01-AC2",
+      "from": "R-USAGE-01-AC1",
       "to": "R-USAGE-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
       "id": "e446",
+      "from": "test:regatta_core::cost::tests::budget_pct_clamps_0_to_100",
+      "to": "sym:regatta-core/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e447",
+      "from": "test:regatta_core::cost::tests::budget_pct_clamps_0_to_100",
+      "to": "dep:regatta-git/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e448",
+      "from": "test:regatta_core::cost::tests::budget_pct_clamps_0_to_100",
+      "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e449",
+      "from": "test:regatta_core::cost::tests::budget_pct_clamps_0_to_100",
+      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e450",
+      "from": "test:regatta_core::cost::tests::budget_pct_clamps_0_to_100",
+      "to": "dep:src-tauri/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e451",
+      "from": "test:regatta_core::cost::tests::budget_pct_clamps_0_to_100",
+      "to": "R-USAGE-01-AC1",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "regatta_core::cost::tests::budget_pct_clamps_0_to_100",
+        "passed": true,
+        "at": "2026-06-28T08:35:16.898Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
+        "dirty": true,
+        "kind": "unit",
+        "stack": "rust"
+      }
+    },
+    {
+      "id": "e452",
+      "from": "R-USAGE-01-AC2",
+      "to": "R-USAGE-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e453",
       "from": "test:regatta_store::tests::rolls_up_spend_by_model",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e447",
+      "id": "e454",
       "from": "test:regatta_store::tests::rolls_up_spend_by_model",
       "to": "sym:regatta-store/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e448",
+      "id": "e455",
       "from": "test:regatta_store::tests::rolls_up_spend_by_model",
       "to": "dep:src-tauri/Cargo.toml#regatta_store",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e449",
+      "id": "e456",
       "from": "test:regatta_store::tests::rolls_up_spend_by_model",
       "to": "R-USAGE-01-AC2",
       "kind": "validates",
@@ -9155,57 +9251,57 @@
       "lastCheck": {
         "ref": "regatta_store::tests::rolls_up_spend_by_model",
         "passed": true,
-        "at": "2026-06-28T08:31:47.493Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:17.060Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "integration",
         "stack": "rust"
       }
     },
     {
-      "id": "e450",
+      "id": "e457",
       "from": "R-VIEW-01-AC1",
       "to": "R-VIEW-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e451",
+      "id": "e458",
       "from": "test:regatta_core::view::tests::maps_each_event_kind",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e452",
+      "id": "e459",
       "from": "test:regatta_core::view::tests::maps_each_event_kind",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e453",
+      "id": "e460",
       "from": "test:regatta_core::view::tests::maps_each_event_kind",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e454",
+      "id": "e461",
       "from": "test:regatta_core::view::tests::maps_each_event_kind",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e455",
+      "id": "e462",
       "from": "test:regatta_core::view::tests::maps_each_event_kind",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e456",
+      "id": "e463",
       "from": "test:regatta_core::view::tests::maps_each_event_kind",
       "to": "R-VIEW-01-AC1",
       "kind": "validates",
@@ -9213,66 +9309,8 @@
       "lastCheck": {
         "ref": "regatta_core::view::tests::maps_each_event_kind",
         "passed": true,
-        "at": "2026-06-28T08:31:47.665Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
-        "dirty": true,
-        "kind": "unit",
-        "stack": "rust"
-      }
-    },
-    {
-      "id": "e457",
-      "from": "R-VIEW-01-AC2",
-      "to": "R-VIEW-01",
-      "kind": "derivedFrom",
-      "proof": "unproven"
-    },
-    {
-      "id": "e458",
-      "from": "test:regatta_core::view::tests::preserves_empty_assistant_text",
-      "to": "sym:regatta-core/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e459",
-      "from": "test:regatta_core::view::tests::preserves_empty_assistant_text",
-      "to": "dep:regatta-git/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e460",
-      "from": "test:regatta_core::view::tests::preserves_empty_assistant_text",
-      "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e461",
-      "from": "test:regatta_core::view::tests::preserves_empty_assistant_text",
-      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e462",
-      "from": "test:regatta_core::view::tests::preserves_empty_assistant_text",
-      "to": "dep:src-tauri/Cargo.toml#regatta_core",
-      "kind": "dependsOn",
-      "proof": "unproven"
-    },
-    {
-      "id": "e463",
-      "from": "test:regatta_core::view::tests::preserves_empty_assistant_text",
-      "to": "R-VIEW-01-AC2",
-      "kind": "validates",
-      "proof": "green",
-      "lastCheck": {
-        "ref": "regatta_core::view::tests::preserves_empty_assistant_text",
-        "passed": true,
-        "at": "2026-06-28T08:31:47.830Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:17.219Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
@@ -9280,34 +9318,92 @@
     },
     {
       "id": "e464",
+      "from": "R-VIEW-01-AC2",
+      "to": "R-VIEW-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e465",
+      "from": "test:regatta_core::view::tests::preserves_empty_assistant_text",
+      "to": "sym:regatta-core/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e466",
+      "from": "test:regatta_core::view::tests::preserves_empty_assistant_text",
+      "to": "dep:regatta-git/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e467",
+      "from": "test:regatta_core::view::tests::preserves_empty_assistant_text",
+      "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e468",
+      "from": "test:regatta_core::view::tests::preserves_empty_assistant_text",
+      "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e469",
+      "from": "test:regatta_core::view::tests::preserves_empty_assistant_text",
+      "to": "dep:src-tauri/Cargo.toml#regatta_core",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e470",
+      "from": "test:regatta_core::view::tests::preserves_empty_assistant_text",
+      "to": "R-VIEW-01-AC2",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "regatta_core::view::tests::preserves_empty_assistant_text",
+        "passed": true,
+        "at": "2026-06-28T08:35:17.378Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
+        "dirty": true,
+        "kind": "unit",
+        "stack": "rust"
+      }
+    },
+    {
+      "id": "e471",
       "from": "R-WIRE-01-AC1",
       "to": "R-WIRE-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e465",
+      "id": "e472",
       "from": "test:regatta_supervisor::tests::collects_parsed_events_from_stdout",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_supervisor",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e466",
+      "id": "e473",
       "from": "test:regatta_supervisor::tests::collects_parsed_events_from_stdout",
       "to": "sym:regatta-supervisor/Cargo.toml#regatta_supervisor",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e467",
+      "id": "e474",
       "from": "test:regatta_supervisor::tests::collects_parsed_events_from_stdout",
       "to": "dep:src-tauri/Cargo.toml#regatta_supervisor",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e468",
+      "id": "e475",
       "from": "test:regatta_supervisor::tests::collects_parsed_events_from_stdout",
       "to": "R-WIRE-01-AC1",
       "kind": "validates",
@@ -9315,43 +9411,43 @@
       "lastCheck": {
         "ref": "regatta_supervisor::tests::collects_parsed_events_from_stdout",
         "passed": true,
-        "at": "2026-06-28T08:31:47.998Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:17.546Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "integration",
         "stack": "rust"
       }
     },
     {
-      "id": "e469",
+      "id": "e476",
       "from": "R-WIRE-01-AC2",
       "to": "R-WIRE-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e470",
+      "id": "e477",
       "from": "test:regatta_supervisor::tests::skips_unparseable_lines",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_supervisor",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e471",
+      "id": "e478",
       "from": "test:regatta_supervisor::tests::skips_unparseable_lines",
       "to": "sym:regatta-supervisor/Cargo.toml#regatta_supervisor",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e472",
+      "id": "e479",
       "from": "test:regatta_supervisor::tests::skips_unparseable_lines",
       "to": "dep:src-tauri/Cargo.toml#regatta_supervisor",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e473",
+      "id": "e480",
       "from": "test:regatta_supervisor::tests::skips_unparseable_lines",
       "to": "R-WIRE-01-AC2",
       "kind": "validates",
@@ -9359,57 +9455,57 @@
       "lastCheck": {
         "ref": "regatta_supervisor::tests::skips_unparseable_lines",
         "passed": true,
-        "at": "2026-06-28T08:31:48.171Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:17.712Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "integration",
         "stack": "rust"
       }
     },
     {
-      "id": "e474",
+      "id": "e481",
       "from": "R-WORKTREE-01-AC1",
       "to": "R-WORKTREE-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e475",
+      "id": "e482",
       "from": "test:regatta_core::worktree::tests::plans_a_unique_worktree",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e476",
+      "id": "e483",
       "from": "test:regatta_core::worktree::tests::plans_a_unique_worktree",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e477",
+      "id": "e484",
       "from": "test:regatta_core::worktree::tests::plans_a_unique_worktree",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e478",
+      "id": "e485",
       "from": "test:regatta_core::worktree::tests::plans_a_unique_worktree",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e479",
+      "id": "e486",
       "from": "test:regatta_core::worktree::tests::plans_a_unique_worktree",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e480",
+      "id": "e487",
       "from": "test:regatta_core::worktree::tests::plans_a_unique_worktree",
       "to": "R-WORKTREE-01-AC1",
       "kind": "validates",
@@ -9417,57 +9513,57 @@
       "lastCheck": {
         "ref": "regatta_core::worktree::tests::plans_a_unique_worktree",
         "passed": true,
-        "at": "2026-06-28T08:31:48.334Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:17.868Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"
       }
     },
     {
-      "id": "e481",
+      "id": "e488",
       "from": "R-WORKTREE-01-AC2",
       "to": "R-WORKTREE-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e482",
+      "id": "e489",
       "from": "test:regatta_core::worktree::tests::handles_a_short_uuid",
       "to": "sym:regatta-core/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e483",
+      "id": "e490",
       "from": "test:regatta_core::worktree::tests::handles_a_short_uuid",
       "to": "dep:regatta-git/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e484",
+      "id": "e491",
       "from": "test:regatta_core::worktree::tests::handles_a_short_uuid",
       "to": "dep:regatta-indexer/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e485",
+      "id": "e492",
       "from": "test:regatta_core::worktree::tests::handles_a_short_uuid",
       "to": "dep:regatta-supervisor/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e486",
+      "id": "e493",
       "from": "test:regatta_core::worktree::tests::handles_a_short_uuid",
       "to": "dep:src-tauri/Cargo.toml#regatta_core",
       "kind": "dependsOn",
       "proof": "unproven"
     },
     {
-      "id": "e487",
+      "id": "e494",
       "from": "test:regatta_core::worktree::tests::handles_a_short_uuid",
       "to": "R-WORKTREE-01-AC2",
       "kind": "validates",
@@ -9475,8 +9571,8 @@
       "lastCheck": {
         "ref": "regatta_core::worktree::tests::handles_a_short_uuid",
         "passed": true,
-        "at": "2026-06-28T08:31:48.502Z",
-        "sha": "246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3",
+        "at": "2026-06-28T08:35:18.033Z",
+        "sha": "a74d57c2f81521e973ec529c13acb2a87637cf0c",
         "dirty": true,
         "kind": "unit",
         "stack": "rust"

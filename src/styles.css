@@ -207,3 +207,7 @@ body {
 .sw.on .knob { left: 16px; background: #5fb98a; }
 .cmd-grid { display: flex; flex-wrap: wrap; gap: 7px; padding: 4px 4px 12px; }
 .cmd { font-family: var(--mono); font-size: 11.5px; background: var(--surface); border: 1px solid var(--border-2); border-radius: 6px; padding: 4px 9px; color: var(--accent); }
+
+/* ───────── Backend badge — M6 ───────── */
+.bk { font-size: 8.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 1px 5px; border-radius: 4px; background: #2a2320; color: var(--accent); border: 1px solid #3a2f26; vertical-align: middle; margin-left: 4px; }
+.bk.codex { background: #16271f; color: #5fb98a; border-color: #245040; }

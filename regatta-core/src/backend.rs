@@ -100,6 +100,15 @@ impl Backend {
         }
     }
 
+    /// Parse a backend label (launcher selector / stored backend) back into a `Backend`.
+    pub fn from_label(s: &str) -> Option<Backend> {
+        match s {
+            "Claude" => Some(Backend::Claude),
+            "Codex" => Some(Backend::Codex),
+            _ => None,
+        }
+    }
+
     /// Plan a launch for this backend.
     pub fn plan_launch(self, model: &str, session_id: &str, cwd: &str, resume: bool) -> LaunchPlan {
         match self {
@@ -265,5 +274,16 @@ mod tests {
         // each backend ignores the other's format
         assert_eq!(Backend::Claude.parse_line(codex), None);
         assert_eq!(Backend::Codex.parse_line(claude), None);
+    }
+
+    #[test]
+    fn backend_from_label_roundtrips() {
+        assert_eq!(Backend::from_label("Claude"), Some(Backend::Claude));
+        assert_eq!(Backend::from_label("Codex"), Some(Backend::Codex));
+        assert_eq!(Backend::from_label("gpt-9000"), None);
+        assert_eq!(
+            Backend::from_label(Backend::Codex.label()),
+            Some(Backend::Codex)
+        ); // round-trips with label()
     }
 }
