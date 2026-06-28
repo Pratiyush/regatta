@@ -1,6 +1,6 @@
 # RESUME — state-only handoff (generated from the journal; do not edit)
 
-Board: 47/47 task(s) done.
+Board: 48/48 task(s) done.
 
 ✅ all task(s) done — nothing open. Next: `dev-spec-kit graph build` → `dev-spec-kit pr`.
 ## Rebuild truth
