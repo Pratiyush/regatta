@@ -13,6 +13,7 @@ pub mod attention;
 pub mod backend;
 pub mod board;
 pub mod budget;
+pub mod config;
 pub mod cost;
 pub mod git;
 pub mod layout;
