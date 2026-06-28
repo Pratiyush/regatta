@@ -4,7 +4,7 @@
 
 ## Progress board
 
-**42/42 done (100%)**
+**43/43 done (100%)**
 
 - ✅ **R-SLUG-01** slugify a session name 🟢🟢
   📋 Evidence — R-SLUG-01
@@ -23,279 +23,286 @@
   📋 Evidence — R-ATTN-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::attention::tests::ranks_blocked_sessions` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:19.350Z |
-  | `regatta_core::attention::tests::working_sessions_score_zero` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:19.521Z |
+  | `regatta_core::attention::tests::ranks_blocked_sessions` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:54.555Z |
+  | `regatta_core::attention::tests::working_sessions_score_zero` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:54.731Z |
 
 - ✅ **R-ATTN-02** order the Attention Dock 🟢🟢
   📋 Evidence — R-ATTN-02
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::attention::tests::dock_orders_by_urgency` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:19.690Z |
-  | `regatta_core::attention::tests::dock_excludes_working_and_seen` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:19.860Z |
+  | `regatta_core::attention::tests::dock_orders_by_urgency` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:54.898Z |
+  | `regatta_core::attention::tests::dock_excludes_working_and_seen` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:55.065Z |
 
 - ✅ **R-PARSE-01** normalize Claude stream-json lines 🟢🟢
   📋 Evidence — R-PARSE-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::stream::tests::parses_known_lines` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:31.587Z |
-  | `regatta_core::stream::tests::ignores_malformed_and_unknown` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:31.775Z |
+  | `regatta_core::stream::tests::parses_known_lines` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:07.007Z |
+  | `regatta_core::stream::tests::ignores_malformed_and_unknown` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:07.175Z |
 
 - ✅ **R-LAUNCH-01** plan a Claude Code session 🟢🟢🟢
   📋 Evidence — R-LAUNCH-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::backend::tests::plans_a_fresh_session` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:21.739Z |
-  | `regatta_core::backend::tests::plans_a_resume` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:21.912Z |
-  | `regatta_core::backend::tests::tags_env_for_reaping` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:22.085Z |
+  | `regatta_core::backend::tests::plans_a_fresh_session` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:56.852Z |
+  | `regatta_core::backend::tests::plans_a_resume` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:57.019Z |
+  | `regatta_core::backend::tests::tags_env_for_reaping` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:57.189Z |
 
 - ✅ **R-SUPERVISOR-01** terminate the whole process group 🟢🟢
   📋 Evidence — R-SUPERVISOR-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_supervisor::tests::shutdown_kills_the_whole_group` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:32.281Z |
-  | `regatta_supervisor::tests::shutdown_is_safe_when_already_exited` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:32.607Z |
+  | `regatta_supervisor::tests::shutdown_kills_the_whole_group` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:19:07.679Z |
+  | `regatta_supervisor::tests::shutdown_is_safe_when_already_exited` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:19:08.005Z |
 
 - ✅ **R-WIRE-01** collect normalized events from a session's stdout 🟢🟢
   📋 Evidence — R-WIRE-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_supervisor::tests::collects_parsed_events_from_stdout` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:34.104Z |
-  | `regatta_supervisor::tests::skips_unparseable_lines` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:34.274Z |
+  | `regatta_supervisor::tests::collects_parsed_events_from_stdout` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:19:09.515Z |
+  | `regatta_supervisor::tests::skips_unparseable_lines` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:19:09.685Z |
 
 - ✅ **R-VIEW-01** render an event as a display line 🟢🟢
   📋 Evidence — R-VIEW-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::view::tests::maps_each_event_kind` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:33.770Z |
-  | `regatta_core::view::tests::preserves_empty_assistant_text` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:33.935Z |
+  | `regatta_core::view::tests::maps_each_event_kind` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:09.180Z |
+  | `regatta_core::view::tests::preserves_empty_assistant_text` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:09.343Z |
 
 - ✅ **R-WORKTREE-01** plan an isolated worktree 🟢🟢
   📋 Evidence — R-WORKTREE-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::worktree::tests::plans_a_unique_worktree` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:34.436Z |
-  | `regatta_core::worktree::tests::handles_a_short_uuid` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:34.600Z |
+  | `regatta_core::worktree::tests::plans_a_unique_worktree` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:09.855Z |
+  | `regatta_core::worktree::tests::handles_a_short_uuid` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:10.023Z |
 
 - ✅ **R-STORE-01** persist and list sessions 🟢🟢
   📋 Evidence — R-STORE-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_store::tests::persists_and_lists_sessions` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:31.240Z |
-  | `regatta_store::tests::upsert_updates_existing_session` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:31.397Z |
+  | `regatta_store::tests::persists_and_lists_sessions` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:19:06.676Z |
+  | `regatta_store::tests::upsert_updates_existing_session` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:19:06.842Z |
 
 - ✅ **R-TXMETA-01** parse Claude transcript session metadata 🟢🟢
   📋 Evidence — R-TXMETA-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::transcript::tests::parses_session_meta` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:33.105Z |
-  | `regatta_core::transcript::tests::rejects_malformed_or_idless` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:33.269Z |
+  | `regatta_core::transcript::tests::parses_session_meta` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:08.522Z |
+  | `regatta_core::transcript::tests::rejects_malformed_or_idless` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:08.688Z |
 
 - ✅ **R-TAIL-01** tail a transcript from an offset 🟢🟢
   📋 Evidence — R-TAIL-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_supervisor::tests::tail_transcript_reads_incrementally_from_offset` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:32.770Z |
-  | `regatta_supervisor::tests::tail_transcript_restarts_after_truncation` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:32.943Z |
+  | `regatta_supervisor::tests::tail_transcript_reads_incrementally_from_offset` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:19:08.183Z |
+  | `regatta_supervisor::tests::tail_transcript_restarts_after_truncation` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:19:08.356Z |
 
 - ✅ **R-RESUME-01** resume an existing session 🟢🟢
   📋 Evidence — R-RESUME-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::backend::tests::plans_a_resume_and_command` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:30.064Z |
-  | `regatta_core::backend::tests::resume_command_handles_empty_id` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:30.234Z |
+  | `regatta_core::backend::tests::plans_a_resume_and_command` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:05.159Z |
+  | `regatta_core::backend::tests::resume_command_handles_empty_id` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:05.325Z |
 
 - ✅ **R-STORE-02** persist and search transcripts 🟢🟢
   📋 Evidence — R-STORE-02
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_store::tests::transcript_index_persists_and_searches` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:30.905Z |
-  | `regatta_store::tests::upsert_transcript_updates_in_place` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:31.073Z |
+  | `regatta_store::tests::transcript_index_persists_and_searches` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:19:06.336Z |
+  | `regatta_store::tests::upsert_transcript_updates_in_place` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:19:06.507Z |
 
 - ✅ **R-INDEX-01** index a transcript directory 🟢🟢
   📋 Evidence — R-INDEX-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_indexer::tests::indexes_a_transcript_dir` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:28.025Z |
-  | `regatta_indexer::tests::missing_dir_yields_nothing` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:28.207Z |
+  | `regatta_indexer::tests::indexes_a_transcript_dir` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:19:03.105Z |
+  | `regatta_indexer::tests::missing_dir_yields_nothing` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:19:03.287Z |
 
 - ✅ **R-REATTACH-01** reattach persisted sessions 🟢🟢
   📋 Evidence — R-REATTACH-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_indexer::tests::reattaches_and_advances_offset` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:29.716Z |
-  | `regatta_indexer::tests::skips_a_missing_transcript` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:29.890Z |
+  | `regatta_indexer::tests::reattaches_and_advances_offset` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:19:04.823Z |
+  | `regatta_indexer::tests::skips_a_missing_transcript` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:19:04.993Z |
 
 - ✅ **R-BOARD-01** group sessions by recency 🟢🟢
   📋 Evidence — R-BOARD-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::board::tests::buckets_by_recency` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:22.428Z |
-  | `regatta_core::board::tests::future_or_zero_diff_is_today` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:22.597Z |
+  | `regatta_core::board::tests::buckets_by_recency` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:57.525Z |
+  | `regatta_core::board::tests::future_or_zero_diff_is_today` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:57.694Z |
 
 - ✅ **R-COST-01** price token usage and pick the effective cost 🟢🟢
   📋 Evidence — R-COST-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::cost::tests::prices_tokens_by_model` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:25.533Z |
-  | `regatta_core::cost::tests::effective_cost_prefers_authoritative_usd` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:25.704Z |
+  | `regatta_core::cost::tests::prices_tokens_by_model` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:00.535Z |
+  | `regatta_core::cost::tests::effective_cost_prefers_authoritative_usd` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:00.700Z |
 
 - ✅ **R-BURN-01** burn rate and time-to-ceiling 🟢🟢
   📋 Evidence — R-BURN-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::cost::tests::computes_burn_rate` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:23.110Z |
-  | `regatta_core::cost::tests::predicts_time_to_ceiling` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:23.282Z |
+  | `regatta_core::cost::tests::computes_burn_rate` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:58.192Z |
+  | `regatta_core::cost::tests::predicts_time_to_ceiling` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:58.354Z |
 
 - ✅ **R-BUDGET-01** classify spend and decide auto-pause 🟢🟢
   📋 Evidence — R-BUDGET-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::budget::tests::classifies_spend_against_budget` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:22.766Z |
-  | `regatta_core::budget::tests::pauses_only_when_exceeded_and_block` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:22.941Z |
+  | `regatta_core::budget::tests::classifies_spend_against_budget` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:57.860Z |
+  | `regatta_core::budget::tests::pauses_only_when_exceeded_and_block` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:58.023Z |
 
 - ✅ **R-COSTSTORE-01** record and roll up cost 🟢🟢
   📋 Evidence — R-COSTSTORE-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_store::tests::records_and_rolls_up_cost` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:25.184Z |
-  | `regatta_store::tests::empty_cost_rollups_are_zero` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:25.360Z |
+  | `regatta_store::tests::records_and_rolls_up_cost` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:19:00.202Z |
+  | `regatta_store::tests::empty_cost_rollups_are_zero` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:19:00.366Z |
 
 - ✅ **R-USAGE-01** budget percent and spend by model 🟢🟢
   📋 Evidence — R-USAGE-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::cost::tests::budget_pct_clamps_0_to_100` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:33.435Z |
-  | `regatta_store::tests::rolls_up_spend_by_model` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:33.601Z |
+  | `regatta_core::cost::tests::budget_pct_clamps_0_to_100` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:08.855Z |
+  | `regatta_store::tests::rolls_up_spend_by_model` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:19:09.019Z |
 
 - ✅ **R-AUTOPAUSE-01** auto-pause a runaway session 🟢🟢
   📋 Evidence — R-AUTOPAUSE-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_supervisor::tests::autopauses_when_budget_exceeded_and_block` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:21.069Z |
-  | `regatta_supervisor::tests::does_not_autopause_when_action_is_not_block` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:21.239Z |
+  | `regatta_supervisor::tests::autopauses_when_budget_exceeded_and_block` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:18:56.145Z |
+  | `regatta_supervisor::tests::does_not_autopause_when_action_is_not_block` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:18:56.317Z |
 
 - ✅ **R-GITSTATUS-01** parse git status --porcelain 🟢🟢
   📋 Evidence — R-GITSTATUS-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::git::tests::parses_git_status_porcelain` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:27.124Z |
-  | `regatta_core::git::tests::skips_blank_and_pathless_lines` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:27.294Z |
+  | `regatta_core::git::tests::parses_git_status_porcelain` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:02.111Z |
+  | `regatta_core::git::tests::skips_blank_and_pathless_lines` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:02.279Z |
 
 - ✅ **R-DIFF-01** parse git diff --numstat 🟢🟢
   📋 Evidence — R-DIFF-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::git::tests::parses_git_numstat` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:25.876Z |
-  | `regatta_core::git::tests::numstat_skips_malformed_lines` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:26.044Z |
+  | `regatta_core::git::tests::parses_git_numstat` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:00.868Z |
+  | `regatta_core::git::tests::numstat_skips_malformed_lines` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:01.035Z |
 
 - ✅ **R-LAYOUT-01** grid layout and pane assignment 🟢🟢
   📋 Evidence — R-LAYOUT-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::layout::tests::layout_from_count` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:28.390Z |
-  | `regatta_core::layout::tests::fills_panes_with_sessions` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:28.556Z |
+  | `regatta_core::layout::tests::layout_from_count` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:03.457Z |
+  | `regatta_core::layout::tests::fills_panes_with_sessions` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:03.645Z |
 
 - ✅ **R-GITREAD-01** read a repo's status and diffstat 🟢🟢
   📋 Evidence — R-GITREAD-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_git::tests::reads_status_and_diffstat_from_a_repo` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:26.778Z |
-  | `regatta_git::tests::non_repo_yields_empty_status` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:26.959Z |
+  | `regatta_git::tests::reads_status_and_diffstat_from_a_repo` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:19:01.758Z |
+  | `regatta_git::tests::non_repo_yields_empty_status` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:19:01.934Z |
 
 - ✅ **R-REVIEW-01** summarize a diff for the Review Inbox 🟢🟢
   📋 Evidence — R-REVIEW-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::git::tests::sums_diff_stats` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:30.404Z |
-  | `regatta_core::git::tests::empty_diff_is_zero` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:30.572Z |
+  | `regatta_core::git::tests::sums_diff_stats` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:05.490Z |
+  | `regatta_core::git::tests::empty_diff_is_zero` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:05.660Z |
 
 - ✅ **R-CONFIG-01** resolve layered config 🟢🟢
   📋 Evidence — R-CONFIG-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::config::tests::later_layers_override_earlier` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:24.847Z |
-  | `regatta_core::config::tests::empty_layers_resolve_empty` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:25.017Z |
+  | `regatta_core::config::tests::later_layers_override_earlier` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:59.865Z |
+  | `regatta_core::config::tests::empty_layers_resolve_empty` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:00.031Z |
 
 - ✅ **R-MASK-01** mask secret config values 🟢🟢
   📋 Evidence — R-MASK-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::config::tests::flags_secret_keys` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:28.723Z |
-  | `regatta_core::config::tests::masks_secret_values` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:28.889Z |
+  | `regatta_core::config::tests::flags_secret_keys` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:03.814Z |
+  | `regatta_core::config::tests::masks_secret_values` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:03.977Z |
 
 - ✅ **R-MATERIALIZE-01** materialize config into session env 🟢🟢
   📋 Evidence — R-MATERIALIZE-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::config::tests::materializes_env_with_local_model_path` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:29.051Z |
-  | `regatta_core::config::tests::no_local_model_means_no_base_url` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:29.217Z |
+  | `regatta_core::config::tests::materializes_env_with_local_model_path` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:04.154Z |
+  | `regatta_core::config::tests::no_local_model_means_no_base_url` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:04.325Z |
 
 - ✅ **R-CONFIGSTORE-01** persist config layers by scope 🟢🟢
   📋 Evidence — R-CONFIGSTORE-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_store::tests::persists_config_layers_by_scope` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:24.496Z |
-  | `regatta_store::tests::set_config_updates_in_place` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:24.663Z |
+  | `regatta_store::tests::persists_config_layers_by_scope` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:18:59.528Z |
+  | `regatta_store::tests::set_config_updates_in_place` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:18:59.696Z |
 
 - ✅ **R-APPLY-01** merge config env into a launch plan 🟢🟢
   📋 Evidence — R-APPLY-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::backend::tests::with_env_merges_overriding_existing` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:19.001Z |
-  | `regatta_core::backend::tests::with_env_empty_is_unchanged` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:19.177Z |
+  | `regatta_core::backend::tests::with_env_merges_overriding_existing` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:54.221Z |
+  | `regatta_core::backend::tests::with_env_empty_is_unchanged` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:54.387Z |
 
 - ✅ **R-SETTINGS-01** effective config display 🟢
   📋 Evidence — R-SETTINGS-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::config::tests::effective_masked_resolves_and_masks` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:30.742Z |
+  | `regatta_core::config::tests::effective_masked_resolves_and_masks` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:06.169Z |
 
 - ✅ **R-CODEX-01** parse Codex events into the normalized shape 🟢🟢
   📋 Evidence — R-CODEX-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::stream::tests::parses_codex_events_into_normalized` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:24.148Z |
-  | `regatta_core::stream::tests::codex_skips_meta_and_unknown` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:24.319Z |
+  | `regatta_core::stream::tests::parses_codex_events_into_normalized` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:59.198Z |
+  | `regatta_core::stream::tests::codex_skips_meta_and_unknown` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:59.360Z |
 
 - ✅ **R-CODEXLAUNCH-01** plan a Codex launch 🟢🟢
   📋 Evidence — R-CODEXLAUNCH-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::backend::tests::plans_a_codex_session` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:23.457Z |
-  | `regatta_core::backend::tests::plans_a_codex_resume` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:23.630Z |
+  | `regatta_core::backend::tests::plans_a_codex_session` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:58.519Z |
+  | `regatta_core::backend::tests::plans_a_codex_resume` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:58.688Z |
 
 - ✅ **R-BACKEND-01** dispatch by backend 🟢🟢
   📋 Evidence — R-BACKEND-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::backend::tests::backend_dispatches_label_and_launch` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:21.405Z |
-  | `regatta_core::backend::tests::backend_parses_its_own_format` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:21.572Z |
+  | `regatta_core::backend::tests::backend_dispatches_label_and_launch` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:56.487Z |
+  | `regatta_core::backend::tests::backend_parses_its_own_format` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:56.679Z |
 
 - ✅ **R-CODEXMETA-01** parse a Codex session_meta line 🟢🟢
   📋 Evidence — R-CODEXMETA-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::transcript::tests::parses_codex_session_meta` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:23.805Z |
-  | `regatta_core::transcript::tests::rejects_non_codex_meta` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:23.977Z |
+  | `regatta_core::transcript::tests::parses_codex_session_meta` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:58.859Z |
+  | `regatta_core::transcript::tests::rejects_non_codex_meta` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:59.030Z |
 
 - ✅ **R-PROOF-01** Codex is indistinguishable through the pipeline 🟢
   📋 Evidence — R-PROOF-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_supervisor::tests::codex_runs_through_the_same_pipeline_as_claude` | integration | ✅ green | b716dc87* | 2026-06-28T10:15:29.546Z |
+  | `regatta_supervisor::tests::codex_runs_through_the_same_pipeline_as_claude` | integration | ✅ green | 719b3d6e* | 2026-06-28T10:19:04.653Z |
 
 - ✅ **R-BADGE-01** parse a backend label 🟢
   📋 Evidence — R-BADGE-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::backend::tests::backend_from_label_roundtrips` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:22.257Z |
+  | `regatta_core::backend::tests::backend_from_label_roundtrips` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:57.354Z |
 
 - ✅ **R-RUNTIME-01** fold the event stream into live state 🟢🟢
   📋 Evidence — R-RUNTIME-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `regatta_core::runtime::tests::folds_events_into_live_state` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:16.820Z |
-  | `regatta_core::runtime::tests::prices_usage_by_model_when_no_authoritative_usd` | unit | ✅ green | b716dc87* | 2026-06-28T10:15:17.398Z |
+  | `regatta_core::runtime::tests::folds_events_into_live_state` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:05.828Z |
+  | `regatta_core::runtime::tests::prices_usage_by_model_when_no_authoritative_usd` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:19:05.992Z |
+
+- ✅ **R-REGISTRY-01** track live sessions by id 🟢🟢
+  📋 Evidence — R-REGISTRY-01
+  | Check | Kind | State | Proof | Proven at |
+  |---|---|---|---|---|
+  | `regatta_core::runtime::tests::registry_tracks_sessions_by_id` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:52.246Z |
+  | `regatta_core::runtime::tests::snapshot_is_id_sorted` | unit | ✅ green | 719b3d6e* | 2026-06-28T10:18:52.823Z |
 
 
 ## Approvals & governance
@@ -304,13 +311,13 @@
 
 ## Recent activity
 
-- 2026-06-28 10:15:33  ✅ check regatta_core::transcript::tests::parses_session_meta @ b716dc87* → R-TXMETA-01
-- 2026-06-28 10:15:33  ✅ check regatta_core::transcript::tests::rejects_malformed_or_idless @ b716dc87* → R-TXMETA-01
-- 2026-06-28 10:15:33  ✅ check regatta_core::cost::tests::budget_pct_clamps_0_to_100 @ b716dc87* → R-USAGE-01
-- 2026-06-28 10:15:33  ✅ check regatta_store::tests::rolls_up_spend_by_model @ b716dc87* → R-USAGE-01
-- 2026-06-28 10:15:33  ✅ check regatta_core::view::tests::maps_each_event_kind @ b716dc87* → R-VIEW-01
-- 2026-06-28 10:15:33  ✅ check regatta_core::view::tests::preserves_empty_assistant_text @ b716dc87* → R-VIEW-01
-- 2026-06-28 10:15:34  ✅ check regatta_supervisor::tests::collects_parsed_events_from_stdout @ b716dc87* → R-WIRE-01
-- 2026-06-28 10:15:34  ✅ check regatta_supervisor::tests::skips_unparseable_lines @ b716dc87* → R-WIRE-01
-- 2026-06-28 10:15:34  ✅ check regatta_core::worktree::tests::plans_a_unique_worktree @ b716dc87* → R-WORKTREE-01
-- 2026-06-28 10:15:34  ✅ check regatta_core::worktree::tests::handles_a_short_uuid @ b716dc87* → R-WORKTREE-01
+- 2026-06-28 10:19:08  ✅ check regatta_core::transcript::tests::parses_session_meta @ 719b3d6e* → R-TXMETA-01
+- 2026-06-28 10:19:08  ✅ check regatta_core::transcript::tests::rejects_malformed_or_idless @ 719b3d6e* → R-TXMETA-01
+- 2026-06-28 10:19:08  ✅ check regatta_core::cost::tests::budget_pct_clamps_0_to_100 @ 719b3d6e* → R-USAGE-01
+- 2026-06-28 10:19:09  ✅ check regatta_store::tests::rolls_up_spend_by_model @ 719b3d6e* → R-USAGE-01
+- 2026-06-28 10:19:09  ✅ check regatta_core::view::tests::maps_each_event_kind @ 719b3d6e* → R-VIEW-01
+- 2026-06-28 10:19:09  ✅ check regatta_core::view::tests::preserves_empty_assistant_text @ 719b3d6e* → R-VIEW-01
+- 2026-06-28 10:19:09  ✅ check regatta_supervisor::tests::collects_parsed_events_from_stdout @ 719b3d6e* → R-WIRE-01
+- 2026-06-28 10:19:09  ✅ check regatta_supervisor::tests::skips_unparseable_lines @ 719b3d6e* → R-WIRE-01
+- 2026-06-28 10:19:09  ✅ check regatta_core::worktree::tests::plans_a_unique_worktree @ 719b3d6e* → R-WORKTREE-01
+- 2026-06-28 10:19:10  ✅ check regatta_core::worktree::tests::handles_a_short_uuid @ 719b3d6e* → R-WORKTREE-01

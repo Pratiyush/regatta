@@ -28,6 +28,7 @@
 | R-MATERIALIZE-01 | materialize config into session env | 2 | 🟢🟢 | done | — |
 | R-PROOF-01 | Codex is indistinguishable through the pipeline | 1 | 🟢 | done | — |
 | R-REATTACH-01 | reattach persisted sessions | 2 | 🟢🟢 | done | — |
+| R-REGISTRY-01 | track live sessions by id | 2 | 🟢🟢 | done | — |
 | R-RESUME-01 | resume an existing session | 2 | 🟢🟢 | done | — |
 | R-REVIEW-01 | summarize a diff for the Review Inbox | 2 | 🟢🟢 | done | — |
 | R-RUNTIME-01 | fold the event stream into live state | 2 | 🟢🟢 | done | — |
