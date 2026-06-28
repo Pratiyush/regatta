@@ -235,6 +235,66 @@ fn usage_view(store: tauri::State<'_, std::sync::Mutex<regatta_store::Store>>) -
     }
 }
 
+#[derive(Serialize, Clone)]
+struct ReviewItem {
+    session: String,
+    project: String,
+    branch: String,
+    files: usize,
+    added: u64,
+    removed: u64,
+}
+
+#[derive(Serialize, Clone)]
+struct FileEntry {
+    path: String,
+    status: String,
+    added: Option<u64>,
+    removed: Option<u64>,
+}
+
+/// The Review Inbox: sessions with pending uncommitted changes, summarized. Demo data until live
+/// sessions report their own; the real path is `regatta_git::status` + `regatta_core::git::summarize_diff`.
+#[tauri::command]
+fn review_inbox() -> Vec<ReviewItem> {
+    let raw: &[(&str, &str, &str, usize, u64, u64)] = &[
+        ("s1", "payments-svc", "fix/idempotency", 3, 84, 12),
+        ("s2", "Book-Java", "ch04-tests", 5, 210, 4),
+        ("s5", "notepad++", "scintilla", 2, 31, 9),
+        ("s6", "regatta", "feat/review", 7, 156, 22),
+    ];
+    raw.iter()
+        .map(|r| ReviewItem {
+            session: r.0.into(),
+            project: r.1.into(),
+            branch: r.2.into(),
+            files: r.3,
+            added: r.4,
+            removed: r.5,
+        })
+        .collect()
+}
+
+/// The diff drawer for a session: its changed files with status + per-file +/- (binary → no counts).
+#[tauri::command]
+fn diff_view(session: String) -> Vec<FileEntry> {
+    let _ = session;
+    let raw: &[(&str, &str, Option<u64>, Option<u64>)] = &[
+        ("src/webhook.rs", "M", Some(42), Some(8)),
+        ("src/idempotency.rs", "A", Some(36), Some(0)),
+        ("tests/webhook_test.rs", "M", Some(6), Some(4)),
+        ("assets/diagram.png", "A", None, None),
+    ];
+    raw.iter()
+        .map(|r| FileEntry {
+            path: r.0.into(),
+            status: r.1.into(),
+            added: r.2,
+            removed: r.3,
+        })
+        .collect()
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -252,7 +312,9 @@ pub fn run() {
             run_demo_session,
             board_list,
             board_reindex,
-            usage_view
+            usage_view,
+            review_inbox,
+            diff_view
         ])
         .run(tauri::generate_context!())
         .expect("error while running Regatta");
