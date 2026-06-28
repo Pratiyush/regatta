@@ -148,6 +148,45 @@ pub fn tail_transcript(
     Ok((events, start + consumed as u64))
 }
 
+/// Run the MCP permission server loop over `input`/`output`: read JSON-RPC lines, dispatch via the
+/// pure `mcp` core, write responses. For an approve request, call `decide(&request)` → (decision,
+/// reason) and write the approve result. This is what a `claude --permission-prompt-tool` session
+/// talks to; the binary wires stdin/stdout + the real dock decision.
+pub fn serve_mcp<R, W, F>(input: R, mut output: W, mut decide: F) -> std::io::Result<()>
+where
+    R: std::io::BufRead,
+    W: std::io::Write,
+    F: FnMut(&regatta_core::stream::NormalizedEvent) -> (regatta_core::approval::Decision, String),
+{
+    use regatta_core::mcp::{approve_result, dispatch, parse_rpc, McpAction};
+    for line in input.lines() {
+        let line = line?;
+        if line.trim().is_empty() {
+            continue;
+        }
+        let Some(req) = parse_rpc(&line) else {
+            continue;
+        };
+        match dispatch(&req) {
+            McpAction::Reply(s) => writeln!(output, "{s}")?,
+            McpAction::Approve {
+                id,
+                request,
+                raw_input,
+            } => {
+                let (decision, reason) = decide(&request);
+                writeln!(
+                    output,
+                    "{}",
+                    approve_result(&id, decision, &raw_input, &reason)
+                )?;
+            }
+            McpAction::Ignore => {}
+        }
+    }
+    Ok(())
+}
+
 #[cfg(all(test, unix))]
 mod tests {
     use super::*;
@@ -374,5 +413,29 @@ mod tests {
         assert_eq!(rt.turns, 1);
         tokio::time::sleep(Duration::from_millis(150)).await;
         assert!(!alive(pid), "the lived session is reaped on teardown");
+    }
+
+    #[test]
+    fn serve_mcp_handles_a_session() {
+        use regatta_core::approval::Decision;
+        use regatta_core::stream::NormalizedEvent;
+        use std::io::Cursor;
+        let input = "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\"}\n\
+                     {\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"tools/call\",\"params\":{\"name\":\"approve\",\"arguments\":{\"tool_name\":\"Bash\",\"input\":{\"command\":\"ls\"}}}}\n";
+        let mut out = Vec::new();
+        let mut surfaced = None;
+        serve_mcp(Cursor::new(input), &mut out, |req| {
+            surfaced = Some(req.clone());
+            (Decision::Allow, String::new()) // the dock allows
+        })
+        .unwrap();
+        let out = String::from_utf8(out).unwrap();
+        assert!(out.contains("serverInfo")); // initialize reply
+                                             // the approve result wraps the {behavior:"allow",updatedInput:…} body as escaped text content
+        assert!(out.contains("updatedInput") && out.contains("allow"));
+        assert!(matches!(
+            surfaced,
+            Some(NormalizedEvent::ApprovalRequested { .. })
+        ));
     }
 }
