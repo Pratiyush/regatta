@@ -4,6 +4,7 @@
 |---|---|---|---|---|---|
 | R-ATTN-01 | rank sessions that need the human | 2 | 🟢🟢 | done | — |
 | R-ATTN-02 | order the Attention Dock | 2 | 🟢🟢 | done | — |
+| R-AUTOPAUSE-01 | auto-pause a runaway session | 2 | 🟢🟢 | done | — |
 | R-LAUNCH-01 | plan a Claude Code session | 3 | 🟢🟢🟢 | done | — |
 | R-BOARD-01 | group sessions by recency | 2 | 🟢🟢 | done | — |
 | R-BUDGET-01 | classify spend and decide auto-pause | 2 | 🟢🟢 | done | — |
