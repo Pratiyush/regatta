@@ -46,6 +46,23 @@ pub fn masked(config: &ConfigLayer) -> ConfigLayer {
         .collect()
 }
 
+/// Materialize the effective config into a session's environment variables: keys prefixed `env.`
+/// become env vars, and `local_model_url` sets `ANTHROPIC_BASE_URL` (the local-model path).
+pub fn materialize_env(config: &ConfigLayer) -> Vec<(String, String)> {
+    let mut env: Vec<(String, String)> = config
+        .iter()
+        .filter_map(|(k, v)| {
+            k.strip_prefix("env.")
+                .map(|name| (name.to_string(), v.clone()))
+        })
+        .collect();
+    if let Some(url) = config.get("local_model_url") {
+        env.push(("ANTHROPIC_BASE_URL".to_string(), url.clone()));
+    }
+    env.sort();
+    env
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -104,5 +121,32 @@ mod tests {
             Some("sk-ant-1234abcd")
         );
         assert_eq!(v.get("model").map(String::as_str), Some("opus")); // non-secret untouched
+    }
+
+    #[test]
+    fn materializes_env_with_local_model_path() {
+        let cfg = ConfigLayer::from([
+            ("env.MY_KEY".to_string(), "x".to_string()),
+            ("model".to_string(), "opus".to_string()), // no env. prefix → excluded
+            (
+                "local_model_url".to_string(),
+                "http://localhost:8080".to_string(),
+            ),
+        ]);
+        let env = materialize_env(&cfg);
+        assert!(env.contains(&("MY_KEY".to_string(), "x".to_string())));
+        assert!(env.contains(&(
+            "ANTHROPIC_BASE_URL".to_string(),
+            "http://localhost:8080".to_string()
+        )));
+        assert!(!env.iter().any(|(k, _)| k == "model")); // non-env key excluded
+    }
+
+    #[test]
+    fn no_local_model_means_no_base_url() {
+        let cfg = ConfigLayer::from([("env.A".to_string(), "1".to_string())]);
+        let env = materialize_env(&cfg);
+        assert_eq!(env, vec![("A".to_string(), "1".to_string())]);
+        assert!(!env.iter().any(|(k, _)| k == "ANTHROPIC_BASE_URL"));
     }
 }
