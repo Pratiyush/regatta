@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.6.0](https://github.com/Pratiyush/regatta/compare/v0.5.0...v0.6.0) (2026-06-28)
+
+
+### Features
+
+* **mcp:** dispatch initialize/tools.list/tools.call into an McpAction ([#128](https://github.com/Pratiyush/regatta/issues/128)) ([7cb9753](https://github.com/Pratiyush/regatta/commit/7cb97534115b482c4750fb55ed360f7b650e35fa))
+* **mcp:** JSON-RPC framing for the permission server ([#125](https://github.com/Pratiyush/regatta/issues/125)) ([6d96168](https://github.com/Pratiyush/regatta/commit/6d96168ae8c7796cd0c13de5f6184e51bfab7344))
+* **mcp:** regatta mcp-approve binary mode + claude config ([#134](https://github.com/Pratiyush/regatta/issues/134)) ([a98d9f5](https://github.com/Pratiyush/regatta/commit/a98d9f5f88c1a8808187c860b01a957ebe5255de))
+* **mcp:** wrap the approve decision as a tools/call result ([#130](https://github.com/Pratiyush/regatta/issues/130)) ([4707eb7](https://github.com/Pratiyush/regatta/commit/4707eb7a447dda9d5f97991fd51a6be0cee59bf5))
+
 ## [0.5.0](https://github.com/Pratiyush/regatta/compare/v0.4.0...v0.5.0) (2026-06-28)
 
 
