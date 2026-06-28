@@ -51,6 +51,19 @@ pub fn resume_command(session_id: &str) -> String {
     format!("claude --resume {session_id}")
 }
 
+/// Return a copy of `plan` with `extra` env merged in — extra overrides existing keys, new keys
+/// appended. This is how the materialized layered config reaches every session's launch.
+pub fn with_env(mut plan: LaunchPlan, extra: &[(String, String)]) -> LaunchPlan {
+    for (k, v) in extra {
+        if let Some(slot) = plan.env.iter_mut().find(|(ek, _)| ek == k) {
+            slot.1 = v.clone();
+        } else {
+            plan.env.push((k.clone(), v.clone()));
+        }
+    }
+    plan
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -107,5 +120,43 @@ mod tests {
     #[test]
     fn resume_command_handles_empty_id() {
         assert_eq!(resume_command(""), "claude --resume ");
+    }
+
+    #[test]
+    fn with_env_merges_overriding_existing() {
+        let base = plan_claude_launch("opus", "s1", "/r", false); // env has REGATTA_SESSION_ID=s1
+        let merged = with_env(
+            base,
+            &[
+                ("REGATTA_SESSION_ID".to_string(), "override".to_string()),
+                (
+                    "ANTHROPIC_BASE_URL".to_string(),
+                    "http://localhost".to_string(),
+                ),
+            ],
+        );
+        assert!(merged
+            .env
+            .iter()
+            .any(|(k, v)| k == "REGATTA_SESSION_ID" && v == "override")); // overridden
+        assert!(merged
+            .env
+            .iter()
+            .any(|(k, v)| k == "ANTHROPIC_BASE_URL" && v == "http://localhost")); // appended
+        assert_eq!(
+            merged
+                .env
+                .iter()
+                .filter(|(k, _)| k == "REGATTA_SESSION_ID")
+                .count(),
+            1
+        ); // no duplicate
+    }
+
+    #[test]
+    fn with_env_empty_is_unchanged() {
+        let base = plan_claude_launch("opus", "s1", "/r", false);
+        let n = base.env.len();
+        assert_eq!(with_env(base, &[]).env.len(), n);
     }
 }
