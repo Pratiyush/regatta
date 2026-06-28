@@ -3,7 +3,7 @@
 //! This is Regatta's reliability promise: when a session ends we kill the agent **and every child it
 //! spawned**, leaving nothing behind — the failure mode that leaves cmux helpers spinning for days.
 
-use regatta_core::backend::LaunchPlan;
+use regatta_core::backend::{Backend, LaunchPlan};
 use regatta_core::budget::{budget_status, should_pause, Budget};
 use std::process::Stdio;
 use tokio::process::{Child, Command};
@@ -46,15 +46,23 @@ impl SessionHandle {
         self.child.id()
     }
 
-    /// Read the agent's stdout to EOF, parsing each line into a normalized event and skipping
-    /// unparseable lines.
+    /// Read the agent's stdout to EOF as a Claude session (shorthand for `collect_events_with`).
     pub async fn collect_events(&mut self) -> Vec<regatta_core::stream::NormalizedEvent> {
+        self.collect_events_with(Backend::Claude).await
+    }
+
+    /// Read the agent's stdout to EOF, parsing each line with `backend` into normalized events and
+    /// skipping unparseable lines. The same spawn/collect/teardown path serves Claude and Codex.
+    pub async fn collect_events_with(
+        &mut self,
+        backend: Backend,
+    ) -> Vec<regatta_core::stream::NormalizedEvent> {
         use tokio::io::{AsyncBufReadExt, BufReader};
         let mut events = Vec::new();
         if let Some(stdout) = self.child.stdout.take() {
             let mut lines = BufReader::new(stdout).lines();
             while let Ok(Some(line)) = lines.next_line().await {
-                if let Some(ev) = regatta_core::stream::parse_claude_line(&line) {
+                if let Some(ev) = backend.parse_line(&line) {
                     events.push(ev);
                 }
             }
@@ -293,5 +301,29 @@ mod tests {
         assert!(!h.autopause_if_exceeded(50.0, &budget).await);
         assert!(alive(pid));
         h.shutdown().await;
+    }
+
+    #[tokio::test]
+    async fn codex_runs_through_the_same_pipeline_as_claude() {
+        use regatta_core::stream::NormalizedEvent::*;
+        // a fake Codex backend emitting real Codex JSON shapes on stdout
+        let codex = "echo '{\"type\":\"event_msg\",\"payload\":{\"type\":\"task_started\",\"model\":\"gpt-5-codex\"}}'; \
+                     echo '{\"type\":\"response_item\",\"payload\":{\"type\":\"message\",\"role\":\"assistant\",\"content\":[{\"type\":\"output_text\",\"text\":\"hi\"}]}}'; \
+                     echo '{\"type\":\"event_msg\",\"payload\":{\"type\":\"token_count\",\"info\":{\"total_token_usage\":{\"input_tokens\":5,\"output_tokens\":2}}}}'";
+        let mut h = SessionHandle::spawn(&sh(codex)).expect("spawn");
+        let pid = h.pid().unwrap() as i32;
+        let events = h.collect_events_with(Backend::Codex).await;
+        h.shutdown().await;
+        // Codex produces the SAME normalized shape as Claude — SessionStarted, AssistantText, Usage —
+        // through the same spawn/collect/teardown path, with zero view-layer special-casing.
+        assert_eq!(events.len(), 3);
+        assert!(matches!(events[0], SessionStarted { .. }));
+        assert!(matches!(events[1], AssistantText { .. }));
+        assert!(matches!(events[2], Usage { .. }));
+        tokio::time::sleep(Duration::from_millis(150)).await;
+        assert!(
+            !alive(pid),
+            "the zero-leak teardown reaps the Codex process too"
+        );
     }
 }
