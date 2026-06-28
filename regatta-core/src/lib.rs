@@ -9,6 +9,7 @@
 //! The glue layer (`src-tauri/`) wires this core to PTYs, IPC, the filesystem, and the webview.
 #![forbid(unsafe_code)]
 
+pub mod approval;
 pub mod attention;
 pub mod backend;
 pub mod board;
