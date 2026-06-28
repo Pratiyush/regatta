@@ -57,17 +57,27 @@ impl SessionHandle {
         &mut self,
         backend: Backend,
     ) -> Vec<regatta_core::stream::NormalizedEvent> {
-        use tokio::io::{AsyncBufReadExt, BufReader};
         let mut events = Vec::new();
+        self.pump_events_with(backend, |ev| events.push(ev)).await;
+        events
+    }
+
+    /// Read the agent's stdout to EOF, parsing each line with `backend` and invoking `on_event` for
+    /// each event **as it arrives** — the live pump (vs `collect_events_with`, which batches). This is
+    /// what feeds the live `Registry` and, in the UI, the per-session Channel.
+    pub async fn pump_events_with<F>(&mut self, backend: Backend, mut on_event: F)
+    where
+        F: FnMut(regatta_core::stream::NormalizedEvent),
+    {
+        use tokio::io::{AsyncBufReadExt, BufReader};
         if let Some(stdout) = self.child.stdout.take() {
             let mut lines = BufReader::new(stdout).lines();
             while let Ok(Some(line)) = lines.next_line().await {
                 if let Some(ev) = backend.parse_line(&line) {
-                    events.push(ev);
+                    on_event(ev);
                 }
             }
         }
-        events
     }
 
     /// Tear the session down: SIGTERM the whole group for a graceful exit, give it a short grace
@@ -325,5 +335,22 @@ mod tests {
             !alive(pid),
             "the zero-leak teardown reaps the Codex process too"
         );
+    }
+
+    #[tokio::test]
+    async fn pump_feeds_the_registry_live() {
+        use regatta_core::runtime::Registry;
+        // a fake session emitting Codex JSON; pump each event into the live registry as it arrives
+        let codex = "echo '{\"type\":\"event_msg\",\"payload\":{\"type\":\"task_started\",\"model\":\"gpt-5-codex\"}}'; \
+                     echo '{\"type\":\"response_item\",\"payload\":{\"type\":\"message\",\"role\":\"assistant\",\"content\":[{\"type\":\"output_text\",\"text\":\"hi\"}]}}'";
+        let mut h = SessionHandle::spawn(&sh(codex)).expect("spawn");
+        let mut reg = Registry::default();
+        h.pump_events_with(Backend::Codex, |ev| reg.apply("live-1", &ev))
+            .await;
+        h.shutdown().await;
+        let rt = reg.get("live-1").expect("session is in the registry");
+        assert_eq!(rt.model, "gpt-5-codex");
+        assert_eq!(rt.last_text, "hi");
+        assert_eq!(rt.turns, 1);
     }
 }

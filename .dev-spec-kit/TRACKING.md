@@ -24,6 +24,7 @@
 | R-GITSTATUS-01 | parse git status --porcelain | 2 | 🟢🟢 | done | — |
 | R-INDEX-01 | index a transcript directory | 2 | 🟢🟢 | done | — |
 | R-LAYOUT-01 | grid layout and pane assignment | 2 | 🟢🟢 | done | — |
+| R-LIVE-LAUNCH-01 | pump a live session into the registry | 1 | 🟢 | done | — |
 | R-MASK-01 | mask secret config values | 2 | 🟢🟢 | done | — |
 | R-MATERIALIZE-01 | materialize config into session env | 2 | 🟢🟢 | done | — |
 | R-PROOF-01 | Codex is indistinguishable through the pipeline | 1 | 🟢 | done | — |
