@@ -33,6 +33,7 @@
 | R-LIVEVIEW-01 | summarize a live session | 1 | 🟢 | done | — |
 | R-MASK-01 | mask secret config values | 2 | 🟢🟢 | done | — |
 | R-MATERIALIZE-01 | materialize config into session env | 2 | 🟢🟢 | done | — |
+| R-MCP-APPROVE-01 | wrap the decision as a tools/call result | 1 | 🟢 | done | — |
 | R-MCP-DISPATCH-01 | route MCP requests | 2 | 🟢🟢 | done | — |
 | R-PROOF-01 | Codex is indistinguishable through the pipeline | 1 | 🟢 | done | — |
 | R-REATTACH-01 | reattach persisted sessions | 2 | 🟢🟢 | done | — |
