@@ -11,6 +11,8 @@ type EventLine = { role: string; text: string };
 type BoardRow = { session_id: string; project: string; title: string; group: string; resume_cmd: string };
 type Spend = { name: string; usd: number };
 type UsageView = { today_usd: number; burn_per_hr: number; budget_usd: number; budget_pct: number; by_project: Spend[]; by_model: Spend[] };
+type ReviewItem = { session: string; project: string; branch: string; files: number; added: number; removed: number };
+type FileEntry = { path: string; status: string; added: number | null; removed: number | null };
 
 const STATUS_COLOR: Record<string, string> = {
   running: "#5fb98a", "needs-input": "#e0b15e", "waiting-approval": "#e0b15e",
@@ -38,6 +40,12 @@ async function fetchUsage(): Promise<UsageView> {
   try { return await invoke<UsageView>("usage_view"); }
   catch { return { today_usd: 0, burn_per_hr: 0, budget_usd: 0, budget_pct: 0, by_project: [], by_model: [] }; }
 }
+async function fetchInbox(): Promise<ReviewItem[]> {
+  try { return await invoke<ReviewItem[]>("review_inbox"); } catch { return []; }
+}
+async function fetchDiff(session: string): Promise<FileEntry[]> {
+  try { return await invoke<FileEntry[]>("diff_view", { session }); } catch { return []; }
+}
 
 const App: Component = () => {
   const [data] = createResource(fetchDock);
@@ -45,10 +53,13 @@ const App: Component = () => {
   const [busy, setBusy] = createSignal(false);
   const runAgain = async () => { setBusy(true); await refetch(); setBusy(false); };
 
-  const [view, setView] = createSignal<"focus" | "usage" | "sessions">("focus");
+  const [view, setView] = createSignal<"focus" | "usage" | "review" | "sessions">("focus");
   const [query, setQuery] = createSignal("");
   const [board, { refetch: refetchBoard }] = createResource(query, fetchBoard);
   const [usage] = createResource(fetchUsage);
+  const [inbox] = createResource(fetchInbox);
+  const [selected, setSelected] = createSignal("s1");
+  const [diff] = createResource(selected, fetchDiff);
   const money = (n: number) => `$${(n ?? 0).toFixed(2)}`;
   const pctOf = (usd: number, list?: Spend[]) => {
     const max = Math.max(1e-9, ...(list ?? []).map((s) => s.usd));
@@ -99,6 +110,7 @@ const App: Component = () => {
         <div class="views">
           <button class={`seg ${view() === "focus" ? "active" : ""}`} onClick={() => setView("focus")}>Focus</button>
           <button class={`seg ${view() === "usage" ? "active" : ""}`} onClick={() => setView("usage")}>Usage</button>
+          <button class={`seg ${view() === "review" ? "active" : ""}`} onClick={() => setView("review")}>Review</button>
           <button class={`seg ${view() === "sessions" ? "active" : ""}`} onClick={() => setView("sessions")}>Sessions</button>
         </div>
       </header>
@@ -257,6 +269,59 @@ const App: Component = () => {
                   <span class="uv-row-usd">{money(s.usd)}</span>
                 </div>
               )}</For>
+            </div>
+          </div>
+        </div>
+      </Show>
+
+      {/* ───────── Review & Orchestration (Grid) — M4 ───────── */}
+      <Show when={view() === "review"}>
+        <div class="review">
+          <div class="grid4">
+            <For each={(data()?.sessions ?? []).slice(0, 4)}>{(s) => (
+              <div class="pane">
+                <div class="pane-h">
+                  <span class="dot" style={{ background: color(s.status) }} />
+                  <span class="pane-title">{s.project} / {s.name}</span>
+                  <span class="pane-status" style={{ color: color(s.status) }}>{s.status_label}</span>
+                </div>
+                <div class="pane-body">{s.action || s.branch}</div>
+              </div>
+            )}</For>
+          </div>
+          <div class="review-cols">
+            <div class="inbox">
+              <div class="panel-h">Review Inbox <span class="badge">{inbox()?.length ?? 0}</span></div>
+              <div class="scroll">
+                <For each={inbox() ?? []}>{(it) => (
+                  <div class="inbox-row" classList={{ sel: selected() === it.session }} onClick={() => setSelected(it.session)}>
+                    <div class="inbox-main">
+                      <div class="inbox-proj">{it.project}</div>
+                      <div class="inbox-branch">{it.branch}</div>
+                    </div>
+                    <div class="inbox-stat">
+                      <span class="files">{it.files} files</span>
+                      <span class="add">+{it.added}</span> <span class="rem">−{it.removed}</span>
+                    </div>
+                  </div>
+                )}</For>
+              </div>
+            </div>
+            <div class="diffp">
+              <div class="panel-h">Diff <span class="hint">{selected()}</span></div>
+              <div class="scroll">
+                <For each={diff() ?? []} fallback={<div class="empty">Select a session.</div>}>{(f) => (
+                  <div class="file-row">
+                    <span class="fbadge" classList={{ added: f.status === "A", mod: f.status === "M", del: f.status === "D" }}>{f.status}</span>
+                    <span class="fpath">{f.path}</span>
+                    <span class="fstat">
+                      <Show when={f.added !== null} fallback={<span class="bin">binary</span>}>
+                        <span class="add">+{f.added}</span> <span class="rem">−{f.removed}</span>
+                      </Show>
+                    </span>
+                  </div>
+                )}</For>
+              </div>
             </div>
           </div>
         </div>

@@ -73,6 +73,13 @@ fn parse_numstat_line(line: &str) -> Option<DiffStat> {
     })
 }
 
+/// Total added and removed lines across diff stats (binary files count as 0).
+pub fn summarize_diff(stats: &[DiffStat]) -> (u64, u64) {
+    stats.iter().fold((0, 0), |(a, r), s| {
+        (a + s.added.unwrap_or(0), r + s.removed.unwrap_or(0))
+    })
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -143,5 +150,32 @@ mod tests {
         assert!(parse_numstat("").is_empty());
         assert!(parse_numstat("nope\n").is_empty()); // no tabs
         assert!(parse_numstat("1\t2\t\n").is_empty()); // empty path
+    }
+
+    #[test]
+    fn sums_diff_stats() {
+        let stats = vec![
+            DiffStat {
+                path: "a".into(),
+                added: Some(10),
+                removed: Some(5),
+            },
+            DiffStat {
+                path: "b".into(),
+                added: Some(0),
+                removed: Some(3),
+            },
+            DiffStat {
+                path: "img".into(),
+                added: None,
+                removed: None,
+            }, // binary → 0
+        ];
+        assert_eq!(summarize_diff(&stats), (10, 8));
+    }
+
+    #[test]
+    fn empty_diff_is_zero() {
+        assert_eq!(summarize_diff(&[]), (0, 0));
     }
 }
