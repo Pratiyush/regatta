@@ -8,6 +8,7 @@
 | R-AUTOPAUSE-01 | auto-pause a runaway session | 2 | 🟢🟢 | done | — |
 | R-BACKEND-01 | dispatch by backend | 2 | 🟢🟢 | done | — |
 | R-LAUNCH-01 | plan a Claude Code session | 3 | 🟢🟢🟢 | done | — |
+| R-BADGE-01 | parse a backend label | 1 | 🟢 | done | — |
 | R-BOARD-01 | group sessions by recency | 2 | 🟢🟢 | done | — |
 | R-BUDGET-01 | classify spend and decide auto-pause | 2 | 🟢🟢 | done | — |
 | R-BURN-01 | burn rate and time-to-ceiling | 2 | 🟢🟢 | done | — |

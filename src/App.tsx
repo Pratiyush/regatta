@@ -4,7 +4,7 @@ import { invoke } from "@tauri-apps/api/core";
 type SessionView = {
   id: string; name: string; project: string; branch: string;
   status: string; status_label: string; priority: number;
-  action: string; cost: string; reason: string;
+  action: string; cost: string; reason: string; backend: string;
 };
 type DockView = { sessions: SessionView[]; order: number[] };
 type EventLine = { role: string; text: string };
@@ -139,7 +139,7 @@ const App: Component = () => {
                     <div class="row">
                       <span class="dot" style={{ background: color(s.status) }} />
                       <div class="row-main">
-                        <div class="row-name">{s.name}</div>
+                        <div class="row-name">{s.name} <span class="bk" classList={{ codex: s.backend === "Codex" }}>{s.backend}</span></div>
                         <div class="row-meta">{s.action || s.branch}</div>
                       </div>
                       <span class="row-status" style={{ color: color(s.status) }}>{s.status_label}</span>
@@ -183,6 +183,7 @@ const App: Component = () => {
                   <div class="card-top">
                     <span class="pri" style={{ background: color(s.status) }}>{s.priority}</span>
                     <span class="card-name">{s.project} / {s.name}</span>
+                    <span class="bk" classList={{ codex: s.backend === "Codex" }}>{s.backend}</span>
                   </div>
                   <div class="card-status" style={{ color: color(s.status) }}>{s.status_label}</div>
                   <div class="card-reason">{s.reason || s.action}</div>

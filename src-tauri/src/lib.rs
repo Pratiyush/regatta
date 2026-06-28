@@ -21,6 +21,7 @@ struct SessionView {
     action: String,
     cost: String,
     reason: String,
+    backend: String,
 }
 
 #[derive(Serialize)]
@@ -77,6 +78,14 @@ fn dock_view() -> DockView {
                 action: r.5.to_string(),
                 cost: r.6.to_string(),
                 reason: r.7.to_string(),
+                // a Claude/Codex mix — label via the proven pure dispatch
+                backend: if matches!(i, 2 | 4) {
+                    regatta_core::backend::Backend::Codex
+                } else {
+                    regatta_core::backend::Backend::Claude
+                }
+                .label()
+                .to_string(),
             }
         })
         .collect();
