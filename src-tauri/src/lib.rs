@@ -387,6 +387,67 @@ fn settings_view() -> SettingsView {
     }
 }
 
+/// The live session registry, shared between the launcher and the views.
+type LiveRegistry = std::sync::Arc<std::sync::Mutex<regatta_core::runtime::Registry>>;
+
+/// One live session as the cockpit renders it — folded from the real event stream.
+#[derive(Serialize, Clone)]
+struct LiveSessionView {
+    id: String,
+    model: String,
+    summary: String,
+    turns: u64,
+    cost: String,
+}
+
+/// Launch a real agent session (Claude or Codex), spawn it, and pump its event stream into the live
+/// registry as it runs. Returns the session id. The spawned task owns the handle, so when the session
+/// ends the handle drops and the zero-leak teardown reaps the whole process tree.
+#[tauri::command]
+fn launch_session(
+    registry: tauri::State<'_, LiveRegistry>,
+    id: String,
+    backend: String,
+    model: String,
+    cwd: String,
+) -> Result<String, String> {
+    let be = regatta_core::backend::Backend::from_label(&backend).ok_or("unknown backend")?;
+    let plan = be.plan_launch(&model, &id, &cwd, false);
+    let mut handle = regatta_supervisor::SessionHandle::spawn(&plan).map_err(|e| e.to_string())?;
+    let reg = registry.inner().clone();
+    let sid = id.clone();
+    tauri::async_runtime::spawn(async move {
+        handle
+            .pump_events_with(be, |ev| {
+                if let Ok(mut r) = reg.lock() {
+                    r.apply(&sid, &ev);
+                }
+            })
+            .await;
+        // the session ended; handle drops here → zero-leak teardown of its process group
+    });
+    Ok(id)
+}
+
+/// The live sessions the registry is tracking, as dock rows — folded from real event streams.
+#[tauri::command]
+fn live_sessions(registry: tauri::State<'_, LiveRegistry>) -> Vec<LiveSessionView> {
+    let reg = registry.lock().unwrap();
+    reg.snapshot()
+        .into_iter()
+        .map(|(id, rt)| {
+            let summary = rt.summary();
+            LiveSessionView {
+                id,
+                model: rt.model,
+                summary,
+                turns: rt.turns,
+                cost: format!("${:.2}", rt.cost_usd),
+            }
+        })
+        .collect()
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -396,6 +457,9 @@ pub fn run() {
             index_claude_home(&store); // index the session history once at launch
             seed_cost_demo(&store); // representative cost events for the Usage view
             app.manage(std::sync::Mutex::new(store));
+            app.manage(std::sync::Arc::new(std::sync::Mutex::new(
+                regatta_core::runtime::Registry::default(),
+            )) as LiveRegistry);
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
@@ -407,7 +471,9 @@ pub fn run() {
             usage_view,
             review_inbox,
             diff_view,
-            settings_view
+            settings_view,
+            launch_session,
+            live_sessions
         ])
         .run(tauri::generate_context!())
         .expect("error while running Regatta");
