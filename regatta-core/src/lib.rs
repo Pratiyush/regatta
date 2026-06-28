@@ -18,6 +18,7 @@ pub mod config;
 pub mod cost;
 pub mod git;
 pub mod layout;
+pub mod mcp;
 pub mod runtime;
 pub mod slug;
 pub mod stream;

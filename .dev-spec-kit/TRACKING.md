@@ -38,6 +38,7 @@
 | R-REGISTRY-01 | track live sessions by id | 2 | 🟢🟢 | done | — |
 | R-RESUME-01 | resume an existing session | 2 | 🟢🟢 | done | — |
 | R-REVIEW-01 | summarize a diff for the Review Inbox | 2 | 🟢🟢 | done | — |
+| R-RPC-01 | parse requests and build responses | 2 | 🟢🟢 | done | — |
 | R-RUNTIME-01 | fold the event stream into live state | 2 | 🟢🟢 | done | — |
 | R-SETTINGS-01 | effective config display | 1 | 🟢 | done | — |
 | R-SLUG-01 | slugify a session name | 2 | 🟢🟢 | done | — |
