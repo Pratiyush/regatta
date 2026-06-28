@@ -5,6 +5,7 @@
 | R-APPLY-01 | merge config env into a launch plan | 2 | 🟢🟢 | done | — |
 | R-APPROVAL-PARSE-01 | parse an approval request | 2 | 🟢🟢 | done | — |
 | R-APPROVAL-RESP-01 | build the approve-tool response | 2 | 🟢🟢 | done | — |
+| R-APPROVAL-RT-01 | the round-trip drives the agent | 2 | 🟢🟢 | done | — |
 | R-ATTN-01 | rank sessions that need the human | 2 | 🟢🟢 | done | — |
 | R-ATTN-02 | order the Attention Dock | 2 | 🟢🟢 | done | — |
 | R-AUTOPAUSE-01 | auto-pause a runaway session | 2 | 🟢🟢 | done | — |

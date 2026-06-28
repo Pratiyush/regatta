@@ -47,4 +47,43 @@ mod tests {
         );
         assert_ne!(Decision::Allow, Decision::Deny); // exercise the derived equality
     }
+
+    #[test]
+    fn allow_round_trip_drives_the_agent() {
+        use crate::stream::{parse_approval_request, NormalizedEvent};
+        // the agent's approve request → the event the dock surfaces
+        let event =
+            parse_approval_request(r#"{"tool_name":"Bash","input":{"command":"cargo test"}}"#)
+                .expect("a parsed approval request");
+        assert_eq!(
+            event,
+            NormalizedEvent::ApprovalRequested {
+                tool: "Bash".into(),
+                detail: "cargo test".into()
+            }
+        );
+        // the dock allows → the JSON the agent receives back (echoes the input → it proceeds)
+        assert_eq!(
+            approval_response(Decision::Allow, r#"{"command":"cargo test"}"#, ""),
+            r#"{"behavior":"allow","updatedInput":{"command":"cargo test"}}"#
+        );
+    }
+
+    #[test]
+    fn deny_round_trip_stops_the_agent() {
+        use crate::stream::{parse_approval_request, NormalizedEvent};
+        let event =
+            parse_approval_request(r#"{"tool_name":"Bash","input":{"command":"rm -rf /"}}"#)
+                .expect("a parsed approval request");
+        assert!(matches!(event, NormalizedEvent::ApprovalRequested { .. }));
+        // the dock denies → the agent receives a deny with the reason (it does not proceed)
+        assert_eq!(
+            approval_response(
+                Decision::Deny,
+                r#"{"command":"rm -rf /"}"#,
+                "destructive — blocked"
+            ),
+            r#"{"behavior":"deny","message":"destructive — blocked"}"#
+        );
+    }
 }
