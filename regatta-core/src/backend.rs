@@ -64,6 +64,26 @@ pub fn with_env(mut plan: LaunchPlan, extra: &[(String, String)]) -> LaunchPlan 
     plan
 }
 
+/// Plan a headless Codex session (`codex exec --json`). When `resume` is true, attach to the rollout.
+pub fn plan_codex_launch(model: &str, session_id: &str, cwd: &str, resume: bool) -> LaunchPlan {
+    let mut args = vec![
+        "exec".to_string(),
+        "--json".into(),
+        "--model".into(),
+        model.into(),
+    ];
+    if resume {
+        args.push("resume".into());
+        args.push(session_id.into());
+    }
+    LaunchPlan {
+        program: "codex".into(),
+        args,
+        env: vec![("REGATTA_SESSION_ID".into(), session_id.into())],
+        cwd: PathBuf::from(cwd),
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -158,5 +178,26 @@ mod tests {
         let base = plan_claude_launch("opus", "s1", "/r", false);
         let n = base.env.len();
         assert_eq!(with_env(base, &[]).env.len(), n);
+    }
+
+    #[test]
+    fn plans_a_codex_session() {
+        let p = plan_codex_launch("gpt-5-codex", "cx-1", "/repo", false);
+        assert_eq!(p.program, "codex");
+        assert_eq!(p.cwd, PathBuf::from("/repo"));
+        assert!(p.args.iter().any(|a| a == "exec"));
+        assert!(p.args.iter().any(|a| a == "--json"));
+        assert!(p.args.windows(2).any(|w| w == ["--model", "gpt-5-codex"]));
+        assert!(!p.args.iter().any(|a| a == "resume"));
+        assert!(p
+            .env
+            .iter()
+            .any(|(k, v)| k == "REGATTA_SESSION_ID" && v == "cx-1"));
+    }
+
+    #[test]
+    fn plans_a_codex_resume() {
+        let p = plan_codex_launch("gpt-5-codex", "cx-9", "/repo", true);
+        assert!(p.args.windows(2).any(|w| w == ["resume", "cx-9"]));
     }
 }
