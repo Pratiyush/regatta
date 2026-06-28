@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.4.0](https://github.com/Pratiyush/regatta/compare/v0.3.0...v0.4.0) (2026-06-28)
+
+
+### Features
+
+* **live:** launch_session + live_sessions wire the registry into Tauri ([#104](https://github.com/Pratiyush/regatta/issues/104)) ([7054d44](https://github.com/Pratiyush/regatta/commit/7054d44cedb36fd144b49c6f7bf657318e4f0d59))
+* **runtime:** fold the event stream into live session state ([#97](https://github.com/Pratiyush/regatta/issues/97)) ([719b3d6](https://github.com/Pratiyush/regatta/commit/719b3d6e2da95350f5b1817abe7a8fbf73fd4fd0))
+* **runtime:** session registry — live sessions keyed by id ([#100](https://github.com/Pratiyush/regatta/issues/100)) ([c712609](https://github.com/Pratiyush/regatta/commit/c712609f3bb2ced04123b15053fedb7286cb1c63))
+
 ## [0.3.0](https://github.com/Pratiyush/regatta/compare/v0.2.0...v0.3.0) (2026-06-28)
 
 
