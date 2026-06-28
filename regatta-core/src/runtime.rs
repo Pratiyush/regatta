@@ -2,6 +2,7 @@
 //! reflects (model, last assistant text, turn count, accumulated cost + tokens). Pure + deterministic.
 
 use crate::stream::NormalizedEvent;
+use std::collections::BTreeMap;
 
 /// The live, view-facing state of one session, accumulated from its `NormalizedEvent` stream.
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -30,6 +31,45 @@ impl SessionRuntime {
                 self.cost_usd += crate::cost::effective_cost(&self.model, event);
             }
         }
+    }
+}
+
+/// All live sessions keyed by id — the single source the cockpit renders.
+#[derive(Debug, Clone, Default)]
+pub struct Registry {
+    sessions: BTreeMap<String, SessionRuntime>,
+}
+
+impl Registry {
+    /// Fold an event into the session's runtime, creating the session on first sight.
+    pub fn apply(&mut self, id: &str, event: &NormalizedEvent) {
+        self.sessions
+            .entry(id.to_string())
+            .or_default()
+            .apply_event(event);
+    }
+
+    /// The live runtime for `id`, if the session exists.
+    pub fn get(&self, id: &str) -> Option<&SessionRuntime> {
+        self.sessions.get(id)
+    }
+
+    /// How many live sessions are tracked.
+    pub fn len(&self) -> usize {
+        self.sessions.len()
+    }
+
+    /// Whether no sessions are tracked yet.
+    pub fn is_empty(&self) -> bool {
+        self.sessions.is_empty()
+    }
+
+    /// A stable, id-sorted snapshot of every session for the UI.
+    pub fn snapshot(&self) -> Vec<(String, SessionRuntime)> {
+        self.sessions
+            .iter()
+            .map(|(id, rt)| (id.clone(), rt.clone()))
+            .collect()
     }
 }
 
@@ -85,5 +125,47 @@ mod tests {
         });
         assert!((rt.cost_usd - 5.0).abs() < 1e-9);
         assert_eq!(rt.input_tokens, 1_000_000);
+    }
+
+    #[test]
+    fn registry_tracks_sessions_by_id() {
+        let mut reg = Registry::default();
+        assert!(reg.is_empty());
+        reg.apply(
+            "s1",
+            &NormalizedEvent::SessionStarted {
+                model: "claude-opus-4-8".into(),
+            },
+        );
+        reg.apply("s1", &NormalizedEvent::AssistantText { text: "hi".into() });
+        reg.apply(
+            "s2",
+            &NormalizedEvent::SessionStarted {
+                model: "gpt-5-codex".into(),
+            },
+        );
+        assert_eq!(reg.len(), 2);
+        assert!(!reg.is_empty());
+        assert_eq!(reg.get("s1").unwrap().turns, 1);
+        assert_eq!(reg.get("s1").unwrap().model, "claude-opus-4-8");
+        assert_eq!(reg.get("s2").unwrap().model, "gpt-5-codex");
+        assert!(reg.get("nope").is_none());
+    }
+
+    #[test]
+    fn snapshot_is_id_sorted() {
+        let mut reg = Registry::default();
+        reg.apply(
+            "zebra",
+            &NormalizedEvent::AssistantText { text: "z".into() },
+        );
+        reg.apply(
+            "alpha",
+            &NormalizedEvent::AssistantText { text: "a".into() },
+        );
+        let snap = reg.snapshot();
+        let ids: Vec<&str> = snap.iter().map(|(id, _)| id.as_str()).collect();
+        assert_eq!(ids, ["alpha", "zebra"]); // BTreeMap → id-sorted
+        assert_eq!(snap[0].1.last_text, "a");
     }
 }
