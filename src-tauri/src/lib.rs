@@ -448,6 +448,29 @@ fn live_sessions(registry: tauri::State<'_, LiveRegistry>) -> Vec<LiveSessionVie
         .collect()
 }
 
+/// Seed a few live sessions (folded from events; no process spawned) so the Live view has data — a
+/// demo of the real registry → view path. Real sessions arrive via `launch_session`.
+fn seed_live_demo(reg: &mut regatta_core::runtime::Registry) {
+    use regatta_core::stream::NormalizedEvent::*;
+    let usage = |cost: f64, input: u64, output: u64| Usage {
+        cost_usd: cost,
+        input,
+        output,
+        cache_read: 0,
+        cache_create: 0,
+    };
+    reg.apply("payments-svc/fix-idempotency", &SessionStarted { model: "claude-opus-4-8".into() });
+    reg.apply("payments-svc/fix-idempotency", &AssistantText { text: "Adding an idempotency guard".into() });
+    reg.apply("payments-svc/fix-idempotency", &AssistantText { text: "Running the suite — 14 passed".into() });
+    reg.apply("payments-svc/fix-idempotency", &usage(0.42, 18_400, 2_100));
+    reg.apply("notepad++/scintilla", &SessionStarted { model: "gpt-5-codex".into() });
+    reg.apply("notepad++/scintilla", &AssistantText { text: "Editing ScintillaEditView.cpp".into() });
+    reg.apply("notepad++/scintilla", &usage(0.0, 9_000, 1_200));
+    reg.apply("Book-Java/ch04-tests", &SessionStarted { model: "claude-opus-4-8".into() });
+    reg.apply("Book-Java/ch04-tests", &AssistantText { text: "Writing chapter 4 tests".into() });
+    reg.apply("Book-Java/ch04-tests", &usage(0.88, 22_000, 3_400));
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -457,9 +480,9 @@ pub fn run() {
             index_claude_home(&store); // index the session history once at launch
             seed_cost_demo(&store); // representative cost events for the Usage view
             app.manage(std::sync::Mutex::new(store));
-            app.manage(std::sync::Arc::new(std::sync::Mutex::new(
-                regatta_core::runtime::Registry::default(),
-            )) as LiveRegistry);
+            let mut registry = regatta_core::runtime::Registry::default();
+            seed_live_demo(&mut registry); // demo live sessions (folded from events; no process)
+            app.manage(std::sync::Arc::new(std::sync::Mutex::new(registry)) as LiveRegistry);
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
