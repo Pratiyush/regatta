@@ -36,6 +36,29 @@ pub fn parse_session_meta(line: &str) -> Option<SessionMeta> {
     })
 }
 
+/// Parse a Codex rollout's `session_meta` line into the SAME `SessionMeta` as a Claude transcript, so
+/// Codex rollouts appear in the Resume board alongside Claude sessions.
+pub fn parse_codex_meta(line: &str) -> Option<SessionMeta> {
+    let v: Value = serde_json::from_str(line).ok()?;
+    if v.get("type")?.as_str()? != "session_meta" {
+        return None;
+    }
+    let payload = v.get("payload")?;
+    let session_id = payload.get("id")?.as_str()?.to_string();
+    let cwd = payload
+        .get("cwd")
+        .and_then(Value::as_str)
+        .unwrap_or_default()
+        .to_string();
+    let project = slugify(cwd.rsplit('/').next().unwrap_or_default());
+    Some(SessionMeta {
+        session_id,
+        cwd,
+        project,
+        git_branch: String::new(),
+    })
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -69,5 +92,48 @@ mod tests {
         assert_eq!(parse_session_meta("not json"), None);
         assert_eq!(parse_session_meta("{}"), None);
         assert_eq!(parse_session_meta(r#"{"sessionId":5}"#), None); // id not a string
+    }
+
+    #[test]
+    fn parses_codex_session_meta() {
+        let line = r#"{"type":"session_meta","payload":{"id":"cx-abc","cwd":"/Users/p/proj","originator":"cli"}}"#;
+        assert_eq!(
+            parse_codex_meta(line),
+            Some(SessionMeta {
+                session_id: "cx-abc".into(),
+                cwd: "/Users/p/proj".into(),
+                project: "proj".into(),
+                git_branch: String::new(),
+            })
+        );
+        assert_eq!(
+            parse_codex_meta(r#"{"type":"session_meta","payload":{"id":"x"}}"#),
+            Some(SessionMeta {
+                session_id: "x".into(),
+                cwd: String::new(),
+                project: "session".into(),
+                git_branch: String::new(),
+            })
+        );
+    }
+
+    #[test]
+    fn rejects_non_codex_meta() {
+        assert_eq!(parse_codex_meta("not json"), None);
+        assert_eq!(parse_codex_meta("{}"), None); // no type
+        assert_eq!(parse_codex_meta(r#"{"type":5}"#), None); // type not a string
+        assert_eq!(
+            parse_codex_meta(r#"{"type":"event_msg","payload":{}}"#),
+            None
+        ); // not session_meta
+        assert_eq!(parse_codex_meta(r#"{"type":"session_meta"}"#), None); // no payload
+        assert_eq!(
+            parse_codex_meta(r#"{"type":"session_meta","payload":{}}"#),
+            None
+        ); // no id
+        assert_eq!(
+            parse_codex_meta(r#"{"type":"session_meta","payload":{"id":5}}"#),
+            None
+        ); // id not a string
     }
 }
