@@ -173,6 +173,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "regatta_git"
+version = "0.1.0"
+dependencies = [
+ "regatta_core",
+]
+
+[[package]]
 name = "regatta_indexer"
 version = "0.1.0"
 dependencies = [
