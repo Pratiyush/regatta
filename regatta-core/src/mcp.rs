@@ -31,6 +31,73 @@ pub fn rpc_error(id: &Value, code: i64, message: &str) -> String {
     json!({ "jsonrpc": "2.0", "id": id, "error": { "code": code, "message": message } }).to_string()
 }
 
+/// What the server should do with a parsed request — computed purely; the glue performs the I/O.
+#[derive(Debug, Clone, PartialEq)]
+pub enum McpAction {
+    /// A ready JSON-RPC response to write back immediately.
+    Reply(String),
+    /// A `tools/call("approve")`: surface this request to the dock, then reply once the human decides.
+    Approve {
+        id: Value,
+        request: crate::stream::NormalizedEvent,
+        raw_input: String,
+    },
+    /// Nothing to send (e.g. a notification).
+    Ignore,
+}
+
+/// Route a parsed MCP request to an action.
+pub fn dispatch(req: &RpcRequest) -> McpAction {
+    match req.method.as_str() {
+        "initialize" => McpAction::Reply(rpc_result(&req.id, initialize_result())),
+        "tools/list" => McpAction::Reply(rpc_result(&req.id, tools_list_result())),
+        "tools/call" => {
+            let name = req
+                .params
+                .get("name")
+                .and_then(Value::as_str)
+                .unwrap_or_default();
+            if name != "approve" {
+                return McpAction::Reply(rpc_error(&req.id, -32601, "unknown tool"));
+            }
+            let raw = req
+                .params
+                .get("arguments")
+                .cloned()
+                .unwrap_or(Value::Null)
+                .to_string();
+            match crate::stream::parse_approval_request(&raw) {
+                Some(request) => McpAction::Approve {
+                    id: req.id.clone(),
+                    request,
+                    raw_input: raw,
+                },
+                None => McpAction::Reply(rpc_error(&req.id, -32602, "invalid approve arguments")),
+            }
+        }
+        m if m.starts_with("notifications/") => McpAction::Ignore,
+        _ => McpAction::Reply(rpc_error(&req.id, -32601, "method not found")),
+    }
+}
+
+fn initialize_result() -> Value {
+    json!({
+        "protocolVersion": "2024-11-05",
+        "serverInfo": { "name": "regatta", "version": "1" },
+        "capabilities": { "tools": {} }
+    })
+}
+
+fn tools_list_result() -> Value {
+    json!({
+        "tools": [{
+            "name": "approve",
+            "description": "Ask the human to approve a tool use",
+            "inputSchema": { "type": "object" }
+        }]
+    })
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -71,5 +138,58 @@ mod tests {
             rpc_error(&json!(2), -32601, "method not found"),
             r#"{"error":{"code":-32601,"message":"method not found"},"id":2,"jsonrpc":"2.0"}"#
         );
+    }
+
+    fn req(method: &str, params: Value) -> RpcRequest {
+        RpcRequest {
+            id: json!(1),
+            method: method.into(),
+            params,
+        }
+    }
+
+    #[test]
+    fn dispatch_routes_mcp_methods() {
+        use crate::stream::NormalizedEvent;
+        assert!(matches!(
+            dispatch(&req("initialize", Value::Null)),
+            McpAction::Reply(ref s) if s.contains("serverInfo") && s.contains("regatta")
+        ));
+        assert!(matches!(
+            dispatch(&req("tools/list", Value::Null)),
+            McpAction::Reply(ref s) if s.contains("\"approve\"")
+        ));
+        let call = req(
+            "tools/call",
+            json!({"name":"approve","arguments":{"tool_name":"Bash","input":{"command":"ls"}}}),
+        );
+        let expected = NormalizedEvent::ApprovalRequested {
+            tool: "Bash".into(),
+            detail: "ls".into(),
+        };
+        assert!(matches!(
+            dispatch(&call),
+            McpAction::Approve { ref request, .. } if *request == expected
+        ));
+    }
+
+    #[test]
+    fn dispatch_handles_errors_and_notifications() {
+        assert!(matches!(
+            dispatch(&req("tools/call", json!({"name":"frobnicate"}))),
+            McpAction::Reply(ref s) if s.contains("unknown tool")
+        ));
+        assert!(matches!(
+            dispatch(&req("tools/call", json!({"name":"approve","arguments":{"no":"tool_name"}}))),
+            McpAction::Reply(ref s) if s.contains("invalid approve")
+        ));
+        assert_eq!(
+            dispatch(&req("notifications/initialized", Value::Null)),
+            McpAction::Ignore
+        );
+        assert!(matches!(
+            dispatch(&req("nonsense", Value::Null)),
+            McpAction::Reply(ref s) if s.contains("method not found")
+        ));
     }
 }
