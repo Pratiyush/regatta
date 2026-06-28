@@ -53,6 +53,26 @@ pub fn effective_cost(model: &str, ev: &NormalizedEvent) -> f64 {
     }
 }
 
+/// Spend rate in USD/hour from total spent and elapsed seconds (zero elapsed → zero rate).
+pub fn burn_rate(spent_usd: f64, elapsed_secs: u64) -> f64 {
+    if elapsed_secs == 0 {
+        return 0.0;
+    }
+    spent_usd / (elapsed_secs as f64 / 3600.0)
+}
+
+/// Seconds until `spent` reaches `limit` at `rate` USD/hour. None if not advancing; Some(0) if at/over.
+pub fn time_to_ceiling(spent_usd: f64, rate_per_hour: f64, limit_usd: f64) -> Option<u64> {
+    if rate_per_hour <= 0.0 {
+        return None;
+    }
+    let remaining = limit_usd - spent_usd;
+    if remaining <= 0.0 {
+        return Some(0);
+    }
+    Some((remaining / rate_per_hour * 3600.0) as u64)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -93,5 +113,20 @@ mod tests {
             effective_cost("opus", &SessionStarted { model: "x".into() }),
             0.0
         );
+    }
+
+    #[test]
+    fn computes_burn_rate() {
+        assert!((burn_rate(6.0, 3600) - 6.0).abs() < 1e-9);
+        assert!((burn_rate(6.0, 1800) - 12.0).abs() < 1e-9);
+        assert_eq!(burn_rate(5.0, 0), 0.0); // no elapsed time → no rate
+    }
+
+    #[test]
+    fn predicts_time_to_ceiling() {
+        assert_eq!(time_to_ceiling(5.0, 5.0, 10.0), Some(3600)); // $5 left at $5/hr = 1h
+        assert_eq!(time_to_ceiling(0.0, 0.0, 10.0), None); // not advancing
+        assert_eq!(time_to_ceiling(10.0, 5.0, 10.0), Some(0)); // already at ceiling
+        assert_eq!(time_to_ceiling(12.0, 5.0, 10.0), Some(0)); // already over
     }
 }
