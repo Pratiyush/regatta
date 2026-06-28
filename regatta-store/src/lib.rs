@@ -42,7 +42,9 @@ const SCHEMA: &str = "CREATE TABLE IF NOT EXISTS sessions (\
     CREATE TABLE IF NOT EXISTS cost_events (\
     id INTEGER PRIMARY KEY AUTOINCREMENT, session_id TEXT NOT NULL, project TEXT NOT NULL, \
     model TEXT NOT NULL, ts INTEGER NOT NULL, cost_usd REAL NOT NULL);\
-    CREATE INDEX IF NOT EXISTS idx_cost_ts ON cost_events(ts);";
+    CREATE INDEX IF NOT EXISTS idx_cost_ts ON cost_events(ts);\
+    CREATE TABLE IF NOT EXISTS config (\
+    scope TEXT NOT NULL, key TEXT NOT NULL, value TEXT NOT NULL, PRIMARY KEY(scope, key));";
 
 /// A handle to the flow store.
 pub struct Store {
@@ -164,6 +166,30 @@ impl Store {
             "SELECT model, SUM(cost_usd) FROM cost_events GROUP BY model ORDER BY SUM(cost_usd) DESC",
         )?;
         let rows = stmt.query_map([], |r| Ok((r.get(0)?, r.get(1)?)))?;
+        rows.collect()
+    }
+
+    /// Set a config value in a scope ("global" | "project:<name>" | "session:<id>").
+    pub fn set_config(&self, scope: &str, key: &str, value: &str) -> rusqlite::Result<()> {
+        self.conn.execute(
+            "INSERT INTO config (scope, key, value) VALUES (?1, ?2, ?3) \
+             ON CONFLICT(scope, key) DO UPDATE SET value = ?3",
+            params![scope, key, value],
+        )?;
+        Ok(())
+    }
+
+    /// All key→value settings in a scope (one config layer).
+    pub fn get_layer(
+        &self,
+        scope: &str,
+    ) -> rusqlite::Result<std::collections::BTreeMap<String, String>> {
+        let mut stmt = self
+            .conn
+            .prepare("SELECT key, value FROM config WHERE scope = ?1")?;
+        let rows = stmt.query_map(params![scope], |r| {
+            Ok((r.get::<_, String>(0)?, r.get::<_, String>(1)?))
+        })?;
         rows.collect()
     }
 }
@@ -301,5 +327,38 @@ mod tests {
         let by = s.spend_by_model().unwrap();
         assert_eq!(by[0], ("sonnet".to_string(), 5.0)); // most-spent first
         assert_eq!(by[1], ("opus".to_string(), 4.0));
+    }
+
+    #[test]
+    fn persists_config_layers_by_scope() {
+        let s = Store::open_in_memory().unwrap();
+        s.set_config("global", "model", "haiku").unwrap();
+        s.set_config("global", "theme", "dark").unwrap();
+        s.set_config("project:x", "model", "opus").unwrap();
+        let g = s.get_layer("global").unwrap();
+        assert_eq!(g.get("model").map(String::as_str), Some("haiku"));
+        assert_eq!(g.get("theme").map(String::as_str), Some("dark"));
+        assert_eq!(
+            s.get_layer("project:x")
+                .unwrap()
+                .get("model")
+                .map(String::as_str),
+            Some("opus")
+        );
+        assert!(s.get_layer("session:none").unwrap().is_empty());
+    }
+
+    #[test]
+    fn set_config_updates_in_place() {
+        let s = Store::open_in_memory().unwrap();
+        s.set_config("global", "model", "haiku").unwrap();
+        s.set_config("global", "model", "opus").unwrap(); // same scope+key → update
+        assert_eq!(
+            s.get_layer("global")
+                .unwrap()
+                .get("model")
+                .map(String::as_str),
+            Some("opus")
+        );
     }
 }
