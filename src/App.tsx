@@ -13,6 +13,10 @@ type Spend = { name: string; usd: number };
 type UsageView = { today_usd: number; burn_per_hr: number; budget_usd: number; budget_pct: number; by_project: Spend[]; by_model: Spend[] };
 type ReviewItem = { session: string; project: string; branch: string; files: number; added: number; removed: number };
 type FileEntry = { path: string; status: string; added: number | null; removed: number | null };
+type Cfg = { key: string; value: string; secret: boolean };
+type Toggle = { name: string; enabled: boolean };
+type Mcp = { name: string; tools: number; enabled: boolean };
+type SettingsView = { config: Cfg[]; mcp_servers: Mcp[]; skills: Toggle[]; commands: string[] };
 
 const STATUS_COLOR: Record<string, string> = {
   running: "#5fb98a", "needs-input": "#e0b15e", "waiting-approval": "#e0b15e",
@@ -46,6 +50,10 @@ async function fetchInbox(): Promise<ReviewItem[]> {
 async function fetchDiff(session: string): Promise<FileEntry[]> {
   try { return await invoke<FileEntry[]>("diff_view", { session }); } catch { return []; }
 }
+async function fetchSettings(): Promise<SettingsView> {
+  try { return await invoke<SettingsView>("settings_view"); }
+  catch { return { config: [], mcp_servers: [], skills: [], commands: [] }; }
+}
 
 const App: Component = () => {
   const [data] = createResource(fetchDock);
@@ -53,13 +61,14 @@ const App: Component = () => {
   const [busy, setBusy] = createSignal(false);
   const runAgain = async () => { setBusy(true); await refetch(); setBusy(false); };
 
-  const [view, setView] = createSignal<"focus" | "usage" | "review" | "sessions">("focus");
+  const [view, setView] = createSignal<"focus" | "usage" | "review" | "sessions" | "settings">("focus");
   const [query, setQuery] = createSignal("");
   const [board, { refetch: refetchBoard }] = createResource(query, fetchBoard);
   const [usage] = createResource(fetchUsage);
   const [inbox] = createResource(fetchInbox);
   const [selected, setSelected] = createSignal("s1");
   const [diff] = createResource(selected, fetchDiff);
+  const [settings] = createResource(fetchSettings);
   const money = (n: number) => `$${(n ?? 0).toFixed(2)}`;
   const pctOf = (usd: number, list?: Spend[]) => {
     const max = Math.max(1e-9, ...(list ?? []).map((s) => s.usd));
@@ -112,6 +121,7 @@ const App: Component = () => {
           <button class={`seg ${view() === "usage" ? "active" : ""}`} onClick={() => setView("usage")}>Usage</button>
           <button class={`seg ${view() === "review" ? "active" : ""}`} onClick={() => setView("review")}>Review</button>
           <button class={`seg ${view() === "sessions" ? "active" : ""}`} onClick={() => setView("sessions")}>Sessions</button>
+          <button class={`seg gear ${view() === "settings" ? "active" : ""}`} onClick={() => setView("settings")} title="Settings & Extensions">⚙</button>
         </div>
       </header>
 
@@ -321,6 +331,50 @@ const App: Component = () => {
                     </span>
                   </div>
                 )}</For>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Show>
+
+      {/* ───────── Settings + Extensions (One System, One Team) — M5 ───────── */}
+      <Show when={view() === "settings"}>
+        <div class="settings">
+          <div class="set-cols">
+            <div class="set-panel">
+              <div class="panel-h">Settings <span class="muted">effective config (global → project → session)</span></div>
+              <div class="scroll">
+                <For each={settings()?.config ?? []}>{(c) => (
+                  <div class="cfg-row">
+                    <span class="cfg-key">{c.key}</span>
+                    <span class="cfg-val" classList={{ secret: c.secret }}>{c.value}</span>
+                  </div>
+                )}</For>
+              </div>
+            </div>
+            <div class="set-panel">
+              <div class="panel-h">Extensions <span class="muted">MCP · skills · commands</span></div>
+              <div class="scroll">
+                <div class="ext-h">MCP servers</div>
+                <For each={settings()?.mcp_servers ?? []}>{(s) => (
+                  <div class="ext-row">
+                    <span class="ext-name">{s.name}</span>
+                    <span class="ext-tools">{s.tools} tools</span>
+                    <span class="sw" classList={{ on: s.enabled }}><span class="knob" /></span>
+                  </div>
+                )}</For>
+                <div class="ext-h">Skills</div>
+                <For each={settings()?.skills ?? []}>{(s) => (
+                  <div class="ext-row">
+                    <span class="ext-name">{s.name}</span>
+                    <span class="spacer" />
+                    <span class="sw" classList={{ on: s.enabled }}><span class="knob" /></span>
+                  </div>
+                )}</For>
+                <div class="ext-h">Commands</div>
+                <div class="cmd-grid">
+                  <For each={settings()?.commands ?? []}>{(c) => <span class="cmd">{c}</span>}</For>
+                </div>
               </div>
             </div>
           </div>

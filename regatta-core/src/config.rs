@@ -63,6 +63,11 @@ pub fn materialize_env(config: &ConfigLayer) -> Vec<(String, String)> {
     env
 }
 
+/// The effective config across layers with secrets masked — what the Settings view displays.
+pub fn effective_masked(layers: &[ConfigLayer]) -> ConfigLayer {
+    masked(&resolve(layers))
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -148,5 +153,24 @@ mod tests {
         let env = materialize_env(&cfg);
         assert_eq!(env, vec![("A".to_string(), "1".to_string())]);
         assert!(!env.iter().any(|(k, _)| k == "ANTHROPIC_BASE_URL"));
+    }
+
+    #[test]
+    fn effective_masked_resolves_and_masks() {
+        let global = ConfigLayer::from([
+            (
+                "ANTHROPIC_API_KEY".to_string(),
+                "sk-secret-value".to_string(),
+            ),
+            ("model".to_string(), "haiku".to_string()),
+        ]);
+        let session = ConfigLayer::from([("model".to_string(), "opus".to_string())]);
+        let v = effective_masked(&[global, session]);
+        assert_eq!(v.get("model").map(String::as_str), Some("opus")); // resolved: session wins
+        assert!(v.get("ANTHROPIC_API_KEY").unwrap().ends_with("alue")); // masked, tail visible
+        assert_ne!(
+            v.get("ANTHROPIC_API_KEY").map(String::as_str),
+            Some("sk-secret-value")
+        );
     }
 }
