@@ -21,6 +21,7 @@
 | R-CONFIG-01 | resolve layered config | 2 | 🟢🟢 | done | — |
 | R-COSTSTORE-01 | record and roll up cost | 2 | 🟢🟢 | done | — |
 | R-COST-01 | price token usage and pick the effective cost | 2 | 🟢🟢 | done | — |
+| R-FRAME-01 | coalesce a burst, preserving priority | 2 | 🟢🟢 | done | — |
 | R-DIFF-01 | parse git diff --numstat | 2 | 🟢🟢 | done | — |
 | R-GITREAD-01 | read a repo's status and diffstat | 2 | 🟢🟢 | done | — |
 | R-GITSTATUS-01 | parse git status --porcelain | 2 | 🟢🟢 | done | — |

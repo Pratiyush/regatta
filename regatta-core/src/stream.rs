@@ -156,6 +156,25 @@ pub fn parse_approval_request(input: &str) -> Option<NormalizedEvent> {
     Some(NormalizedEvent::ApprovalRequested { tool, detail })
 }
 
+/// Coalesce a burst of events for the Channel: runs of adjacent AssistantText merge into one (cutting
+/// IPC chatter), but every other event — especially the priority ApprovalRequested — stays a discrete,
+/// in-order frame.
+pub fn coalesce(events: Vec<NormalizedEvent>) -> Vec<NormalizedEvent> {
+    let mut out: Vec<NormalizedEvent> = Vec::new();
+    for ev in events {
+        if let (
+            NormalizedEvent::AssistantText { text },
+            Some(NormalizedEvent::AssistantText { text: prev }),
+        ) = (&ev, out.last_mut())
+        {
+            prev.push_str(text);
+        } else {
+            out.push(ev);
+        }
+    }
+    out
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -345,5 +364,52 @@ mod tests {
         assert_eq!(parse_approval_request("not json"), None);
         assert_eq!(parse_approval_request("{}"), None); // no tool_name
         assert_eq!(parse_approval_request(r#"{"tool_name":5}"#), None); // tool_name not a string
+    }
+
+    #[test]
+    fn coalesces_adjacent_text_only() {
+        use NormalizedEvent::*;
+        let t = |s: &str| AssistantText { text: s.into() };
+        // adjacent text merges into one frame
+        assert_eq!(
+            coalesce(vec![t("a"), t("b"), t("c")]),
+            vec![AssistantText { text: "abc".into() }]
+        );
+        // a non-text event breaks the run
+        let usage = Usage {
+            cost_usd: 0.1,
+            input: 1,
+            output: 1,
+            cache_read: 0,
+            cache_create: 0,
+        };
+        assert_eq!(
+            coalesce(vec![t("a"), usage.clone(), t("b")]),
+            vec![t("a"), usage, t("b")]
+        );
+        assert_eq!(coalesce(vec![]), vec![]); // empty in → empty out
+    }
+
+    #[test]
+    fn never_coalesces_an_approval() {
+        use NormalizedEvent::*;
+        let t = |s: &str| AssistantText { text: s.into() };
+        let appr = ApprovalRequested {
+            tool: "Bash".into(),
+            detail: "rm".into(),
+        };
+        // the approval stays a discrete, in-order frame between the texts
+        assert_eq!(
+            coalesce(vec![t("a"), appr.clone(), t("b")]),
+            vec![t("a"), appr, t("b")]
+        );
+        // a leading non-text event, then the text run merges
+        assert_eq!(
+            coalesce(vec![SessionStarted { model: "m".into() }, t("x"), t("y")]),
+            vec![
+                SessionStarted { model: "m".into() },
+                AssistantText { text: "xy".into() }
+            ]
+        );
     }
 }
