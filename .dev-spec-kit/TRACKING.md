@@ -17,6 +17,7 @@
 | R-GITSTATUS-01 | parse git status --porcelain | 2 | 🟢🟢 | done | — |
 | R-INDEX-01 | index a transcript directory | 2 | 🟢🟢 | done | — |
 | R-LAYOUT-01 | grid layout and pane assignment | 2 | 🟢🟢 | done | — |
+| R-MASK-01 | mask secret config values | 2 | 🟢🟢 | done | — |
 | R-REATTACH-01 | reattach persisted sessions | 2 | 🟢🟢 | done | — |
 | R-RESUME-01 | resume an existing session | 2 | 🟢🟢 | done | — |
 | R-REVIEW-01 | summarize a diff for the Review Inbox | 2 | 🟢🟢 | done | — |
