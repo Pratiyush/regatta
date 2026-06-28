@@ -76,7 +76,11 @@ fn parse_numstat_line(line: &str) -> Option<DiffStat> {
 /// Total added and removed lines across diff stats (binary files count as 0).
 pub fn summarize_diff(stats: &[DiffStat]) -> (u64, u64) {
     stats.iter().fold((0, 0), |(a, r), s| {
-        (a + s.added.unwrap_or(0), r + s.removed.unwrap_or(0))
+        // saturating_add: a giant diff must not overflow u64 into a panic.
+        (
+            a.saturating_add(s.added.unwrap_or(0)),
+            r.saturating_add(s.removed.unwrap_or(0)),
+        )
     })
 }
 
