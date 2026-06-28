@@ -18,6 +18,10 @@ pub enum NormalizedEvent {
         cache_read: u64,
         cache_create: u64,
     },
+    ApprovalRequested {
+        tool: String,
+        detail: String,
+    },
 }
 
 /// Parse one newline-delimited stream-json line. Returns `None` for blank, unknown, or malformed lines.
@@ -133,6 +137,23 @@ fn codex_text(payload: &Value) -> String {
                 .join("")
         })
         .unwrap_or_default()
+}
+
+/// Parse the input the `mcp__regatta__approve` permission tool receives (the agent's tool-use request)
+/// into a normalized `ApprovalRequested`. Returns None without a tool name or on malformed input.
+pub fn parse_approval_request(input: &str) -> Option<NormalizedEvent> {
+    let v: Value = serde_json::from_str(input).ok()?;
+    let tool = v.get("tool_name").and_then(Value::as_str)?.to_string();
+    let detail = v
+        .get("input")
+        .map(|i| {
+            i.get("command")
+                .and_then(Value::as_str)
+                .map(str::to_string)
+                .unwrap_or_else(|| i.to_string())
+        })
+        .unwrap_or_default();
+    Some(NormalizedEvent::ApprovalRequested { tool, detail })
 }
 
 #[cfg(test)]
@@ -289,5 +310,40 @@ mod tests {
             parse_codex_line(r#"{"type":"event_msg","payload":{"type":5}}"#),
             None
         ); // event_msg whose payload.type isn't a string
+    }
+
+    #[test]
+    fn parses_an_approval_request() {
+        // Bash → detail is the command
+        assert_eq!(
+            parse_approval_request(r#"{"tool_name":"Bash","input":{"command":"rm -rf /tmp/x"}}"#),
+            Some(NormalizedEvent::ApprovalRequested {
+                tool: "Bash".into(),
+                detail: "rm -rf /tmp/x".into()
+            })
+        );
+        // non-Bash → detail is the rendered input
+        assert_eq!(
+            parse_approval_request(r#"{"tool_name":"Write","input":{"path":"/etc/hosts"}}"#),
+            Some(NormalizedEvent::ApprovalRequested {
+                tool: "Write".into(),
+                detail: "{\"path\":\"/etc/hosts\"}".into()
+            })
+        );
+        // no input → empty detail
+        assert_eq!(
+            parse_approval_request(r#"{"tool_name":"Read"}"#),
+            Some(NormalizedEvent::ApprovalRequested {
+                tool: "Read".into(),
+                detail: String::new()
+            })
+        );
+    }
+
+    #[test]
+    fn rejects_non_approval_input() {
+        assert_eq!(parse_approval_request("not json"), None);
+        assert_eq!(parse_approval_request("{}"), None); // no tool_name
+        assert_eq!(parse_approval_request(r#"{"tool_name":5}"#), None); // tool_name not a string
     }
 }

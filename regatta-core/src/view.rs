@@ -29,6 +29,10 @@ pub fn event_line(ev: &NormalizedEvent) -> EventLine {
             role: "usage".into(),
             text: format!("${cost_usd:.2} · {input} in / {output} out"),
         },
+        NormalizedEvent::ApprovalRequested { tool, detail } => EventLine {
+            role: "approval".into(),
+            text: format!("⚠ approval needed · {tool}: {detail}"),
+        },
     }
 }
 
@@ -67,6 +71,16 @@ mod tests {
             EventLine {
                 role: "usage".into(),
                 text: "$0.50 · 3 in / 4 out".into()
+            }
+        );
+        assert_eq!(
+            event_line(&NormalizedEvent::ApprovalRequested {
+                tool: "Bash".into(),
+                detail: "rm -rf /tmp/x".into()
+            }),
+            EventLine {
+                role: "approval".into(),
+                text: "⚠ approval needed · Bash: rm -rf /tmp/x".into()
             }
         );
     }
