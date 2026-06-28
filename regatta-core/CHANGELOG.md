@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.5.0](https://github.com/Pratiyush/regatta/compare/v0.4.0...v0.5.0) (2026-06-28)
+
+
+### Features
+
+* **approval:** build the MCP approve-tool response ([#113](https://github.com/Pratiyush/regatta/issues/113)) ([ffe159d](https://github.com/Pratiyush/regatta/commit/ffe159d064ba7147e7264a992cdfc93b6a92a699))
+* **stream:** ApprovalRequested event + parse the approve request ([#110](https://github.com/Pratiyush/regatta/issues/110)) ([61f78d0](https://github.com/Pratiyush/regatta/commit/61f78d0d5b1a23b3335d2988519b9df952f56ddf))
+* **stream:** coalesce token-delta bursts, preserving priority frames ([#115](https://github.com/Pratiyush/regatta/issues/115)) ([1c09c14](https://github.com/Pratiyush/regatta/commit/1c09c147b70f257187617a00b71067c126e1c8b8))
+
 ## [0.4.0](https://github.com/Pratiyush/regatta/compare/v0.3.0...v0.4.0) (2026-06-28)
 
 
