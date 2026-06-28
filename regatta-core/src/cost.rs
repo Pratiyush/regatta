@@ -73,6 +73,14 @@ pub fn time_to_ceiling(spent_usd: f64, rate_per_hour: f64, limit_usd: f64) -> Op
     Some((remaining / rate_per_hour * 3600.0) as u64)
 }
 
+/// Percent (0..=100) of a budget consumed, clamped. A non-positive limit reads as 0%.
+pub fn budget_pct(spent_usd: f64, limit_usd: f64) -> u8 {
+    if limit_usd <= 0.0 {
+        return 0;
+    }
+    (spent_usd / limit_usd * 100.0).round().clamp(0.0, 100.0) as u8
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -128,5 +136,15 @@ mod tests {
         assert_eq!(time_to_ceiling(0.0, 0.0, 10.0), None); // not advancing
         assert_eq!(time_to_ceiling(10.0, 5.0, 10.0), Some(0)); // already at ceiling
         assert_eq!(time_to_ceiling(12.0, 5.0, 10.0), Some(0)); // already over
+    }
+
+    #[test]
+    fn budget_pct_clamps_0_to_100() {
+        assert_eq!(budget_pct(5.0, 10.0), 50);
+        assert_eq!(budget_pct(10.0, 10.0), 100);
+        assert_eq!(budget_pct(12.0, 10.0), 100); // clamped high
+        assert_eq!(budget_pct(0.0, 10.0), 0);
+        assert_eq!(budget_pct(5.0, 0.0), 0); // no limit
+        assert_eq!(budget_pct(-1.0, 10.0), 0); // clamped low
     }
 }
