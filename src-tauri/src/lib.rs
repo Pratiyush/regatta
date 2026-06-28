@@ -295,6 +295,89 @@ fn diff_view(session: String) -> Vec<FileEntry> {
         .collect()
 }
 
+#[derive(Serialize, Clone)]
+struct ConfigEntry {
+    key: String,
+    value: String,
+    secret: bool,
+}
+
+#[derive(Serialize, Clone)]
+struct Toggle {
+    name: String,
+    enabled: bool,
+}
+
+#[derive(Serialize, Clone)]
+struct McpServer {
+    name: String,
+    tools: usize,
+    enabled: bool,
+}
+
+#[derive(Serialize)]
+struct SettingsView {
+    config: Vec<ConfigEntry>,
+    mcp_servers: Vec<McpServer>,
+    skills: Vec<Toggle>,
+    commands: Vec<String>,
+}
+
+/// The Settings + Extensions view: the effective layered config (secrets masked by the pure core)
+/// plus MCP servers, skills, and commands. Demo layers until the config store is wired through.
+#[tauri::command]
+fn settings_view() -> SettingsView {
+    use regatta_core::config::{effective_masked, is_secret_key, ConfigLayer};
+    let global = ConfigLayer::from([
+        ("model".to_string(), "claude-opus-4-8".to_string()),
+        ("permission_mode".to_string(), "ask".to_string()),
+        ("theme".to_string(), "regatta-dark".to_string()),
+        (
+            "env.ANTHROPIC_API_KEY".to_string(),
+            "sk-ant-abcd1234efgh5678".to_string(),
+        ),
+    ]);
+    let project = ConfigLayer::from([
+        ("working_dir".to_string(), "~/Desktop/AI/terminal-x".to_string()),
+        ("model".to_string(), "claude-opus-4-8".to_string()),
+    ]);
+    let config = effective_masked(&[global, project])
+        .into_iter()
+        .map(|(k, v)| ConfigEntry {
+            secret: is_secret_key(&k),
+            key: k,
+            value: v,
+        })
+        .collect();
+    let mcp = |name: &str, tools: usize, enabled: bool| McpServer {
+        name: name.into(),
+        tools,
+        enabled,
+    };
+    let toggle = |name: &str, enabled: bool| Toggle {
+        name: name.into(),
+        enabled,
+    };
+    SettingsView {
+        config,
+        mcp_servers: vec![
+            mcp("regatta", 4, true),
+            mcp("github", 26, true),
+            mcp("filesystem", 11, false),
+            mcp("playwright", 21, true),
+        ],
+        skills: vec![
+            toggle("dev-spec-kit", true),
+            toggle("laptop-health", true),
+            toggle("design-sync", false),
+        ],
+        commands: ["/plan", "/review", "/session", "/run", "/cost", "/resume"]
+            .iter()
+            .map(|s| s.to_string())
+            .collect(),
+    }
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -314,7 +397,8 @@ pub fn run() {
             board_reindex,
             usage_view,
             review_inbox,
-            diff_view
+            diff_view,
+            settings_view
         ])
         .run(tauri::generate_context!())
         .expect("error while running Regatta");
