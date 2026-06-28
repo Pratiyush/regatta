@@ -9,6 +9,8 @@ type SessionView = {
 type DockView = { sessions: SessionView[]; order: number[] };
 type EventLine = { role: string; text: string };
 type BoardRow = { session_id: string; project: string; title: string; group: string; resume_cmd: string };
+type Spend = { name: string; usd: number };
+type UsageView = { today_usd: number; burn_per_hr: number; budget_usd: number; budget_pct: number; by_project: Spend[]; by_model: Spend[] };
 
 const STATUS_COLOR: Record<string, string> = {
   running: "#5fb98a", "needs-input": "#e0b15e", "waiting-approval": "#e0b15e",
@@ -32,6 +34,10 @@ async function runDemo(): Promise<EventLine[]> {
 async function fetchBoard(query: string): Promise<BoardRow[]> {
   try { return await invoke<BoardRow[]>("board_list", { query }); } catch { return []; }
 }
+async function fetchUsage(): Promise<UsageView> {
+  try { return await invoke<UsageView>("usage_view"); }
+  catch { return { today_usd: 0, burn_per_hr: 0, budget_usd: 0, budget_pct: 0, by_project: [], by_model: [] }; }
+}
 
 const App: Component = () => {
   const [data] = createResource(fetchDock);
@@ -39,9 +45,15 @@ const App: Component = () => {
   const [busy, setBusy] = createSignal(false);
   const runAgain = async () => { setBusy(true); await refetch(); setBusy(false); };
 
-  const [view, setView] = createSignal<"focus" | "sessions">("focus");
+  const [view, setView] = createSignal<"focus" | "usage" | "sessions">("focus");
   const [query, setQuery] = createSignal("");
   const [board, { refetch: refetchBoard }] = createResource(query, fetchBoard);
+  const [usage] = createResource(fetchUsage);
+  const money = (n: number) => `$${(n ?? 0).toFixed(2)}`;
+  const pctOf = (usd: number, list?: Spend[]) => {
+    const max = Math.max(1e-9, ...(list ?? []).map((s) => s.usd));
+    return Math.round((usd / max) * 100);
+  };
   const [copied, setCopied] = createSignal("");
   const copyResume = async (cmd: string, id: string) => {
     try { await navigator.clipboard.writeText(cmd); } catch { /* clipboard may be blocked */ }
@@ -80,13 +92,13 @@ const App: Component = () => {
       <header class="topbar">
         <div class="brand"><span class="logo">R</span> Regatta</div>
         <div class="spacer" />
-        <div class="usage">
-          <b>$9.12</b> today <span class="sep">·</span> <b>1.2M</b> tok
-          <span class="sep">·</span> <span class="live">● {dock().length} need you</span>
+        <div class="usage clickable" onClick={() => setView("usage")} title="Open Usage">
+          <b>{money(usage()?.today_usd ?? 0)}</b> today <span class="sep">·</span>
+          <span class="live">● {dock().length} need you</span>
         </div>
         <div class="views">
           <button class={`seg ${view() === "focus" ? "active" : ""}`} onClick={() => setView("focus")}>Focus</button>
-          <button class="seg">Grid</button>
+          <button class={`seg ${view() === "usage" ? "active" : ""}`} onClick={() => setView("usage")}>Usage</button>
           <button class={`seg ${view() === "sessions" ? "active" : ""}`} onClick={() => setView("sessions")}>Sessions</button>
         </div>
       </header>
@@ -198,6 +210,54 @@ const App: Component = () => {
                 </div>
               )}</For>
             </Show>
+          </div>
+        </div>
+      </Show>
+
+      {/* ───────── Usage view — M3 ───────── */}
+      <Show when={view() === "usage"}>
+        <div class="usage-view">
+          <div class="uv-top">
+            <div class="uv-metric">
+              <div class="uv-label">Spent today</div>
+              <div class="uv-big">{money(usage()?.today_usd ?? 0)}</div>
+            </div>
+            <div class="uv-metric">
+              <div class="uv-label">Burn rate</div>
+              <div class="uv-big">{money(usage()?.burn_per_hr ?? 0)}<span class="uv-unit">/hr</span></div>
+            </div>
+            <div class="uv-metric uv-budget">
+              <div class="uv-label">Daily budget · {money(usage()?.budget_usd ?? 0)}</div>
+              <div class="uv-bar">
+                <div class="uv-bar-fill" style={{
+                  width: `${usage()?.budget_pct ?? 0}%`,
+                  background: (usage()?.budget_pct ?? 0) >= 100 ? "#e07a6e" : (usage()?.budget_pct ?? 0) >= 80 ? "#e0b15e" : "#5fb98a",
+                }} />
+              </div>
+              <div class="uv-pct">{usage()?.budget_pct ?? 0}% used</div>
+            </div>
+          </div>
+          <div class="uv-cols">
+            <div class="uv-panel">
+              <div class="uv-panel-h">By project</div>
+              <For each={usage()?.by_project ?? []}>{(s) => (
+                <div class="uv-row">
+                  <span class="uv-row-name">{s.name}</span>
+                  <div class="uv-row-bar"><div class="uv-row-fill" style={{ width: `${pctOf(s.usd, usage()?.by_project)}%` }} /></div>
+                  <span class="uv-row-usd">{money(s.usd)}</span>
+                </div>
+              )}</For>
+            </div>
+            <div class="uv-panel">
+              <div class="uv-panel-h">By model</div>
+              <For each={usage()?.by_model ?? []}>{(s) => (
+                <div class="uv-row">
+                  <span class="uv-row-name">{s.name}</span>
+                  <div class="uv-row-bar"><div class="uv-row-fill" style={{ width: `${pctOf(s.usd, usage()?.by_model)}%` }} /></div>
+                  <span class="uv-row-usd">{money(s.usd)}</span>
+                </div>
+              )}</For>
+            </div>
           </div>
         </div>
       </Show>

@@ -157,6 +157,15 @@ impl Store {
         let rows = stmt.query_map([], |r| Ok((r.get(0)?, r.get(1)?)))?;
         rows.collect()
     }
+
+    /// Spend grouped by model, most-spent first.
+    pub fn spend_by_model(&self) -> rusqlite::Result<Vec<(String, f64)>> {
+        let mut stmt = self.conn.prepare(
+            "SELECT model, SUM(cost_usd) FROM cost_events GROUP BY model ORDER BY SUM(cost_usd) DESC",
+        )?;
+        let rows = stmt.query_map([], |r| Ok((r.get(0)?, r.get(1)?)))?;
+        rows.collect()
+    }
 }
 
 #[cfg(test)]
@@ -279,5 +288,18 @@ mod tests {
         assert_eq!(s.total_spend().unwrap(), 0.0);
         assert!(s.spend_by_project().unwrap().is_empty());
         assert_eq!(s.spend_since(0).unwrap(), 0.0);
+    }
+
+    #[test]
+    fn rolls_up_spend_by_model() {
+        let s = Store::open_in_memory().unwrap();
+        s.record_cost(&ce("a", "p", 3.0, 1)).unwrap(); // model "opus"
+        s.record_cost(&ce("b", "p", 1.0, 2)).unwrap();
+        let mut e = ce("c", "p", 5.0, 3);
+        e.model = "sonnet".into();
+        s.record_cost(&e).unwrap();
+        let by = s.spend_by_model().unwrap();
+        assert_eq!(by[0], ("sonnet".to_string(), 5.0)); // most-spent first
+        assert_eq!(by[1], ("opus".to_string(), 4.0));
     }
 }

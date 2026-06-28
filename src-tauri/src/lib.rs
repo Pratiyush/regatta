@@ -165,6 +165,76 @@ fn board_reindex(store: tauri::State<'_, std::sync::Mutex<regatta_store::Store>>
     }
 }
 
+#[derive(Serialize, Clone)]
+struct SpendSlice {
+    name: String,
+    usd: f64,
+}
+
+#[derive(Serialize)]
+struct UsageView {
+    today_usd: f64,
+    burn_per_hr: f64,
+    budget_usd: f64,
+    budget_pct: u8,
+    by_project: Vec<SpendSlice>,
+    by_model: Vec<SpendSlice>,
+}
+
+/// Seed representative cost events — demo data for the Usage view until live sessions record their own.
+fn seed_cost_demo(store: &regatta_store::Store) {
+    let now = now_secs();
+    let demo: &[(&str, &str, &str, f64, i64)] = &[
+        ("s1", "payments-svc", "claude-opus-4-8", 2.41, 0),
+        ("s2", "Book-Java", "claude-sonnet-4-6", 0.88, 600),
+        ("s3", "patent", "claude-opus-4-8", 1.12, 1200),
+        ("s4", "Quarkus", "claude-haiku-4-5", 0.31, 1800),
+        ("s5", "notepad++", "claude-opus-4-8", 1.77, 2400),
+        ("s6", "regatta", "claude-sonnet-4-6", 0.54, 3000),
+        ("s7", "temp", "claude-haiku-4-5", 0.09, 3600),
+    ];
+    for (sid, proj, model, cost, off) in demo {
+        let _ = store.record_cost(&regatta_store::CostEvent {
+            session_id: (*sid).into(),
+            project: (*proj).into(),
+            model: (*model).into(),
+            ts: now - off,
+            cost_usd: *cost,
+        });
+    }
+}
+
+/// The Usage view: spend today, burn rate, budget bar, and breakdowns by project and model —
+/// aggregated from the cost ledger; budget percent + burn rate computed by the pure core.
+#[tauri::command]
+fn usage_view(store: tauri::State<'_, std::sync::Mutex<regatta_store::Store>>) -> UsageView {
+    let now = now_secs();
+    let budget_usd = 25.0;
+    let zero = || UsageView {
+        today_usd: 0.0,
+        burn_per_hr: 0.0,
+        budget_usd,
+        budget_pct: 0,
+        by_project: Vec::new(),
+        by_model: Vec::new(),
+    };
+    let Ok(store) = store.lock() else {
+        return zero();
+    };
+    let today = store.spend_since(now - 86_400).unwrap_or(0.0);
+    let slice = |v: Vec<(String, f64)>| -> Vec<SpendSlice> {
+        v.into_iter().map(|(name, usd)| SpendSlice { name, usd }).collect()
+    };
+    UsageView {
+        today_usd: today,
+        burn_per_hr: regatta_core::cost::burn_rate(today, 4 * 3600), // ~4h active window
+        budget_usd,
+        budget_pct: regatta_core::cost::budget_pct(today, budget_usd),
+        by_project: slice(store.spend_by_project().unwrap_or_default()),
+        by_model: slice(store.spend_by_model().unwrap_or_default()),
+    }
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -172,6 +242,7 @@ pub fn run() {
             use tauri::Manager;
             let store = regatta_store::Store::open_in_memory().expect("flow store");
             index_claude_home(&store); // index the session history once at launch
+            seed_cost_demo(&store); // representative cost events for the Usage view
             app.manage(std::sync::Mutex::new(store));
             Ok(())
         })
@@ -180,7 +251,8 @@ pub fn run() {
             dock_view,
             run_demo_session,
             board_list,
-            board_reindex
+            board_reindex,
+            usage_view
         ])
         .run(tauri::generate_context!())
         .expect("error while running Regatta");

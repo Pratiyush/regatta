@@ -20,6 +20,7 @@
 | R-SUPERVISOR-01 | terminate the whole process group | 3 | 🟢🟢🟢 | done | — |
 | R-TAIL-01 | tail a transcript from an offset | 2 | 🟢🟢 | done | — |
 | R-TXMETA-01 | parse Claude transcript session metadata | 2 | 🟢🟢 | done | — |
+| R-USAGE-01 | budget percent and spend by model | 2 | 🟢🟢 | done | — |
 | R-VIEW-01 | render an event as a display line | 2 | 🟢🟢 | done | — |
 | R-WIRE-01 | collect normalized events from a session's stdout | 2 | 🟢🟢 | done | — |
 | R-WORKTREE-01 | plan an isolated worktree | 2 | 🟢🟢 | done | — |
