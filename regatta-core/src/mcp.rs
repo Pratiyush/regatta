@@ -110,6 +110,15 @@ pub fn approve_result(
     rpc_result(id, json!({ "content": [{ "type": "text", "text": body }] }))
 }
 
+/// The `.mcp.json` that registers Regatta's permission server with a `claude` session, so
+/// `--permission-prompt-tool mcp__regatta__approve` resolves to `<exe> mcp-approve`.
+pub fn approve_server_config(exe: &str) -> String {
+    json!({
+        "mcpServers": { "regatta": { "command": exe, "args": ["mcp-approve"] } }
+    })
+    .to_string()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -223,5 +232,16 @@ mod tests {
             serde_json::from_str(dv["result"]["content"][0]["text"].as_str().unwrap()).unwrap();
         assert_eq!(dbody["behavior"], "deny");
         assert_eq!(dbody["message"], "nope");
+    }
+
+    #[test]
+    fn builds_the_approve_server_config() {
+        let cfg = approve_server_config("/usr/local/bin/regatta");
+        let v: Value = serde_json::from_str(&cfg).unwrap();
+        assert_eq!(
+            v["mcpServers"]["regatta"]["command"],
+            "/usr/local/bin/regatta"
+        );
+        assert_eq!(v["mcpServers"]["regatta"]["args"][0], "mcp-approve");
     }
 }
