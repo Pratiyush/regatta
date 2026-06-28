@@ -84,6 +84,39 @@ pub fn plan_codex_launch(model: &str, session_id: &str, cwd: &str, resume: bool)
     }
 }
 
+/// Which agent backend a session uses — the dispatch point that keeps the glue backend-agnostic.
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub enum Backend {
+    Claude,
+    Codex,
+}
+
+impl Backend {
+    /// A short label for the backend badge.
+    pub fn label(self) -> &'static str {
+        match self {
+            Backend::Claude => "Claude",
+            Backend::Codex => "Codex",
+        }
+    }
+
+    /// Plan a launch for this backend.
+    pub fn plan_launch(self, model: &str, session_id: &str, cwd: &str, resume: bool) -> LaunchPlan {
+        match self {
+            Backend::Claude => plan_claude_launch(model, session_id, cwd, resume),
+            Backend::Codex => plan_codex_launch(model, session_id, cwd, resume),
+        }
+    }
+
+    /// Parse one of this backend's stream lines into a normalized event.
+    pub fn parse_line(self, line: &str) -> Option<crate::stream::NormalizedEvent> {
+        match self {
+            Backend::Claude => crate::stream::parse_claude_line(line),
+            Backend::Codex => crate::stream::parse_codex_line(line),
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -199,5 +232,38 @@ mod tests {
     fn plans_a_codex_resume() {
         let p = plan_codex_launch("gpt-5-codex", "cx-9", "/repo", true);
         assert!(p.args.windows(2).any(|w| w == ["resume", "cx-9"]));
+    }
+
+    #[test]
+    fn backend_dispatches_label_and_launch() {
+        assert_eq!(Backend::Claude.label(), "Claude");
+        assert_eq!(Backend::Codex.label(), "Codex");
+        assert_ne!(Backend::Claude, Backend::Codex); // Backend equality (a real contract)
+        assert_eq!(
+            Backend::Claude.plan_launch("m", "s", "/r", false).program,
+            "claude"
+        );
+        assert_eq!(
+            Backend::Codex.plan_launch("m", "s", "/r", false).program,
+            "codex"
+        );
+    }
+
+    #[test]
+    fn backend_parses_its_own_format() {
+        use crate::stream::NormalizedEvent;
+        let claude = r#"{"type":"system","subtype":"init","model":"m"}"#;
+        let codex = r#"{"type":"event_msg","payload":{"type":"task_started","model":"m"}}"#;
+        assert!(matches!(
+            Backend::Claude.parse_line(claude),
+            Some(NormalizedEvent::SessionStarted { .. })
+        ));
+        assert!(matches!(
+            Backend::Codex.parse_line(codex),
+            Some(NormalizedEvent::SessionStarted { .. })
+        ));
+        // each backend ignores the other's format
+        assert_eq!(Backend::Claude.parse_line(codex), None);
+        assert_eq!(Backend::Codex.parse_line(claude), None);
     }
 }
