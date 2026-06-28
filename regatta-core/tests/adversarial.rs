@@ -3,6 +3,8 @@
 //! they stay safe — no panic, no injection, no traversal.
 
 use regatta_core::board::recency_group;
+use regatta_core::budget::{budget_status, should_pause, Budget, BudgetAction};
+use regatta_core::cost::{budget_pct, burn_rate, effective_cost, price_tokens, time_to_ceiling};
 use regatta_core::slug::slugify;
 use regatta_core::stream::parse_claude_line;
 use regatta_core::transcript::parse_session_meta;
@@ -140,4 +142,50 @@ fn recency_group_never_overflows() {
             let _ = recency_group(la, now); // must return a bucket, never panic
         }
     }
+}
+
+/// Token counts, costs, and budgets come from disk/config and could be extreme or corrupt — the cost
+/// and budget math must never panic, divide by zero, or overflow into an out-of-range percent.
+#[test]
+fn cost_and_budget_math_never_panics_on_extremes() {
+    let big = u64::MAX;
+    for model in [
+        "claude-opus-4-8",
+        "claude-sonnet-4-6",
+        "claude-haiku-4-5",
+        "local",
+        "",
+    ] {
+        let _ = price_tokens(model, big, big, big, big);
+    }
+    for spent in [0.0, -1.0, f64::MAX, f64::MIN, f64::INFINITY, f64::NAN] {
+        for limit in [0.0, -5.0, 1e-12, f64::MAX, f64::INFINITY] {
+            assert!(budget_pct(spent, limit) <= 100, "budget_pct out of range");
+        }
+    }
+    let _ = burn_rate(f64::MAX, 0);
+    let _ = burn_rate(f64::NAN, big);
+    let _ = time_to_ceiling(f64::MAX, f64::MIN_POSITIVE, f64::MAX);
+    let _ = time_to_ceiling(f64::NAN, f64::NAN, f64::NAN);
+    for action in [
+        BudgetAction::Warn,
+        BudgetAction::Throttle,
+        BudgetAction::Block,
+    ] {
+        let b = Budget {
+            limit_usd: 0.0,
+            action,
+        };
+        let _ = should_pause(budget_status(f64::MAX, &b), action);
+    }
+    let _ = effective_cost(
+        "opus",
+        &regatta_core::stream::NormalizedEvent::Usage {
+            cost_usd: 0.0,
+            input: big,
+            output: big,
+            cache_read: big,
+            cache_create: big,
+        },
+    );
 }
