@@ -3104,3 +3104,4 @@
 {"at":"2026-06-28T14:10:49.051Z","type":"check.run","data":{"taskId":"R-WORKTREE-01","result":{"ref":"regatta_core::worktree::tests::plans_a_unique_worktree","passed":true,"at":"2026-06-28T14:10:49.028Z","sha":"ffe159d064ba7147e7264a992cdfc93b6a92a699","dirty":true,"kind":"unit","stack":"rust"}}}
 {"at":"2026-06-28T14:10:49.235Z","type":"check.run","data":{"taskId":"R-WORKTREE-01","result":{"ref":"regatta_core::worktree::tests::handles_a_short_uuid","passed":true,"at":"2026-06-28T14:10:49.213Z","sha":"ffe159d064ba7147e7264a992cdfc93b6a92a699","dirty":true,"kind":"unit","stack":"rust"}}}
 {"at":"2026-06-28T14:10:49.647Z","type":"cli.run","data":{"command":"gate","args":[]},"meta":{"actor":"Pratiyush"}}
+{"at":"2026-06-28T14:20:21.176Z","type":"cli.run","data":{"command":"gate","args":[]},"meta":{"actor":"Pratiyush"}}
