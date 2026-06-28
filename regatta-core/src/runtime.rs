@@ -30,6 +30,8 @@ impl SessionRuntime {
                 self.output_tokens = self.output_tokens.saturating_add(*output);
                 self.cost_usd += crate::cost::effective_cost(&self.model, event);
             }
+            // approvals are surfaced to the dock, not folded into the running totals
+            NormalizedEvent::ApprovalRequested { .. } => {}
         }
     }
 
@@ -109,6 +111,11 @@ mod tests {
             output: 20,
             cache_read: 0,
             cache_create: 0,
+        });
+        // an approval request is a dock concern — it must NOT change the running state
+        rt.apply_event(&NormalizedEvent::ApprovalRequested {
+            tool: "Bash".into(),
+            detail: "x".into(),
         });
         assert_eq!(
             rt,
