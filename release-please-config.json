@@ -5,7 +5,9 @@
     "regatta-core": {
       "release-type": "rust",
       "package-name": "regatta_core",
-      "extra-files": ["src-tauri/Cargo.toml"]
+      "extra-files": [
+        { "type": "generic", "path": "src-tauri/Cargo.toml" }
+      ]
     }
   }
 }
