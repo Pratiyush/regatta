@@ -4,6 +4,7 @@
 //! spawned**, leaving nothing behind — the failure mode that leaves cmux helpers spinning for days.
 
 use regatta_core::backend::LaunchPlan;
+use regatta_core::budget::{budget_status, should_pause, Budget};
 use std::process::Stdio;
 use tokio::process::{Child, Command};
 
@@ -78,6 +79,17 @@ impl SessionHandle {
         }
         let _ = self.child.start_kill();
         let _ = self.child.wait().await;
+    }
+
+    /// Auto-pause: if `spent_usd` has crossed the budget ceiling and the action is Block, tear the
+    /// session down (the runaway-stop cmux never had). Returns whether it paused.
+    pub async fn autopause_if_exceeded(&mut self, spent_usd: f64, budget: &Budget) -> bool {
+        if should_pause(budget_status(spent_usd, budget), budget.action) {
+            self.shutdown().await;
+            true
+        } else {
+            false
+        }
     }
 }
 
@@ -245,5 +257,41 @@ mod tests {
         let (events, _) = tail_transcript(&path, 9_999_999).unwrap(); // offset past EOF
         assert_eq!(events.len(), 1);
         let _ = std::fs::remove_file(&path);
+    }
+
+    #[tokio::test]
+    async fn autopauses_when_budget_exceeded_and_block() {
+        use regatta_core::budget::{Budget, BudgetAction};
+        let budget = Budget {
+            limit_usd: 10.0,
+            action: BudgetAction::Block,
+        };
+        let mut h = SessionHandle::spawn(&sh("sleep 30")).expect("spawn");
+        let pid = h.pid().unwrap() as i32;
+        // under budget → no pause; still alive
+        assert!(!h.autopause_if_exceeded(5.0, &budget).await);
+        assert!(alive(pid));
+        // over budget + Block → auto-pause (teardown)
+        assert!(h.autopause_if_exceeded(12.0, &budget).await);
+        tokio::time::sleep(Duration::from_millis(250)).await;
+        assert!(
+            !alive(pid),
+            "exceeding the ceiling must tear the session down"
+        );
+    }
+
+    #[tokio::test]
+    async fn does_not_autopause_when_action_is_not_block() {
+        use regatta_core::budget::{Budget, BudgetAction};
+        let budget = Budget {
+            limit_usd: 10.0,
+            action: BudgetAction::Warn,
+        };
+        let mut h = SessionHandle::spawn(&sh("sleep 30")).expect("spawn");
+        let pid = h.pid().unwrap() as i32;
+        // way over budget, but the action is Warn → no pause
+        assert!(!h.autopause_if_exceeded(50.0, &budget).await);
+        assert!(alive(pid));
+        h.shutdown().await;
     }
 }
