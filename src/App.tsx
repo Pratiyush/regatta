@@ -1,5 +1,5 @@
 import { createResource, createSignal, For, Show, type Component } from "solid-js";
-import { invoke } from "@tauri-apps/api/core";
+import { Channel, invoke } from "@tauri-apps/api/core";
 
 type SessionView = {
   id: string; name: string; project: string; branch: string;
@@ -61,9 +61,18 @@ async function fetchLive(): Promise<LiveSession[]> {
 
 const App: Component = () => {
   const [data] = createResource(fetchDock);
-  const [session, { refetch }] = createResource(runDemo); // a real session, driven by the pipeline
+  const [session] = createResource(runDemo); // initial demo (batched)
   const [busy, setBusy] = createSignal(false);
-  const runAgain = async () => { setBusy(true); await refetch(); setBusy(false); };
+  const [liveLines, setLiveLines] = createSignal<EventLine[]>([]);
+  // M8: stream a live session over a per-session Channel — each EventLine arrives as it is produced.
+  const runAgain = async () => {
+    setBusy(true);
+    setLiveLines([]);
+    const channel = new Channel<EventLine>();
+    channel.onmessage = (line) => setLiveLines((prev) => [...prev, line]);
+    await invoke("launch_demo_live", { channel });
+    setTimeout(() => setBusy(false), 2600);
+  };
 
   const [view, setView] = createSignal<"focus" | "live" | "usage" | "review" | "sessions" | "settings">("focus");
   const [query, setQuery] = createSignal("");
@@ -169,7 +178,7 @@ const App: Component = () => {
             </div>
             <div class="stream">
               <Show when={!session.loading} fallback={<div class="empty">Starting session…</div>}>
-                <For each={session()} fallback={<div class="empty">Press “Run test session” to drive a live session.</div>}>{(ln) => (
+                <For each={liveLines().length ? liveLines() : session()} fallback={<div class="empty">Press “Run test session” to stream a live session.</div>}>{(ln) => (
                   <div class="msg">
                     <span class="role" style={{ color: ROLE_COLOR[ln.role] ?? "#8a887f" }}>{ln.role}</span>
                     <div class="msg-body">{ln.text}</div>

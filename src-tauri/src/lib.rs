@@ -403,9 +403,31 @@ struct LiveSessionView {
 /// Launch a real agent session (Claude or Codex), spawn it, and pump its event stream into the live
 /// registry as it runs. Returns the session id. The spawned task owns the handle, so when the session
 /// ends the handle drops and the zero-leak teardown reaps the whole process tree.
+/// Spawn the pump task: stream each event as an `EventLine` to `channel` (the real-time Focus feed) and
+/// fold it into the registry. The handle drops when the session ends → zero-leak teardown.
+fn pump_into(
+    mut handle: regatta_supervisor::SessionHandle,
+    be: regatta_core::backend::Backend,
+    id: String,
+    reg: LiveRegistry,
+    channel: tauri::ipc::Channel<regatta_core::view::EventLine>,
+) {
+    tauri::async_runtime::spawn(async move {
+        handle
+            .pump_events_with(be, |ev| {
+                let _ = channel.send(regatta_core::view::event_line(&ev));
+                if let Ok(mut r) = reg.lock() {
+                    r.apply(&id, &ev);
+                }
+            })
+            .await;
+    });
+}
+
 #[tauri::command]
-fn launch_session(
+async fn launch_session(
     registry: tauri::State<'_, LiveRegistry>,
+    channel: tauri::ipc::Channel<regatta_core::view::EventLine>,
     id: String,
     backend: String,
     model: String,
@@ -413,20 +435,38 @@ fn launch_session(
 ) -> Result<String, String> {
     let be = regatta_core::backend::Backend::from_label(&backend).ok_or("unknown backend")?;
     let plan = be.plan_launch(&model, &id, &cwd, false);
-    let mut handle = regatta_supervisor::SessionHandle::spawn(&plan).map_err(|e| e.to_string())?;
-    let reg = registry.inner().clone();
-    let sid = id.clone();
-    tauri::async_runtime::spawn(async move {
-        handle
-            .pump_events_with(be, |ev| {
-                if let Ok(mut r) = reg.lock() {
-                    r.apply(&sid, &ev);
-                }
-            })
-            .await;
-        // the session ended; handle drops here → zero-leak teardown of its process group
-    });
+    let handle = regatta_supervisor::SessionHandle::spawn(&plan).map_err(|e| e.to_string())?;
+    pump_into(handle, be, id.clone(), registry.inner().clone(), channel);
     Ok(id)
+}
+
+/// Launch a scripted demo that streams real Claude stream-json over a couple seconds — a live demo of
+/// the real-time Focus Channel without needing a real agent/auth.
+#[tauri::command]
+async fn launch_demo_live(
+    registry: tauri::State<'_, LiveRegistry>,
+    channel: tauri::ipc::Channel<regatta_core::view::EventLine>,
+) -> Result<String, String> {
+    let script = "echo '{\"type\":\"system\",\"subtype\":\"init\",\"model\":\"claude-opus-4-8\"}'; sleep 0.4; \
+                  echo '{\"type\":\"assistant\",\"message\":{\"content\":[{\"type\":\"text\",\"text\":\"Reading the failing test…\"}]}}'; sleep 0.5; \
+                  echo '{\"type\":\"assistant\",\"message\":{\"content\":[{\"type\":\"text\",\"text\":\"Adding an idempotency guard.\"}]}}'; sleep 0.5; \
+                  echo '{\"type\":\"assistant\",\"message\":{\"content\":[{\"type\":\"text\",\"text\":\"Done. Ran the suite: 14 passed.\"}]}}'; sleep 0.4; \
+                  echo '{\"type\":\"result\",\"total_cost_usd\":0.42,\"usage\":{\"input_tokens\":18400,\"output_tokens\":2100}}'";
+    let plan = regatta_core::backend::LaunchPlan {
+        program: "/bin/sh".into(),
+        args: vec!["-c".into(), script.into()],
+        env: vec![],
+        cwd: std::path::PathBuf::from("/"),
+    };
+    let handle = regatta_supervisor::SessionHandle::spawn(&plan).map_err(|e| e.to_string())?;
+    pump_into(
+        handle,
+        regatta_core::backend::Backend::Claude,
+        "demo-live".into(),
+        registry.inner().clone(),
+        channel,
+    );
+    Ok("demo-live".into())
 }
 
 /// The live sessions the registry is tracking, as dock rows — folded from real event streams.
@@ -496,7 +536,8 @@ pub fn run() {
             diff_view,
             settings_view,
             launch_session,
-            live_sessions
+            live_sessions,
+            launch_demo_live
         ])
         .run(tauri::generate_context!())
         .expect("error while running Regatta");
