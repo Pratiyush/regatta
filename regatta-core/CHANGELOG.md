@@ -1,5 +1,34 @@
 # Changelog
 
+## [0.3.0](https://github.com/Pratiyush/regatta/compare/v0.2.0...v0.3.0) (2026-06-28)
+
+
+### Features
+
+* **backend:** Backend dispatch (Claude/Codex) — the multi-backend abstraction ([#85](https://github.com/Pratiyush/regatta/issues/85)) ([c7a535b](https://github.com/Pratiyush/regatta/commit/c7a535b57fe7ffe5ee3b168ffc000fc127556da3))
+* **backend:** plan a Codex launch (codex exec --json) ([#83](https://github.com/Pratiyush/regatta/issues/83)) ([0383c3b](https://github.com/Pratiyush/regatta/commit/0383c3b5b87985bb583de7fea2ad16a881d7441d))
+* **backend:** with_env merges materialized config into a launch plan ([#75](https://github.com/Pratiyush/regatta/issues/75)) ([60eb7ee](https://github.com/Pratiyush/regatta/commit/60eb7eed5c10f3e0b83cfbc4943b7a189f0f29f9))
+* **badge:** Claude/Codex backend badge on every session ([#91](https://github.com/Pratiyush/regatta/issues/91)) ([cb964df](https://github.com/Pratiyush/regatta/commit/cb964df96872d4aa2b14f4387157be5cde2d24b7))
+* **budget:** classify spend and decide auto-pause ([#45](https://github.com/Pratiyush/regatta/issues/45)) ([782c97e](https://github.com/Pratiyush/regatta/commit/782c97e4eb40b5c9dca1ef110eec7c3475c60347))
+* **config:** layered config resolver (global-&gt;project-&gt;session) ([#67](https://github.com/Pratiyush/regatta/issues/67)) ([cf082d6](https://github.com/Pratiyush/regatta/commit/cf082d69dbf1c5b68cef063d74017322c722ebd9))
+* **config:** mask secret config values ([#69](https://github.com/Pratiyush/regatta/issues/69)) ([3ec447c](https://github.com/Pratiyush/regatta/commit/3ec447c62e5bced30974f77a9d1931776d35ddf6))
+* **config:** materialize effective config into session env ([#71](https://github.com/Pratiyush/regatta/issues/71)) ([48d3d4e](https://github.com/Pratiyush/regatta/commit/48d3d4e701d02f027c4e7e934a4655519baf158c))
+* **cost:** burn rate and time-to-ceiling prediction ([#43](https://github.com/Pratiyush/regatta/issues/43)) ([4b5d092](https://github.com/Pratiyush/regatta/commit/4b5d092ec670a82cc94fc587c5947151a95c6bec))
+* **cost:** price token usage and pick effective session cost ([#40](https://github.com/Pratiyush/regatta/issues/40)) ([9b0cf29](https://github.com/Pratiyush/regatta/commit/9b0cf29d3d3ec67d307b40cf7fb3c940cf4ba3c0))
+* **git:** parse git diff --numstat into per-file line counts ([#57](https://github.com/Pratiyush/regatta/issues/57)) ([244409f](https://github.com/Pratiyush/regatta/commit/244409f3b660757894cea0c83ebfbf4bd4b38011))
+* **git:** parse git status --porcelain into file changes ([#55](https://github.com/Pratiyush/regatta/issues/55)) ([ac62888](https://github.com/Pratiyush/regatta/commit/ac62888721ba597cb7bba658f949410c171342d9))
+* **layout:** grid layout model + pane assignment ([#59](https://github.com/Pratiyush/regatta/issues/59)) ([7ec706c](https://github.com/Pratiyush/regatta/commit/7ec706c830d1053364e1019deb2bfe0ac3865706))
+* **review:** Review Inbox + diff drawer + split grid (M4.5+M4.6) ([#63](https://github.com/Pratiyush/regatta/issues/63)) ([2f9e1a8](https://github.com/Pratiyush/regatta/commit/2f9e1a86b4aa5bb50be10a780ee83d5fe6636cbe))
+* **settings:** Settings + Extensions view (one system, one team) ([#77](https://github.com/Pratiyush/regatta/issues/77)) ([9d11152](https://github.com/Pratiyush/regatta/commit/9d1115200b83f53bc4895daf0d38385ec8b4e7d0))
+* **stream:** parse Codex events into the normalized shape ([#81](https://github.com/Pratiyush/regatta/issues/81)) ([4f65646](https://github.com/Pratiyush/regatta/commit/4f65646de350fb93cc260f6085e3970ff0a76b72))
+* **transcript:** parse Codex session meta for the Resume board ([#87](https://github.com/Pratiyush/regatta/issues/87)) ([246fe2c](https://github.com/Pratiyush/regatta/commit/246fe2c0ea591920bcd7632dfaf5d0e48cf69ad3))
+* **usage:** live Usage view — spend, burn, budget bar, by-project/model ([#49](https://github.com/Pratiyush/regatta/issues/49)) ([32f3a69](https://github.com/Pratiyush/regatta/commit/32f3a69c49a1f2c72fb77d079f50819f334f9543))
+
+
+### Bug Fixes
+
+* harden summarize_diff against u64 overflow (M4 adversarial review) ([#65](https://github.com/Pratiyush/regatta/issues/65)) ([a15288c](https://github.com/Pratiyush/regatta/commit/a15288c64773b6b3f65a1e832e5973d99a92b5ae))
+
 ## [0.2.0](https://github.com/Pratiyush/regatta/compare/v0.1.0...v0.2.0) (2026-06-27)
 
 
