@@ -54,6 +54,10 @@ async function fetchSettings(): Promise<SettingsView> {
   try { return await invoke<SettingsView>("settings_view"); }
   catch { return { config: [], mcp_servers: [], skills: [], commands: [] }; }
 }
+type LiveSession = { id: string; model: string; summary: string; turns: number; cost: string };
+async function fetchLive(): Promise<LiveSession[]> {
+  try { return await invoke<LiveSession[]>("live_sessions"); } catch { return []; }
+}
 
 const App: Component = () => {
   const [data] = createResource(fetchDock);
@@ -61,7 +65,7 @@ const App: Component = () => {
   const [busy, setBusy] = createSignal(false);
   const runAgain = async () => { setBusy(true); await refetch(); setBusy(false); };
 
-  const [view, setView] = createSignal<"focus" | "usage" | "review" | "sessions" | "settings">("focus");
+  const [view, setView] = createSignal<"focus" | "live" | "usage" | "review" | "sessions" | "settings">("focus");
   const [query, setQuery] = createSignal("");
   const [board, { refetch: refetchBoard }] = createResource(query, fetchBoard);
   const [usage] = createResource(fetchUsage);
@@ -69,6 +73,7 @@ const App: Component = () => {
   const [selected, setSelected] = createSignal("s1");
   const [diff] = createResource(selected, fetchDiff);
   const [settings] = createResource(fetchSettings);
+  const [liveSessions] = createResource(fetchLive);
   const money = (n: number) => `$${(n ?? 0).toFixed(2)}`;
   const pctOf = (usd: number, list?: Spend[]) => {
     const max = Math.max(1e-9, ...(list ?? []).map((s) => s.usd));
@@ -118,6 +123,7 @@ const App: Component = () => {
         </div>
         <div class="views">
           <button class={`seg ${view() === "focus" ? "active" : ""}`} onClick={() => setView("focus")}>Focus</button>
+          <button class={`seg ${view() === "live" ? "active" : ""}`} onClick={() => setView("live")}>Live</button>
           <button class={`seg ${view() === "usage" ? "active" : ""}`} onClick={() => setView("usage")}>Usage</button>
           <button class={`seg ${view() === "review" ? "active" : ""}`} onClick={() => setView("review")}>Review</button>
           <button class={`seg ${view() === "sessions" ? "active" : ""}`} onClick={() => setView("sessions")}>Sessions</button>
@@ -198,6 +204,37 @@ const App: Component = () => {
             </div>
           </aside>
         </div>
+      </Show>
+
+      {/* ───────── Live sessions — M7 ───────── */}
+      <Show when={view() === "live"}>
+        <section class="live-view">
+          <div class="live-head">
+            <span class="live-title">LIVE SESSIONS</span>
+            <span class="live-sub">folded from real event streams · {liveSessions()?.length ?? 0} running</span>
+          </div>
+          <div class="live-grid">
+            <For each={liveSessions()}>{(s) => {
+              const codex = s.model.startsWith("gpt");
+              return (
+                <div class="live-card">
+                  <div class="live-card-head">
+                    <span class="live-card-id">{s.id}</span>
+                    <span class="bk" classList={{ codex }}>{codex ? "Codex" : "Claude"}</span>
+                  </div>
+                  <div class="live-card-summary">{s.summary}</div>
+                  <div class="live-card-foot">
+                    <span class="live-card-model">{s.model}</span>
+                    <span class="live-card-cost">{s.cost}</span>
+                  </div>
+                </div>
+              );
+            }}</For>
+            <Show when={(liveSessions()?.length ?? 0) === 0}>
+              <div class="live-empty">No live sessions — launch one to see it stream here.</div>
+            </Show>
+          </div>
+        </section>
       </Show>
 
       {/* ───────── Resume board (Sessions) — M2 ───────── */}
