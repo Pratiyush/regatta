@@ -4,6 +4,9 @@
 
 use regatta_core::board::recency_group;
 use regatta_core::budget::{budget_status, should_pause, Budget, BudgetAction};
+use regatta_core::config::{
+    effective_masked, is_secret_key, mask, materialize_env, resolve, ConfigLayer,
+};
 use regatta_core::cost::{budget_pct, burn_rate, effective_cost, price_tokens, time_to_ceiling};
 use regatta_core::git::{parse_numstat, parse_status, summarize_diff, DiffStat};
 use regatta_core::slug::slugify;
@@ -225,4 +228,35 @@ fn git_parsers_and_summary_never_panic() {
         },
     ];
     assert_eq!(summarize_diff(&maxed), (u64::MAX, u64::MAX));
+}
+
+/// Config comes from layered files/UI and could be huge or contain odd unicode — the config ops must
+/// never panic, mask must preserve length (multibyte-safe), and a secret must always be hidden.
+#[test]
+fn config_ops_never_panic_and_always_mask() {
+    let huge = "x".repeat(1_000_000);
+    let layers: Vec<ConfigLayer> = (0..50)
+        .map(|i| ConfigLayer::from([(format!("k{i}"), huge.clone())]))
+        .collect();
+    let eff = resolve(&layers);
+    let _ = materialize_env(&eff);
+    let _ = effective_masked(&layers);
+    // mask is length-preserving and never panics on empty / unicode / huge input
+    for v in ["", "ab", "🔥💥 key 漢字", huge.as_str()] {
+        assert_eq!(mask(v).chars().count(), v.chars().count());
+    }
+    for k in ["", "🔥", "PUBLIC_KEY", huge.as_str()] {
+        let _ = is_secret_key(k);
+    }
+    // a secret value is always hidden
+    let secret = ConfigLayer::from([(
+        "ANTHROPIC_API_KEY".to_string(),
+        "supersecretvalue".to_string(),
+    )]);
+    assert_ne!(
+        effective_masked(&[secret])
+            .get("ANTHROPIC_API_KEY")
+            .map(String::as_str),
+        Some("supersecretvalue")
+    );
 }
