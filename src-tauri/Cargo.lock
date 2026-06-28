@@ -2398,7 +2398,7 @@ dependencies = [
 
 [[package]]
 name = "regatta"
-version = "0.1.0"
+version = "0.3.0"
 dependencies = [
  "regatta_core",
  "regatta_indexer",

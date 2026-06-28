@@ -32,6 +32,20 @@ impl SessionRuntime {
             }
         }
     }
+
+    /// A compact one-line summary for a dock card: "model · N turns · $X.XX".
+    pub fn summary(&self) -> String {
+        format!(
+            "{} · {} turns · ${:.2}",
+            if self.model.is_empty() {
+                "—"
+            } else {
+                &self.model
+            },
+            self.turns,
+            self.cost_usd
+        )
+    }
 }
 
 /// All live sessions keyed by id — the single source the cockpit renders.
@@ -167,5 +181,17 @@ mod tests {
         let ids: Vec<&str> = snap.iter().map(|(id, _)| id.as_str()).collect();
         assert_eq!(ids, ["alpha", "zebra"]); // BTreeMap → id-sorted
         assert_eq!(snap[0].1.last_text, "a");
+    }
+
+    #[test]
+    fn summary_is_a_compact_dock_line() {
+        let rt = SessionRuntime {
+            model: "gpt-5-codex".into(),
+            turns: 3,
+            cost_usd: 0.42,
+            ..Default::default()
+        };
+        assert_eq!(rt.summary(), "gpt-5-codex · 3 turns · $0.42");
+        assert_eq!(SessionRuntime::default().summary(), "— · 0 turns · $0.00");
     }
 }
