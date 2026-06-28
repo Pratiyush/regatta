@@ -98,6 +98,18 @@ fn tools_list_result() -> Value {
     })
 }
 
+/// Build the JSON-RPC response for a `tools/call("approve")` once the human has decided: the MCP
+/// tools/call result wraps the permission `approval_response` as text content.
+pub fn approve_result(
+    id: &Value,
+    decision: crate::approval::Decision,
+    input: &str,
+    reason: &str,
+) -> String {
+    let body = crate::approval::approval_response(decision, input, reason);
+    rpc_result(id, json!({ "content": [{ "type": "text", "text": body }] }))
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -191,5 +203,25 @@ mod tests {
             dispatch(&req("nonsense", Value::Null)),
             McpAction::Reply(ref s) if s.contains("method not found")
         ));
+    }
+
+    #[test]
+    fn approve_result_wraps_the_decision() {
+        use crate::approval::Decision;
+        let allow = approve_result(&json!(7), Decision::Allow, r#"{"command":"ls"}"#, "");
+        let v: Value = serde_json::from_str(&allow).unwrap();
+        assert_eq!(v["id"], json!(7));
+        assert_eq!(v["result"]["content"][0]["type"], "text");
+        let body: Value =
+            serde_json::from_str(v["result"]["content"][0]["text"].as_str().unwrap()).unwrap();
+        assert_eq!(body["behavior"], "allow");
+        assert_eq!(body["updatedInput"], json!({"command":"ls"}));
+
+        let deny = approve_result(&json!(8), Decision::Deny, "{}", "nope");
+        let dv: Value = serde_json::from_str(&deny).unwrap();
+        let dbody: Value =
+            serde_json::from_str(dv["result"]["content"][0]["text"].as_str().unwrap()).unwrap();
+        assert_eq!(dbody["behavior"], "deny");
+        assert_eq!(dbody["message"], "nope");
     }
 }
